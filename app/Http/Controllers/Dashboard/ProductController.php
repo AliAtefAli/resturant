@@ -9,14 +9,17 @@ use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use App\Models\ProductImages;
+use App\Models\ProductTranslation;
 use App\Traits\Uploadable;
 
 class ProductController extends Controller
 {
     use Uploadable;
+
     public function index()
     {
         $products = Product::with('translation')
+            ->latest()
             ->paginate(10);
         return view('dashboard.products.index', compact('products'));
     }
@@ -29,91 +32,81 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-        $product = Product::create($request->all());
-        $images = $request['images'];
+        $product = Product::create($request->validated());
 
-        foreach ($images as $image_input) {
-            $path = $this->uploadOne($image_input, '736', '1000', 'products');
+        $images = $request['image'];
+        foreach ($images as $image) {
+            $path = $this->uploadOne($image, 'products', null, null);
 
-            $image = new Image(['path' => $path]);
-            $product->images()->save($image);
+            Image::create([
+                'path' => $path,
+                'product_id' => $product->id
+            ]);
         }
-
-
-        return redirect()->route('dashboard.home');
+        return redirect()->route('dashboard.products.index')->with('success', trans('dashboard.It was done successfully!'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function show(Product $product)
     {
-
         return view('dashboard.products.show', compact('product'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Product $product)
     {
         $categories = Category::all();
         return view('dashboard.products.edit', compact('product', 'categories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        $product->update($request->except('images'));
+         $product->update($request->except('images'));
 
-        if ($request->has('images')) {
-            $images = $request['images'];
+        if ($request->has('image')) {
 
-            $old_images = Image::where('imageable_id', $product->id)->get();
-            // Delete from the asset
+            $old_images = Image::where('product_id', $product->id)->get();
+
             foreach ($old_images as $old_image) {
-                if (file_exists(public_path('assets/images/products/' . $old_image->path))) {
-                    unlink(public_path('assets/images/products/' . $old_image->path));
+                if (file_exists(public_path('assets/products/' . $old_image->path))) {
+                    unlink(public_path('assets/products/' . $old_image->path));
                 }
-                // Delete from database
                 $old_image->delete();
             }
-            // Put the new images
-            foreach ($images as $image_input) {
-                $path = $this->uploadOne($image_input, null, null, 'products');
+            $images = $request['image'];
 
-                $image = new Image(['path' => $path]);
-                $product->images()->save($image);
+            foreach ($images as $image) {
+                $path = $this->uploadOne($image, 'products', null, null);
+
+                Image::create([
+                    'path' => $path,
+                    'product_id' => $product->id
+                ]);
             }
         }
 
-        return redirect()->route('products.index');
+        return redirect()->route('dashboard.products.index')->with('success', trans('dashboard.It was done successfully!'));
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Product $product
-     * @return \Illuminate\Http\Response
-     * @throws \Exception
-     */
     public function destroy(Product $product)
     {
+        $old_images = Image::where('product_id', $product->id)->get();
+
+        foreach ($old_images as $old_image) {
+            if (file_exists(public_path('assets/uploads/products/' . $old_image->path))) {
+                unlink(public_path('assets/uploads/products/' . $old_image->path));
+            }
+            $old_image->delete();
+        }
+
+        $product_translations = ProductTranslation::where('product_id', $product->id)->get();
+        if (!empty($product_translations)) {
+            foreach ($product_translations as $product_translation) {
+                $product_translation->delete();
+            }
+        }
+
         $product->delete();
 
-        return redirect()->route('dashboard.home');
+        return redirect()->route('dashboard.products.index')->with('success', trans('dashboard.It was done successfully!'));
     }
 }

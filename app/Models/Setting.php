@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Setting extends Model
 {
     use Translatable;
-    public $translatedAttributes = [];
-    protected $fillable = ['logo', 'email', 'default_lan', 'perPage'];
+    public $translatedAttributes = ['name', 'description', 'about', 'policies', 'currency'];
+    protected $fillable = ['logo', 'email', 'default_language', 'perPage', 'total_rate', 'count_rate', 'phone'];
 
 }

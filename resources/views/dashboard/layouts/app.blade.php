@@ -26,6 +26,7 @@
             <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/app-assets/vendors/css/cryptocoins/cryptocoins.css')}}">
             <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/assets/css/style-rtl.css')}}">
             <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/app-assets/css-rtl/pages/error.css')}}">
+
         <!-- END RTL CSS-->
     @else
         <!-- BEGIN LTR CSS-->
@@ -36,6 +37,7 @@
             <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/app-assets/vendors/css/cryptocoins/cryptocoins.css')}}">
             <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/assets/css/style.css')}}">
             <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/app-assets/css/pages/error.css')}}">
+
         <!-- END LTR CSS-->
         @endif
 

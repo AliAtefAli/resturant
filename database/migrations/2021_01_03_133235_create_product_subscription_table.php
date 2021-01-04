@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubscriptionProductTable extends Migration
+class CreateProductSubscriptionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSubscriptionProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('subscription_product', function (Blueprint $table) {
+        Schema::create('product_subscription', function (Blueprint $table) {
             $table->id();
             $table->foreignId('subscription_id')->constrained('subscriptions')->onDelete('cascade');
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
@@ -28,6 +28,6 @@ class CreateSubscriptionProductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subscription_product');
+        Schema::dropIfExists('product_subscription');
     }
 }

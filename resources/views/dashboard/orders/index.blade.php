@@ -6,13 +6,13 @@
         <!--content header -->
         <div class="content-header row">
             <div class="content-header-left col-md-6 col-12 mb-2">
-                <h3 class="content-header-title">{{word('admins')}}</h3>
+                <h3 class="content-header-title">{{trans('dashboard.main.orders')}}</h3>
                 <div class="row breadcrumbs-top">
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('home')}}">{{word('home')}}</a>
+                            <li class="breadcrumb-item"><a href="{{route('home')}}">{{trans('home')}}</a>
                             </li>
-                            <li class="breadcrumb-item active">{{word('admins')}}
+                            <li class="breadcrumb-item active">{{trans('dashboard.main.orders')}}
                             </li>
                         </ol>
                     </div>
@@ -33,10 +33,10 @@
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                            <a class="heading-elements-toggle"><i
+                                                    class="la la-ellipsis-v font-medium-3"></i></a>
                                             <div class="heading-elements">
                                                 <ul class="list-inline mb-0">
-                                                    <li><a href="" class="btn btn-success btn-sm mr-1"><i class="ft-plus-circle"></i> {{word('create')}} </a></li>
                                                     <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                                                     <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
                                                     <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
@@ -50,35 +50,31 @@
                                                 <table class="table table-striped table-bordered dom-jQuery-events">
                                                     <thead>
                                                     <tr>
-                                                        <th>#</th>
-                                                        <th>{{word('name')}}</th>
-                                                        <th>{{word('status')}}</th>
-                                                        <th>{{word('actions')}}</th>
+                                                        <th>{{trans('dashboard.order.Order ID')}}</th>
+                                                        <th>{{trans('dashboard.order.payment status')}}</th>
+                                                        <th>{{trans('dashboard.order.payment method')}}</th>
+                                                        <th>{{trans('dashboard.order.Order date')}}</th>
+                                                        <th>{{trans('dashboard.order.Total Price')}}</th>
+                                                        <th>{{ trans('dashboard.main.Actions') }}</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr>
-                                                        <td>#</td>
-                                                        <td>System Architect</td>
-                                                        <td>ON</td>
-                                                        <td>
-                                                            <a href=""><button class="btn btn-info btn-sm" title=""><i class="ft-edit"></i></button></a>
-                                                            <form action="" id="delete-confirm" method="post" style="display: inline-block">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit"  class="btn btn-danger btn-sm" id="confirm-text" ><i class="ft-trash-2"></i></button>
-                                                            </form><!-- end of form -->
-                                                        </td>
-                                                    </tr>
+                                                    @foreach($orders as $order)
+                                                        <tr>
+                                                            <td>#{{ $order->id }}</td>
+                                                            <td>{{ $order->payment_method }}</td>
+                                                            <td>{{ $order->payment_status }}</td>
+                                                            <td>{{ ( $order->created_at->diffForHumans() ) ?? '' }}</td>
+                                                            <td>{{ $order->total }}</td>
+                                                            <td>
+                                                                <a href="{{ route('dashboard.orders.show', $order) }}">
+                                                                    <button class="btn btn-success btn-sm" title="{{ trans('dashboard.order.view') }}"><i
+                                                                            class="ft-eye"></i></button>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
                                                     </tbody>
-                                                    <tfoot>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>{{word('name')}}</th>
-                                                        <th>{{word('status')}}</th>
-                                                        <th>{{word('actions')}}</th>
-                                                    </tr>
-                                                    </tfoot>
                                                 </table>
                                             </div>
                                         </div>

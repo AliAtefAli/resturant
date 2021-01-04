@@ -12,7 +12,7 @@ class UpdateCategoryRequest extends FormRequest
 
             'ar.name' => 'required',
             'en.name' => 'required',
-            'category_id' => ''
+            'category_id' => 'sometimes|nullable'
         ];
     }
 

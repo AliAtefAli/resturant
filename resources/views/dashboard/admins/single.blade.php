@@ -5,23 +5,22 @@
     <div class="content-wrapper">
         <!--content header -->
         <div class="content-header row">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>{{ isset($admin) ? word('edit') : word('create') }}</h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{route('home')}}">{{word('dashboard')}}</a></li>
-                            <li class="breadcrumb-item"><a href="{{route('admins')}}">{{word('admins')}}</a></li>
-                            <li class="breadcrumb-item active">{{ isset($admin) ? word('edit') : word('create') }}</li>
+            <div class="content-header-left col-md-6 col-12 mb-2">
+                <h1>{{  trans('dashboard.main.Users') }}</h1>
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a
+                                    href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a></li>
+                            <li class="breadcrumb-item"><a
+                                    href="{{route('dashboard.users.index')}}">{{ trans('dashboard.main.Users') }}</a>
+                            </li>
+                            <li class="breadcrumb-item">{{ trans('dashboard.main.Create') }}</li>
                         </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /.content-header -->
-
 
         @include('dashboard.partials._alert')
         <div class="row">
@@ -30,18 +29,17 @@
                     <div class="card-content collpase show">
                         <div class="card-body">
                             <!-- form start -->
-                            <form class="form-horizontal" method="post" @if(isset($admin)) action="/admins/update"
-                                  @else action="/admins/store" @endif enctype="multipart/form-data">
+                            <form class="form-horizontal" method="post" action="{{ route('dashboard.users.create') }}">
                                 @csrf
                                 <div class="form-body">
+
                                     <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
-                                        <label class="col-md-2" for="name">{{word('name')}}</label>
+                                        <label class="col-md-2" for="name">{{trans('dashboard.user.Name')}}</label>
                                         <div class="col-md-10">
                                             <div class="position-relative has-icon-left">
                                                 <input type="text" id="name" class="form-control"
-                                                       placeholder="{{word('name')}}"
-                                                       name="name" @if(isset($admin)) value="{{$admin->name}}"
-                                                       @else value="{{old('name')}}" @endif/>
+                                                       placeholder="{{trans('dashboard.user.Name')}}"
+                                                       name="name" value="{{old('name')}}"/>
                                                 @include('dashboard.partials._errors', ['input' => 'name'])
                                                 <div class="form-control-position">
                                                     <i class="ft-user"></i>
@@ -49,14 +47,14 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">
-                                        <label class="col-md-2" for="name">{{word('email')}}</label>
+                                        <label class="col-md-2" for="name">{{trans('dashboard.user.Email')}}</label>
                                         <div class="col-md-10">
                                             <div class="position-relative has-icon-left">
                                                 <input type="text" id="email" class="form-control"
-                                                       placeholder="{{word('email')}}"
-                                                       name="email" @if(isset($admin)) value="{{$admin->email}}"
-                                                       @else value="{{old('email')}}" @endif/>
+                                                       placeholder="{{trans('email')}}"
+                                                       name="email" value="{{old('email')}}"/>
                                                 @include('dashboard.partials._errors', ['input' => 'email'])
                                                 <div class="form-control-position">
                                                     <i class="ft-mail"></i>
@@ -64,98 +62,87 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="form-group row {{ $errors->has('phone') ? ' has-error' : '' }}">
-                                        <label class="col-md-2" for="phone">{{word('phone')}}</label>
+                                        <label class="col-md-2"
+                                               for="phone-mask">{{trans('dashboard.user.phone')}}</label>
                                         <div class="col-md-10">
-                                            <div class="position-relative has-icon-left">
-                                                <input type="text" id="phone" class="form-control"
-                                                       placeholder="{{word('phone')}}"
-                                                       name="phone" @if(isset($admin)) value="{{$admin->phone}}"
-                                                       @else value="{{old('phone')}}" @endif/>
-                                                @include('dashboard.partials._errors', ['input' => 'phone'])
-                                                <div class="form-control-position">
-                                                    <i class="ft-phone"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row {{ $errors->has('address') ? ' has-error' : '' }}">
-                                        <label class="col-md-2" for="address">{{word('address')}}</label>
-                                        <div class="col-md-10">
-                                            <div class="position-relative has-icon-left">
-                                                <input type="text" id="address" class="form-control"
-                                                       placeholder="{{word('address')}}"
-                                                       name="address" @if(isset($admin)) value="{{$admin->address}}"
-                                                       @else value="{{old('address')}}" @endif/>
-                                                @include('dashboard.partials._errors', ['input' => 'address'])
-                                                <div class="form-control-position">
-                                                    <i class="ft-home"></i>
+                                            <div class="position-relative">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon1">+966</span>
+                                                    </div>
+                                                    <input type="text" class="form-control phone-inputmask" id="phone-mask"
+                                                           placeholder="Enter Phone Number" name="phone"
+                                                           value="{{ old('phone') }}"/>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row {{ $errors->has('password') ? ' has-error' : '' }}">
-                                        <label class="col-md-2" for="password">{{word('password')}}</label>
+                                        <label class="col-md-2" for="password">{{trans('dashboard.user.Password')}}</label>
                                         <div class="col-md-10">
                                             <div class="position-relative has-icon-left">
                                                 <input type="password" id="password" class="form-control"
-                                                       placeholder="{{word('password')}}" name="password"/>
+                                                       placeholder="{{trans('dashboard.user.Password')}}"
+                                                       name="password"/>
                                                 @include('dashboard.partials._errors', ['input' => 'password'])
                                                 <div class="form-control-position">
                                                     <i class="ft-hash"></i>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row {{ $errors->has('password') ? ' has-error' : '' }}">
-                                        <label class="col-md-2" for="name">{{word('password_confirmation')}}</label>
-                                        <div class="col-md-10">
-                                            <div class="position-relative has-icon-left">
-                                                <input type="password" id="password" class="form-control"
-                                                       placeholder="{{word('password_confirmation')}}" name="password"/>
-                                                @include('dashboard.partials._errors', ['input' => 'password'])
-                                                <div class="form-control-position">
-                                                    <i class="ft-hash"></i>
-                                                </div>
-                                                @if(isset($admin))
-                                                    <span class="label label-warning"
-                                                          style="padding: 2px;"> {{word('leave_it')}} </span>
-                                                @endif
                                             </div>
                                         </div>
                                     </div>
 
-                                    @if(isset($admin))
-                                        <div class="form-group row {{ $errors->has('image') ? ' has-error' : '' }}">
-                                            <label class="col-md-2" for="name">{{word('image')}}</label>
-                                            <div class="col-md-10">
-                                                <div class="position-relative has-icon-left">
-                                                    <input type="file" id="image" class="form-control image"
-                                                           name="image"/>
-                                                    @include('dashboard.partials._errors', ['input' => 'image'])
+                                    <div class="form-group row {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                                        <label class="col-md-2"
+                                               for="password_confirmation">{{trans('dashboard.user.Confirm Password')}}</label>
+                                        <div class="col-md-10">
+                                            <div class="position-relative has-icon-left">
+                                                <input type="password" id="password_confirmation" class="form-control"
+                                                       placeholder="{{trans('dashboard.user.Confirm Password')}}"
+                                                       name="password_confirmation"/>
+                                                @include('dashboard.partials._errors', ['input' => 'password_confirmation'])
+                                                <div class="form-control-position">
+                                                    <i class="ft-hash"></i>
                                                 </div>
                                             </div>
                                         </div>
-                                    @else
-                                        <div class="form-group row {{ $errors->has('image') ? ' has-error' : '' }}">
-                                            <label class="col-md-2" for="name">{{word('image')}}</label>
-                                            <div class="col-md-10">
-                                                <div class="position-relative has-icon-left">
-                                                    <input type="file" id="image" class="img-form-control image"
-                                                           name="image"/>
-                                                    @include('dashboard.partials._errors', ['input' => 'image'])
-                                                </div>
+                                    </div>
+
+                                    <div class="form-group row {{ $errors->has('type') ? ' has-error' : '' }}">
+                                        <label class="col-md-2"
+                                               for="type">{{trans('dashboard.user.Select User Role')}}</label>
+                                        <div class="col-md-10">
+                                            <div class="position-relative has-icon-left">
+                                                <select class="custom-select" name="type">
+                                                    <option value="user">{{ trans('dashboard.user.User') }}</option>
+                                                    <option value="admin">{{ trans('dashboard.user.admin') }}</option>
+                                                </select>
+                                                @include('dashboard.partials._errors', ['input' => 'type'])
                                             </div>
                                         </div>
-                                    @endif
+                                    </div>
+
+                                    <div class="form-group row {{ $errors->has('status') ? ' has-error' : '' }}">
+                                        <label class="col-md-2"
+                                               for="status">{{trans('dashboard.user.Select User Status')}}</label>
+                                        <div class="col-md-10">
+                                            <div class="position-relative has-icon-left">
+                                                <select class="custom-select" name="type">
+                                                        <option value="active">{{ trans('dashboard.user.Active') }}</option>
+                                                        <option value="block">{{ trans('dashboard.user.Block') }}</option>
+                                                </select>
+                                                @include('dashboard.partials._errors', ['input' => 'status'])
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="form-actions right">
                                     <button type="submit" class="btn btn-primary">
-                                        @if(isset($admin))
-                                            {{word('edit')}}
-                                        @else
-                                            {{word('create')}}
-                                        @endif</button>
+                                        {{trans('dashboard.main.Create')}}
+                                    </button>
                                 </div>
                             </form>
                             <!-- form end -->
@@ -169,14 +156,19 @@
     <script>
         $(document).ready(function () {
 
-            $('#password, #password_confirmation').on('keyup', function () {
-                if ($('#password').val() == $('#password_confirmation').val()) {
-                    $('#message').html("{{word('matching')}}").css('color', 'green');
+            $('#passtrans, #passtrans_confirmation').on('keyup', function () {
+                if ($('#passtrans').val() == $('#passtrans_confirmation').val()) {
+                    $('#message').html("{{trans('matching')}}").css('color', 'green');
                 } else
-                    $('#message').html("{{word('not_matching')}}").css('color', 'red');
+                    $('#message').html("{{trans('not_matching')}}").css('color', 'red');
             });
         });
     </script>
 
-
+@endsection
+@section('scripts')
+    <script
+        src="{{ asset('dashboard_files/app-assets/vendors/js/forms/extended/inputmask/jquery.inputmask.bundle.min.js') }}"></script>
+    <script src="{{ asset('dashboard_files/app-assets/js/scripts/forms/extended/form-inputmask.min.js') }}"></script>
+    <script src="{{ asset('dashboard_files/assets/js/image-review.js') }}"></script>
 @endsection

@@ -18,10 +18,8 @@ class ComplaintController extends Controller
         return view('dashboard.complaints.index', compact('complaints'));
     }
 
-    public function show($id)
+    public function show(Complaint $complaint)
     {
-        $complaint = Complaint::find($id);
-
         return view('dashboard.complaints.show', compact('complaint'));
     }
 

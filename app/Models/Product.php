@@ -26,4 +26,14 @@ class Product extends Model
     {
         return $this->belongsToMany(Subscription::class);
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class);
+    }
 }

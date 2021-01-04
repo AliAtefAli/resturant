@@ -12,7 +12,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>{{  trans('dashboard.category.Add Category') }}</h1>
+                        <h1>{{  trans('dashboard.product.Add Product') }}</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -30,15 +30,14 @@
         </div>
 
         @include('dashboard.partials._alert')
+        @include('dashboard.partials._all_errors')
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-content collpase show">
                         <div class="card-body">
                             <!-- form start -->
-                            <form class="form-horizontal" method="post"
-                                  action="{{ route('dashboard.categories.store') }}"
-                                  enctype="multipart/form-data">
+                            <form class="form-horizontal" method="post" action="{{ route('dashboard.products.store') }}"  enctype="multipart/form-data">
                                 @csrf
                                 @foreach(config('app.languages') as $key => $language)
                                     <div class="form-body">
@@ -60,22 +59,26 @@
 
                                 @foreach(config('app.languages') as $key => $language)
                                     <div class="form-body">
-                                        <div class="form-group">
-                                            <label>{{ trans('dashboard.product.Product Details In ' . $language) }}</label>
-                                            <input id="description" type="hidden" name="description"
-                                                   value="">
-                                            <trix-editor input="description"></trix-editor>
+                                        <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
+                                            <label class="col-md-2"
+                                                   for="{{$key}}.description">{{ trans('dashboard.product.Product Details In ' . $language) }}</label>
+                                            <div class="col-md-10">
+                                                <input id="{{$key}}.description" type="hidden"
+                                                       name="{{$key}}[description]"
+                                                       value="{{ old("$key.description") }}"/>
+                                                <trix-editor input="{{$key}}.description"></trix-editor>
+                                                @include('dashboard.partials._errors', ['input' => 'name'])
+                                                <div class="form-control-position">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 @endforeach
-                                <form action="#" class="dropzone dropzone-area" id="dpz-file-limits">
-                                    <div class="dz-message">Drop Files Here To Upload</div>
-                                </form>
 
                                 <div class="form-body">
                                     <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
                                         <label class="col-md-2"
-                                               for="name">{{ trans('dashboard.category.Sub Category')}}</label>
+                                               for="name">{{ trans('dashboard.product.Category')}}</label>
                                         <div class="col-md-10">
                                             <select class="custom-select" name="category_id">
                                                 <option value="">{{ trans('') }}</option>
@@ -87,6 +90,38 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group row {{ $errors->has('image') ? ' has-error' : '' }}">
+                                    <label class="col-md-2" for="name">{{trans('dashboard.product.Image')}}</label>
+                                    <div class="col-md-10">
+                                        <div class="position-relative has-icon-left">
+                                            <input type="file" id="image" class="form-control image"
+                                                   name="image[]" multiple/>
+                                            @include('dashboard.partials._errors', ['input' => 'image'])
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row {{ $errors->has('price') ? ' has-error' : '' }}">
+                                    <label class="col-md-2" for="price">{{trans('dashboard.product.price')}}</label>
+                                    <div class="col-md-10">
+                                        <div class="position-relative has-icon-left">
+                                            <input type="number" id="price" class="form-control"
+                                                   name="price"/>
+                                            @include('dashboard.partials._errors', ['input' => 'price'])
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row {{ $errors->has('quantity') ? ' has-error' : '' }}">
+                                    <label class="col-md-2" for="quantity">{{trans('dashboard.product.quantity')}}</label>
+                                    <div class="col-md-10">
+                                        <div class="position-relative has-icon-left">
+                                            <input type="number" id="quantity" class="form-control"
+                                                   name="quantity"/>
+                                            @include('dashboard.partials._errors', ['input' => 'quantity'])
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div class="form-actions right">
                                     <button type="submit" class="btn btn-primary">

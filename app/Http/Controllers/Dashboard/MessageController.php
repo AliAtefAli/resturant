@@ -13,12 +13,12 @@ class MessageController extends Controller
     {
         $messages = Message::where('replied_at', null)
             ->paginate(10);
+
         return view('dashboard.messages.index', compact('messages'));
     }
 
-    public function show($id)
+    public function show(Message $message)
     {
-        $message = Message::find($id);
         return view('dashboard.messages.show', compact('message'));
     }
 

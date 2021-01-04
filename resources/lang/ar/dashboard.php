@@ -137,6 +137,7 @@ return [
         "Company Location" => "موقع الشركة",
         "Company opening hours" => "ساعات عمل الشركة",
         "Created At" => "أنشئت في",
+        "Delivery price" => "سعر التوصيل",
         "Default Email Address" => "عنوان البريد الإلكتروني الافتراضي",
         "Edit Category" => "تحرير القسم",
         "Facebook" => "فيس بوك",
@@ -157,6 +158,7 @@ return [
         "General Settings" => "الاعدادات العامة",
         "Site Logo" => "لوجو الموقع",
         'Social Links' => 'روابط التواصل',
+        'Update Settings' => 'تحديث الاعدادات',
     ],
     "slider" => [
         "Add Slider" => "أضف سلايدر",
@@ -187,6 +189,7 @@ return [
         "Name" => "اسم",
         "Password" => "كلمه السر",
         "Select User Role" => "حدد دور المستخدم",
+        "Select User Status" => "حدد حالة الستخدم",
         "address" => "عنوان",
         "admin" => "مشرف",
         "edit user" => "تحرير العضو",

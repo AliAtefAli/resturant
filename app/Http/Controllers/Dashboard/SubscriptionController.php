@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSubscriptionRequest;
 use App\Http\Requests\SubscriptionRequest;
 use App\Http\Requests\UpdateSubscriptionRequest;
+use App\Models\Product;
 use App\Models\Subscription;
 use App\Traits\Uploadable;
 use Illuminate\Http\Request;
@@ -20,10 +22,11 @@ class SubscriptionController extends Controller
 
     public function create()
     {
-        return view('dashboard.subscriptions.create');
+        $products = Product::all();
+        return view('dashboard.subscriptions.create', compact('products'));
     }
 
-    public function store(SubscriptionRequest $request)
+    public function store(StoreSubscriptionRequest $request)
     {
         $data = $request->validated();
 
@@ -31,24 +34,33 @@ class SubscriptionController extends Controller
             $path = $this->uploadOne($request['image'], 'subscriptions', null, null);
             $data['image'] = $path;
         }
+        $subscription = Subscription::create($data);
+        $subscription->products()->attach($request->input('products'));
 
-        Subscription::create($data);
-
-        return redirect()->route('subscription.index')->with('success', trans('dashboard.subscription.created successfully'));
+        return redirect()->route('dashboard.subscriptions.index')->with('success', trans('dashboard.subscription.created successfully'));
     }
 
     public function show(Subscription $subscription)
     {
-        dd($subscription);
+        $subscription->load('products.translations', 'translations');
+
+        return view('dashboard.subscriptions.show', compact('subscription'));
     }
 
     public function edit(Subscription $subscription)
     {
-        return view('dashboard.subscriptions.edit', compact('subscription'));
+        $products = Product::all();
+        $subscription_products = $subscription->products->pluck('id')->toArray();
+
+        return view('dashboard.subscriptions.edit', compact('subscription', 'products', 'subscription_products'));
     }
 
     public function update(UpdateSubscriptionRequest $request, Subscription $subscription)
     {
+        $subscription_products = $subscription->products->pluck('id')->toArray();
+        Subscription::detachProducts($subscription, $request->input('products'), $subscription_products);
+        $subscription->products()->attach($request->input('products'));
+
         $data = $request->validated();
 
         if ($request->has('image')){
@@ -60,7 +72,7 @@ class SubscriptionController extends Controller
         }
         $subscription->update($data);
 
-        return redirect()->route('subscription.index')->with('success', trans('dashboard.subscription.updated successfully'));
+        return redirect()->route('dashboard.subscriptions.index')->with('success', trans('dashboard.subscription.updated successfully'));
 
     }
 

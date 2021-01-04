@@ -74,7 +74,7 @@
                                                                     @csrf
                                                                     @method('DELETE')
                                                                     <button type="submit" class="btn btn-danger btn-sm"
-                                                                            id="confirm-text"><i class="ft-trash-2"></i>
+                                                                            id="confir-text"><i class="ft-trash-2"></i>
                                                                     </button>
                                                                 </form>
                                                             </td>

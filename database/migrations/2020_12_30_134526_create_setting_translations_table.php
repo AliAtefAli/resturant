@@ -19,6 +19,7 @@ class CreateSettingTranslationsTable extends Migration
             $table->longText('policies');
             $table->longText('description');
             $table->longText('about');
+            $table->string('currency');
             $table->string('locale');
             $table->foreignId('setting_id')->constrained('settings')->onDelete('cascade');
             $table->softDeletes();

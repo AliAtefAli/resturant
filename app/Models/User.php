@@ -17,6 +17,7 @@ class User extends Authenticatable
     protected $hidden = ['password', 'remember_token',];
 
     protected $casts = ['email_verified_at' => 'datetime',];
+    protected $dates = ['last_active_at'];
 
     public function subscriptions()
     {

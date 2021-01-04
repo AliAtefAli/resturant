@@ -10,25 +10,29 @@ Route::get('/table', 'HomeController@table')->name('table');
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::resource('users', 'UsersController');
 Route::resource('categories', 'CategoryController');
 Route::resource('products', 'ProductController');
 Route::resource('orders', 'OrderController');
+Route::resource('discounts', 'DiscountController');
+Route::get('discounts/makeAsUnavailable/{discount}', 'DiscountController@makeAsUnavailable')->name('discounts.makeAsUnavailable');
+Route::get('discounts/makeAsAvailable/{discount}', 'DiscountController@makeAsAvailable')->name('discounts.makeAsAvailable');
 Route::resource('subscriptions', 'SubscriptionController');
-Route::get('setting/edit', 'SettingController@edit')->name('setting.edit');
-Route::put('setting/update/{setting}', 'SettingController@update')->name('setting.update');
+Route::get('setting/general', 'SettingController@general')->name('setting.general');
+Route::put('setting/updateGeneral/{setting}', 'SettingController@updateGeneral')->name('setting.updateGeneral');
 
 Route::resource("sliders", "SlidersController");
 // Messages
 Route::get('message/', 'MessageController@index')->name('message.index');
-Route::get('message/{id}', 'MessageController@show')->name('message.show');
-Route::get('message/makeRead/{id}', 'MessageController@makeAsRead')->name('message.makeAsRead');
-Route::put('message/replyNotification/{id}', 'MessageController@replyNotification')->name('message.replyNotification');
-Route::put('message/replySMS/{id}', 'MessageController@replySMS')->name('message.replySMS');
-Route::put('message/replyEmail/{id}', 'MessageController@replyEmail')->name('message.replyEmail');
+Route::get('message/{message}', 'MessageController@show')->name('message.show');
+Route::get('message/makeRead/{message}', 'MessageController@makeAsRead')->name('message.makeAsRead');
+Route::put('message/replyNotification/{message}', 'MessageController@replyNotification')->name('message.replyNotification');
+Route::put('message/replySMS/{message}', 'MessageController@replySMS')->name('message.replySMS');
+Route::put('message/replyEmail/{message}', 'MessageController@replyEmail')->name('message.replyEmail');
 // Complaints
 Route::get('complaint/', 'complaintController@index')->name('complaint.index');
-Route::get('complaint/{id}', 'ComplaintController@show')->name('complaint.show');
-Route::get('complaint/makeRead/{id}', 'ComplaintController@makeAsRead')->name('complaint.makeAsRead');
-Route::put('complaint/replyNotification/{id}', 'ComplaintController@replyNotification')->name('complaint.replyNotification');
-Route::put('complaint/replySMS/{id}', 'ComplaintController@replySMS')->name('complaint.replySMS');
-Route::put('complaint/replyEmail/{id}', 'ComplaintController@replyEmail')->name('complaint.replyEmail');
+Route::get('complaint/{complaint}', 'ComplaintController@show')->name('complaint.show');
+Route::get('complaint/makeRead/{complaint}', 'ComplaintController@makeAsRead')->name('complaint.makeAsRead');
+Route::put('complaint/replyNotification/{complaint}', 'ComplaintController@replyNotification')->name('complaint.replyNotification');
+Route::put('complaint/replySMS/{complaint}', 'ComplaintController@replySMS')->name('complaint.replySMS');
+Route::put('complaint/replyEmail/{complaint}', 'ComplaintController@replyEmail')->name('complaint.replyEmail');

@@ -7,6 +7,7 @@ use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
+use App\Models\CategoryTranslation;
 use App\Models\Store;
 use App\Traits\Uploadable;
 use Illuminate\Foundation\Auth\User;
@@ -15,7 +16,6 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     use Uploadable;
-
     public function index()
     {
         $categories = Category::with('translation')
@@ -45,7 +45,8 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        $categories = Category::all();
+        // dd(Category::all());
+        $categories = Category::all()->whereNotIn('id', $category->id);
         return view('dashboard.categories.edit', compact('category', 'categories'));
     }
 
@@ -71,6 +72,12 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
+        $category_translations = CategoryTranslation::where('category_id' ,$category->id)->get();
+        if (!empty($category_translations)){
+            foreach ($category_translations as $category_translation){
+                $category_translation->delete();
+            }
+        }
 
         $category->delete();
         return redirect()->route('dashboard.categories.index')->with('success', trans('dashboard.It was done successfully!'));

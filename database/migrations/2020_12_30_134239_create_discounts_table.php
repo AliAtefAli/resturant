@@ -15,8 +15,10 @@ class CreateDiscountsTable extends Migration
     {
         Schema::create('discounts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->enum('discount_type', ['percent', 'fixed'])->default('percent');
+            $table->enum('status', ['available', 'unavailable'])->default('available');
             $table->float('amount');
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             $table->timestamps();
         });
     }
