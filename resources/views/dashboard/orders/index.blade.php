@@ -47,13 +47,15 @@
                                         </div>
                                         <div class="card-content collapse show">
                                             <div class="card-body card-dashboard">
-                                                <table class="table table-striped table-bordered dom-jQuery-events">
+                                                <table class="table table-striped table-bordered dataex-html5-export">
                                                     <thead>
                                                     <tr>
                                                         <th>{{trans('dashboard.order.Order ID')}}</th>
                                                         <th>{{trans('dashboard.order.payment status')}}</th>
                                                         <th>{{trans('dashboard.order.payment method')}}</th>
                                                         <th>{{trans('dashboard.order.Order date')}}</th>
+                                                        <th>{{trans('dashboard.order.address')}}</th>
+                                                        <th>{{trans('dashboard.main.status')}}</th>
                                                         <th>{{trans('dashboard.order.Total Price')}}</th>
                                                         <th>{{ trans('dashboard.main.Actions') }}</th>
                                                     </tr>
@@ -62,15 +64,27 @@
                                                     @foreach($orders as $order)
                                                         <tr>
                                                             <td>#{{ $order->id }}</td>
-                                                            <td>{{ $order->payment_method }}</td>
                                                             <td>{{ $order->payment_status }}</td>
-                                                            <td>{{ ( $order->created_at->diffForHumans() ) ?? '' }}</td>
+                                                            <td>{{ $order->payment_method }}</td>
+                                                            <td>{{ ( $order->created_at) ? $order->created_at->diffForHumans()  : '' }}</td>
+                                                            <td>{{ $order->billing_address }}</td>
+                                                            <td>{{ $order->order_status }}</td>
                                                             <td>{{ $order->total }}</td>
                                                             <td>
                                                                 <a href="{{ route('dashboard.orders.show', $order) }}">
                                                                     <button class="btn btn-success btn-sm" title="{{ trans('dashboard.order.view') }}"><i
                                                                             class="ft-eye"></i></button>
                                                                 </a>
+                                                                @if($order->order_status !=  'delivered')
+                                                                <a href="{{ route('dashboard.orders.accepted', $order) }}">
+                                                                    <button class="btn btn-primary btn-sm" title="{{ trans('dashboard.order.shipped') }}"><i
+                                                                            class="ft-shopping-cart"></i></button>
+                                                                </a>
+                                                                    <a href="{{ route('dashboard.orders.rejected', $order) }}">
+                                                                    <button class="btn btn-danger btn-sm" title="{{ trans('dashboard.order.shipped') }}"><i
+                                                                            class="ft-lock"></i></button>
+                                                                </a>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EditSliderRequest;
 use App\Http\Requests\StoreSliderRequest;
+use App\Http\Requests\UpdateSliderRequest;
 use App\Models\Slider;
 use App\Models\SliderTranslation;
 use App\Traits\Uploadable;
@@ -12,7 +13,6 @@ use App\Traits\Uploadable;
 class SlidersController extends Controller
 {
     use Uploadable;
-
     public function index()
     {
         $sliders = Slider::orderBy('created_at', 'DESC')->paginate(10);
@@ -34,7 +34,7 @@ class SlidersController extends Controller
 
         Slider::create($data);
 
-        return redirect()->route('sliders.index')->with("success", trans('dashboard.slider.created successfully'));
+        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.slider.created successfully'));
 
     }
 
@@ -51,31 +51,37 @@ class SlidersController extends Controller
     }
 
 
-    public function update(EditSliderRequest $request, Slider $slider)
+    public function update(UpdateSliderRequest $request, Slider $slider)
     {
         $data = $request->validated();
         if ($request->hasFile("image")) {
-            if (file_exists(public_path('assets/dashboard/sliders/' . $slider->image))) {
-                unlink(public_path('assets/dashboard/sliders/' . $slider->image));
+            if (file_exists(public_path('assets/uploads/sliders/' . $slider->image))) {
+                unlink(public_path('assets/uploads/sliders/' . $slider->image));
             }
             $data['image'] = $this->uploadOne($data['image'], 'sliders', null, null);
         }
         $slider->update($data);
 
-        return redirect()->route('sliders.index')->with("success", trans('dashboard.slider.updated successfully'));
+        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.slider.updated successfully'));
     }
 
 
     public function destroy(Slider $slider)
     {
-        $slider_translations = SliderTranslation::where('slider_id', $slider->id)->get();
-        if (!empty($slider_translations)) {
-            foreach ($slider_translations as $slider_translation) {
-                $slider_translation->delete();
-            }
-        }
         $slider->delete();
-        return redirect()->back();
 
+        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.slider.updated successfully'));
+    }
+    public function makeAsPending(Slider $slider)
+    {
+        $slider->update(['status' => 'pending'] );
+
+        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.slider.updated successfully'));
+    }
+    public function makeAsActive(Slider $slider)
+    {
+        $slider->update(['status' => 'active'] );
+
+        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.slider.updated successfully'));
     }
 }

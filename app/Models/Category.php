@@ -12,9 +12,9 @@ class Category extends Model
     protected $fillable = ['category_id'];
     public $translatedAttributes = ['name'];
 
-    public function category()
+    public function categories()
     {
-        return $this->hasOne(Category::class);
+        return $this->hasMany(Category::class);
     }
 
     public function products()

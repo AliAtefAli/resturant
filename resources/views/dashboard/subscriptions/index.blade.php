@@ -6,7 +6,7 @@
         <!--content header -->
         <div class="content-header row">
             <div class="content-header-left col-md-6 col-12 mb-2">
-                <h3 class="content-header-title">{{trans('dashboard.subscriptions.Subscriptions')}}</h3>
+                <h1 class="content-header-title">{{trans('dashboard.subscriptions.Subscriptions')}}</h1>
                 <div class="row breadcrumbs-top">
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
@@ -20,7 +20,6 @@
                 </div>
             </div>
         </div>
-        <!-- end of content header -->
 
         <!--content body -->
         <div class="content-body">

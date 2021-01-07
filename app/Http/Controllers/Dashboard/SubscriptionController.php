@@ -42,7 +42,7 @@ class SubscriptionController extends Controller
 
     public function show(Subscription $subscription)
     {
-        $subscription->load('products.translations', 'translations');
+        $subscription->load('products.translations', 'translations', 'users');
 
         return view('dashboard.subscriptions.show', compact('subscription'));
     }
@@ -82,5 +82,12 @@ class SubscriptionController extends Controller
         $subscription->delete();
 
         return redirect()->route('subscription.index')->with('success', trans('dashboard.subscription.deleted successfully'));
+    }
+
+    public function users(Subscription $subscription)
+    {
+        $users = $subscription->users();
+
+        return view('dashboard.subscriptions.users', compact('users', 'subscription'));
     }
 }

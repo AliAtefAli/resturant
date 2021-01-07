@@ -39,7 +39,7 @@
                                                 <ul class="list-inline mb-0">
                                                     <li><a href="{{ route('dashboard.categories.create') }}"
                                                            class="btn btn-success btn-sm mr-1"><i
-                                                                class="ft-plus-circle"></i> {{trans('create')}} </a>
+                                                                class="ft-plus-circle"></i> {{trans('dashboard.main.Create')}} </a>
                                                     </li>
                                                     <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                                                     <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
@@ -53,8 +53,8 @@
                                                 <table class="table table-striped table-bordered dom-jQuery-events">
                                                     <thead>
                                                     <tr>
-                                                        <th>{{trans('name')}}</th>
-                                                        <th>{{trans('actions')}}</th>
+                                                        <th>{{trans('dashboard.category.Name')}}</th>
+                                                        <th>{{trans('dashboard.main.Actions')}}</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -67,14 +67,47 @@
                                                                         <i class="ft-edit"></i>
                                                                     </a>
                                                                 </a>
-                                                                <form action="{{ route('dashboard.categories.destroy', $category) }}" id="delete-confirm" method="post"
-                                                                      style="display: inline-block">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit" class="btn btn-danger btn-sm"
-                                                                            id="confirm-text"><i class="ft-trash-2"></i>
-                                                                    </button>
-                                                                </form>
+                                                                <a href="#" data-toggle="modal"
+                                                                   data-target="#delete-question-{{$category->id}}"
+                                                                   class="btn btn-danger btn-sm" title="">
+                                                                    <i class="ft-trash-2"></i>
+                                                                </a>
+                                                                <div class="modal fade  custom-imodal"
+                                                                     id="delete-question-{{$category->id}}"
+                                                                     tabindex="-1" role="dialog"
+                                                                     aria-labelledby="exampleModalLabel"
+                                                                     aria-hidden="true">
+                                                                    <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title"
+                                                                                    id="exampleModalLabel">{{ trans('dashboard.category.Delete Category') }}</h5>
+                                                                                <button type="button" class="close"
+                                                                                        data-dismiss="modal"
+                                                                                        aria-label="Close">
+                                                                                    <span
+                                                                                        aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body custom-addpro">
+                                                                                <div class="contact-page">
+                                                                                    <form action="{{ route('dashboard.categories.destroy', $category->id) }}"
+                                                                                          method="post">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+                                                                                        <h2>  {{ trans('dashboard.category.Do you want to delete this Category') }} </h2>
+
+                                                                                        <div class="form-actions right">
+                                                                                            <button type="submit" class="btn btn-danger">
+                                                                                                {{trans('dashboard.main.delete')}}
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </td>
                                                         </tr>
                                                     @endforeach

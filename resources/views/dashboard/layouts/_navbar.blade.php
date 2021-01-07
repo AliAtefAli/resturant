@@ -9,8 +9,8 @@
                 <li class="nav-item">
                     <a class="navbar-brand" href="index.html">
                         <img class="brand-logo" alt="modern admin logo"
-                             src="{{asset('dashboard_files/app-assets/images/logo/logo.png')}}">
-                        <h3 class="brand-text">Modern Admin</h3>
+                             src="@if(isset($setting['logo'])) {{asset('assets/uploads/settings/' . $setting['logo'] )}} @else {{ asset('dashboard_files/app-assets/images/ico/favicon.ico') }} @endif">
+                        <h3 class="brand-text">@if(isset($setting[ lang() . '_name'])){{ $setting[lang() . '_name'] }} @else Dashboard @endif</h3>
                     </a>
                 </li>
                 <li class="nav-item d-md-none">
@@ -37,31 +37,6 @@
                             <a class="dropdown-item" href="{{route('dashboard.change.language')}}"><i
                                     class="flag-icon @if(lang() == 'ar' ) flag-icon-gb @else flag-icon-eg @endif"></i>{{lang_str()}}
                             </a>
-                        </div>
-                    </li>
-                    <li class="dropdown dropdown-user nav-item">
-                        <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                                <span class="mr-1">Hello,
-                                  <span class="user-name text-bold-700">John Doe</span>
-                                </span>
-                            <span class="avatar avatar-online">
-                                    <img
-                                        src="{{asset('dashboard_files/app-assets/images/portrait/small/avatar-s-19.png')}}"
-                                        alt="avatar">
-                                </span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="{{route('dashboard.show')}}"><i class="ft-user"></i> Edit Profile</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
                         </div>
                     </li>
                 </ul>

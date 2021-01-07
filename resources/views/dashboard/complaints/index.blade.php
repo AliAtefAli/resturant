@@ -5,20 +5,20 @@
     <div class="content-wrapper">
         <!--content header -->
         <div class="content-header row">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>{{trans('dashboard.main.complaints')}}</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{route('home')}}">{{trans('dashboard.main.home')}}</a>
+            <div class="content-header-left col-md-6 col-12 mb-2">
+                <h1 class="content-header-title">{{trans('dashboard.main.complaints')}}</h1>
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a
+                                    href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
                             </li>
-                            <li class="breadcrumb-item active">{{trans('dashboard.main.complaints')}}</li>
+                            <li class="breadcrumb-item active">{{trans('dashboard.main.complaints')}}
+                            </li>
                         </ol>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </div>
         <!-- end of content header -->
 
@@ -51,6 +51,7 @@
                                                         <th>#</th>
                                                         <th>{{trans('dashboard.complaints.owner')}}</th>
                                                         <th>{{trans('dashboard.complaints.content')}}</th>
+                                                        <th>{{trans('dashboard.complaints.The Answer')}}</th>
                                                         <th>{{trans('dashboard.main.Actions')}}</th>
                                                     </tr>
                                                     </thead>
@@ -60,6 +61,7 @@
                                                             <th>{{ $index + 1 }}</th>
                                                             <th>{{ ($complaint->user->name) ?? '' }}</th>
                                                             <th>{{ $complaint->message }}</th>
+                                                            <th>{{ $complaint->answer }}</th>
                                                             <td>
                                                                 <a href="" class="btn btn-info btn-sm" title="">{{ trans('dashboard.complaints.SMS') }}</a>
                                                                 <a href="" class="btn btn-success btn-sm" title="">{{ trans('dashboard.complaints.notification') }}</a>
@@ -70,6 +72,10 @@
 
                                                             </td>
                                                         </tr>
+
+                                                        @include('dashboard.complaints.modal_reply_email')
+                                                        @include('dashboard.complaints.modal_reply_notification')
+                                                        @include('dashboard.complaints.modal_reply_SMS')
                                                     @endforeach
                                                     </tbody>
                                                 </table>
@@ -87,6 +93,6 @@
         </div>
         <!--end of content body -->
     </div>
-    <!--end of content wrapper -->
+
 
 @endsection

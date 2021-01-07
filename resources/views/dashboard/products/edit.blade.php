@@ -9,24 +9,22 @@
     <div class="content-wrapper">
         <!--content header -->
         <div class="content-header row">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>{{  trans('dashboard.category.EDit Category') }}</h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
+            <div class="content-header-left col-md-6 col-12 mb-2">
+                <h1 class="content-header-title">{{trans('dashboard.product.Products')}}</h1>
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a
-                                    href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a></li>
-                            <li class="breadcrumb-item"><a
-                                    href="{{route('dashboard.categories.index')}}">{{trans('dashboard.category.Categories')}}
-                                </a>
+                                    href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
                             </li>
-                            <li class="breadcrumb-item active">{{ trans('dashboard.category.Edit Category') }}</li>
+                            <li class="breadcrumb-item">
+                            <a href="{{route('dashboard.products.index')}}">{{trans('dashboard.product.Products')}}</a>
+                            </li>
+                            <li class="breadcrumb-item active">{{ trans('dashboard.product.Edit Product') }}</li>
                         </ol>
                     </div>
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                </div>
+            </div>
         </div>
 
         @include('dashboard.partials._alert')

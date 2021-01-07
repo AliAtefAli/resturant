@@ -4,26 +4,23 @@
     <div class="content-wrapper">
         <!--content header -->
         <div class="content-header row">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>{{  trans('dashboard.category.Edit Category') }}</h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
+            <div class="content-header-left col-md-6 col-12 mb-2">
+                <h1 class="content-header-title">{{trans('dashboard.category.Edit Category')}}</h1>
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a
-                                    href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a></li>
-                            <li class="breadcrumb-item"><a
-                                    href="{{route('dashboard.categories.index')}}">{{trans('dashboard.category.Categories')}}
-                                </a>
+                                    href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="{{route('dashboard.categories.index')}}">{{trans('dashboard.category.Categories')}}</a>
                             </li>
                             <li class="breadcrumb-item active">{{ trans('dashboard.category.Edit Category') }}</li>
                         </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /.content-header -->
 
 
         @include('dashboard.partials._alert')
@@ -59,14 +56,14 @@
                                 <div class="form-body">
                                     <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
                                         <label class="col-md-2"
-                                               for="name">{{ trans('dashboard.category.Sub Category')}}</label>
+                                               for="name">{{ trans('dashboard.category.Super Category')}}</label>
                                         <div class="col-md-10">
                                             <select class="custom-select" name="category_id">
+                                                <option value=""></option>
                                                 @foreach($categories as $cate)
                                                     <option value="{{ $cate->id }}"
-                                                            @if($cate->id == $category->id) selected @endif>{{ $category->name }}</option>
+                                                             @if($cate->id == $super) selected @endif>{{ $cate->name }}</option>
                                                 @endforeach
-                                                <option value=""></option>
                                             </select>
                                         </div>
                                     </div>

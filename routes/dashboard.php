@@ -11,17 +11,29 @@ Route::get('/table', 'HomeController@table')->name('table');
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('users', 'UsersController');
+Route::get('users/block/{user}', 'UsersController@block')->name('users.block');
+Route::get('users/unblock/{user}', 'UsersController@unBlock')->name('users.unblock');
 Route::resource('categories', 'CategoryController');
 Route::resource('products', 'ProductController');
+Route::get('products/featured/{product}', 'ProductController@featured')->name('products.featured');
+Route::get('products/unFeatured/{product}', 'ProductController@unFeatured')->name('products.unFeatured');
 Route::resource('orders', 'OrderController');
+Route::get('order/ofToday', 'OrderController@ordersOfToday')->name('ordersOfToday');
+Route::get('order/accepted/{order}', 'OrderController@accepted')->name('orders.accepted');
+Route::get('order/reject/{order}', 'OrderController@rejected')->name('orders.rejected');
 Route::resource('discounts', 'DiscountController');
+Route::resource('rates', 'RateController');
 Route::get('discounts/makeAsUnavailable/{discount}', 'DiscountController@makeAsUnavailable')->name('discounts.makeAsUnavailable');
 Route::get('discounts/makeAsAvailable/{discount}', 'DiscountController@makeAsAvailable')->name('discounts.makeAsAvailable');
 Route::resource('subscriptions', 'SubscriptionController');
-Route::get('setting/general', 'SettingController@general')->name('setting.general');
-Route::put('setting/updateGeneral/{setting}', 'SettingController@updateGeneral')->name('setting.updateGeneral');
+Route::get('subscriptions/users/{subscription}', 'SubscriptionController@users')->name('subscriptionUsers');
+Route::resource('questions', 'QuestionController');
+Route::resource('services', 'ServiceController');
+Route::resource('socials', 'SocialController');
 
 Route::resource("sliders", "SlidersController");
+Route::get('sliders/makeAsPending/{slider}', 'SlidersController@makeAsPending')->name('sliders.makeAsPending');
+Route::get('sliders/makeAsActive/{slider}', 'SlidersController@makeAsActive')->name('sliders.makeAsActive');
 // Messages
 Route::get('message/', 'MessageController@index')->name('message.index');
 Route::get('message/{message}', 'MessageController@show')->name('message.show');
@@ -36,3 +48,8 @@ Route::get('complaint/makeRead/{complaint}', 'ComplaintController@makeAsRead')->
 Route::put('complaint/replyNotification/{complaint}', 'ComplaintController@replyNotification')->name('complaint.replyNotification');
 Route::put('complaint/replySMS/{complaint}', 'ComplaintController@replySMS')->name('complaint.replySMS');
 Route::put('complaint/replyEmail/{complaint}', 'ComplaintController@replyEmail')->name('complaint.replyEmail');
+
+Route::get('settings/general', 'SettingController@general')->name('settings.general');
+Route::get('settings/social', 'SettingController@social')->name('settings.social');
+Route::get('settings/api', 'SettingController@api')->name('settings.api');
+Route::put('settings/Site', 'SettingController@update')->name('settings.update');

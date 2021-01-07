@@ -3,38 +3,61 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdateSettingRequest;
+use App\Http\Requests\UpdateSiteRequest;
 use App\Models\Setting;
+use App\Models\Site;
 use App\Traits\Uploadable;
 use Illuminate\Http\Request;
-use phpDocumentor\Reflection\Types\True_;
+use function Composer\Autoload\includeFile;
 
 class SettingController extends Controller
 {
     use Uploadable;
-
     public function general()
     {
-        $setting = Setting::first();
-        return view('dashboard.settings.index', compact('setting'));
+        $settings = Setting::all()->pluck('value', 'key');
+
+        return view('dashboard.settings.general', compact('settings'));
     }
 
-    public function updateGeneral(UpdateSettingRequest $request, Setting $setting)
+    public function social()
     {
+        $settings = Setting::all()->pluck('value', 'key');
 
-        $data = $request->validated();
+        return view('dashboard.settings.social', compact('settings'));
+    }
 
-        if ($request->has('logo')) {
-            if (file_exists(public_path('assets/products/' . $setting->logo))) {
-                unlink(public_path('assets/products/' . $setting->path));
-            }
+    public function api()
+    {
+        $settings = Setting::all()->pluck('value', 'key');
 
-            $path = $this->uploadOne($request->logo, 'settings', null, null);
-            $data['logo'] = $path;
+        return view('dashboard.settings.api', compact('settings'));
+    }
+
+    public function update(UpdateSiteRequest $request)
+    {
+        $settings = $request->all('settings');
+
+        $data = $request->all('settings')['settings']['whatsapp'];
+
+        $data = preg_replace("/\(/", "", $data);
+        $data = preg_replace("/\)/", "", $data);
+        $data = preg_replace("/ /", "", $data);
+        $data = preg_replace("/-/", "", $data);
+
+        $settings['settings']['whatsapp'] = $data;
+
+        if ($request->has('settings.logo')) {
+            $settings['settings']['logo'] = $this->uploadOne($request->settings['logo'], 'settings', null, null);
         }
-        $setting->update( $data );
 
-        return redirect()->route('dashboard.setting.general')->with('success', trans('dashboard.It was done successfully!'));
+        foreach ($settings['settings'] as $key => $value) {
+            $setting = Setting::where('key', $key)->first();
+
+
+            ($setting) ? $setting->update(['value' => $value]) : Setting::create(['key' => $key, 'value' => $value]);
+
+        }
+        return back()->with('success', trans('dashboard.It was done successfully!'));
     }
 }
-

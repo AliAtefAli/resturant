@@ -20,7 +20,7 @@ class ProductController extends Controller
     {
         $products = Product::with('translation')
             ->latest()
-            ->paginate(10);
+            ->get();
         return view('dashboard.products.index', compact('products'));
     }
 
@@ -106,6 +106,20 @@ class ProductController extends Controller
         }
 
         $product->delete();
+
+        return redirect()->route('dashboard.products.index')->with('success', trans('dashboard.It was done successfully!'));
+    }
+
+    public function featured(Product $product)
+    {
+        $product->update(['featured' => true]);
+
+        return redirect()->route('dashboard.products.index')->with('success', trans('dashboard.It was done successfully!'));
+    }
+
+    public function unFeatured(Product $product)
+    {
+        $product->update(['featured' => false]);
 
         return redirect()->route('dashboard.products.index')->with('success', trans('dashboard.It was done successfully!'));
     }

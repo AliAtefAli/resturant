@@ -32,7 +32,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <table class="table">
-                                    <thead>
+
                                     <tr>
                                         <th>{{ trans('dashboard.subscriptions.name') }}</th>
                                         <td>{{ $subscription->name }}</td>
@@ -42,17 +42,37 @@
                                         <td>{!! $subscription->description !!}</td>
                                     </tr>
                                     <tr>
+                                        <th>{{ trans('dashboard.subscriptions.duration in days') }}</th>
+                                        <td>{{ $subscription->duration_in_day }}</td>
+                                    </tr>
+                                    <tr>
                                         <th>{{ trans('dashboard.subscriptions.Price') }}</th>
                                         <td>{{ $subscription->price }}</td>
                                     </tr>
                                     <tr>
                                         <th>{{ trans('dashboard.subscriptions.products') }}</th>
-                                        <td>@foreach($subscription->products as $product)
-                                                {{ $product->name }},
-                                            @endforeach
+                                        <td>
+                                            <div class="row">
+                                                @foreach($subscription->products as $product)
+                                                    <div class="col-md-2">
+                                                        <a href="{{ route('dashboard.products.show', $product) }}">{{ $product->name }}</a>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+
                                         </td>
                                     </tr>
-                                    </thead>
+                                    <tr>
+                                        <th>{{ trans('dashboard.subscriptions.Users Subscribed') }}</th>
+                                        <td>
+                                            @if($subscription->users->count() > 0)
+                                                <a href="{{ route('dashboard.subscriptionUsers', $subscription) }}">{{ trans('dashboard.subscriptions.View Subscribed Users') }}</a>
+                                            @else
+                                                {{trans('dashboard.subscriptions.No Subscribed Users')}}
+                                            @endif
+                                        </td>
+                                    </tr>
+
                                 </table>
                             </div>
                         </div>
@@ -60,4 +80,6 @@
                 </div>
             </div>
         </section>
+    </div>
 @endsection
+

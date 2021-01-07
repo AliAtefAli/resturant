@@ -8,8 +8,8 @@
     <meta name="keywords" content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
     <meta name="author" content="PIXINVENT">
     <title>Dashboard</title>
-    <link rel="apple-touch-icon" href="{{asset('dashboard_files/app-assets/images/ico/apple-icon-120.png')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('dashboard_files/app-assets/images/ico/favicon.ico')}}">
+    <link rel="apple-touch-icon" href="@if(isset($setting['logo'])){{asset('assets/uploads/settings/' . $setting['logo'] )}} @else {{ asset('dashboard_files/app-assets/images/ico/favicon.ico') }} @endif">
+    <link rel="shortcut icon" type="image/x-icon" href="@if(isset($setting['logo'])){{asset('assets/uploads/settings/' . $setting['logo'] )}} @else {{ asset('dashboard_files/app-assets/images/ico/favicon.ico') }} @endif">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
           rel="stylesheet">
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
@@ -120,6 +120,7 @@
 <!-- Datatable js -->
 <script src="{{asset('dashboard_files/app-assets/js/scripts/tables/datatables/datatable-advanced.js')}}"
         type="text/javascript"></script>
+<script src="{{ asset('dashboard_files/app-assets/js/scripts/tables/datatables-extensions/datatable-button/datatable-html5.min.js') }}"></script>
 <!-- End of Datatable js -->
 
 <!-- SweetAlert js -->

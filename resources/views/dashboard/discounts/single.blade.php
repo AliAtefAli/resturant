@@ -12,7 +12,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{route('home')}}">{{trans('dashboard')}}</a></li>
-                            <li class="breadcrumb-item"><a href="{{route('categories.index')}}">{{trans('admins')}}
+                            <li class="breadcrumb-item"><a href="{{route('categories.index')}}">{{trans('users')}}
                                 </a>
                             </li>
                             <li class="breadcrumb-item active">{{ isset($categories) ? trans('edit') : trans('create') }}</li>

@@ -5,15 +5,17 @@
         <!--content header -->
         <div class="content-header row">
             <div class="content-header-left col-md-6 col-12 mb-2">
-                <h3 class="content-header-title">2 Columns</h3>
+                <h1 class="content-header-title">{{trans('dashboard.main.complaints')}}</h1>
                 <div class="row breadcrumbs-top">
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a>
+                            <li class="breadcrumb-item"><a
+                                    href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#">Page Layouts</a>
+                            <li class="breadcrumb-item"><a
+                                    href="{{route('dashboard.complaint.index')}}">{{trans('dashboard.main.complaints')}}</a>
                             </li>
-                            <li class="breadcrumb-item active">2 Columns
+                            <li class="breadcrumb-item active">{{trans('dashboard.complaints.Reply')}}
                             </li>
                         </ol>
                     </div>
@@ -36,6 +38,16 @@
                     </div>
                 </div>
             </section>
+            <section class="card-footer">
+                <div class="card-footer">
+                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#replySMS">{{ trans('dashboard.complaints.SMS Reply') }}</a>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#reply-email">{{ trans('dashboard.complaints.email Reply') }}</a>
+                    <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#reply-notification">{{ trans('dashboard.complaints.Notification Reply') }}</a>
+                </div>
+            </section>
         </div>
     </div>
+    @include('dashboard.complaints.modal_reply_email')
+    @include('dashboard.complaints.modal_reply_notification')
+    @include('dashboard.complaints.modal_reply_SMS')
 @endsection

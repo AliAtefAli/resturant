@@ -79,11 +79,11 @@
                                                                 </a>
                                                                 @if($discount->status == 'available')
                                                                     <a href="{{ route('dashboard.discounts.makeAsUnavailable', $discount) }}"
-                                                                       class="btn btn-success btn-sm">
+                                                                       class="btn btn-outline-success btn-sm">
                                                                         {{ trans('dashboard.discounts.make as unavailable') }}
                                                                     </a>
                                                                 @else
-                                                                    <a href="{{ route('dashboard.discounts.makeAsUnavailable', $discount) }}"
+                                                                    <a href="{{ route('dashboard.discounts.makeAsAvailable', $discount) }}"
                                                                        class="btn btn-success btn-sm">
                                                                         {{ trans('dashboard.discounts.make as available') }}
                                                                     </a>

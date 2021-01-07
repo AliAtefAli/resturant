@@ -15,14 +15,8 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('logo')->nullable();
-            $table->string('email');
-            $table->string('phone');
-            $table->float('delivery_price', 10, 2);
-            $table->enum('default_language', ['ar', 'en']);
-            $table->integer('perPage')->default(25);
-            $table->integer('total_rate')->nullable();
-            $table->integer('count_rate')->nullable();
+            $table->string('key')->unique();
+            $table->text('value')->nullable();
             $table->timestamps();
         });
     }

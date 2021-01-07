@@ -34,7 +34,7 @@ class CategoryController extends Controller
     {
         Category::create($request->validated());
 
-        return back()->with('success', trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.categories.index')->with('success', trans('dashboard.It was done successfully!'));
     }
 
     public function show(Category $category)
@@ -45,9 +45,15 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        // dd(Category::all());
-        $categories = Category::all()->whereNotIn('id', $category->id);
-        return view('dashboard.categories.edit', compact('category', 'categories'));
+        $categories = Category::all()/*->whereNotIn('id', $category->id)*/;
+        $super = Category::where('id', $category->category_id)->first();
+        if (! $super) {
+            $super = '';
+        } else {
+            $super = Category::where('id', $category->category_id)->first()->id;
+        }
+
+        return view('dashboard.categories.edit', compact('category', 'categories', 'super'));
     }
 
 
@@ -72,6 +78,10 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
+        if ($category->categories->count() > 0 ) {
+            return redirect()->route('dashboard.categories.index')->with('error', trans('dashboard.category.Sorry this Category has sub categories'));
+        }
+
         $category_translations = CategoryTranslation::where('category_id' ,$category->id)->get();
         if (!empty($category_translations)){
             foreach ($category_translations as $category_translation){

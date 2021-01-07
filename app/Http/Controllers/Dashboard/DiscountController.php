@@ -66,12 +66,14 @@ class DiscountController extends Controller
 
     public function makeAsUnavailable(Discount $discount)
     {
-        dd($discount);
+        $discount->update(['status' => 'unavailable'] );
 
+        return redirect()->route('dashboard.discounts.index')->with("success", trans('dashboard.slider.updated successfully'));
     }
     public function makeAsAvailable(Discount $discount)
     {
-        dd($discount);
+        $discount->update(['status' => 'available'] );
 
+        return redirect()->route('dashboard.discounts.index')->with("success", trans('dashboard.slider.updated successfully'));
     }
 }
