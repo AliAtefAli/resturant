@@ -38,14 +38,12 @@ class SettingController extends Controller
     {
         $settings = $request->all('settings');
 
-        $data = $request->all('settings')['settings']['whatsapp'];
-
-        $data = preg_replace("/\(/", "", $data);
-        $data = preg_replace("/\)/", "", $data);
-        $data = preg_replace("/ /", "", $data);
-        $data = preg_replace("/-/", "", $data);
-
-        $settings['settings']['whatsapp'] = $data;
+        if ( $request->has('settings.whatsapp') ) {
+            $settings['settings']['whatsapp'] = $this->clean($request->input('settings.whatsapp')) ;
+        }
+        if ( $request->has('settings.phone') ) {
+            $settings['settings']['phone'] = $this->clean($request->input('settings.phone')) ;
+        }
 
         if ($request->has('settings.logo')) {
             $settings['settings']['logo'] = $this->uploadOne($request->settings['logo'], 'settings', null, null);
@@ -59,5 +57,12 @@ class SettingController extends Controller
 
         }
         return back()->with('success', trans('dashboard.It was done successfully!'));
+    }
+
+    private function clean($string) {
+        $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+        $string = preg_replace('/[^A-Za-z0-9]/', '', $string); // Removes special chars.
+
+        return preg_replace('/-+/', '-', $string); // Replaces multiple hyphens with single one.
     }
 }

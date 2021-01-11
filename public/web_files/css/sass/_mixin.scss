@@ -1,0 +1,81 @@
+//Fonts Mixin
+//1- Name Font
+//2- Weight Font
+//3- Style Font
+//EX: @include fontMixin($name: weight style)
+@mixin fontMixin($font...){
+  @each $key, $value in keywords($font){
+    @font-face {
+      font-family: nth($value, 3);
+      src: url('../fonts/#{$key}.eot');
+      src: url('../fonts/#{$key}.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/#{$key}.woff2') format('woff2'),
+      url('../fonts/#{$key}.woff') format('woff'),
+      url('../fonts/#{$key}.ttf') format('truetype'),
+      url('../fonts/#{$key}.svg##{$key}') format('svg');
+      font-weight: nth($value, 1);
+      font-style: nth($value, 2);
+    }
+  }
+}
+
+//Custom Placeholder
+@mixin placeHolder{
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    @content;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    @content;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    @content;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    @content;
+  }
+}
+
+//Animation
+@mixin animation($name){
+  @-webkit-keyframes #{$name}{
+    @content;
+  }
+  @-moz-keyframes #{$name}{
+    @content;
+  }
+  @-ms-keyframes #{$name}{
+    @content;
+  }
+  @-o-keyframes #{$name}{
+    @content;
+  }
+  @keyframes #{$name}{
+    @content;
+  }
+}
+
+//Media ////////////////////////////////
+
+@mixin max-xs{
+  @media (max-width: 575px){
+    @content;
+  }
+}
+
+@mixin max-sm{
+  @media (max-width: 767px){
+    @content;
+  }
+}
+
+@mixin max-md{
+  @media (max-width: 991px){
+    @content;
+  }
+}
+
+@mixin max-lg{
+  @media (max-width: 1199px){
+    @content;
+  }
+}

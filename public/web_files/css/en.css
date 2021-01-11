@@ -1,0 +1,197 @@
+body{
+    direction: ltr;
+    text-align: left;
+}
+.top-page .top-page-links .top-page-link:before{
+    right: auto;
+    left: 100%;
+}
+.top-page .top-page-links .drop-lang > span:before{
+    left: auto;
+    right: -10px;
+}
+.top-page .top-page-links .sub-menu{
+    right: 0;
+    left: auto;
+}
+.nav-section .menus-menu li{
+    margin-left: 0;
+    margin-right: 20px;
+}
+.nav-section .icons-action a{
+    margin-left: 0px;
+    margin-right: 15px;
+}
+.nav-section .shep{
+    left: auto;
+    right: -170px;
+}
+.small-screen .menu{
+    right: auto;
+    left: 0px;
+    box-shadow: 3px 0 5px #0000005c;
+    transform-origin: left;
+    transform: rotateY(125deg);
+}
+.open-small-menu{
+    margin-right: 0;
+    margin-left: auto;
+}
+.icons-action-section{
+    left: auto;
+    right: -56px;
+    border-radius: 10px 0 0 10px;
+}
+.icons-action-section .open-icon{
+    right: auto;
+    left: -18px;
+    border-radius: 10px 0px 0px 10px;
+    box-shadow: -2px 0 2px #0000002b;
+}
+.show-way{
+    text-align: right;
+}
+.pace-section .line-shep{
+    right: auto;
+    left: -260px;
+}
+.margin-responsive{
+    margin-right: 0;
+    margin-left: 9%;
+}
+.section1 .section1-product-slider .item{
+    box-shadow: 2px 0 4px #00000021;
+}
+.thay-say-us .thay-say-us-slider .item .img{
+    margin-left: 0;
+    margin-right: 10px;
+}
+footer .info-form .info-form-aa form [type='email']{
+    border-radius: 8px 0px 0px 8px;
+}
+footer .info-form .info-form-aa form [type='submit']{
+    border-radius: 0px 8px 8px 0px;
+}
+.single-product .meails .meal{
+    margin-left: 0;
+    margin-right: 30px;
+}
+.single-product .meails .meal span{
+    margin-left: 0px;
+    margin-right: 6px;
+}
+.single-product .number-of-product-section form [type="submit"]{
+    box-shadow: -3px -3px 1px #0003;
+}
+.single-product .number-of-product-section form [type="submit"]:hover{
+    box-shadow: -6px -6px 1px #0003;
+}
+.single-product .line-shep{
+    right: auto;
+    left: -520px;
+}
+.single-product1 .product-slider-img .img-pro{
+    box-shadow: 2px 2px 3px #00000024;
+}
+.single-product1 .product-slider-img > .img-pro a{
+    left: auto;
+    right: 15px;
+}
+.tabal-cart table tbody tr td:before{
+    left: auto;
+    right: 0;
+}
+.last-part .finsh-requet > div label [type="radio"]{
+    margin-left: 0;
+    margin-right: 20px;
+}
+.last-part .finsh-requet > div label span{
+    right: auto;
+    left: 0;
+}
+.user-section .nav-side-page{
+    right: auto;
+    left: 0;
+}
+.user-section .nav-side-page ul li a{
+    padding-right: 10px;
+    padding-left: 65px;
+}
+.user-section .nav-side-page ul li a i{
+    margin-left: 0;
+    margin-right: 10px;
+}
+.user-section .user-info{
+    margin-right: 0;
+    margin-left: auto;
+}
+.user-section .user-info .img-user form i{
+    left: auto;
+    right: 10px;
+}
+.user-section .user-info .img-user form .form-user label i{
+    left: 0;
+    right: 20px;
+}
+.user-section .user-info{
+    padding-right: 8%;
+    padding-left:  35px;
+}
+.open-nav-side-page{
+    right: auto;
+    left: 100%;
+    border-radius: 0px 5px 5px 0px;
+}
+.user-section .nav-side-page.open{
+    right: auto;
+    left: -30%;
+}
+.user-section .user-info .item .list-ul li span{
+    margin-left: 0;
+    margin-right: 10px;
+}
+.user-section .user-info .item .butn-pic{
+    box-shadow: -3px -3px 2px #00000045;
+}
+.user-section .user-info .item .butn-pic:hover{
+    box-shadow: -6px -6px 2px #00000045;
+}
+.pic-select .input-style i{
+    left: auto;
+    right: 20px;
+}
+.pic-select .select-hh label input{
+    margin-left: auto;
+    margin-right: 15px;
+}
+.pic-select .select-hh label span{
+    right: auto;
+    left: 0;
+}
+.btn-aaa{
+    box-shadow: -2px -2px 2px #00000042;
+}
+.btn-aaa:hover{
+    box-shadow: -4px -4px 2px #00000042;
+}
+.pic-select{
+    box-shadow: 2px 2px 4px #00000052;
+}
+.over-to-shep .line-shep{
+    right: auto;
+    left: -483px;
+}
+.contact-us-info .info-contact .head{
+    padding-right: 0;
+    padding-left: 20px;
+}
+.contact-us-info .info-contact .head i{
+    margin-left: 0;
+    margin-right: 2px;
+}
+@media (max-width: 991px){
+    .user-section .nav-side-page.open{
+        right: auto;
+        left: -60%;
+    }
+}

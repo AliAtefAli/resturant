@@ -117,7 +117,7 @@ return [
         "Services" => "خدمات",
         "Settings" => "الإعدادات",
         "Sign out" => "تسجيل الخروج",
-        "Sliders" => "المتزلجون",
+        "Sliders" => "الشرائح",
         "Slug In Arabic" => "slug في اللغة العربية",
         "Slug In English" => "slug في اللغة الإنجليزية",
         "Title In Arabic" => "العنوان بالعربية",
