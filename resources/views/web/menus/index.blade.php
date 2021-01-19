@@ -6,7 +6,7 @@
     <!--Start User-->
 
     <div class="user-section">
-        @include('web._sidebar')
+        @include('web.layouts._sidebar')
         <div class="user-info">
             <img class="menu-week" src="{{asset('web_files/images/menu.jpg')}}">
         </div>

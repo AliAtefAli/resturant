@@ -5,10 +5,13 @@
             <div class="col-lg-4">
                 <div class="info wow fadeInRight">
                     <div class="logo">
-                        <img src="{{asset('web_files/images/logo.png')}}">
+                        @if(isset($setting['logo']))
+                            <img src="{{asset('assets/uploads/settings/' . $setting['logo'])}}">
+                        @endif
                     </div>
                     <p>
-                        هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام
+                        هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل
+                        الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام
                     </p>
                 </div>
             </div>
@@ -17,49 +20,58 @@
                     <ul class="list-unstyled menu-footer wow fadeInDown">
                         <li class="active">
                             <a href="{{route('home')}}">
-                                الرئيسية
+                                {{__('site.Home')}}
                             </a>
                         </li>
+                        @if(auth()->check())
+                            <li class="active">
+                                <a href="{{route('rate')}}">
+                                    {{__('site.Rate.Rate')}}
+                                </a>
+                            </li>
+                        @endif
                         <li>
-                            <a href="{{route('products')}}">
-                                الأقسام
+                            <a href="{{route('products.index')}}">
+                                {{__('site.Products')}}
                             </a>
                         </li>
                         <li>
                             <a href="{{route('who_are_we')}}">
-                                من نحن
+                                {{__('site.Who are we')}}
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('abouts_us')}}">
-                                عن الموقع
+                            <a href="{{route('about_us')}}">
+                                {{__('site.About us')}}
                             </a>
                         </li>
                         <li>
                             <a href="{{route('common_questions')}}">
-                                أسئلة متكررة
+                                {{__('dashboard.main.FAQ')}}
                             </a>
                         </li>
                         <li>
                             <a href="{{route('terms')}}">
-                                الأحكام والشروط
+                                {{__('site.Policies')}}
                             </a>
                         </li>
-                        <li>
-                            <a href="{{route('contact_us')}}">
-                                تواصل معنا
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{route('complaints')}}">
-                                الشكاوي والمقترحات
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                تسجيل الخروج
-                            </a>
-                        </li>
+                        @if(auth()->check())
+                            <li>
+                                <a href="{{route('contact_us')}}">
+                                    {{__('site.Contact us')}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('complaints')}}">
+                                    {{__('site.Complaints')}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('logout') }}">
+                                    {{__('site.Logout')}}
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -71,24 +83,43 @@
                             <input type="submit" value="انضم الينا">
                         </form>
                         <div class="media-links">
-                            <a href="#" class="snapchat wow fadeInDown" data-wow-delay=".1s">
-                                <i class="fab fa-snapchat-ghost"></i>
-                            </a>
-                            <a href="#" class="linkedin wow fadeInDown" data-wow-delay=".2s">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#" class="instagram wow fadeInDown" data-wow-delay=".3s">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="#" class="twitter wow fadeInDown" data-wow-delay=".4s">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="facebook wow fadeInDown" data-wow-delay=".5s">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="whatsapp wow fadeInDown" data-wow-delay=".6s">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
+                            @if(isset($setting['social_snapchat']))
+                                <a href="{{$setting['social_snapchat']}}" class="snapchat wow fadeInDown"
+                                   data-wow-delay=".1s">
+                                    <i class="fab fa-snapchat-ghost"></i>
+                                </a>
+                            @endif
+
+                            @if(isset($setting['social_linkedin']))
+                                <a href="{{$setting['social_linkedin']}}" class="linkedin wow fadeInDown"
+                                   data-wow-delay=".2s">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            @endif
+                            @if(isset($setting['social_instagram']))
+                                <a href="{{$setting['social_instagram']}}" class="instagram wow fadeInDown"
+                                   data-wow-delay=".3s">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            @endif
+                            @if(isset($setting['social_twitter']))
+                                <a href="{{$setting['social_twitter']}}" class="twitter wow fadeInDown"
+                                   data-wow-delay=".4s">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            @endif
+                            @if(isset($setting['social_facebook']))
+                                <a href="{{$setting['social_facebook']}}" class="facebook wow fadeInDown"
+                                   data-wow-delay=".5s">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            @endif
+                            @if(isset($setting['social_whatsapp']))
+                                <a href="tel:{{$setting['social_whatsapp']}}" class="whatsapp wow fadeInDown"
+                                   data-wow-delay=".6s">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -99,8 +130,9 @@
 <div class="copyright">
     <div class="container">
         <p>
-            جميع الحقوق محفوظة ل الديناصور النباتي
-            2020
+            @if(isset($setting[app()->getLocale() . '_rights']))
+                {!!  $setting[app()->getLocale() . '_rights'] !!}
+            @endif
         </p>
     </div>
 </div>

@@ -32,7 +32,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="row">
-                                    @if($users->count() > 1)
+                                    @if($users->count() > 0)
                                         @foreach($users as $user)
                                             <div class="col-md-2">
                                                 <a href="{{ route('dashboard.users.show', $user) }}">{{ $user->name }}</a>

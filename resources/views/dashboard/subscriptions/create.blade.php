@@ -35,7 +35,8 @@
                     <div class="card-content collpase show">
                         <div class="card-body">
                             <!-- form start -->
-                            <form class="form-horizontal" method="post" action="{{ route('dashboard.subscriptions.store') }}"
+                            <form class="form-horizontal" method="post"
+                                  action="{{ route('dashboard.subscriptions.store') }}"
                                   enctype="multipart/form-data">
                                 @csrf
                                 @foreach(config('app.languages') as $key => $language)
@@ -59,9 +60,11 @@
                                 @foreach(config('app.languages') as $key => $language)
                                     <div class="form-body">
                                         <div class="form-group row">
-                                            <label class="col-md-2">{{ trans('dashboard.main.Description In ' . $language) }}</label>
+                                            <label
+                                                class="col-md-2">{{ trans('dashboard.main.Description In ' . $language) }}</label>
                                             <div class="col-md-10">
-                                                <input id="{{$key}}.description" type="hidden" name="{{$key}}[description]"
+                                                <input id="{{$key}}.description" type="hidden"
+                                                       name="{{$key}}[description]"
                                                        value="">
                                                 <trix-editor input="{{$key}}.description"></trix-editor>
                                             </div>
@@ -74,16 +77,19 @@
                                         <label class="col-md-2"
                                                for="name">{{ trans('dashboard.subscriptions.products')}}</label>
                                         <div class="col-md-10">
-                                            <div class="row">
-                                                @foreach($products as $product)
-                                                    <div class="col col-md-3">
-                                                        <input class="form-check-input" type="checkbox" name="products[]"
-                                                               value="{{ $product->id }}" id="{{ $product->id }}">
-                                                        <label class="form-check-label" for="{{  $product->id }}">
-                                                            {{ $product->name }}
-                                                        </label>
-                                                    </div>
-                                                @endforeach
+                                            <div class="position-relative">
+                                                <div class="row">
+                                                    @foreach($products as $product)
+                                                        <div class="col col-md-3">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                   name="products[]"
+                                                                   value="{{ $product->id }}" id="{{ $product->id }}">
+                                                            <label class="form-check-label" for="{{  $product->id }}">
+                                                                {{ $product->name }}
+                                                            </label>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
                                             </div>
                                             </select>
                                         </div>
@@ -91,9 +97,9 @@
                                 </div>
 
                                 <div class="form-group row {{ $errors->has('price') ? ' has-error' : '' }}">
-                                    <label class="col-md-2" for="price">{{trans('dashboard.product.price')}}</label>
+                                    <label class="col-md-2" for="price">{{trans('dashboard.product.Price')}}</label>
                                     <div class="col-md-10">
-                                        <div class="position-relative has-icon-left">
+                                        <div class="position-relative ">
                                             <input type="number" id="price" class="form-control"
                                                    name="price"/>
                                             @include('dashboard.partials._errors', ['input' => 'price'])
@@ -105,7 +111,7 @@
                                     <label class="col-md-2"
                                            for="name">{{trans('dashboard.subscriptions.Image')}}</label>
                                     <div class="col-md-10">
-                                        <div class="position-relative has-icon-left">
+                                        <div class="position-relative ">
                                             <input type="file" id="image" class="form-control image"
                                                    name="image"/>
                                             @include('dashboard.partials._errors', ['input' => 'image'])
@@ -117,7 +123,7 @@
                                     <label class="col-md-2"
                                            for="durations_in_day">{{trans('dashboard.subscriptions.duration in days')}}</label>
                                     <div class="col-md-10">
-                                        <div class="position-relative has-icon-left">
+                                        <div class="position-relative ">
                                             <input type="number" id="durations_in_day" class="form-control"
                                                    name="duration_in_day"/>
                                             @include('dashboard.partials._errors', ['input' => 'durations_in_day'])

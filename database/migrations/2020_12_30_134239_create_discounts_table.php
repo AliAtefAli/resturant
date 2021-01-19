@@ -18,6 +18,7 @@ class CreateDiscountsTable extends Migration
             $table->enum('discount_type', ['percent', 'fixed'])->default('percent');
             $table->enum('status', ['available', 'unavailable'])->default('available');
             $table->float('amount');
+            $table->string('code')->unique();
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             $table->timestamps();
         });

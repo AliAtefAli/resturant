@@ -8,10 +8,7 @@ use Illuminate\Http\Request;
 class AboutController extends Controller
 {
 
-    public function index()
-    {
-        return view('web.settings.about_us');
-    }
+
 
 
 }

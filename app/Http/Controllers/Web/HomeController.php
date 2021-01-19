@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Rate;
 use App\Models\Slider;
 use App\Models\Subscription;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,11 +18,12 @@ class HomeController extends Controller
     {
         $sliders = Slider::where('status', 'active')->get();
         $subscriptions = Subscription::with('translations')->get();
-        $categories = Category::with('translations', 'categories', 'products')->get();
+        $categories = Category::whereNull('category_id')->with('translations', 'categories', 'products')->get();
         $rates = Rate::all();
-        $featured_products = Product::where('featured', true)->get();
+        $products  = Product::with('images')->limit(10)->get();
+        $featured_products = Product::whereFeatured(1)->get();
 
-        return view('web.home_page', compact('sliders', 'subscriptions', 'categories', 'rates', 'featured_products'));
+        return view('web.home_page', compact('sliders', 'subscriptions', 'categories', 'rates', 'featured_products', 'products'));
     }
 
     public function change_language() {
@@ -30,5 +32,24 @@ class HomeController extends Controller
         app()->setLocale($lang);
         session()->put('lang', $lang);
         return back();
+    }
+
+    public function resetUserPassword()
+    {
+        return view('auth.passwords.forget');
+    }
+
+    public function getCode(Request $request)
+    {
+        if(is_numeric($request->get('email'))){
+            $user = User::where('phone', $request->get('email'))->first();
+            $code = mt_rand(1111,9999);
+            $user->update(['code' => $code]);
+        }
+        elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
+            $user = User::where('email', $request->get('email'))->first();
+            $code = mt_rand(1111,9999);
+            $user->update(['code' => $code]);
+        }
     }
 }

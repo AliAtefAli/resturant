@@ -35,6 +35,18 @@
                                   enctype="multipart/form-data">
                                 @method('PUT')
                                 @csrf
+
+                                <div class="form-group row {{ $errors->has('code') ? ' has-error' : '' }}">
+                                    <label class="col-md-2" for="code">{{trans('dashboard.discounts.Code')}}</label>
+                                    <div class="col-md-10">
+                                        <div class="position-relative">
+                                            <input type="text" id="code" class="form-control"
+                                                   name="code"/>
+                                            @include('dashboard.partials._errors', ['input' => 'code'])
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-group row {{ $errors->has('amount') ? ' has-error' : '' }}">
                                     <label class="col-md-2" for="amount">{{trans('dashboard.discounts.amount')}}</label>
                                     <div class="col-md-10">

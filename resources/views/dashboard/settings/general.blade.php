@@ -145,6 +145,22 @@
 
                                 @foreach(config('app.languages') as $key => $language)
                                     <div class="form-body">
+                                        <div class="form-group row {{ $errors->has('rights') ? ' has-error' : '' }}">
+                                            <label class="col-md-2"
+                                                   for="settings[{{$key}}_rights]">{{ trans('dashboard.settings.Site Rights ' . $language) }}</label>
+                                            <div class="col-md-10">
+                                                <input id="settings[{{$key}}_rights]" type="hidden" name="settings[{{$key}}_rights]"
+                                                       value="@if(isset($settings[$key.'_rights'])) {{$settings[$key.'_rights']}} @endif">
+                                                <trix-editor input="settings[{{$key}}_rights]"></trix-editor>
+                                                @include('dashboard.partials._errors', ['input' => 'rights'])
+                                                <div class="form-control-position"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                                @foreach(config('app.languages') as $key => $language)
+                                    <div class="form-body">
                                         <div class="form-group row {{ $errors->has('currency') ? ' has-error' : '' }}">
                                             <label class="col-md-2"
                                                    for="{{$key}}.currency">{{ trans('dashboard.settings.Site Currency ' . $language) }}</label>

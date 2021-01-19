@@ -16,10 +16,13 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->double('total', 10, 2);
+            $table->double('billing_total', 10, 2);
             $table->string('billing_email');
             $table->string('billing_name');
+            $table->string('billing_phone');
             $table->text('billing_address');
+            $table->string('lng')->nullable();
+            $table->string('lat')->nullable();
             $table->enum('payment_method', ['payment', 'on_delivery'])->default('on_delivery');
             $table->enum('payment_status', ['failed', 'done'])->default('done');
             $table->enum('order_status', ['delivered', 'processing', 'accepted', 'cancelled'])->default('processing');

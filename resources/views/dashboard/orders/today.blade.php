@@ -73,6 +73,16 @@
                                                                     <button class="btn btn-success btn-sm" title="{{ trans('dashboard.order.view') }}"><i
                                                                             class="ft-eye"></i></button>
                                                                 </a>
+                                                                @if($order->order_status !=  'delivered')
+                                                                    <a href="{{ route('dashboard.orders.accepted', $order) }}">
+                                                                        <button class="btn btn-primary btn-sm" title="{{ trans('dashboard.order.shipped') }}"><i
+                                                                                class="ft-shopping-cart"></i></button>
+                                                                    </a>
+                                                                    <a href="{{ route('dashboard.orders.rejected', $order) }}">
+                                                                        <button class="btn btn-danger btn-sm" title="{{ trans('dashboard.order.shipped') }}"><i
+                                                                                class="ft-lock"></i></button>
+                                                                    </a>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach

@@ -22,8 +22,12 @@ class CreateUsersTable extends Migration
             $table->timestamp('phone_verified_at')->nullable();
             $table->string('password');
             $table->enum('type', ['user', 'admin'])->default('user');
-            $table->enum('status', ["block","pending","active"])->default('active');
+            $table->enum('status', ["block","pending","active"])->default('pending');
             $table->string('code')->nullable();
+            $table->string('image')->nullable();
+            $table->string('address');
+            $table->string('lng')->nullable();
+            $table->string('lat')->nullable();
             $table->timestamp('last_active_at')->nullable();
             $table->softDeletes();
             $table->rememberToken();

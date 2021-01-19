@@ -1,12 +1,12 @@
 <!--Start Loading-->
-<div class="loading">
-    <div>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</div>
+{{--<div class="loading">--}}
+{{--    <div>--}}
+{{--        <span></span>--}}
+{{--        <span></span>--}}
+{{--        <span></span>--}}
+{{--        <span></span>--}}
+{{--    </div>--}}
+{{--</div>--}}
 <!--End Loading-->
 
 <!--Start Small Screen-->
@@ -22,7 +22,12 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('products')}}">
+                <a href="{{route('categories.index')}}">
+                    {{ __('site.Categories') }}
+                </a>
+            </li>
+            <li>
+                <a href="{{route('products.index')}}">
                     {{ __('site.Products') }}
                 </a>
             </li>
@@ -45,21 +50,27 @@
                     <i class="fas fa-caret-right"></i>
                 </span>
     <div class="icons-action">
-        <a href="#">
-            <i class="fas fa-user"></i>
-        </a>
-        <a href="#">
+        @if(auth()->check())
+            <a href="{{ route('users') }}">
+                <i class="fas fa-user"></i>
+            </a>
+        @endif
+        <a href="{{ route('products.index') }}">
             <i class="fas fa-utensils"></i>
         </a>
-        <a href="#">
+
+        <a href="{{ route('carts') }}">
             <i class="fas fa-shopping-cart"></i>
         </a>
-        <a href="#">
+        <a href="{{ route('users.fav') }}">
             <i class="fas fa-heart"></i>
         </a>
-        <a href="#">
-            <i class="fas fa-bell"></i>
-        </a>
+        @if(auth()->check())
+            <a href="{{ route('user.notification')  }}" title="{{__('site.Notification')}}">
+                <i class="fas fa-bell"><span
+                        style="color: #CC5641;"> {{ (auth()->user()) ? (auth()->user()->unreadNotifications()->count()) : 0 }} </span></i>
+            </a>
+        @endif
     </div>
 </div>
 <!--End Small Screen-->
@@ -68,12 +79,33 @@
 <div class="top-page">
     <div class="container">
         <div class="top-page-links">
-            <a class="top-page-link" href="{{route('login')}}">
-                {{ trans('site.Login') }}
-            </a>
-            <a class="top-page-link" href="{{route('register')}}">
-                {{ __('site.Register') }}
-            </a>
+            @auth
+                <div class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }}
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </div>
+            @else
+                <a class="top-page-link" href="{{route('login')}}">
+                    {{ trans('site.Login') }}
+                </a>
+                <a class="top-page-link" href="{{route('register')}}">
+                    {{ __('site.Register') }}
+                </a>
+            @endauth
             <div class="drop-lang">
                             <span>
                                  @if(lang() == 'ar') العربية @else  English @endif
@@ -95,12 +127,14 @@
     <div class="container">
         <div class="nav-aa">
             <div class="row">
-                <div class="col-3 col-lg-3">
+                <div class="col-2 col-lg-2">
                     <a class="logo" href="#">
-                        <img src="{{asset('web_files/images/logo.png')}}">
+                        @if(isset($setting['logo']))
+                            <img src="{{asset('assets/uploads/settings/' . $setting['logo'])}}">
+                        @endif
                     </a>
                 </div>
-                <div class="col-9 col-lg-5">
+                <div class="col-10 col-lg-6">
                     <ul class="list-unstyled menus-menu">
                         <li class="active">
                             <a href="{{route('home')}}">
@@ -108,7 +142,12 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('products')}}">
+                            <a href="{{route('categories.index')}}">
+                                {{ __('site.Categories') }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('products.index')}}">
                                 {{ __('site.Products') }}
                             </a>
                         </li>
@@ -129,21 +168,24 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="icons-action">
-                        <a href="{{route('users')}}" title="{{ __('site.Profile') }}">
-                            <i class="fas fa-user" ></i>
-                        </a>
-                        <a href="{{route('products')}}" title="{{ __('site.Products') }}">
-                            <i class="fas fa-utensils"></i>
-                        </a>
-                        <a href="{{route('carts')}}" title="{{ __('site.Cart') }}">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                        <a href="#" title="{{ __('site.Favorites') }}">
-                            <i class="fas fa-heart" ></i>
-                        </a>
-                        <a href="#" title="{{__('site.Notification')}}">
-                            <i class="fas fa-bell" ></i>
-                        </a>
+                        @if(auth()->check())
+                            <a href="{{route('users')}}" title="{{ __('site.Profile') }}">
+                                <i class="fas fa-user"></i>
+                            </a>
+                            <a href="{{route('carts')}}" title="{{ __('site.Cart') }}">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
+                            <a href="{{route('users.fav')}}" title="{{ __('site.Favorites') }}">
+                                <i class="fas fa-heart"></i>
+                            </a>
+                            <a href="{{ route('user.notification')  }}" title="{{__('site.Notification')}}">
+                                <i class="fas fa-bell"><span
+                                        style="color: #CC5641;"> {{ (auth()->user()) ? (auth()->user()->unreadNotifications()->count()) : 0 }} </span></i>
+                            </a>
+                            <a href="{{route('products.index')}}" title="{{ __('site.Products') }}">
+                                <i class="fas fa-utensils"></i>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>

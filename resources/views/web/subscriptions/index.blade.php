@@ -8,11 +8,11 @@
         <div class="container">
             <p>
                 <a href="#">
-                    الباقات
+                    {{__('site.Subscriptions')}}
                 </a>
-                <i class="fas fa-chevron-left"></i>
+                <i class="fas @if(app()->getLocale() == 'ar') fa-chevron-left @else fa-chevron-right @endif"></i>
                 <a href="#">
-                    يومى
+                    {{ $subscription->name }}
                 </a>
             </p>
         </div>
@@ -23,11 +23,16 @@
 
     <div class="main-slider main-slider-custom-1">
         <div class="owl-carousel owl-theme main-slider-slider">
-            <a href="#" class="item" style="background-image: url('{{asset('web_files/images/healthy-food-bowl.jpg')}}')"></a>
-            <a href="#" class="item" style="background-image: url('{{asset('web_files/images/healthy-food-bowl.jpg')}}')"></a>
-            <a href="#" class="item" style="background-image: url('{{asset('web_files/images/healthy-food-bowl.jpg')}}')"></a>
-            <a href="#" class="item" style="background-image: url('{{asset('web_files/images/healthy-food-bowl.jpg')}}')"></a>
-            <a href="#" class="item" style="background-image: url('{{asset('web_files/images/healthy-food-bowl.jpg')}}')"></a>
+            <a href="#" class="item"
+               style="background-image: url('{{asset('web_files/images/healthy-food-bowl.jpg')}}')"></a>
+            <a href="#" class="item"
+               style="background-image: url('{{asset('web_files/images/healthy-food-bowl.jpg')}}')"></a>
+            <a href="#" class="item"
+               style="background-image: url('{{asset('web_files/images/healthy-food-bowl.jpg')}}')"></a>
+            <a href="#" class="item"
+               style="background-image: url('{{asset('web_files/images/healthy-food-bowl.jpg')}}')"></a>
+            <a href="#" class="item"
+               style="background-image: url('{{asset('web_files/images/healthy-food-bowl.jpg')}}')"></a>
         </div>
     </div>
 
@@ -38,40 +43,36 @@
         <img src="{{asset('web_files/images/flower.png')}}" class="line-shep"/>
         <div class="container">
             <div class="meails">
+                @foreach($subscription->products as $product)
                 <div class="meal">
-                    <span></span>
-                    وجبتين رئيسيتين
+                        <span></span>
+                        {{$product->name}}
                 </div>
-                <div class="meal">
-                    <span></span>
-                    سلطتين كاملة
-                </div>
-                <div class="meal">
-                    <span></span>
-                    حلي نباتي
-                </div>
+                @endforeach
+
             </div>
             <p class="price">
-                120 ريال سعودي
+                {{$subscription->price}}  @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
             </p>
             <p class="sheping">
-                التوصيل: 15 ريال سعودي
+                {{ __('site.Delivery') }}:  @if(isset($setting[ 'delivery_price'])) {{ $setting['delivery_price'] }} @endif @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
             </p>
             <p class="text-product">
-                استمتع بيوم كامل من الأكل النباتي الصرف مع الديناصور النباتي، تحتوي الوجبات على حوالي ١٥٠٠ سعرة حرارية، عالية البروتين، صحية ولذيذة
+                {!! $subscription->description !!}
             </p>
             <div class="number-of-product-section">
                         <span class="text-ali">
-                            عدد الأشخاص:
+                            {{ __('site.People count') }}:
                         </span>
-                <form action="web/subscriptions/submit">
+                <form action="{{route('subscriptions.submit', $subscription->id)}}" method="post">
+                    @csrf
                     <div class="container-form">
                         <span class="plus">+</span>
-                        <input type="text" value="1">
+                        <input type="text" name="count" value="1">
                         <span class="munas">-</span>
                     </div>
                     <button type="submit">
-                        اشترك الان
+                        {{__('site.Submit Now')}}
                     </button>
                 </form>
             </div>
@@ -83,54 +84,25 @@
     <div class="pace-section pace-section-single">
         <div class="container">
             <h2 class="header-section wow zoomIn">
-                باقات اخرى
+                {{ __('site.Other Subscriptions') }}
             </h2>
             <div class="pace-items">
                 <div class="row justify-content-center">
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <a href="#" class="pace-item wow fadeInDown">
-                            <div class="img-container">
-                                <div class="img"></div>
-                                <div class="img-overlay" style="background-image: url('{{asset('web_files/images/flo.png')}}')"></div>
-                            </div>
-                            <h3>
-                                يومى
-                            </h3>
-                        </a>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <a href="#" class="pace-item wow fadeInDown">
-                            <div class="img-container">
-                                <div class="img"></div>
-                                <div class="img-overlay" style="background-image: url('{{asset('web_files/images/flo.png')}}')"></div>
-                            </div>
-                            <h3>
-                                اسبوعى
-                            </h3>
-                        </a>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <a href="#" class="pace-item wow fadeInDown">
-                            <div class="img-container">
-                                <div class="img"></div>
-                                <div class="img-overlay" style="background-image: url('{{asset('web_files/images/flo.png')}}')"></div>
-                            </div>
-                            <h3>
-                                شهرى
-                            </h3>
-                        </a>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <a href="#" class="pace-item wow fadeInDown">
-                            <div class="img-container">
-                                <div class="img"></div>
-                                <div class="img-overlay" style="background-image: url('{{asset('web_files/images/flo.png')}}')"></div>
-                            </div>
-                            <h3>
-                                غذاء العمل (اسبوعى)
-                            </h3>
-                        </a>
-                    </div>
+                    @foreach($other_subscriptions as $subscription)
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <a href="{{ route('subscriptions.show', $subscription) }}" class="pace-item wow fadeInDown">
+                                <div class="img-container">
+                                    <div class="img"
+                                         style="background-image: url('{{asset('assets/uploads/subscriptions/' . $subscription->image)}}')"></div>
+                                    <div class="img-overlay"
+                                         style="background-image: url('{{asset('web_files/images/flo.png')}}')"></div>
+                                </div>
+                                <h3>
+                                    {{ $subscription->name }}
+                                </h3>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -13,6 +13,7 @@ class StoreDiscountRequest extends FormRequest
             'status' => 'required',
             'amount' => 'required',
             'product_id' => 'required',
+            'code' => 'required|unique:discounts'
         ];
     }
 

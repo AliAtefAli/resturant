@@ -9,8 +9,8 @@ class StoreSubscriptionRequest extends FormRequest
     public function rules()
     {
         return [
-            "ar.name" => "required|min:5|max:191",
-            "en.name" => "required|min:5|max:191",
+            "ar.name" => "required|max:191",
+            "en.name" => "required|max:191",
             "ar.description" => "required",
             "en.description" => "required" ,
             'duration_in_day' => 'required',

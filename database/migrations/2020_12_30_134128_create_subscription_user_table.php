@@ -16,7 +16,8 @@ class CreateSubscriptionUserTable extends Migration
         Schema::create('subscription_user', function (Blueprint $table) {
             $table->id();
             $table->timestamp('start_date')->nullable();
-            $table->enum('type', ['delivery', 'at_restaurant']);
+            $table->timestamp('end_date')->nullable();
+            $table->enum('type', ['local', 'global']);
             $table->string('address')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('latitude')->nullable();

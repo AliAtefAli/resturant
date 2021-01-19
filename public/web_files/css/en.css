@@ -189,6 +189,40 @@ footer .info-form .info-form-aa form [type='submit']{
     margin-left: 0;
     margin-right: 2px;
 }
+.text-section .text p:before{
+    margin-left: 0;
+    margin-right: 10px;
+}
+.text-section .line,
+.say-us-section .line{
+    right: auto;
+    left: -360px;
+}
+.faqs-section .faqs .faq-up .faq-qu i{
+    left: auto;
+    right: 20px;
+}
+.faqs-section{
+    text-align: left;
+}
+.say-us-section .say-us .sayy .img{
+    margin-left: 0;
+    margin-right: 20px;
+}
+.complaints-and-suggestions .cas [type="submit"]{
+    box-shadow: -3px -3px 3px #00000047;
+}
+.complaints-and-suggestions .cas [type="submit"]:hover{
+    box-shadow: -6px -6px 3px #00000047;
+}
+.section1-custom1 .section1-product-row .item .heart{
+    left: 0;
+    right: 10px;
+}
+.text-section .notices > div img{
+    margin-left: 0;
+    margin-right: 20px;
+}
 @media (max-width: 991px){
     .user-section .nav-side-page.open{
         right: auto;

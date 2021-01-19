@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Setting;
 use App\Notifications\AcceptOrder;
+use App\Notifications\DeliveredOrder;
 use App\Notifications\RejectOrder;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -15,8 +16,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::latest()
-            ->paginate(25);
+        $orders = Order::latest()->get();
 
         return view('dashboard.orders.index', compact('orders'));
     }
@@ -40,11 +40,24 @@ class OrderController extends Controller
 
     public function accepted(Order $order)
     {
+        $order->update(['order_status' => 'accepted']);
+        $user = $order->user;
+        $from = Setting::where('key', 'email')->get('value')->first()->value;
+        $message = trans('dashboard.order.Order Is Successfully Accepted And We are preparing it');
+
+        $user->notify(new AcceptOrder($message, $from));
+        return back()->with('success', trans('dashboard.It was done successfully!'));
+
+    }
+
+    public function delivered(Order $order)
+    {
         $order->update(['order_status' => 'delivered']);
         $user = $order->user;
-        $from = Setting::first()->email;
+        $from = Setting::where('key', 'email')->get('value')->first()->value;
+        $message = trans('dashboard.order.Order Is Successfully Processed And Your Order Is On The Way,');
 
-        $user->notify(new AcceptOrder($order, $from));
+        $user->notify(new DeliveredOrder($message, $from));
         return back()->with('success', trans('dashboard.It was done successfully!'));
 
     }
@@ -52,9 +65,10 @@ class OrderController extends Controller
     {
         $order->update(['order_status' => 'cancelled']);
         $user = $order->user;
-        $from = Setting::first()->email;
+        $from = Setting::where('key', 'email')->get('value')->first()->value;
+        $message = trans('dashboard.order.Sorry Order Is unSuccessfully Processed ');
 
-        $user->notify(new RejectOrder($order, $from));
+        $user->notify(new RejectOrder($message, $from));
         return back()->with('success', trans('dashboard.It was done successfully!'));
 
     }

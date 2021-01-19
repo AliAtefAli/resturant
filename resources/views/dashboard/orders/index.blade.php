@@ -65,6 +65,7 @@
                                                         <tr>
                                                             <td>#{{ $order->id }}</td>
                                                             <td>{{ $order->payment_status }}</td>
+
                                                             <td>{{ $order->payment_method }}</td>
                                                             <td>{{ ( $order->created_at) ? $order->created_at->diffForHumans()  : '' }}</td>
                                                             <td>{{ $order->billing_address }}</td>
@@ -72,18 +73,29 @@
                                                             <td>{{ $order->total }}</td>
                                                             <td>
                                                                 <a href="{{ route('dashboard.orders.show', $order) }}">
-                                                                    <button class="btn btn-success btn-sm" title="{{ trans('dashboard.order.view') }}"><i
+                                                                    <button class="btn btn-success btn-sm"
+                                                                            title="{{ trans('dashboard.order.view') }}">
+                                                                        <i
                                                                             class="ft-eye"></i></button>
                                                                 </a>
                                                                 @if($order->order_status !=  'delivered')
-                                                                <a href="{{ route('dashboard.orders.accepted', $order) }}">
-                                                                    <button class="btn btn-primary btn-sm" title="{{ trans('dashboard.order.shipped') }}"><i
-                                                                            class="ft-shopping-cart"></i></button>
-                                                                </a>
+                                                                    <a href="{{ route('dashboard.orders.delivered', $order) }}">
+                                                                        <button class="btn btn-primary btn-sm"
+                                                                                title="{{ trans('dashboard.order.shipped') }}">
+                                                                            <i class="ft-shopping-cart"></i></button>
+                                                                    </a>
                                                                     <a href="{{ route('dashboard.orders.rejected', $order) }}">
-                                                                    <button class="btn btn-danger btn-sm" title="{{ trans('dashboard.order.shipped') }}"><i
-                                                                            class="ft-lock"></i></button>
-                                                                </a>
+                                                                        <button class="btn btn-danger btn-sm"
+                                                                                title="{{ trans('dashboard.order.shipped') }}">
+                                                                            <i class="ft-lock"></i></button>
+                                                                    </a>
+                                                                    <a href="{{ route('dashboard.orders.accepted', $order) }}">
+                                                                        <button class="btn btn-info btn-sm"
+                                                                                title="{{ trans('dashboard.order.In progress') }}">
+                                                                            <i class="fa-cog"></i></button>
+                                                                    </a>
+                                                                @elseif($order->order_status ==  'processing')
+
                                                                 @endif
                                                             </td>
                                                         </tr>

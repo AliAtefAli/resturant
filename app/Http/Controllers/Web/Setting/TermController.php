@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class TermController extends Controller
 {
 
-    public function index()
+    public function terms()
     {
         return view('web.settings.terms');
     }

@@ -48,7 +48,7 @@ class RejectOrder extends Notification
     {
         return (new MailMessage)
             ->from($this->from)
-            ->line(trans('dashboard.order.Sorry Order Is unSuccessfully Processed '))
+            ->line($this->data)
             ->action('Notification Action', url('/'))
             ->line('Thank you for using our application!');
     }

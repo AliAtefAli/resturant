@@ -19,8 +19,11 @@ Route::get('products/featured/{product}', 'ProductController@featured')->name('p
 Route::get('products/unFeatured/{product}', 'ProductController@unFeatured')->name('products.unFeatured');
 Route::resource('orders', 'OrderController');
 Route::get('order/ofToday', 'OrderController@ordersOfToday')->name('ordersOfToday');
+
 Route::get('order/accepted/{order}', 'OrderController@accepted')->name('orders.accepted');
 Route::get('order/reject/{order}', 'OrderController@rejected')->name('orders.rejected');
+Route::get('order/delivered/{order}', 'OrderController@delivered')->name('orders.delivered');
+
 Route::resource('discounts', 'DiscountController');
 Route::resource('rates', 'RateController');
 Route::get('discounts/makeAsUnavailable/{discount}', 'DiscountController@makeAsUnavailable')->name('discounts.makeAsUnavailable');

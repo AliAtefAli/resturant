@@ -8,8 +8,13 @@ class Favorite extends Model
 {
     protected $fillable = ['product_id', 'user_id'];
 
-    public function users()
+//    public function users()
+//    {
+//        return $this->belongsToMany(User::class);
+//    }
+
+    public function product()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(Product::class);
     }
 }

@@ -54,7 +54,8 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::all();
-        return view('dashboard.products.edit', compact('product', 'categories'));
+        $image_count = $product->images->count();
+        return view('dashboard.products.edit', compact('product', 'categories', 'image_count'));
     }
 
     public function update(UpdateProductRequest $request, Product $product)

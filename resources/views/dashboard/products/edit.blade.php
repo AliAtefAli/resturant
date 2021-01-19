@@ -18,9 +18,9 @@
                                     href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
                             </li>
                             <li class="breadcrumb-item">
-                            <a href="{{route('dashboard.products.index')}}">{{trans('dashboard.product.Products')}}</a>
+                                <a href="{{route('dashboard.products.index')}}">{{trans('dashboard.product.Products')}}</a>
                             </li>
-                            <li class="breadcrumb-item active">{{ trans('dashboard.product.Edit Product') }}</li>
+                            <li class="breadcrumb-item active">{{ trans('dashboard.main.Edit') }}</li>
                         </ol>
                     </div>
                 </div>
@@ -35,7 +35,9 @@
                     <div class="card-content collpase show">
                         <div class="card-body">
                             <!-- form start -->
-                            <form class="form-horizontal" method="post" action="{{ route('dashboard.products.update', $product) }}"  enctype="multipart/form-data">
+                            <form class="form-horizontal" method="post"
+                                  action="{{ route('dashboard.products.update', $product) }}"
+                                  enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 @foreach(config('app.languages') as $key => $language)
@@ -46,7 +48,8 @@
                                             <div class="col-md-10">
                                                 <div><input type="text" id="name" class="form-control"
                                                             placeholder="{{trans("dashboard.category.Name")}}"
-                                                            name="{{$key}}[name]" value="{{ $product->translate($key)->name }}"/>
+                                                            name="{{$key}}[name]"
+                                                            value="{{ $product->translate($key)->name }}"/>
                                                     @include('dashboard.partials._errors', ['input' => 'name'])
                                                     <div class="form-control-position">
                                                     </div>
@@ -82,7 +85,8 @@
                                             <select class="custom-select" name="category_id">
                                                 <option value="">{{ trans('') }}</option>
                                                 @foreach($categories as $category)
-                                                    <option value="{{ $category->id }}" @if($category->id == $product->category->id) selected @endif  >{{ $category->name }}</option>
+                                                    <option value="{{ $category->id }}"
+                                                            @if($category->id == $product->category->id) selected @endif >{{ $category->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -100,6 +104,18 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group row">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-10">
+                                        @if($image_count > 0)
+                                            @foreach($product->images as $image)
+                                                <img src="{{ asset('assets/uploads/products/' . $image->path) }}"
+                                                     alt="Image" class="img-preview" width="150">
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+
                                 <div class="form-group row {{ $errors->has('price') ? ' has-error' : '' }}">
                                     <label class="col-md-2" for="price">{{trans('dashboard.product.price')}}</label>
                                     <div class="col-md-10">
@@ -112,7 +128,8 @@
                                 </div>
 
                                 <div class="form-group row {{ $errors->has('quantity') ? ' has-error' : '' }}">
-                                    <label class="col-md-2" for="quantity">{{trans('dashboard.product.quantity')}}</label>
+                                    <label class="col-md-2"
+                                           for="quantity">{{trans('dashboard.product.quantity')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative has-icon-left">
                                             <input type="number" id="quantity" class="form-control"
@@ -138,4 +155,5 @@
 @endsection
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.0/trix.min.js"></script>
+    <script src="{{ asset('dashboard_files/assets/js/image-review.js') }}"></script>
 @endsection

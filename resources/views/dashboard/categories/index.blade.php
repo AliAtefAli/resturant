@@ -126,3 +126,10 @@
     </div>
 
 @endsection
+@section('scripts')
+    <script>
+        $('.modal').on('show', function () {
+            $('this').$('form-actions').focus();
+        });
+    </script>
+@endsection

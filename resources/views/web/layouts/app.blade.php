@@ -15,10 +15,14 @@
     <link rel="stylesheet" href="{{asset('web_files/css/animate.min.css')}}">
     <!-- Main Style -->
     <link rel="stylesheet" href="{{asset('web_files/css/style.css')}}">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
 
     @if(lang() == 'en')
         <link rel="stylesheet" href="{{asset('web_files/css/en.css')}}">
     @endif
+    @yield('style')
 
     <title>{{ $setting[lang() . '_name'] ?? "" }}</title>
 </head>
@@ -48,5 +52,14 @@
 
 <!--Mein-->
 <script src="{{asset('web_files/js/script.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+    @if(session()->has('success'))
+    toastr.success("{{ session()->get('success') }}");
+    @elseif(session()->has('error'))
+    toastr.error("{{ session()->get('error') }}");
+    @endif
+</script>
+@yield('scripts')
 </body>
 </html>

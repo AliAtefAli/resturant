@@ -83,16 +83,47 @@
                                                                     <i class="ft-unlock"  aria-hidden="true"></i>
                                                                 </a>
                                                                 @endif
-                                                                <form
-                                                                    action="{{ route('dashboard.users.destroy', $user) }}"
-                                                                    id="delete-confirm" method="post"
-                                                                    style="display: inline-block">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit" class="btn btn-danger btn-sm"
-                                                                            id="confirm-text"><i class="ft-trash-2"></i>
-                                                                    </button>
-                                                                </form><!-- end of form -->
+                                                                <a href="#" data-toggle="modal"
+                                                                   data-target="#delete-question-{{$user->id}}"
+                                                                   class="btn btn-danger btn-sm" title="">
+                                                                    <i class="ft-trash-2"></i>
+                                                                </a>
+                                                                <div class="modal fade  custom-imodal"
+                                                                     id="delete-question-{{$user->id}}"
+                                                                     tabindex="-1" role="dialog"
+                                                                     aria-labelledby="exampleModalLabel"
+                                                                     aria-hidden="true">
+                                                                    <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title"
+                                                                                    id="exampleModalLabel">{{ trans('dashboard.user.Delete user') }}</h5>
+                                                                                <button type="button" class="close"
+                                                                                        data-dismiss="modal"
+                                                                                        aria-label="Close">
+                                                                                    <span
+                                                                                        aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body custom-addpro">
+                                                                                <div class="contact-page">
+                                                                                    <form action="{{ route('dashboard.users.destroy', $user->id) }}"
+                                                                                          method="post">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+                                                                                        <h2>  {{ trans('dashboard.user.Do you want to delete this user') }} </h2>
+
+                                                                                        <div class="form-actions right">
+                                                                                            <button type="submit" class="btn btn-danger">
+                                                                                                {{trans('dashboard.main.delete')}}
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </td>
                                                         </tr>
                                                     @endforeach

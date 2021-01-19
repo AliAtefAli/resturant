@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 class UserSubscriptionController extends Controller
 {
 
-    public function index()
-    {
-        return view('web.user_subscriptions.index');
-    }
+//    public function index()
+//    {
+//        return view('web.user_subscriptions.index');
+//    }
 
 
 }

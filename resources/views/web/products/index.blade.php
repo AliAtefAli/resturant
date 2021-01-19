@@ -5,240 +5,29 @@
     <!--Start Section1-->
 
     <div class="section1 section1-custom1">
-        <div class="container">
-            <h2 class="header-section wow zoomIn">
-                الاقسام
-            </h2>
-        </div>
         <div class="section1-container">
-            <h2 class="header-section1 wow zoomIn margin-responsive">
-                اسم القسم الرئيسى
-            </h2>
-            <div class="owl-carousel owl-theme section1-name-slider margin-responsive">
-                <a href="#" class="item wow fadeInDown">
-                    <h3>
-                        اسم القسم الفرعي
-                    </h3>
-                </a>
-                <a href="#" class="item wow fadeInDown">
-                    <h3>
-                        اسم القسم الفرعي
-                    </h3>
-                </a>
-                <a href="#" class="item wow fadeInDown">
-                    <h3>
-                        اسم القسم الفرعي
-                    </h3>
-                </a>
-                <a href="#" class="item wow fadeInDown">
-                    <h3>
-                        اسم القسم الفرعي
-                    </h3>
-                </a>
-                <a href="#" class="item wow fadeInDown">
-                    <h3>
-                        اسم القسم الفرعي
-                    </h3>
-                </a>
-                <a href="#" class="item wow fadeInDown">
-                    <h3>
-                        اسم القسم الفرعي
-                    </h3>
-                </a>
-                <a href="#" class="item wow fadeInDown">
-                    <h3>
-                        اسم القسم الفرعي
-                    </h3>
-                </a>
-                <a href="#" class="item wow fadeInDown">
-                    <h3>
-                        اسم القسم الفرعي
-                    </h3>
-                </a>
-            </div>
             <div class="container">
+                <h2 class="header-section wow zoomIn">
+                    {{ __('site.Products') }}
+                </h2>
                 <div class="row section1-product-row">
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <a href="#" class="item wow fadeInDown">
-                            <div class="img">
-                                <img src="{{asset('web_files/images/4207074.png')}}">
-                            </div>
-                            <div class="info-pro">
-                                        <span class="name-product">
-                                            اسم المنتج
+                    @foreach($products as $product)
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                                <a href="{{ route('products.show', $product) }}" class="item wow fadeInDown">
+                                    <div class="img">
+                                        @foreach($product->images as $image)
+                                            <img src="/assets/uploads/products/{{$image->path}}">
+                                        @endforeach
+                                    </div>
+                                    <div class="info-pro"><span class="name-product">{{$product->name}}</span>
+                                        <span class="price">{{$product->price}} @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }} @endif
                                         </span>
-                                <span class="price">
-                                            100 رس
-                                        </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <a href="#" class="item wow fadeInDown">
-                            <div class="img">
-                                <img src="{{asset('web_files/images/4207074.png')}}">
-                            </div>
-                            <div class="info-pro">
-                                        <span class="name-product">
-                                            اسم المنتج
-                                        </span>
-                                <span class="price">
-                                            100 رس
-                                        </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <a href="#" class="item wow fadeInDown">
-                            <div class="img">
-                                <img src="{{asset('web_files/images/4207074.png')}}">
-                            </div>
-                            <div class="info-pro">
-                                        <span class="name-product">
-                                            اسم المنتج
-                                        </span>
-                                <span class="price">
-                                            100 رس
-                                        </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <a href="#" class="item wow fadeInDown">
-                            <div class="img">
-                                <img src="{{asset('web_files/images/4207074.png')}}">
-                            </div>
-                            <div class="info-pro">
-                                        <span class="name-product">
-                                            اسم المنتج
-                                        </span>
-                                <span class="price">
-                                            100 رس
-                                        </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <a href="#" class="item wow fadeInDown">
-                            <div class="img">
-                                <img src="{{asset('web_files/images/4207074.png')}}">
-                            </div>
-                            <div class="info-pro">
-                                        <span class="name-product">
-                                            اسم المنتج
-                                        </span>
-                                <span class="price">
-                                            100 رس
-                                        </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <a href="#" class="item wow fadeInDown">
-                            <div class="img">
-                                <img src="{{asset('web_files/images/4207074.png')}}">
-                            </div>
-                            <div class="info-pro">
-                                        <span class="name-product">
-                                            اسم المنتج
-                                        </span>
-                                <span class="price">
-                                            100 رس
-                                        </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <a href="#" class="item wow fadeInDown">
-                            <div class="img">
-                                <img src="{{asset('web_files/images/4207074.png')}}">
-                            </div>
-                            <div class="info-pro">
-                                        <span class="name-product">
-                                            اسم المنتج
-                                        </span>
-                                <span class="price">
-                                            100 رس
-                                        </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <a href="#" class="item wow fadeInDown">
-                            <div class="img">
-                                <img src="{{asset('web_files/images/4207074.png')}}">
-                            </div>
-                            <div class="info-pro">
-                                        <span class="name-product">
-                                            اسم المنتج
-                                        </span>
-                                <span class="price">
-                                            100 رس
-                                        </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <a href="#" class="item wow fadeInDown">
-                            <div class="img">
-                                <img src="{{asset('web_files/images/4207074.png')}}">
-                            </div>
-                            <div class="info-pro">
-                                        <span class="name-product">
-                                            اسم المنتج
-                                        </span>
-                                <span class="price">
-                                            100 رس
-                                        </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <a href="#" class="item wow fadeInDown">
-                            <div class="img">
-                                <img src="{{asset('web_files/images/4207074.png')}}">
-                            </div>
-                            <div class="info-pro">
-                                        <span class="name-product">
-                                            اسم المنتج
-                                        </span>
-                                <span class="price">
-                                            100 رس
-                                        </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <a href="#" class="item wow fadeInDown">
-                            <div class="img">
-                                <img src="{{asset('web_files/images/4207074.png')}}">
-                            </div>
-                            <div class="info-pro">
-                                        <span class="name-product">
-                                            اسم المنتج
-                                        </span>
-                                <span class="price">
-                                            100 رس
-                                        </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <a href="#" class="item wow fadeInDown">
-                            <div class="img">
-                                <img src="{{asset('web_files/images/4207074.png')}}">
-                            </div>
-                            <div class="info-pro">
-                                        <span class="name-product">
-                                            اسم المنتج
-                                        </span>
-                                <span class="price">
-                                            100 رس
-                                        </span>
-                            </div>
-                        </a>
-                    </div>
+                                    </div>
+                                </a>
+                        </div>
+                    @endforeach
                 </div>
+                <div class="d-flex justify-content-center">{!! $products->links() !!}</div>
             </div>
         </div>
     </div>

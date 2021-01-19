@@ -46,7 +46,7 @@ class AcceptOrder extends Notification
     {
         return (new MailMessage)
             ->from($this->from)
-            ->line(trans('dashboard.order.Order Is Successfully Processed And Your Order Is On The Way,'))
+            ->line($this->data)
             ->action('Notification Action', url('/'))
             ->line('Thank you for using our application!');
     }

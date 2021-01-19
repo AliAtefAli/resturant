@@ -277,4 +277,20 @@ $(function () {
     setTimeout(function () {
         $('.loading').fadeOut(500);
     }, 2000);
+    $('.faqs-section .faqs .faq-up .faq-qu').click(function () {
+        var heightAn = $(this).next().find('.faq-an').innerHeight();
+        if($(this).hasClass('open')){
+            $(this).removeClass('open');
+            $(this).next().animate({
+                'height': 0
+            }, 500);
+            $(this).find('i').removeClass('add');
+        } else {
+            $(this).addClass('open');
+            $(this).next().animate({
+                'height': heightAn + 'px'
+            }, 500);
+            $(this).find('i').addClass('add');
+        }
+    });
 });

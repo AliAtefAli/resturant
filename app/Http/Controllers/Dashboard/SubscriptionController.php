@@ -86,7 +86,7 @@ class SubscriptionController extends Controller
 
     public function users(Subscription $subscription)
     {
-        $users = $subscription->users();
+        $users = $subscription->users;
 
         return view('dashboard.subscriptions.users', compact('users', 'subscription'));
     }

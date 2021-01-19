@@ -5,249 +5,96 @@
     <!--Start User-->
 
     <div class="user-section">
-        @include('web._sidebar')
+        @include('web.layouts._sidebar')
         <div class="user-info">
             <p class="pic-p">
-                الباقات المشترك بها
+                {{__('site.User Subscriptions')}}
             </p>
+
             <div class="owl-carousel owl-theme pic-slider">
-                <div class="item">
-                    <div class="image">
-                        <div class="img-image" style="background-image: url('{{asset('web_files/images/item.jpg')}}')"></div>
-                        <div class="over-lay" style="background-image: url('{{asset('web_files/images/flo.png')}}')"></div>
+                @foreach($subscribed_packages as $package)
+                    <div class="item">
+                        <div class="image">
+                            <div class="img-image" style="background-image: url('{{asset('web_files/images/item.jpg')}}')"></div>
+                            <div class="over-lay" style="background-image: url('{{asset('web_files/images/flo.png')}}')"></div>
+                        </div>
+                        <span class="in">
+                                    {{$package->name}}
+                                </span>
+                        <div class="list-ul">
+                            <ul class="list-unstyled">
+                                @foreach($package->products as $product)
+                                <li>
+                                    <span></span>
+                                        {{$product->name}}
+                                </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+                        <p class="price">
+                            {{ $product->price }} @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }} @endif
+                        </p>
+                        <p class="shiping">
+                            {{ __('site.Delivery') }}:  @if(isset($setting[ 'delivery_price'])) {{ $setting['delivery_price'] }} @endif @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif                        </p>
+                        <p class="person-number">
+                            {{ __('site.People count') }} : {{$package->pivot->count}}
+                        </p>
+
+                        @foreach($package->products as $product)
+                            <p class="text">
+                                {!! $product->description!!}
+                            </p>
+                        @endforeach
+
                     </div>
-                    <span class="in">
-                                اسبوعى
-                            </span>
-                    <div class="list-ul">
-                        <ul class="list-unstyled">
-                            <li>
-                                <span></span>
-                                وجبة رائيسية
-                            </li>
-                            <li>
-                                <span></span>
-                                سلطة كاملة
-                            </li>
-                            <li>
-                                <span></span>
-                                حلى نباتى
-                            </li>
-                        </ul>
-                    </div>
-                    <p class="price">
-                        490 ريال سعودى
-                    </p>
-                    <p class="shiping">
-                        التوصيل: 579 ريال سعودى
-                    </p>
-                    <p class="person-number">
-                        عدد الاشخاص: 2
-                    </p>
-                    <p class="text">
-                        استمتع بأسبوع كامل (٥ أيام)  من الأكل النباتي الصرف مع الديناصور النباتي، تحتوي الوجبات بشكل يومي على حوالي ١٥٠٠ سعرة حرارية، عالية البروتين، صحية ولذيذة
-                    </p>
-                    <button class="butn-pic">
-                        إيقاف الباقة
-                    </button>
-                </div>
-                <div class="item">
-                    <div class="image">
-                        <div class="img-image" style="background-image: url('{{asset('web_files/images/item.jpg')}}')"></div>
-                        <div class="over-lay" style="background-image: url('{{asset('web_files/images/flo.png')}}')"></div>
-                    </div>
-                    <span class="in">
-                                اسبوعى
-                            </span>
-                    <div class="list-ul">
-                        <ul class="list-unstyled">
-                            <li>
-                                <span></span>
-                                وجبة رائيسية
-                            </li>
-                            <li>
-                                <span></span>
-                                سلطة كاملة
-                            </li>
-                            <li>
-                                <span></span>
-                                حلى نباتى
-                            </li>
-                        </ul>
-                    </div>
-                    <p class="price">
-                        490 ريال سعودى
-                    </p>
-                    <p class="shiping">
-                        التوصيل: 579 ريال سعودى
-                    </p>
-                    <p class="person-number">
-                        عدد الاشخاص: 2
-                    </p>
-                    <p class="text">
-                        استمتع بأسبوع كامل (٥ أيام)  من الأكل النباتي الصرف مع الديناصور النباتي، تحتوي الوجبات بشكل يومي على حوالي ١٥٠٠ سعرة حرارية، عالية البروتين، صحية ولذيذة
-                    </p>
-                    <button class="butn-pic">
-                        إيقاف الباقة
-                    </button>
-                </div>
-                <div class="item">
-                    <div class="image">
-                        <div class="img-image" style="background-image: url('{{asset('web_files/images/item.jpg')}}')"></div>
-                        <div class="over-lay" style="background-image: url('{{asset('web_files/images/flo.png')}}')"></div>
-                    </div>
-                    <span class="in">
-                                اسبوعى
-                            </span>
-                    <div class="list-ul">
-                        <ul class="list-unstyled">
-                            <li>
-                                <span></span>
-                                وجبة رائيسية
-                            </li>
-                            <li>
-                                <span></span>
-                                سلطة كاملة
-                            </li>
-                            <li>
-                                <span></span>
-                                حلى نباتى
-                            </li>
-                        </ul>
-                    </div>
-                    <p class="price">
-                        490 ريال سعودى
-                    </p>
-                    <p class="shiping">
-                        التوصيل: 579 ريال سعودى
-                    </p>
-                    <p class="person-number">
-                        عدد الاشخاص: 2
-                    </p>
-                    <p class="text">
-                        استمتع بأسبوع كامل (٥ أيام)  من الأكل النباتي الصرف مع الديناصور النباتي، تحتوي الوجبات بشكل يومي على حوالي ١٥٠٠ سعرة حرارية، عالية البروتين، صحية ولذيذة
-                    </p>
-                    <button class="butn-pic">
-                        إيقاف الباقة
-                    </button>
-                </div>
+                @endforeach
             </div>
+
             <p class="pic-p">
-                الباقات المنتهية
+                {{__('site.User Finished Subscriptions')}}
             </p>
+
             <div class="owl-carousel owl-theme pic-slider">
-                <div class="item">
-                    <div class="image">
-                        <div class="img-image" style="background-image: url('{{asset('web_files/images/item.jpg')}}')"></div>
-                        <div class="over-lay" style="background-image: url('{{asset('web_files/images/flo.png')}}')"></div>
+                @foreach($finished_subscribed_packages as $package)
+                    <div class="item">
+                        <div class="image">
+                            <div class="img-image" style="background-image: url('{{asset('web_files/images/item.jpg')}}')"></div>
+                            <div class="over-lay" style="background-image: url('{{asset('web_files/images/flo.png')}}')"></div>
+                        </div>
+                        <span class="in">
+                                    {{$package->name}}
+                                </span>
+                        <div class="list-ul">
+                            <ul class="list-unstyled">
+                                @foreach($package->products as $product)
+                                    <li>
+                                        <span></span>
+                                        {{$product->name}}
+                                    </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+                        <p class="price">
+                            {{ $product->price }} @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }} @endif
+                        </p>
+                        <p class="shiping">
+                            {{ __('site.Delivery') }}:  @if(isset($setting[ 'delivery_price'])) {{ $setting['delivery_price'] }} @endif @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif                        </p>
+                        <p class="person-number">
+                            {{ __('site.People count') }} : {{$package->pivot->count}}
+                        </p>
+
+                        @foreach($package->products as $product)
+                            <p class="text">
+                                {!! $product->description!!}
+                            </p>
+                        @endforeach
+
                     </div>
-                    <span class="in">
-                                اسبوعى
-                            </span>
-                    <div class="list-ul">
-                        <ul class="list-unstyled">
-                            <li>
-                                <span></span>
-                                وجبة رائيسية
-                            </li>
-                            <li>
-                                <span></span>
-                                سلطة كاملة
-                            </li>
-                            <li>
-                                <span></span>
-                                حلى نباتى
-                            </li>
-                        </ul>
-                    </div>
-                    <p class="price">
-                        490 ريال سعودى
-                    </p>
-                    <p class="shiping">
-                        التوصيل: 579 ريال سعودى
-                    </p>
-                    <p class="person-number">
-                        عدد الاشخاص: 2
-                    </p>
-                    <p class="text">
-                        استمتع بأسبوع كامل (٥ أيام)  من الأكل النباتي الصرف مع الديناصور النباتي، تحتوي الوجبات بشكل يومي على حوالي ١٥٠٠ سعرة حرارية، عالية البروتين، صحية ولذيذة
-                    </p>
-                </div>
-                <div class="item">
-                    <div class="image">
-                        <div class="img-image" style="background-image: url('{{asset('web_files/images/item.jpg')}}')"></div>
-                        <div class="over-lay" style="background-image: url('{{asset('web_files/images/flo.png')}}')"></div>
-                    </div>
-                    <span class="in">
-                                اسبوعى
-                            </span>
-                    <div class="list-ul">
-                        <ul class="list-unstyled">
-                            <li>
-                                <span></span>
-                                وجبة رائيسية
-                            </li>
-                            <li>
-                                <span></span>
-                                سلطة كاملة
-                            </li>
-                            <li>
-                                <span></span>
-                                حلى نباتى
-                            </li>
-                        </ul>
-                    </div>
-                    <p class="price">
-                        490 ريال سعودى
-                    </p>
-                    <p class="shiping">
-                        التوصيل: 579 ريال سعودى
-                    </p>
-                    <p class="person-number">
-                        عدد الاشخاص: 2
-                    </p>
-                    <p class="text">
-                        استمتع بأسبوع كامل (٥ أيام)  من الأكل النباتي الصرف مع الديناصور النباتي، تحتوي الوجبات بشكل يومي على حوالي ١٥٠٠ سعرة حرارية، عالية البروتين، صحية ولذيذة
-                    </p>
-                </div>
-                <div class="item">
-                    <div class="image">
-                        <div class="img-image" style="background-image: url('{{asset('web_files/images/item.jpg')}}')"></div>
-                        <div class="over-lay" style="background-image: url('{{asset('web_files/images/flo.png')}}')"></div>
-                    </div>
-                    <span class="in">
-                                اسبوعى
-                            </span>
-                    <div class="list-ul">
-                        <ul class="list-unstyled">
-                            <li>
-                                <span></span>
-                                وجبة رائيسية
-                            </li>
-                            <li>
-                                <span></span>
-                                سلطة كاملة
-                            </li>
-                            <li>
-                                <span></span>
-                                حلى نباتى
-                            </li>
-                        </ul>
-                    </div>
-                    <p class="price">
-                        490 ريال سعودى
-                    </p>
-                    <p class="shiping">
-                        التوصيل: 579 ريال سعودى
-                    </p>
-                    <p class="person-number">
-                        عدد الاشخاص: 2
-                    </p>
-                    <p class="text">
-                        استمتع بأسبوع كامل (٥ أيام)  من الأكل النباتي الصرف مع الديناصور النباتي، تحتوي الوجبات بشكل يومي على حوالي ١٥٠٠ سعرة حرارية، عالية البروتين، صحية ولذيذة
-                    </p>
-                </div>
+                @endforeach
             </div>
+
         </div>
     </div>
 

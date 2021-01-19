@@ -16,6 +16,7 @@ class StoreUserRequest extends FormRequest
             'status'=>'required',
             'password' => 'required|confirmed|min:6',
             'password_confirmation'=>'sometimes|required_with:password',
+            'image' => 'image|mimes:jpg,jpeg,svg,png',
         ];
     }
 

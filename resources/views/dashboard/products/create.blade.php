@@ -103,7 +103,7 @@
                                     <div class="col-md-10">
                                         <div class="position-relative">
                                             <input type="float" id="price" class="form-control"
-                                                   name="price"/>
+                                                   name="price" value="{{ old('price') }}"/>
                                             @include('dashboard.partials._errors', ['input' => 'price'])
                                         </div>
                                     </div>
@@ -114,7 +114,7 @@
                                     <div class="col-md-10">
                                         <div class="position-relative">
                                             <input type="number" id="quantity" class="form-control"
-                                                   name="quantity"/>
+                                                   name="quantity" value="{{ old('quantity') }}"/>
                                             @include('dashboard.partials._errors', ['input' => 'quantity'])
                                         </div>
                                     </div>

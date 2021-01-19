@@ -54,6 +54,7 @@
                                                 <table class="table table-striped table-bordered dom-jQuery-events">
                                                     <thead>
                                                     <tr>
+                                                        <th>{{trans('dashboard.discounts.Code')}}</th>
                                                         <th>{{trans('dashboard.discounts.Status')}}</th>
                                                         <th>{{trans('dashboard.discounts.amount')}}</th>
                                                         <th>{{trans('dashboard.discounts.discount type')}}</th>
@@ -63,6 +64,7 @@
                                                     <tbody>
                                                     @foreach($discounts as $discount)
                                                         <tr>
+                                                            <td>{{ $discount->code }}</td>
                                                             <td>{{ $discount->status }}</td>
                                                             <td>{{ $discount->amount }}</td>
                                                             <td>{{ $discount->discount_type }}</td>
