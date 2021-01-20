@@ -20,6 +20,25 @@ class StoreUserRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'name.required' => (trans('validation.field_required_name')),
+            'name.min' => (trans('validation.field_min_3')),
+            'email.required' => (trans('validation.field_required_email')),
+            'email.email' => (trans('validation.field_email')),
+            'email.unique' => (trans('validation.field_exists_email')),
+            'phone.required' => (trans('validation.field_required_phone')),
+            'phone.unique' => (trans('validation.field_exists_phone')),
+            'type.required' => (trans('validation.field_required_type')),
+            'status.required' => (trans('validation.field_required_status')),
+            'password.required' => (trans('validation.field_required_password')),
+            'password.min' =>(trans('validation.field_min_6')),
+            'password.confirmed' => (trans('validation.password_confirmed')),
+            'image.image' => (trans('validation.field_image')),
+        ];
+    }
+
     public function authorize()
     {
         return true;

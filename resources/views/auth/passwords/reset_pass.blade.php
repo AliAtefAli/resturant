@@ -4,20 +4,28 @@
     <!--Select Pic-->
     <div class="over-to-shep">
         <img src="{{asset('web_files/images/flower.png')}}" class="line-shep"/>
-        <form class="form-pic-select">
+        <form action="{{ route('get_code') }}" method="post" class="form-pic-select">
+            @csrf
             <div class="container">
                 <div class="pic-select pic-select-auth">
                     <p class="name-page">
-                        تفعيل الحساب
+                        {{ __('site.Password') }}
                     </p>
                     <p class="name-input">
-                        رقم الكود
+                        {{__('site.new password')}}
                     </p>
                     <label class="input-style">
-                        <input type="text">
+                        <input type="password" name="password">
+                    </label>
+
+                    <p class="name-input">
+                        {{__('site.confirm password')}}
+                    </p>
+                    <label class="input-style">
+                        <input type="password" name="password_confirmation">
                     </label>
                     <button class="btn-aaa" type="submit">
-                        تاكيد
+                        {{__('site.confirm')}}
                     </button>
                 </div>
             </div>

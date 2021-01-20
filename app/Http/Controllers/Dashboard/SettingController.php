@@ -48,6 +48,12 @@ class SettingController extends Controller
         if ($request->has('settings.logo')) {
             $settings['settings']['logo'] = $this->uploadOne($request->settings['logo'], 'settings', null, null);
         }
+        if ($request->has('settings.favicon')) {
+            $settings['settings']['favicon'] = $this->uploadOne($request->settings['favicon'], 'settings', null, null);
+        }
+        if ($request->has('settings.menu_of_the_week')) {
+            $settings['settings']['menu_of_the_week'] = $this->uploadOne($request->settings['menu_of_the_week'], 'settings', null, null);
+        }
 
         foreach ($settings['settings'] as $key => $value) {
             $setting = Setting::where('key', $key)->first();

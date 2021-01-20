@@ -17,6 +17,17 @@ class UpdateUserRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'name.required' => (trans('validation.field_required_name')),
+            'email.required' => (trans('validation.field_required_email')),
+            'email.email' => (trans('validation.field_email')),
+            'password.min' =>(trans('validation.field_min_6')),
+            'password.confirmed' => (trans('validation.password_confirmed')),
+        ];
+    }
+
     public function authorize()
     {
         return true;

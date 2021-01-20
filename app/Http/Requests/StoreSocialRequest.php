@@ -18,6 +18,18 @@ class StoreSocialRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'whatsapp.required' => (trans('validation.field_whatsapp')),
+            'facebook.required' => (trans('validation.field_facebook')),
+            'twitter.required' => (trans('validation.field_twitter')),
+            'instagram.required' => (trans('validation.field_instagram')),
+            'linkedin.required' => (trans('validation.field_linkedin')),
+            'snapchat.required' => (trans('validation.field_snapchat')),
+        ];
+    }
+
     public function authorize()
     {
         return true;

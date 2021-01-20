@@ -20,8 +20,8 @@ class CreateSubscriptionUserTable extends Migration
             $table->enum('type', ['local', 'global']);
             $table->string('address')->nullable();
             $table->string('phone_number')->nullable();
-            $table->string('latitude')->nullable();
-            $table->string('longitude')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
             $table->integer('count')->default(1);
             $table->enum('payment_method', ['credit_card', 'on_delivery']);
             $table->text('note')->nullable();

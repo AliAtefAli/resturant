@@ -7,7 +7,7 @@
                         class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
                             class="ft-menu font-large-1"></i></a></li>
                 <li class="nav-item">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{{ route('home') }}">
                         <img class="brand-logo" alt="modern admin logo"
                              src="@if(isset($setting['logo'])) {{asset('assets/uploads/settings/' . $setting['logo'] )}} @else {{ asset('dashboard_files/app-assets/images/ico/favicon.ico') }} @endif">
                         <h3 class="brand-text">@if(isset($setting[ lang() . '_name'])){{ $setting[lang() . '_name'] }} @else Dashboard @endif</h3>

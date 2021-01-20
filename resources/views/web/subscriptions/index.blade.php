@@ -44,10 +44,10 @@
         <div class="container">
             <div class="meails">
                 @foreach($subscription->products as $product)
-                <div class="meal">
+                    <div class="meal">
                         <span></span>
                         {{$product->name}}
-                </div>
+                    </div>
                 @endforeach
 
             </div>
@@ -55,26 +55,18 @@
                 {{$subscription->price}}  @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
             </p>
             <p class="sheping">
-                {{ __('site.Delivery') }}:  @if(isset($setting[ 'delivery_price'])) {{ $setting['delivery_price'] }} @endif @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
+                {{ __('site.Delivery') }}
+                : @if(isset($setting[ 'delivery_price'])) {{ $setting['delivery_price'] }} @endif @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
             </p>
             <p class="text-product">
                 {!! $subscription->description !!}
             </p>
             <div class="number-of-product-section">
-                        <span class="text-ali">
-                            {{ __('site.People count') }}:
-                        </span>
-                <form action="{{route('subscriptions.submit', $subscription->id)}}" method="post">
-                    @csrf
-                    <div class="container-form">
-                        <span class="plus">+</span>
-                        <input type="text" name="count" value="1">
-                        <span class="munas">-</span>
-                    </div>
-                    <button type="submit">
-                        {{__('site.Submit Now')}}
-                    </button>
-                </form>
+
+
+                <a href="{{ route('subscriptions.create', $subscription) }}" class="custom-button" type="submit">
+                    {{__('site.Submit Now')}}
+                </a>
             </div>
         </div>
     </div>
@@ -110,4 +102,32 @@
 
     <!--End Pace-->
 
+@endsection
+@section('scripts')
+    <script>
+        $('.container-form  .munas').click(function () {
+            tr = $(this).parents('tr');
+            inputValue = tr.find('.qty').val();
+            // console.log(inputValue);
+            var elementInput = $(this).parents('tr').find('.qty'),
+                inputValue = tr.find('.qty').val();
+            inputValue--;
+            if (inputValue <= 0) {
+                inputValue = 1;
+            }
+            elementInput.val(inputValue);
+        });
+
+        $('.container-form .plus').click(function () {
+            tr = $(this).parents('tr'),
+                elementInput = tr.find('.qty'),
+                inputValue = tr.find('.qty').val();
+            inputValue++;
+            elementInput.val(inputValue);
+        });
+
+        $('.container-form input').change(function () {
+
+        });
+    </script>
 @endsection

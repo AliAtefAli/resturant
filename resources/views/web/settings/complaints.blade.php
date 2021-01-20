@@ -15,30 +15,45 @@
                                 {{__('site.Name')}}
                             </span>
                     <input type="text" name="name" value="@if(auth()->user()) {{ auth()->user()->name }}@endif">
+                    @if ($errors->has('name'))
+                        <div class="alert alert-danger">{{ $errors->first('name') }}</div>
+                    @endif
                 </label>
                 <label>
                             <span>
                                 {{__('site.E-mail')}}
                             </span>
                     <input type="email" name="email" value="@if(auth()->user()) {{ auth()->user()->email }}@endif">
+                    @if ($errors->has('email'))
+                        <div class="alert alert-danger">{{ $errors->first('email') }}</div>
+                    @endif
                 </label>
                 <label>
                             <span>
                                 {{__('site.Phone')}}
                             </span>
                     <input type="text" name="phone" value="@if(auth()->user()) {{ auth()->user()->phone }}@endif">
+                    @if ($errors->has('phone'))
+                        <div class="alert alert-danger">{{ $errors->first('phone') }}</div>
+                    @endif
                 </label>
                 <label>
                             <span>
                                 {{__('site.Complaint Subject')}}
                             </span>
                     <input type="text" name="message_subject">
+                    @if ($errors->has('message_subject'))
+                        <div class="alert alert-danger">{{ $errors->first('message_subject') }}</div>
+                    @endif
                 </label>
                 <label>
                             <span>
-{{__('site.Complaint Content')}}
+                                {{__('site.Complaint Content')}}
                             </span>
                     <textarea name="message"></textarea>
+                    @if ($errors->has('message'))
+                        <div class="alert alert-danger">{{ $errors->first('message') }}</div>
+                    @endif
                 </label>
                 <input type="submit" value="{{ __('site.Send') }}">
             </form>

@@ -31,4 +31,16 @@ class StoreCheckoutRequest extends FormRequest
             'payment_method' => ['required']
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'billing_name.required' => (trans('validation.field_required_name')),
+            'billing_email.required' => (trans('validation.field_required_email')),
+            'billing_email.email' => (trans('validation.field_email')),
+            'billing_address.required' => (trans('validation.field_required_address')),
+            'billing_phone.required' => (trans('validation.field_required_phone')),
+            'payment_method.required' => (trans('validation.field_required_payment_method')),
+        ];
+    }
 }

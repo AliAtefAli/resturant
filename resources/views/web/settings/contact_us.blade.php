@@ -12,7 +12,9 @@
                             {{__('site.Address')}}
                         </div>
                         <p class="info">
-                            المملكة العربية السعودية , الرياض
+                            @if(isset($setting['address']))
+                                {{ $setting['address'] }}
+                            @endif
                         </p>
                         <div class="head">
                             <i class="fas fa-phone-volume"></i>
@@ -35,12 +37,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="map">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13674.194668823182!2d31.388455949999997!3d31.038822000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sar!2seg!4v1610010818365!5m2!1sar!2seg"
-                            width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""
-                            aria-hidden="false" tabindex="0"></iframe>
-                    </div>
+                    <div class="map" id="map" style="width: 100%; height: 300px;"></div>
                 </div>
             </div>
         </div>
@@ -57,30 +54,45 @@
                     </p>
                     <label class="input-style">
                         <input type="text" name="name">
+                        @if ($errors->has('name'))
+                            <div class="alert alert-danger">{{ $errors->first('name') }}</div>
+                        @endif
                     </label>
                     <p class="name-input">
                         {{__('site.E-mail')}}
                     </p>
                     <label class="input-style">
                         <input type="email" name="email">
+                        @if ($errors->has('email'))
+                            <div class="alert alert-danger">{{ $errors->first('email') }}</div>
+                        @endif
                     </label>
                     <p class="name-input">
                         {{__('site.Phone')}}
                     </p>
                     <label class="input-style">
                         <input type="tel" name="phone">
+                        @if ($errors->has('phone'))
+                            <div class="alert alert-danger">{{ $errors->first('phone') }}</div>
+                        @endif
                     </label>
                     <p class="name-input">
                         {{__('site.Message Subject')}}
                     </p>
                     <label class="input-style">
                         <input type="text" name="message_subject">
+                        @if ($errors->has('message_subject'))
+                            <div class="alert alert-danger">{{ $errors->first('message_subject') }}</div>
+                        @endif
                     </label>
                     <p class="name-input">
                         {{__('site.Message Content')}}
                     </p>
                     <label class="input-style">
                         <textarea name="message"></textarea>
+                        @if ($errors->has('message'))
+                            <div class="alert alert-danger">{{ $errors->first('message') }}</div>
+                        @endif
                     </label>
                     <button class="btn-aaa" type="submit">
                         {{__('site.Send')}}
@@ -90,4 +102,98 @@
         </form>
     </div>
 
+@endsection
+@section('scripts')
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key={{ ($setting['google_key']) ?? 0 }}&libraries=places&callback=initMap&language=ar"></script>
+    <script type="text/javascript">
+        /* script */
+        lat = {{ ($setting['lat']) ?? 28.44249902816536 }};
+        lng = {{ ($setting['lng']) ?? 36.48057637720706 }};
+
+        function initialize() {
+            var latlng = new google.maps.LatLng(lat, lng);
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: latlng,
+                zoom: 13
+            });
+            var marker = new google.maps.Marker({
+                map: map,
+                position: latlng,
+                draggable: true,
+                anchorPoint: new google.maps.Point(0, -29)
+            });
+            var input = document.getElementById('search-input');
+
+            var geocoder = new google.maps.Geocoder();
+
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.bindTo('bounds', map);
+
+            var infowindow = new google.maps.InfoWindow();
+
+            autocomplete.addListener('place_changed', function () {
+                infowindow.close();
+                marker.setVisible(false);
+                var place = autocomplete.getPlace();
+                if (!place.geometry) {
+                    window.alert("Autocomplete's returned place contains no geometry");
+                    return;
+                }
+
+                // If the place has a geometry, then present it on a map.
+                if (place.geometry.viewport) {
+                    map.fitBounds(place.geometry.viewport);
+                } else {
+                    map.setCenter(place.geometry.location);
+                    map.setZoom(17);
+                }
+
+                marker.setPosition(place.geometry.location);
+                marker.setVisible(true);
+
+                bindDataToForm(place.formatted_address, place.geometry.location.lat(), place.geometry.location.lng());
+                infowindow.setContent(place.formatted_address);
+                infowindow.open(map, marker);
+
+            });
+
+            // this function will work on marker move event into map
+            google.maps.event.addListener(marker, 'dragend', function () {
+                geocoder.geocode({'latLng': marker.getPosition()}, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[0]) {
+                            bindDataToForm(results[0].formatted_address, marker.getPosition().lat(), marker.getPosition().lng());
+                            infowindow.setContent(results[0].formatted_address);
+                            infowindow.open(map, marker);
+                        }
+                    }
+                });
+            });
+
+            google.maps.event.addListener(map, 'click', function (event) {
+                marker.setPosition(event.latLng);
+                geocoder.geocode({'latLng': marker.getPosition()}, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[0]) {
+                            bindDataToForm(results[0].formatted_address, marker.getPosition().lat(), marker.getPosition().lng());
+                            infowindow.setContent(results[0].formatted_address);
+                            infowindow.open(map, marker);
+                        }
+                    }
+                });
+
+            });
+
+        }
+
+        function bindDataToForm(address, lat, lng) {
+            document.getElementById('search-input').value = address;
+            document.getElementById('lat').value = lat;
+            document.getElementById('lng').value = lng;
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 @endsection

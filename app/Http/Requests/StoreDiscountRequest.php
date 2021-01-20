@@ -17,6 +17,18 @@ class StoreDiscountRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'discount_type.required' => (trans('validation.field_required_discount')),
+            'status.required' => (trans('validation.field_required_status')),
+            'amount.required' => (trans('validation.field_required_amount')),
+            'product_id.required' => (trans('validation.field_required_product')),
+            'code.required' => (trans('validation.field_required_code')),
+            'code.unique' => (trans('validation.field_exists_code')),
+        ];
+    }
+
     public function authorize()
     {
         return true;

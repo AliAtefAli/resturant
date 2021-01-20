@@ -18,7 +18,9 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('web.users.index');
+        $featured_products = Product::whereFeatured(1)->get();
+
+        return view('web.users.index', compact('featured_products'));
     }
 
     public function update(Request $request, User $user)

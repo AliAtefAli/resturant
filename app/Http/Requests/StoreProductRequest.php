@@ -22,6 +22,23 @@ class StoreProductRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'ar.name.required' => (trans('validation.field_required_ar_name')),
+            'ar.name.min' => (trans('validation.field_min_5')),
+            'en.name.required' => (trans('validation.field_required_en_name')),
+            'en.name.min' => (trans('validation.field_min_5')),
+            'ar.description.required' => (trans('validation.field_required_ar_description')),
+            'en.description.required' => (trans('validation.field_required_en_description')),
+            'price.required' => (trans('validation.field_required_price')),
+            'quantity.required' => (trans('validation.field_required_quantity')),
+            'featured.required' => (trans('validation.field_required')),
+            'image.required' => (trans('validation.field_required_image')),
+            'image.image' => (trans('validation.field_image')),
+        ];
+    }
+
     public function authorize()
     {
         return true;

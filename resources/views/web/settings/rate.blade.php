@@ -25,11 +25,17 @@
                         <label class="star star-1" for="star-1"></label>
 
                     </div>
+                    @if ($errors->has('amount'))
+                        <div class="alert alert-danger">{{ $errors->first('amount') }}</div>
+                    @endif
                     <p class="name-input">{{ __('site.Rate.Comment') }}</p>
                 </div>
 
                 <label class="input-style">
                     <textarea name="comment"></textarea>
+                    @if ($errors->has('comment'))
+                        <div class="alert alert-danger">{{ $errors->first('comment') }}</div>
+                    @endif
                 </label>
                 <div class="d-flex justify-content-center">
                     <button class="done" type="submit">{{ __('site.Rate.Rate') }}</button>

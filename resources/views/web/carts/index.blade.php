@@ -34,13 +34,7 @@
                                     </a>
                                 </td>
                                 <td class="product-price">
-                                    <div class="number-of-product-section">
-                                        <div class="container-form">
-                                            <span class="plus">+</span>
-                                            <input type="text" name="qty" class="qty" value="{{$cart->qty }}">
-                                            <span class="munas">-</span>
-                                        </div>
-                                    </div>
+                                    <p>{{$cart->qty }}</p>
                                 </td>
                                 <td class="product-img">
                                     <div>
@@ -155,19 +149,19 @@
                     </div>
                 </div>
                 <p class="cape-shop">
-                    هل تود إتمام الشراء؟
+                    {{ __('site.Do you want to complete the purchase') }}
                 </p>
             </div>
         </div>
         <div class="last-part small-container">
             <div class="container">
                 <p>
-                    هل لديك كوبون خصم؟
+                    {{ __('site.Do you have Coupon') }}
                 </p>
                 <form class="offer">
-                    <input type="text" placeholder="كوبون الخصم">
+                    <input type="text" placeholder="{{ __('dashboard.discounts.Code') }}">
                     <button type="submit">
-                        تفعيل
+                        {{ __('site.Confirm') }}
                     </button>
                 </form>
                 <form action="{{ route('order.store') }}" method="post" class="finsh-requet">
@@ -189,6 +183,7 @@
                             {{ __('site.On delivery') }}
                         </label>
                     </div>
+
 
                     <div class="pic-select pic-select-auth pic-select-auth-any">
                         <p class="name-input">
@@ -246,118 +241,5 @@
     @endif
 @endsection
 @section('scripts')
-    <script>
-        $('.container-form .munas').click(function () {
-            tr = $(this).parents('tr');
-            inputValue = tr.find('.qty').val();
-            // console.log(inputValue);
-            var elementInput = $(this).parents('tr').find('.qty'),
-                inputValue = tr.find('.qty').val();
-            inputValue--;
-            if (inputValue <= 0) {
-                inputValue = 1;
-            }
-            elementInput.val(inputValue);
-        });
-
-        $('.container-form .plus').click(function () {
-            tr = $(this).parents('tr'),
-                elementInput = tr.find('.qty'),
-                inputValue = tr.find('.qty').val();
-            inputValue++;
-            elementInput.val(inputValue);
-        });
-
-        $('.container-form input').change(function () {
-
-        });
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ ($setting['google_key']) ?? 0 }}&libraries=places&callback=initMap&language=ar"></script>
-    <script type="text/javascript">
-        /* script */
-        lat = {{ (auth()->user()->lat) ?? 28.44249902816536 }};
-        lng = {{ (auth()->user()->lng) ?? 36.48057637720706 }};
-        function initialize() {
-            var latlng = new google.maps.LatLng(lat, lng);
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: latlng,
-                zoom: 13
-            });
-            var marker = new google.maps.Marker({
-                map: map,
-                position: latlng,
-                draggable: true,
-                anchorPoint: new google.maps.Point(0, -29)
-            });
-            var input = document.getElementById('search-input');
-
-            var geocoder = new google.maps.Geocoder();
-
-            var autocomplete = new google.maps.places.Autocomplete(input);
-            autocomplete.bindTo('bounds', map);
-
-            var infowindow = new google.maps.InfoWindow();
-
-            autocomplete.addListener('place_changed', function () {
-                infowindow.close();
-                marker.setVisible(false);
-                var place = autocomplete.getPlace();
-                if (!place.geometry) {
-                    window.alert("Autocomplete's returned place contains no geometry");
-                    return;
-                }
-
-                // If the place has a geometry, then present it on a map.
-                if (place.geometry.viewport) {
-                    map.fitBounds(place.geometry.viewport);
-                } else {
-                    map.setCenter(place.geometry.location);
-                    map.setZoom(17);
-                }
-
-                marker.setPosition(place.geometry.location);
-                marker.setVisible(true);
-
-                bindDataToForm(place.formatted_address, place.geometry.location.lat(), place.geometry.location.lng());
-                infowindow.setContent(place.formatted_address);
-                infowindow.open(map, marker);
-
-            });
-
-            // this function will work on marker move event into map
-            google.maps.event.addListener(marker, 'dragend', function () {
-                geocoder.geocode({'latLng': marker.getPosition()}, function (results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        if (results[0]) {
-                            bindDataToForm(results[0].formatted_address, marker.getPosition().lat(), marker.getPosition().lng());
-                            infowindow.setContent(results[0].formatted_address);
-                            infowindow.open(map, marker);
-                        }
-                    }
-                });
-            });
-
-            google.maps.event.addListener(map, 'click', function (event) {
-                marker.setPosition(event.latLng);
-                geocoder.geocode({'latLng': marker.getPosition()}, function (results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        if (results[0]) {
-                            bindDataToForm(results[0].formatted_address, marker.getPosition().lat(), marker.getPosition().lng());
-                            infowindow.setContent(results[0].formatted_address);
-                            infowindow.open(map, marker);
-                        }
-                    }
-                });
-
-            });
-
-        }
-
-        function bindDataToForm(address,lat,lng){
-            document.getElementById('search-input').value = address;
-            document.getElementById('lat').value = lat;
-            document.getElementById('lng').value = lng;
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+    @include('partials.google-map', ['lat' => auth()->user()->lat, 'lng' => auth()->user()->lng])
 @endsection

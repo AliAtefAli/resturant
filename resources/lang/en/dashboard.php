@@ -244,7 +244,7 @@ return [
         'Delivery price' => 'Delivery Price',
         'Phone number' => 'Phone Number',
         'Default Email Address' => 'Default Email Address',
-        'Edit Category' => 'Edit Category',
+        'Edit Settings' => 'Edit Settings',
         'Facebook' => 'Facebook',
         'General Website Settings' => 'General Website Settings',
         'Instagram' => 'Instagram',
@@ -257,6 +257,8 @@ return [
         'Site Policies English' => 'Site English Policies',
         'Site Rights Arabic' => 'Site Arabic rights',
         'Site Rights English' => 'Site English rights',
+        'Site Footer text Arabic' => 'Site Arabic Footer text',
+        'Site Footer text English' => 'Site English Footer text',
         'Site Currency Arabic' => 'Site Arabic Currency',
         'Site Currency English' => 'Site English Currency',
         'Twitter' => 'Twitter',
@@ -270,6 +272,7 @@ return [
         'Site Logo' => 'Site Logo',
         'Social Links' => 'Social Links',
         'Update Settings' => 'Update Settings',
+        'Menu of the week' => 'Menu of the week',
 
     ],
     'slider' => [

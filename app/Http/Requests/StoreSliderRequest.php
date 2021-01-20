@@ -16,6 +16,17 @@ class StoreSliderRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'url.required' => (trans('validation.field_required_url')),
+            'image.required' => (trans('validation.field_required_image')),
+            'image.image' => (trans('validation.field_image')),
+            'status.required' => (trans('validation.field_required_status')),
+            'ordered.required' => (trans('validation.field_required_ordered')),
+        ];
+    }
+
     public function authorize()
     {
         return true;

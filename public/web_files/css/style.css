@@ -992,6 +992,8 @@ footer .info-form .info-form-aa .media-links a.whatsapp{
     font-weight: bold;
     font-size: 17px;
 }
+
+
 .single-product .number-of-product-section form [type="submit"]{
     background-color: #CC5641;
     color: #fff;
@@ -1343,6 +1345,30 @@ footer .info-form .info-form-aa .media-links a.whatsapp{
     margin-left: auto;
     display: block;
     margin-top: 40px;
+}
+
+.custom-button{
+    width: 250px;
+    height: 75px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    margin-top: 40px;
+    border: 0;
+    background-color: #CC5641;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    transition: all .7s;
+    box-shadow: 2px -2px 3px #00000052;
+}
+
+.custom-button:hover{
+    color: #CC5641!important;
+    background-color: transparent!important;
+    font-size: 20px!important;
+    transition: all .5s!important;
 }
 /*User*/
 .user-section .nav-side-page{
@@ -1765,8 +1791,8 @@ footer .info-form .info-form-aa .media-links a.whatsapp{
 .over-to-shep .line-shep{
     position: absolute;
     width: 1000px;
-    top: -152px;
-    right: -483px;
+    /*top: -152px;*/
+    /*right: -483px;*/
 }
 .pic-select-auth{
     top: 0;
@@ -2400,4 +2426,31 @@ label.star:before {
 .text-section .notices > div .text-n span{
     color: #ccc;
     font-size: 11px;
+}
+ /* custom */
+ .container-form span{
+    color: #fff;
+    background-color: #CC5641;
+    display: inline-flex;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    font-size: 33px;
+    cursor: pointer;
+    border: 2px solid #CC5641;
+    transition: all .7s;
+}
+.container-form span:hover{
+    background-color: transparent;
+    color: #CC5641;
+}
+.container-form input{
+    width: 30px;
+    border: 0;
+    color: #000;
+    text-align: center;
+    font-weight: bold;
+    font-size: 17px;
 }

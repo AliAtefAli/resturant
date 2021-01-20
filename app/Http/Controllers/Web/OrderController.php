@@ -14,13 +14,12 @@ class OrderController extends Controller
 
     public function index()
     {
-
         $orders = auth()->user()->orders;
-
         $featured_products = Product::whereFeatured(1)->get();
 
         return view('web.orders.index', compact('orders', 'featured_products'));
     }
+
     public function store(StoreCheckoutRequest $request)
     {
         Product::checkProductQuantity();

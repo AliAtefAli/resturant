@@ -16,6 +16,9 @@ return [
     'Print' => 'طبع',
 
     'Confirm delete' => 'تاكيد الحذف',
+    'Do you have Coupon' => 'هل لديك كوبون خصم؟',
+    'Do you want to complete the purchase' => 'هل تود إتمام الشراء ؟',
+    'Confirm' => 'تفعيل',
     'Yes' => 'نعم',
     'No' => 'لا',
 
@@ -67,6 +70,7 @@ return [
     'Categories' => 'الاقسام',
     'Sub Categories' => 'الاقسام الفرعية',
     'Subscriptions' => 'الاشتراكات',
+    'Menu of the week' => 'المنيو الاسبوعى',
     'User Subscriptions' => 'الباقات المشترك بها',
     'User Finished Subscriptions' => 'الباقات المنتهيه',
     'Other Subscriptions' => 'اشتراكات اخري',
@@ -156,7 +160,10 @@ return [
     'Rate' => [
         'Add your rate' => 'اضف تقييما',
         'Comment' => 'اكتب تعليقك',
-        'Rate' => 'قيم'
+        'Rate' => 'قيم',
+        'Thank you for your Rate' => 'شكرا علي تقييمك',
     ]
-
+,
+    'User not found' => 'المستخدم ليس له حساب',
+    'Password Changed Successfully' => 'تم تغيير الرقم السري بنجاح',
 ];

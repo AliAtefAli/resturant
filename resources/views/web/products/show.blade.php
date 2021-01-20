@@ -34,7 +34,16 @@
                 </div>
             </div>
             <p class="price">
-                {{ $product->price }} @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }} @endif
+                <span class="mx-3 text-dark">{{ __('site.Price') }} :</span>
+                <span class="product-price" data-value="{{ $product->price }}">{{ $product->price }} </span>
+                @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }}
+                @endif
+            </p>
+            <p class="price">
+                <span class="mx-3 text-dark">{{ __('site.Total') }} :</span>
+                <span id="total" data-value="{{ $product->price }}">{{ $product->price }}  </span>
+                @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }}
+                @endif
             </p>
             <div class="number-of-product-section">
                 <form action="{{ route('products.addToCart', $product) }}" method="post">
@@ -82,4 +91,22 @@
 
     <!--End Section1-->
 
+@endsection
+@section('scripts')
+    <script type="text/javascript">
+        var total = parseFloat($('#total').attr('data-value'))
+        $('.plus').on('click', function (e) {
+            var price = parseFloat($('.product-price').attr('data-value'));
+            total += price;
+            document.getElementById('total').innerHTML = total;
+        })
+        $('.munas').click(function () {
+            var price = parseFloat($('.product-price').attr('data-value'));
+            if (total > price) {
+                total -= price;
+                document.getElementById('total').innerHTML = total;
+            }
+        });
+
+    </script>
 @endsection

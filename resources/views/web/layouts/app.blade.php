@@ -15,9 +15,9 @@
     <link rel="stylesheet" href="{{asset('web_files/css/animate.min.css')}}">
     <!-- Main Style -->
     <link rel="stylesheet" href="{{asset('web_files/css/style.css')}}">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="@if(isset($setting['favicon'])){{asset('assets/uploads/settings/' . $setting['favicon'] )}} @else {{ asset('dashboard_files/app-assets/images/ico/favicon.ico') }} @endif">
 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
     @if(lang() == 'en')
         <link rel="stylesheet" href="{{asset('web_files/css/en.css')}}">
@@ -53,12 +53,15 @@
 <!--Mein-->
 <script src="{{asset('web_files/js/script.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <script>
-    @if(session()->has('success'))
-    toastr.success("{{ session()->get('success') }}");
-    @elseif(session()->has('error'))
-    toastr.error("{{ session()->get('error') }}");
-    @endif
+    $(document).ready(function () {
+        @if(session()->has('success'))
+        toastr.success("{{ session()->get('success') }}");
+        @elseif(session()->has('error'))
+        toastr.error("{{ session()->get('error') }}");
+        @endif
+    });
 </script>
 @yield('scripts')
 </body>

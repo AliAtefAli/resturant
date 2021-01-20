@@ -31,8 +31,6 @@ Route::get('discounts/makeAsAvailable/{discount}', 'DiscountController@makeAsAva
 Route::resource('subscriptions', 'SubscriptionController');
 Route::get('subscriptions/users/{subscription}', 'SubscriptionController@users')->name('subscriptionUsers');
 Route::resource('questions', 'QuestionController');
-Route::resource('services', 'ServiceController');
-Route::resource('socials', 'SocialController');
 
 Route::resource("sliders", "SlidersController");
 Route::get('sliders/makeAsPending/{slider}', 'SlidersController@makeAsPending')->name('sliders.makeAsPending');

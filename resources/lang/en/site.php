@@ -16,6 +16,9 @@ return [
     'Print' => 'Print',
 
     'Confirm delete' => 'Confirm Delete',
+    'Do you have Coupon' => 'Do you have Coupon ?',
+    'Do you want to complete the purchase' => 'Do you want to complete the purchase ?',
+    'Confirm' => 'Confirm',
     'Yes' => 'Yes',
     'No' => 'No',
 
@@ -67,6 +70,7 @@ return [
     'Categories' => 'Categories',
     'Sub Categories' => 'Sub Categories',
     'Subscriptions' => 'Subscriptions',
+    'Menu of the week' => 'Menu of the week',
     'User Subscriptions' => 'User Subscriptions',
     'User Finished Subscriptions' => 'User Finished Subscriptions',
     'Other Subscriptions' => 'Other Subscriptions',
@@ -156,7 +160,9 @@ return [
     'Rate' => [
         'Add your rate' => 'Add your rate',
         'Comment' => 'Comment',
-        'Rate' => 'Rate'
-    ]
-
+        'Rate' => 'Rate',
+        'Thank you for your Rate' => 'Thank you for your Rate',
+    ],
+    'User not found' => 'User not found',
+    'Password Changed Successfully' => 'Password Changed Successfully',
 ];

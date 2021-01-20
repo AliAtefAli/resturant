@@ -31,8 +31,12 @@ class ProductController extends Controller
 
     public function addToCart(Request $request, Product $product)
     {
-        // dd($request->all(), $product);
-        Cart::add(['id' => $product->id,
+        if ($request->qty > $product->quantity) {
+            return back()->with('error', trans('site.Order.Please, this Quantity is not available'));
+        }
+
+        Cart::add([
+            'id' => $product->id,
             'name' => $product->name,
             'qty' => $request->qty,
             'price' => $product->price,

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SaveRateRequest;
+use App\Http\Requests\SendComplaintRequest;
 use App\Models\Complaint;
 use App\Models\Message;
 use App\Models\Question;
@@ -27,7 +29,7 @@ class SettingController extends Controller
         return view('web.settings.complaints');
     }
 
-    public function sendComplaint(Request $request)
+    public function sendComplaint(SendComplaintRequest $request)
     {
         $data = $request->all();
         $data['user_id'] = (auth()->user()->id) ?? null;
@@ -51,7 +53,7 @@ class SettingController extends Controller
         return view('web.settings.contact_us');
     }
 
-    public function sendMessage(Request $request)
+    public function sendMessage(SendComplaintRequest $request)
     {
         $data = $request->all();
         $data['user_id'] = (auth()->user()->id) ?? null;
@@ -65,7 +67,7 @@ class SettingController extends Controller
         return view('web.settings.rate');
     }
 
-    public function saveRate(Request $request)
+    public function saveRate(SaveRateRequest $request)
     {
         Rate::create([
             'amount' => $request->amount,
@@ -73,6 +75,6 @@ class SettingController extends Controller
             'user_id' => (auth()->user()->id) ?? 1,
         ]);
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', trans('site.Rate.Thank you for your Rate'));
     }
 }

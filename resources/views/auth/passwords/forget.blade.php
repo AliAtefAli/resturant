@@ -18,7 +18,7 @@
                         <input type="text" name="email">
                     </label>
                     <button class="btn-aaa" type="submit">
-                        تاكيد
+                        {{ __('site.Confirm') }}
                     </button>
                 </div>
             </div>

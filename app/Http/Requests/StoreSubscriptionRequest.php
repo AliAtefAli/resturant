@@ -16,7 +16,21 @@ class StoreSubscriptionRequest extends FormRequest
             'duration_in_day' => 'required',
             'price' => 'required',
             'image' => 'required',
-            'products' => 'array'
+            'products' => 'required:array'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'ar.name.required' => (trans('validation.field_required_ar_name')),
+            'en.name.required' => (trans('validation.field_required_en_name')),
+            'ar.description.required' => (trans('validation.field_required_ar_description')),
+            'en.description.required' => (trans('validation.field_required_en_description')),
+            'duration_in_day.required' => (trans('validation.field_required_duration_in_day')),
+            'price.required' => (trans('validation.field_required_price')),
+            'image.required' => (trans('validation.field_required_image')),
+            'products.required' => (trans('validation.field_required_product')),
         ];
     }
 

@@ -24,7 +24,7 @@
                         <input type="password" name="password">
                     </label>
                     <div class="text-center">
-                        <a href="{{route('password.request')}}" class="link-forget">
+                        <a href="{{route('reset_pass')}}" class="link-forget">
                             {{__('site.Forget Password')}}
                         </a>
                     </div>

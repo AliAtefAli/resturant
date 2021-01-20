@@ -46,7 +46,7 @@
                                                 <div><input type="text" id="{{$key}}name" class="form-control"
                                                             placeholder="{{trans("dashboard.product.Name")}}"
                                                             name="{{$key}}[name]" value="{{ old("$key.name") }}"/>
-                                                    @include('dashboard.partials._errors', ['input' => 'name'])
+                                                    @include('dashboard.partials._errors', ['input' => "$key.name"])
                                                     <div class="form-control-position">
                                                     </div>
                                                 </div>

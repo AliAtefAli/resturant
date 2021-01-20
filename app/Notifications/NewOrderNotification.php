@@ -58,7 +58,7 @@ class NewOrderNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'order' => $this->order
+            'data' => $this->order
         ];
     }
 

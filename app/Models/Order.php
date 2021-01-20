@@ -39,8 +39,8 @@ class Order extends Model
             $product = Product::findOrfail($cart->model->id);
             $product->quantity -= $cart->qty;
             $product->save();
+            $order->products()->attach($product, ['quantity' => $cart->qty]);
         }
-        $order->products()->attach($order->id, ['quantity' => $cart->qty]);
 
         return $order;
     }
@@ -51,7 +51,5 @@ class Order extends Model
         foreach ($admins as $admin) {
             $admin->notify(new NewOrderNotification($order));
         }
-
-        // event(new NotificationEvent($order));
     }
 }

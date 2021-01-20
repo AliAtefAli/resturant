@@ -9,25 +9,25 @@
             <li class="{{ activeSidebar('users') }}">
                 <a href="{{route('users')}}">
                     <i class="fas fa-user"></i>
-                    البيانات الشخصية
+                    {{ __('site.Profile') }}
                 </a>
             </li>
             <li class="{{ activeSidebar('web/user_subscriptions') }}">
                 <a href="{{route('user_subscriptions')}}">
                     <i class="fas fa-bread-slice"></i>
-                    باقاتي
+                    {{ __('site.Subscriptions') }}
                 </a>
             </li>
             <li class="{{ activeSidebar('web/menus') }}">
                 <a href="{{route('menus')}}">
                     <i class="fas fa-utensils"></i>
-                    المنيو الاسبوعى
+                    {{ __('site.Menu of the week') }}
                 </a>
             </li>
             <li class="{{ activeSidebar('web/orders') }}">
                 <a href="{{route('orders')}}">
                     <i class="fas fa-box"></i>
-                    الطلبات
+                    {{ __('site.Orders') }}
                 </a>
             </li>
         </ul>

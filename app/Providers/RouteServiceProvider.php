@@ -13,6 +13,8 @@ class RouteServiceProvider extends ServiceProvider
 
     protected $apiNamespace = 'App\Http\Controllers\Api';
 
+    public const HOME = '/';
+
     public function boot()
     {
         parent::boot();

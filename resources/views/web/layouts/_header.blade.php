@@ -168,7 +168,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="icons-action">
-                        @if(auth()->check())
+{{--                        @if(auth()->check())--}}
                             <a href="{{route('users')}}" title="{{ __('site.Profile') }}">
                                 <i class="fas fa-user"></i>
                             </a>
@@ -185,7 +185,7 @@
                             <a href="{{route('products.index')}}" title="{{ __('site.Products') }}">
                                 <i class="fas fa-utensils"></i>
                             </a>
-                        @endif
+{{--                        @endif--}}
                     </div>
                 </div>
             </div>

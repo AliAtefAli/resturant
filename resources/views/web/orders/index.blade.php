@@ -16,7 +16,7 @@
                             {{ __('site.Order.Product Name') }}
                         </th>
                         <th>
-                            {{ __('site.People count') }}
+                            {{ __('site.Quantity') }}
                         </th>
                         <th>
                             {{ __('site.Order.Order date') }}
@@ -34,29 +34,39 @@
                     </thead>
                     <tbody>
                     @foreach($orders as $order)
-                        <tr>
-                            <td>
-                                {{$order->id}}
-                            </td>
-                            <td>
-                                {{$order->products->name}}
-                            </td>
-                            <td>
-                                2
-                            </td>
-                            <td>
-                                23/7/2543
-                            </td>
-                            <td>
-                                كاش
-                            </td>
-                            <td>
-                                سعر الباقة
-                            </td>
-                            <td>
-                                سعر التوصيل
-                            </td>
-                        </tr>
+                        @foreach($order->products as $product)
+
+                            <tr>
+                                <td>
+                                    {{$order->id}}
+                                </td>
+                                <td>
+                                    {{ $product->name}}
+
+                                </td>
+                                <td>
+                                    {{ $product->pivot->quantity }}
+                                </td>
+                                <td>
+                                    {{ $order->created_at->diffForHumans() }}
+                                </td>
+                                <td>
+                                    {{ $order->payment_method }}
+                                </td>
+                                <td>
+                                    {{ $product->pivot->quantity * $product->price }}
+
+                                </td>
+                                <td>
+                                    @if(isset($setting[ 'delivery_price']))
+                                        {{ $setting['delivery_price'] }}
+                                    @endif
+                                    @if(isset($setting[ app()->getLocale() . '_currency']))
+                                        {{ $setting[ app()->getLocale() . '_currency'] }}
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
                     @endforeach
                     </tbody>
                 </table>
