@@ -72,31 +72,37 @@
                                                             <td>{{ $order->order_status }}</td>
                                                             <td>{{ $order->total }}</td>
                                                             <td>
-                                                                <a href="{{ route('dashboard.orders.show', $order) }}">
-                                                                    <button class="btn btn-success btn-sm"
-                                                                            title="{{ trans('dashboard.order.view') }}">
-                                                                        <i
-                                                                            class="ft-eye"></i></button>
-                                                                </a>
-                                                                @if($order->order_status !=  'delivered')
-                                                                    <a href="{{ route('dashboard.orders.delivered', $order) }}">
-                                                                        <button class="btn btn-primary btn-sm"
-                                                                                title="{{ trans('dashboard.order.shipped') }}">
-                                                                            <i class="ft-shopping-cart"></i></button>
-                                                                    </a>
-                                                                    <a href="{{ route('dashboard.orders.rejected', $order) }}">
-                                                                        <button class="btn btn-danger btn-sm"
-                                                                                title="{{ trans('dashboard.order.shipped') }}">
-                                                                            <i class="ft-lock"></i></button>
-                                                                    </a>
-                                                                    <a href="{{ route('dashboard.orders.accepted', $order) }}">
-                                                                        <button class="btn btn-info btn-sm"
-                                                                                title="{{ trans('dashboard.order.In progress') }}">
-                                                                            <i class="fa-cog"></i></button>
-                                                                    </a>
-                                                                @elseif($order->order_status ==  'processing')
+                                                                <div class="col-sm-3 col-6">
+                                                                    <div class="btn-group mr-1 mb-1">
+                                                                        <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"
+                                                                                aria-haspopup="true" aria-expanded="false">
+                                                                            <i class="la la-ellipsis-v"></i>
+                                                                        </button>
+                                                                        <div class="dropdown-menu arrow">
 
-                                                                @endif
+                                                                            @if($order->order_status !=  'delivered')
+
+                                                                                <a href="{{ route('dashboard.orders.accepted', $order) }}">
+                                                                                    <button class="btn btn-info  dropdown-item"
+                                                                                            title="{{ trans('dashboard.order.Make as In Progress') }}">
+                                                                                        {{ trans('dashboard.order.Make as In Progress') }}</button>
+                                                                                </a>
+                                                                                <a href="{{ route('dashboard.orders.delivered', $order) }}">
+                                                                                    <button class="btn btn-primary  dropdown-item"
+                                                                                            title="{{ trans('dashboard.order.Make as shipped') }}">
+                                                                                        {{ trans('dashboard.order.Make as shipped') }}</button>
+                                                                                </a>
+                                                                                <a href="{{ route('dashboard.orders.rejected', $order) }}">
+                                                                                    <button class="btn btn-danger  dropdown-item"
+                                                                                            title="{{ trans('dashboard.order.Make as Rejected') }}">
+                                                                                        {{ trans('dashboard.order.Make as Rejected') }}</button>
+                                                                                </a>
+                                                                            @elseif($order->order_status ==  'processing')
+
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </td>
                                                         </tr>
                                                     @endforeach

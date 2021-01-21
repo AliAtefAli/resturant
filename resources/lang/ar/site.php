@@ -166,4 +166,6 @@ return [
 ,
     'User not found' => 'المستخدم ليس له حساب',
     'Password Changed Successfully' => 'تم تغيير الرقم السري بنجاح',
+    'join us' => 'انضم الينا',
+    'Enter your email address' => 'ادخل بريدك الالكترونى',
 ];

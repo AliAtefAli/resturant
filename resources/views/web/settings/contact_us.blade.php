@@ -4,6 +4,9 @@
 
     <div class="contact-us-info">
         <div class="container">
+            <h3>
+                {{__('site.Contact us')}}
+            </h3>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="info-contact">

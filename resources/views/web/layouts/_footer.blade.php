@@ -25,7 +25,7 @@
                             </a>
                         </li>
                         @if(auth()->check())
-                            <li class="active">
+                            <li>
                                 <a href="{{route('rate')}}">
                                     {{__('site.Rate.Rate')}}
                                 </a>
@@ -68,9 +68,14 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('logout') }}">
-                                    {{__('site.Logout')}}
+                                <a href="{{ route('logout') }}"onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
                                 </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </li>
                         @endif
                     </ul>
@@ -79,9 +84,10 @@
             <div class="col-lg-4">
                 <div class="info-form">
                     <div class="info-form-aa">
-                        <form class="wow fadeInLeft">
-                            <input type="email" placeholder="ادخل بريدك الالكترونى">
-                            <input type="submit" value="انضم الينا">
+                        <form action="{{ route('join-us') }}" class="wow fadeInLeft" method="post">
+                            @csrf
+                            <input type="email" placeholder="{{ __('site.Enter your email address') }}" name="email">
+                            <input type="submit" value="{{ __('site.join us') }}">
                         </form>
                         <div class="media-links">
                             @if(isset($setting['social_snapchat']))

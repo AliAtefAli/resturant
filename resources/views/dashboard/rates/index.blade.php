@@ -37,10 +37,7 @@
                                                     class="la la-ellipsis-v font-medium-3"></i></a>
                                             <div class="heading-elements">
                                                 <ul class="list-inline mb-0">
-                                                    <li><a href="{{ route('dashboard.categories.create') }}"
-                                                           class="btn btn-success btn-sm mr-1"><i
-                                                                class="ft-plus-circle"></i> {{trans('create')}} </a>
-                                                    </li>
+
                                                     <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                                                     <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
                                                     <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
@@ -63,7 +60,11 @@
                                                     @foreach($rates as $rate)
                                                         <tr>
                                                             <td>{{ $rate->user->name }}</td>
-                                                            <td>{{ $rate->amount }}</td>
+                                                            <td>
+                                                                @for($i = 0; $i < 5; $i++)
+                                                                    <span><i class="la la-star{{ $rate->amount <= $i ? '-o' : '' }}"></i></span>
+                                                                @endfor
+                                                            </td>
                                                             <td>{{ $rate->comment }}</td>
                                                         </tr>
                                                     @endforeach

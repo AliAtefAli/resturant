@@ -12,8 +12,11 @@ class UpdateUserRequest extends FormRequest
         return [
             "name" => "required|string|min:3|max:141",
             'email' => ['required', 'email', Rule::unique('users')->ignore($this->user->id, 'id')],
-            'password' => 'nullable|min:6',
-            'password_confirmation'=>'sometimes|required_with:password|same:password',
+            'phone'=>'required|unique:users',
+            'type'=>'required',
+            'status'=>'required',
+            'image' => 'image|mimes:jpg,jpeg,svg,png',
+            'address' => 'required'
         ];
     }
 

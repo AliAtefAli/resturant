@@ -171,6 +171,8 @@ return [
     'field_min_3' => 'الحقل لا بد أن لا يقل عن 3 خانات',
     'field_image' => 'الحقل لا بد أن يكون صورة',
     'field_required_name' => 'حقل الاسم مطلوب',
+    'field_required_emails' => 'من فضلك اختر الايميلات',
+    'Message Required' => 'من فضلك ادخل الرسالة',
     'field_required_ar_name' => 'حقل الاسم بالعربيه مطلوب',
     'field_required_en_name' => 'حقل الاسم بالانجليزيه مطلوب',
     'field_policies_ar_name' => 'حقل ساسيه الموقع بالعربيه مطلوب',

@@ -33,6 +33,7 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
     Route::get('/code_confirm/{user}', 'HomeController@codePage')->name('code_confirm');
     Route::post('/code_confirmation', 'HomeController@codeConfirm')->name('set_confirm');
     Route::get('/change_pass', 'HomeController@changePass')->name('change_pass');
+    Route::post('join-us', 'HomeController@joinUs')->name('join-us');
 
     // Auth
     Route::group(['middleware' => 'auth'], function () {

@@ -29,7 +29,8 @@
                     <div class="card-content collpase show">
                         <div class="card-body">
                             <!-- form start -->
-                            <form class="form-horizontal" method="post" action="{{ route('dashboard.users.store') }}" enctype="multipart/form-data">
+                            <form class="form-horizontal" method="post" action="{{ route('dashboard.users.store') }}"
+                                  enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-body">
 
@@ -72,15 +73,18 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon1">+966</span>
                                                     </div>
-                                                    <input type="text" class="form-control phone-inputmask" id="phone-mask"
+                                                    <input type="text" class="form-control phone-inputmask"
+                                                           id="phone-mask"
                                                            placeholder="Enter Phone Number" name="phone"
                                                            value="{{ old('phone') }}"/>
                                                 </div>
+                                                @include('dashboard.partials._errors', ['input' => 'phone'])
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row {{ $errors->has('password') ? ' has-error' : '' }}">
-                                        <label class="col-md-2" for="password">{{trans('dashboard.user.Password')}}</label>
+                                        <label class="col-md-2"
+                                               for="password">{{trans('dashboard.user.Password')}}</label>
                                         <div class="col-md-10">
                                             <div class="position-relative has-icon-left">
                                                 <input type="password" id="password" class="form-control"
@@ -94,7 +98,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                                    <div
+                                        class="form-group row {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                                         <label class="col-md-2"
                                                for="password_confirmation">{{trans('dashboard.user.Confirm Password')}}</label>
                                         <div class="col-md-10">
@@ -111,7 +116,8 @@
                                     </div>
 
                                     <div class="form-group row {{ $errors->has('image') ? ' has-error' : '' }}">
-                                        <label class="col-md-2" for="image">{{trans('dashboard.settings.Site Logo')}}</label>
+                                        <label class="col-md-2"
+                                               for="image">{{trans('dashboard.user.Image')}}</label>
                                         <div class="col-md-10">
                                             <div class="position-relative has-icon-left">
                                                 <input type="file" id="image" class="form-control image img-input"
@@ -149,12 +155,28 @@
                                         <div class="col-md-10">
                                             <div class="position-relative has-icon-left">
                                                 <select class="custom-select" name="status">
-                                                        <option value="active">{{ trans('dashboard.user.Active') }}</option>
-                                                        <option value="pending">{{ trans('dashboard.user.Pending') }}</option>
-                                                        <option value="block">{{ trans('dashboard.user.Block') }}</option>
+                                                    <option value="active">{{ trans('dashboard.user.Active') }}</option>
+                                                    <option
+                                                        value="pending">{{ trans('dashboard.user.Pending') }}</option>
+                                                    <option value="block">{{ trans('dashboard.user.Block') }}</option>
                                                 </select>
                                                 @include('dashboard.partials._errors', ['input' => 'status'])
                                             </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-2">{{ __('dashboard.user.address') }}</div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" name="address"
+                                                   value="{{ old('address') }}"
+                                                   id="search-input">
+                                            <div class="map" id="map" style="width: 100%; height: 300px;"></div>
+                                            <input type="hidden" id="lat" name="lat"
+                                                   value="{{ old('lat') }}">
+                                            <input type="hidden" id="lng" name="lng"
+                                                   value="{{ old('lng') }}">
+                                            @include('dashboard.partials._errors', ['input' => 'address'])
                                         </div>
                                     </div>
 
@@ -173,22 +195,11 @@
         </div>
         <!-- /.card-body -->
     </div>
-    <script>
-        $(document).ready(function () {
-
-            $('#passtrans, #passtrans_confirmation').on('keyup', function () {
-                if ($('#passtrans').val() == $('#passtrans_confirmation').val()) {
-                    $('#message').html("{{trans('matching')}}").css('color', 'green');
-                } else
-                    $('#message').html("{{trans('not_matching')}}").css('color', 'red');
-            });
-        });
-    </script>
-
-@endsection
+    @endsection
 @section('scripts')
     <script
         src="{{ asset('dashboard_files/app-assets/vendors/js/forms/extended/inputmask/jquery.inputmask.bundle.min.js') }}"></script>
     <script src="{{ asset('dashboard_files/app-assets/js/scripts/forms/extended/form-inputmask.min.js') }}"></script>
     <script src="{{ asset('dashboard_files/assets/js/image-review.js') }}"></script>
+    @include('partials.google-map', ['lat' => ($setting['lat']) ?? 28.44249902816536, 'lng' => ( $setting['lng']) ?? 36.48057637720706])
 @endsection

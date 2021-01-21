@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SendNewsLetterRequest;
 use App\Http\Requests\UpdateSiteRequest;
+use App\Models\NewsLetter;
 use App\Models\Setting;
 use App\Models\Site;
+use App\Notifications\SendNewsLetter;
 use App\Traits\Uploadable;
 use Illuminate\Http\Request;
 use function Composer\Autoload\includeFile;
@@ -13,6 +16,7 @@ use function Composer\Autoload\includeFile;
 class SettingController extends Controller
 {
     use Uploadable;
+
     public function general()
     {
         $settings = Setting::all()->pluck('value', 'key');
@@ -38,11 +42,11 @@ class SettingController extends Controller
     {
         $settings = $request->all('settings');
 
-        if ( $request->has('settings.whatsapp') ) {
-            $settings['settings']['whatsapp'] = $this->clean($request->input('settings.whatsapp')) ;
+        if ($request->has('settings.whatsapp')) {
+            $settings['settings']['whatsapp'] = $this->clean($request->input('settings.whatsapp'));
         }
-        if ( $request->has('settings.phone') ) {
-            $settings['settings']['phone'] = $this->clean($request->input('settings.phone')) ;
+        if ($request->has('settings.phone')) {
+            $settings['settings']['phone'] = $this->clean($request->input('settings.phone'));
         }
 
         if ($request->has('settings.logo')) {
@@ -65,10 +69,34 @@ class SettingController extends Controller
         return back()->with('success', trans('dashboard.It was done successfully!'));
     }
 
-    private function clean($string) {
+    private function clean($string)
+    {
         $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
         $string = preg_replace('/[^A-Za-z0-9]/', '', $string); // Removes special chars.
 
         return preg_replace('/-+/', '-', $string); // Replaces multiple hyphens with single one.
+    }
+
+    public function newsLetter()
+    {
+        $news_letter = NewsLetter::all();
+
+        return view('dashboard.news_letter.index', compact('news_letter'));
+    }
+
+    public function sendNewsLetter(SendNewsLetterRequest $request)
+    {
+        $message = strip_tags($request->message); // Remove Html
+        $message = str_replace("&nbsp;", " ", $message); // Remove /n//r
+        $message = preg_replace("/\r|\n/", "", $message); // Remove /n//r
+        $data = $request->all();
+        $data['message'] = $message;
+
+        foreach ($data['emails'] as $email) {
+            $new = NewsLetter::where('email', $email)->first();
+            $new->notify(new SendNewsLetter($data['message'], $email));
+        }
+
+        return back()->with('success', trans('dashboard.It was done successfully!'));
     }
 }

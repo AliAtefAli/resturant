@@ -59,19 +59,24 @@ class UsersController extends Controller
 
     public function update(UpdateUserRequest $request, User $user)
     {
-        $data = $request->validated();
+        $data = $request->all();
         $data['phone'] = $this->clean($data['phone']);
-        $data['password'] = Hash::make($data['password']);
+        if ($request->has('image')) {
+            if (file_exists(public_path('assets/uploads/users/' . $user->image))) {
+                unlink(public_path('assets/uploads/users/' . $user->image));
+            }
+            $data['image'] = $this->uploadOne($request->image, 'users', null, null);
+        }
         $user->update($data);
 
-        return redirect()->route('users.index')->with("success", trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.users.index')->with("success", trans('dashboard.It was done successfully!'));
     }
 
 
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('dashboard.users.index');
+        return redirect()->route('dashboard.users.index')->with("success", trans('dashboard.It was done successfully!'));
 
     }
 

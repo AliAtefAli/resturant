@@ -84,4 +84,6 @@ class SlidersController extends Controller
 
         return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.slider.updated successfully'));
     }
+
+
 }

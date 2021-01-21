@@ -104,7 +104,6 @@ return [
         "Created At" => "أنشئت في",
         "Description In Arabic" => "الوصف باللغة العربية",
         "Description In English" => "الوصف باللغة الإنجليزية",
-        'Description In Turkish' => 'الوصف باللغه التركيه',
         "Image" => "صورة",
         "Inbox" => "صندوق الوارد",
         "Latest Orders" => "آخر الطلبات",
@@ -178,6 +177,9 @@ return [
         "phone" => "هاتف",
         "shipped" => "شحنها",
         'In progress' => 'جاري التجهيز',
+        'Make as shipped' => 'جعله كمشحون',
+        'Make as In Progress' => 'جعله جاري التجهيز',
+        'Make as Rejected' => 'جعله كمرفوض',
         "show" => "عرض",
         "show order" => "عرض الطلب"
     ],
@@ -242,6 +244,8 @@ return [
     "settings" => [
         'Site Description Arabic' => 'وصف الموقع باللغة العربية',
         'Site Description English' => 'وصف الموقع باللغة الإنجليزية',
+        'Site Who are we Arabic' => 'من نحن باللغة العربية',
+        'Site Who are we English' => 'من نحن باللغة الإنجليزية',
         'Site About Arabic' => 'عن الموقع باللغه العربيه',
         'Site About English' => 'عن الموقع باللغه الإنجليزية',
         'Site Policies Arabic' => 'سياسات الموقع باللغه العربيه',
@@ -319,7 +323,7 @@ return [
         "Password" => "كلمه السر",
         "Select User Role" => "حدد دور المستخدم",
         "Select User Status" => "حدد حالة الستخدم",
-        "address" => "عنوان",
+        "address" => "عنوان المستخدم",
         "admin" => "مشرف",
         "edit user" => "تحرير العضو",
         "Delete user" => "حذف العضو",
@@ -360,5 +364,10 @@ return [
         'LinkedIn' => 'LinkedIn',
         'SnapChat' => 'SnapChat',
         'Edit Social links' => 'تعديل لينكات التواصل',
+    ],
+    'News Letter' => [
+        'News Letter' => 'النشرة الإخبارية',
+        'Message' => 'نص الخبر',
+        'E-mails' => 'الايميلات',
     ],
 ];

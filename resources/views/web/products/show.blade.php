@@ -7,8 +7,7 @@
 
 @section('content')
 
-    <!--Start Singe Product-->
-
+{{--    <div class="addthis_inline_share_toolbox_20m8" style="display: block"></div>--}}
     <div class="single-product single-product1">
         <img src="{{asset('web_files/images/flower.png')}}" class="line-shep"/>
         <div class="container">
@@ -18,9 +17,6 @@
                         src="@if($product->images->count() > 0){{asset('assets/uploads/products/' . $product->images->first()->path)}} @endif">
                     <a href="{{ route('products.makeFav', $product->id) }}" class="fiv">
                         <i class="fas fa-heart"></i>
-                    </a>
-                    <a href="#" class="shear">
-                        <i class="fas fa-share-alt"></i>
                     </a>
                 </div>
                 <div class="img-pro-contain">
@@ -42,7 +38,8 @@
             <p class="price">
                 <span class="mx-3 text-dark">{{ __('site.Total') }} :</span>
                 <span id="total" data-value="{{ $product->price }}">{{ $product->price }}  </span>
-                @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }}
+                @if(isset($setting[app()->getLocale() . '_currency']))
+                    {{ $setting[app()->getLocale() . '_currency'] }}
                 @endif
             </p>
             <div class="number-of-product-section">
@@ -50,7 +47,7 @@
                     @csrf
                     <div class="container-form">
                         <span class="plus">+</span>
-                        <input type="text" name="qty" class="qty" value="1">
+                        <input type="text" name="qty" class="qty" value="1" readonly>
                         <span class="munas">-</span>
                     </div>
                     <p class="text-product">{!! $product->description !!}</p>
@@ -108,5 +105,7 @@
             }
         });
 
-    </script>
+    </script><!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-600947398306150d"></script>
+
 @endsection

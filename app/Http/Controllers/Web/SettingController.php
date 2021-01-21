@@ -7,6 +7,7 @@ use App\Http\Requests\SaveRateRequest;
 use App\Http\Requests\SendComplaintRequest;
 use App\Models\Complaint;
 use App\Models\Message;
+use App\Models\Product;
 use App\Models\Question;
 use App\Models\Rate;
 use Illuminate\Http\Request;
@@ -26,7 +27,9 @@ class SettingController extends Controller
 
     public function complaint()
     {
-        return view('web.settings.complaints');
+        $featured_products = Product::whereFeatured(1)->get();
+
+        return view('web.settings.complaints',compact('featured_products'));
     }
 
     public function sendComplaint(SendComplaintRequest $request)

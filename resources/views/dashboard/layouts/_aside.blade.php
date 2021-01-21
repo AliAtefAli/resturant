@@ -22,6 +22,10 @@
                         class="menu-title"
                         data-i18n="">{{trans('dashboard.discounts.discounts')}}</span></a>
             <li class=" nav-item">
+            <li class=" nav-item"><a href="{{ route('dashboard.news.letter') }}"><i class="la la-newspaper-o"></i><span
+                        class="menu-title"
+                        data-i18n="">{{trans('dashboard.News Letter.News Letter')}}</span></a>
+            <li class=" nav-item">
                 <a href="#">
                     <i class="la la-tags"></i>
                     <span class="menu-title" data-i18n="">{{trans('dashboard.main.orders')}}</span>

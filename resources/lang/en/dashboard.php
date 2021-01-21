@@ -170,6 +170,9 @@ return [
         'phone' => 'Phone',
         'shipped' => 'Shipped',
         'In progress' => 'In progress',
+        'Make as shipped' => 'Make as Shipped',
+        'Make as In Progress' => 'Make as In Progress',
+        'Make as Rejected' => 'Make as Rejected',
         'show' => 'Show',
         'show order' => 'show order',
         'payment status' => 'Payment Status',
@@ -251,6 +254,8 @@ return [
         'Phone Number' => 'Phone Number',
         'Site Description Arabic' => 'Site Arabic Description',
         'Site Description English' => 'Site English Description',
+        'Site Who are we Arabic' => 'Site Arabic Who are we',
+        'Site Who are we English' => 'Site English Who are we',
         'Site About Arabic' => 'Site Arabic About',
         'Site About English' => 'Site English About',
         'Site Policies Arabic' => 'Site Arabic Policies',
@@ -310,7 +315,7 @@ return [
         'Password' => 'Password',
         'Select User Role' => 'Select User Role',
         'Select User Status' => 'Select User Status',
-        'address' => 'Address',
+        'address' => 'User Address',
         'Status' => 'Status',
         'admin' => 'Admin',
         'User' => 'User',
@@ -355,5 +360,10 @@ return [
         'LinkedIn' => 'LinkedIn',
         'SnapChat' => 'SnapChat',
         'Edit Social links' => 'Edit Social links',
+    ],
+    'News Letter' => [
+        'News Letter' => 'News Letter',
+        'Message' => 'News Text',
+        'E-mails' => 'E-mails'
     ],
 ];

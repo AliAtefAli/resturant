@@ -23,10 +23,9 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
-        $setting = Setting::first();
-
-        return view('dashboard.orders.show', compact('order', 'setting'));
-
+//        $setting = Setting::first();
+//
+//        return view('dashboard.orders.show', compact('order', 'setting'));
 
     }
 

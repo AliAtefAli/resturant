@@ -14,9 +14,9 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = auth()->user()->orders;
+        $orders = auth()->user()->orders->load('products');
         $featured_products = Product::whereFeatured(1)->get();
-
+// dd($orders[0]->products);
         return view('web.orders.index', compact('orders', 'featured_products'));
     }
 

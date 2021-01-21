@@ -1,26 +1,27 @@
 @extends('dashboard.layouts.app')
 @section('content')
     <div class="content-wrapper">
-    <!--content wrapper -->
-    <div class="content-header row">
-        <div class="content-header-left col-md-6 col-12 mb-2">
-            <h1 class="content-header-title">{{trans('dashboard.main.messages')}}</h1>
-            <div class="row breadcrumbs-top">
-                <div class="breadcrumb-wrapper col-12">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a
-                                href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
-                        </li>
-                        <li class="breadcrumb-item active">{{trans('dashboard.main.messages')}}
-                        </li>
-                    </ol>
+        <!--content wrapper -->
+        <div class="content-header row">
+            <div class="content-header-left col-md-6 col-12 mb-2">
+                <h1 class="content-header-title">{{trans('dashboard.main.messages')}}</h1>
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a
+                                    href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
+                            </li>
+                            <li class="breadcrumb-item active">{{trans('dashboard.main.messages')}}
+                            </li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
         <!-- end of content header -->
 
+        @include('dashboard.partials._alert')
         <!--content body -->
         <div class="content-body">
             <!-- Description -->
@@ -64,11 +65,18 @@
                                                             <th>{{ $message->message }}</th>
                                                             <th>{{ ($message->answer) ?? '' }}</th>
                                                             <td>
-                                                                <a href="#" class="btn btn-success btn-sm" data-toggle="modal" data-target="#replySMS">{{ trans('dashboard.complaints.SMS Reply') }}</a>
-                                                                <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#reply-email">{{ trans('dashboard.complaints.email Reply') }}</a>
-                                                                <a href="#" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reply-notification">{{ trans('dashboard.complaints.Notification Reply') }}</a>
+                                                                <a href="#" class="btn btn-success btn-sm"
+                                                                   data-toggle="modal"
+                                                                   data-target="#replySMS">{{ trans('dashboard.complaints.SMS Reply') }}</a>
+                                                                <a href="#" class="btn btn-primary btn-sm"
+                                                                   data-toggle="modal"
+                                                                   data-target="#reply-email">{{ trans('dashboard.complaints.email Reply') }}</a>
+                                                                <a href="#" class="btn btn-secondary btn-sm"
+                                                                   data-toggle="modal"
+                                                                   data-target="#reply-notification">{{ trans('dashboard.complaints.Notification Reply') }}</a>
 
-                                                                <a href="{{ route('dashboard.message.show', $message) }}" class="btn btn-danger btn-sm" title="">
+                                                                <a href="{{ route('dashboard.message.show', $message) }}"
+                                                                   class="btn btn-danger btn-sm" title="">
                                                                     <i class="ft ft-eye"></i> {{ trans('dashboard.messages.show') }}
                                                                 </a>
 

@@ -54,3 +54,7 @@ Route::get('settings/general', 'SettingController@general')->name('settings.gene
 Route::get('settings/social', 'SettingController@social')->name('settings.social');
 Route::get('settings/api', 'SettingController@api')->name('settings.api');
 Route::put('settings/Site', 'SettingController@update')->name('settings.update');
+
+
+Route::get('/news_letter', 'SettingController@newsLetter')->name('news.letter');
+Route::post('/send_news_letter', 'SettingController@sendNewsLetter')->name('send.news.letter');

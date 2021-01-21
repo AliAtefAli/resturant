@@ -24,6 +24,15 @@ class MessageController extends Controller
 
     public function replyNotification(Request $request, $id)
     {
+        $validation = \Validator::make($request->all(), [
+            'answer' => 'required',
+        ],[
+            'answer.required' => (trans('validation.Message Required')),
+        ]);
+        if ($validation->fails()) {
+            return back()->with('error', $validation->errors()->first());
+        }
+
         $message = Message::find($id);
         $message->update([
             'answer' => $request->answer,
@@ -31,11 +40,19 @@ class MessageController extends Controller
         ]);
         // Send Notification
 
-        return back()->with('success', trans('dashboard.message.answered successfully'));
+        return back()->with('success', trans('dashboard.It was done successfully!'));
     }
 
     public function replySMS(Request $request, $id)
     {
+        $validation = \Validator::make($request->all(), [
+            'answer' => 'required',
+        ],[
+            'answer.required' => (trans('validation.Message Required')),
+        ]);
+        if ($validation->fails()) {
+            return back()->with('error', $validation->errors()->first());
+        }
         $message = Message::find($id);
         $message->update([
             'answer' => $request->answer,
@@ -43,11 +60,19 @@ class MessageController extends Controller
         ]);
         // Send SMS
 
-        return back()->with('success', trans('dashboard.message.answered successfully'));
+        return back()->with('success', trans('dashboard.It was done successfully!'));
     }
 
     public function replyEmail(Request $request, $id)
     {
+        $validation = \Validator::make($request->all(), [
+            'answer' => 'required',
+        ],[
+            'answer.required' => (trans('validation.Message Required')),
+        ]);
+        if ($validation->fails()) {
+            return back()->with('error', $validation->errors()->first());
+        }
         $message = Message::find($id);
         $message->update([
             'answer' => $request->answer,
@@ -55,7 +80,7 @@ class MessageController extends Controller
         ]);
         // Send mail
 
-        return back()->with('success', trans('dashboard.message.answered successfully'));
+        return back()->with('success', trans('dashboard.It was done successfully!'));
     }
 
     public function makeAsRead($id)
@@ -65,4 +90,5 @@ class MessageController extends Controller
 
         return back();
     }
+
 }

@@ -9,13 +9,14 @@ use App\Models\Product;
 use App\Models\Subscription;
 use App\Models\SubscriptionUser;
 use App\Models\User;
+use App\Traits\Uploadable;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-
+    use Uploadable;
     public function index()
     {
         $featured_products = Product::whereFeatured(1)->get();
@@ -26,6 +27,12 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $data = $request->all();
+        if ($request->has('image')) {
+            if (file_exists(public_path('assets/uploads/users/' . $user->image))) {
+                unlink(public_path('assets/uploads/users/' . $user->image));
+            }
+            $data['image'] = $this->uploadOne($request->image, 'users', null, null);
+        }
         $data['phone'] = $this->clean($data['phone']);
         $user->update($data);
 
@@ -68,15 +75,14 @@ class UserController extends Controller
 
     public function subscriptions()
     {
-        $subscribed_packages =  auth()->user()->subscriptions()
-            ->where('start_date','<',Carbon::today())
-            ->orWhere('end_date','>',Carbon::today())
+        $subscribed_packages = auth()->user()->subscriptions()
+            ->where('start_date', '<', Carbon::today())
+            ->orWhere('end_date', '>', Carbon::today())
             ->get();
 
 
-        $finished_subscribed_packages =  auth()->user()->subscriptions()
-            ->where('start_date','!<',Carbon::today())
-            ->orWhere('end_date','!>',Carbon::today())
+        $finished_subscribed_packages = auth()->user()->subscriptions()
+            ->where('end_date', '<', Carbon::today())
             ->get();
 
         return view('web.user_subscriptions.index', compact('subscribed_packages', 'finished_subscribed_packages'));
@@ -84,7 +90,7 @@ class UserController extends Controller
 
     public function notifications()
     {
-        $notifications = auth()->user()->notifications;
+        $notifications = auth()->user()->notifications->where('type', '!=', 'App\Notifications\NewOrderNotification');
         $notifications->markAsRead();
 
         return view('web.notifications.index', compact('notifications'));

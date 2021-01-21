@@ -25,6 +25,14 @@ class ComplaintController extends Controller
 
     public function replyNotification(Request $request, $id)
     {
+        $validation = \Validator::make($request->all(), [
+            'answer' => 'required',
+        ],[
+            'answer.required' => (trans('validation.Message Required')),
+        ]);
+        if ($validation->fails()) {
+            return back()->with('error', $validation->errors()->first());
+        }
         $complaint = Complaint::find($id);
         $complaint->update([
             'answer' => $request->answer,
@@ -32,12 +40,19 @@ class ComplaintController extends Controller
         ]);
         // Send Notification
 
-        return back()->with('success', trans('dashboard.complaint.answered successfully'));
+        return back()->with('success', trans('dashboard.It was done successfully!'));
     }
 
     public function replySMS(Request $request, $id)
     {
-        // dd($request->all(), $id);
+        $validation = \Validator::make($request->all(), [
+            'answer' => 'required',
+        ],[
+            'answer.required' => (trans('validation.Message Required')),
+        ]);
+        if ($validation->fails()) {
+            return back()->with('error', $validation->errors()->first());
+        }
         $complaint = Complaint::find($id);
         $complaint->update([
             'answer' => $request->answer,
@@ -45,11 +60,19 @@ class ComplaintController extends Controller
         ]);
         // Send SMS
 
-        return back()->with('success', trans('dashboard.complaint.answered successfully'));
+        return back()->with('success', trans('dashboard.It was done successfully!'));
     }
 
     public function replyEmail(Request $request, $id)
     {
+        $validation = \Validator::make($request->all(), [
+            'answer' => 'required',
+        ],[
+            'answer.required' => (trans('validation.Message Required')),
+        ]);
+        if ($validation->fails()) {
+            return back()->with('error', $validation->errors()->first());
+        }
         $complaint = Complaint::find($id);
         $complaint->update([
             'answer' => $request->answer,
@@ -57,7 +80,7 @@ class ComplaintController extends Controller
         ]);
         // Send mail
 
-        return back()->with('success', trans('dashboard.complaint.answered successfully'));
+        return back()->with('success', trans('dashboard.It was done successfully!'));
     }
 
     public function makeAsRead($id)

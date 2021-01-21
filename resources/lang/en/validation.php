@@ -151,6 +151,8 @@ return [
     'field_min_3' => 'Field must be 3-digits at least',
     'field_image' => 'Field must an image',
     'field_required_name' => 'Name field is required',
+    'field_required_emails' => 'Please Select emails',
+    'Message Required' => 'Please Enter your Message',
     'field_required_ar_name' => 'Arabic name field is required',
     'field_required_en_name' => 'English Name field is required',
     'field_policies_ar_name' => 'Arabic policies field is required',

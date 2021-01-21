@@ -17,6 +17,7 @@ class StoreUserRequest extends FormRequest
             'password' => 'required|confirmed|min:6',
             'password_confirmation'=>'sometimes|required_with:password',
             'image' => 'image|mimes:jpg,jpeg,svg,png',
+            'address' => 'required'
         ];
     }
 
@@ -36,6 +37,7 @@ class StoreUserRequest extends FormRequest
             'password.min' =>(trans('validation.field_min_6')),
             'password.confirmed' => (trans('validation.password_confirmed')),
             'image.image' => (trans('validation.field_image')),
+            'address.required' => (trans('validation.field_required_address')),
         ];
     }
 

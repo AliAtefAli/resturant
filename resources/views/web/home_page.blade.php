@@ -157,7 +157,7 @@
                             <div class="info-person"><span class="name-customer">{{$rate->user->name}}</span>
                                 <div class="stars">
                                     @for($i = 0; $i < 5; $i++)
-                                        <span><i class="fas fa-star{{ $rate->amount <= $i ? '-o' : '' }}"></i></span>
+                                        <span><i class="la la-star{{ $rate->amount <= $i ? '-o' : '' }}"></i></span>
                                     @endfor
                                 </div>
                             </div>

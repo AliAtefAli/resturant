@@ -19,6 +19,9 @@
 
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
+    <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
+          rel="stylesheet">
+
     @if(lang() == 'en')
         <link rel="stylesheet" href="{{asset('web_files/css/en.css')}}">
     @endif

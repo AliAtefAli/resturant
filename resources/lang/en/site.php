@@ -165,4 +165,6 @@ return [
     ],
     'User not found' => 'User not found',
     'Password Changed Successfully' => 'Password Changed Successfully',
+    'join us' => 'Join us',
+    'Enter your email address' => 'Enter your email',
 ];

@@ -8,10 +8,15 @@
         @include('web.layouts._sidebar')
         <div class="user-info">
             <div class="img-user">
-                <form method="POST" action="{{ route('update.profile', auth()->user()) }}" class="form-pic-select">
+                <form method="POST" action="{{ route('update.profile', auth()->user()) }}" class="form-pic-select" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-
+                    <div class="imgg">
+                        <i class="fas fa-pencil-alt"></i>
+                        <input id="img-user" type="file" name="image" class="img-input">
+                        <img src="@if(auth()->user()->image) {{ asset('assets/uploads/users/' . auth()->user()->image) }} @else {{ asset('web_files/images/person.png') }}  @endif"
+                             class="img-preview">
+                    </div>
                     <div class="container">
                         <div class="pic-select pic-select-auth">
                             <p class="name-input">
@@ -75,6 +80,7 @@
 
 @endsection
 @section('scripts')
+    <script src="{{ asset('dashboard_files/assets/js/image-review.js') }}"></script>
     @include('partials.google-map', ['lat' => auth()->user()->lat, 'lng' => auth()->user()->lng])
 @endsection
 

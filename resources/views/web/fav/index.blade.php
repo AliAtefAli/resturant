@@ -25,7 +25,12 @@
                                     </div>
                                     <div class="info-pro">
                                         <span class="name-product">{{$favorite->product->name}}</span>
-                                        <span class="price">{{$favorite->product->price}} رس</span></div>
+                                        <span class="price">
+                                            {{$favorite->product->price}}
+                                            @if(isset($setting[app()->getLocale() . '_currency']))
+                                                {{ $setting[app()->getLocale() . '_currency'] }}
+                                            @endif
+                                        </span></div>
                                 </a>
                             </div>
                         @endforeach
