@@ -19,7 +19,7 @@
                 <div class="row section1-product-row">
                     @foreach($category->products as $product)
                     <div class="col-md-6 col-lg-4 col-xl-3">
-                            <a href="#" class="item wow fadeInDown">
+                            <a href="{{ route('products.show', $product) }}" class="item wow fadeInDown">
                                 <div class="img">
                                     @foreach($product->images as $image)
                                         <img src="/assets/uploads/products/{{$image->path}}">

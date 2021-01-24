@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\Admin;
+use App\Http\Middleware\HtmlMinifier;
 use App\Http\Middleware\Localization;
 use App\Http\Middleware\TrackLastActiveAt;
 use App\Http\Middleware\UserStatus;
@@ -42,6 +43,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             TrackLastActiveAt::class,
             UserStatus::class,
+            HtmlMinifier::class
         ],
 
         'api' => [

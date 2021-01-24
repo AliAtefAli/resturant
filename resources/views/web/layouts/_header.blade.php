@@ -60,7 +60,10 @@
         </a>
 
         <a href="{{ route('carts') }}">
-            <i class="fas fa-shopping-cart"></i>
+            <i class="fas fa-shopping-cart"> <span style="color: #CC5641;" id="cart-quantity">
+             {{ Cart::count() }}
+            </span></i>
+
         </a>
         <a href="{{ route('users.fav') }}">
             <i class="fas fa-heart"></i>
@@ -128,7 +131,7 @@
         <div class="nav-aa">
             <div class="row">
                 <div class="col-2 col-lg-2">
-                    <a class="logo" href="#">
+                    <a class="logo" href="{{route('home')}}">
                         @if(isset($setting['logo']))
                             <img src="{{asset('assets/uploads/settings/' . $setting['logo'])}}">
                         @endif

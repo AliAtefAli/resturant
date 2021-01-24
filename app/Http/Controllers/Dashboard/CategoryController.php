@@ -78,7 +78,7 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
-        if ($category->categories->count() > 0 ) {
+        if ($category->categories->count() > 0  || $category->products->count() > 0) {
             return redirect()->route('dashboard.categories.index')->with('error', trans('dashboard.category.Sorry this Category has sub categories'));
         }
 

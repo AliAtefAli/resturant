@@ -27,8 +27,9 @@ class Order extends Model
     {
         $setting = Setting::all()->pluck('value', 'key');
         // remove the delimiter
-        $total = explode(',', Cart::total());
+        $total = explode(',', Cart::instance('cart')->total());
         $billing_total = implode('', $total);
+
         $request['billing_total'] = $billing_total - (floatval($setting['delivery_price'])) ?? 0;
         $request['user_id'] = auth()->user()->id;
 

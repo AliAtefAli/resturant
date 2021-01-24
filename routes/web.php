@@ -15,8 +15,8 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
     Route::get('/terms', 'SettingController@terms')->name('terms');
 
     Route::resource('products', 'ProductController');
-    Route::post('products/addToCart/{product}', 'ProductController@addToCart')->name('products.addToCart');
-    Route::get('cart/remove/{row}', 'ProductController@removeFromCart')->name('cart.remove');
+    Route::post('products/addToCart/{product}', 'CartController@addToCart')->name('products.addToCart');
+    Route::get('cart/remove/{row}', 'CartController@removeFromCart')->name('cart.remove');
 
     Route::get('product/makeFav/{id}', 'UserController@makeFav')->name('products.makeFav');
     Route::get('product/makeUnFav/{id}', 'UserController@makeUnFav')->name('products.makeUnFav');

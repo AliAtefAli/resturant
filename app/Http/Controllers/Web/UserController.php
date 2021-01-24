@@ -19,7 +19,8 @@ class UserController extends Controller
     use Uploadable;
     public function index()
     {
-        $featured_products = Product::whereFeatured(1)->get();
+        $featured_products = Product::with('images')
+        ->whereFeatured(1)->get();
 
         return view('web.users.index', compact('featured_products'));
     }
@@ -76,12 +77,14 @@ class UserController extends Controller
     public function subscriptions()
     {
         $subscribed_packages = auth()->user()->subscriptions()
+            ->with('translations', 'products.translations', 'products')
             ->where('start_date', '<', Carbon::today())
             ->orWhere('end_date', '>', Carbon::today())
             ->get();
 
 
         $finished_subscribed_packages = auth()->user()->subscriptions()
+            ->with('products', 'products.translations', 'translations')
             ->where('end_date', '<', Carbon::today())
             ->get();
 

@@ -43,7 +43,7 @@
                                 <div class="form-body">
                                     <div class="form-group row {{ $errors->has('url') ? ' has-error' : '' }}">
                                         <label class="col-md-2"
-                                               for="url">{{ trans('dashboard.slider.Status')}}</label>
+                                               for="url">{{ trans('dashboard.slider.Url')}}</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="url" name="url" value="{{ old('url') }}">
                                         </div>
@@ -55,7 +55,7 @@
                                         <label class="col-md-2"
                                                for="ordered">{{ trans('dashboard.slider.Order')}}</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="number" name="ordered" value="{{ old('orderd') }}">
+                                            <input class="form-control" type="number" name="ordered" value="{{ old('orderd') }}" min="1">
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +74,7 @@
                                 </div>
 
                                 <div class="form-group row {{ $errors->has('image') ? ' has-error' : '' }}">
-                                    <label class="col-md-2" for="image">{{trans('dashboard.slider.Url')}}</label>
+                                    <label class="col-md-2" for="image">{{trans('dashboard.slider.Slider Image')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative has-icon-left">
                                             <input type="file" id="image" class="form-control image img-input"

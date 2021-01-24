@@ -11,7 +11,8 @@ class MenuController extends Controller
 
     public function index()
     {
-        $featured_products = Product::whereFeatured(1)->get();
+        $featured_products = Product::with('images')
+        ->whereFeatured(1)->get();
 
         return view('web.menus.index',compact('featured_products'));
     }

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @if(Cart::count() > 0)
+    @if(Cart::instance('cart')->count() > 0)
         <div class="tabal-cart">
             <img src="{{asset('web_files/images/flower.png')}}" class="line-shep"/>
             <div class="container">
@@ -26,7 +26,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach(Cart::content() as $cart)
+                        @foreach(Cart::instance('cart')->content() as $cart)
                             <tr>
                                 <td class="remove-product">
                                     <a href="{{ route('cart.remove', $cart->rowId) }}" class="text-danger">
@@ -140,7 +140,7 @@
                         </div>
                         <div>
                             <span>
-                                {{Cart::total()}}
+                                {{Cart::instance('cart')->total()}}
                                 @if(isset($setting[app()->getLocale() . '_currency']))
                                     {{ $setting[app()->getLocale() . '_currency'] }}
                                 @endif

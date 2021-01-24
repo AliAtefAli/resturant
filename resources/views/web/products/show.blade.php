@@ -15,9 +15,11 @@
                 <div class="img-pro">
                     <img
                         src="@if($product->images->count() > 0){{asset('assets/uploads/products/' . $product->images->first()->path)}} @endif">
-                    <a href="{{ route('products.makeFav', $product->id) }}" class="fiv">
-                        <i class="fas fa-heart"></i>
-                    </a>
+                    @if(auth()->check())
+                        <a href="{{ route('products.makeFav', $product->id) }}" class="fiv">
+                            <i class="fas fa-heart"></i>
+                        </a>
+                    @endif
                 </div>
                 <div class="img-pro-contain">
                     @if($product->images->count() > 1)
@@ -43,19 +45,21 @@
                 @endif
             </p>
             <div class="number-of-product-section">
-                <form action="{{ route('products.addToCart', $product) }}" method="post">
-                    @csrf
+
+                <form>
                     <div class="container-form">
                         <span class="plus">+</span>
-                        <input type="text" name="qty" class="qty" value="1" readonly>
+                        <input type="text" name="qty" id="quantity" class="qty" value="1" readonly>
                         <span class="munas">-</span>
                     </div>
                     <p class="text-product">{!! $product->description !!}</p>
-                    <button type="submit" class="add-to-cart" product="{{ $product }}">
+                    <button type="submit" class="add-to-cart" data-id="{{ $product->id }}">
                         {{ __('site.Add to cart') }}
                         <i class="fas fa-shopping-cart"></i>
                     </button>
                 </form>
+
+
             </div>
         </div>
     </div>
@@ -107,5 +111,36 @@
 
     </script><!-- Go to www.addthis.com/dashboard to customize your tools -->
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-600947398306150d"></script>
+    <script>
 
+        $(".add-to-cart").click(function (e) {
+            e.preventDefault();
+
+            var id = $(this).attr("data-id");
+            var qty = $('#quantity').val();
+
+            $.ajax({
+                url: "/products/addToCart/" + id,
+                method: "POST",
+
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    product: id,
+                    qty: qty,
+                },
+
+                success: function (response) {
+                    $("#cart-quantity").text(response.quantity);
+                    toastr.success(response.success, {
+                        timeOut: "50000",
+                    })
+                },
+                error: function (response) {
+                    toastr.warning(response.error, "Progress Bar", {
+                        progressBar: !0
+                    });
+                },
+            });
+        });
+    </script>
 @endsection

@@ -19,11 +19,13 @@ class HomeController extends Controller
     public function index()
     {
         $sliders = Slider::where('status', 'active')->get();
+        // dd($sliders);
         $subscriptions = Subscription::with('translations')->get();
-        $categories = Category::whereNull('category_id')->with('translations', 'categories', 'products')->get();
-        $rates = Rate::all();
-        $products = Product::with('images')->limit(10)->get();
-        $featured_products = Product::whereFeatured(1)->get();
+        $categories = Category::whereNull('category_id')
+            ->with('translations', 'categories','categories.translations','products','products.translations')->get();
+        $rates = Rate::with('user')->limit(10)->get();
+        $products = Product::with('images', 'translations')->limit(10)->get();
+        $featured_products = Product::with('images')->whereFeatured(1)->limit(10)->get();
 
         return view('web.home_page', compact('sliders', 'subscriptions', 'categories', 'rates', 'featured_products', 'products'));
     }

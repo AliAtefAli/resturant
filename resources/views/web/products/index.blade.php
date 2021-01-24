@@ -16,7 +16,7 @@
                                 <a href="{{ route('products.show', $product) }}" class="item wow fadeInDown">
                                     <div class="img">
                                         @foreach($product->images as $image)
-                                            <img src="/assets/uploads/products/{{$image->path}}">
+                                            <img lazy="loading" src="/assets/uploads/products/{{$image->path}}">
                                         @endforeach
                                     </div>
                                     <div class="info-pro"><span class="name-product">{{$product->name}}</span>

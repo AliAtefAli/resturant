@@ -24,11 +24,11 @@ class StoreCheckoutRequest extends FormRequest
     public function rules()
     {
         return [
-            'billing_name' => ['required'],
+            'billing_name' => ['required','string'],
             'billing_email' => ['required', 'email'],
-            'billing_address' => ['required'],
-            'billing_phone' => ['required'],
-            'payment_method' => ['required']
+            'billing_address' => ['required','string'],
+            'billing_phone' => ['required','string'],
+            'payment_method' => ['required','string']
         ];
     }
 
