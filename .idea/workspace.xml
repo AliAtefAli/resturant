@@ -20,36 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef31ec61-9c2d-4a2f-91c2-d668d1058e97" name="Default Changelist" comment="Final commit">
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/HtmlMinifier.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/debugbar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/uploads/sliders/4f9531af-f2d0-4d70-8b52-e08cc8650a8b.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/uploads/sliders/71f2a575-f182-40cd-82f2-7f6ac6322c16.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/debugbar/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/example-app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/example-app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/app.js.LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/web_files/css/bundle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/web_files/js/bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/web_files/js/bundle.js.LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/web_files/js/wow.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/MenuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/MenuController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreCheckoutRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreCheckoutRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/sliders/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/sliders/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/carts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/carts/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/categories/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/categories/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/layouts/_header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/layouts/_header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/products/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/products/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/products/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,24 +175,26 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../quemny" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/web_files/js" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\resturant\public\web_files\js" />
       <recent name="C:\xampp\htdocs\resturant\resources\views\partials" />
       <recent name="C:\xampp\htdocs\resturant\resources\views\web\settings" />
       <recent name="C:\xampp\htdocs\resturant\resources\views\web\notifications" />
       <recent name="C:\xampp\htdocs\resturant\resources\views\web\layouts" />
-      <recent name="C:\xampp\htdocs\resturant\app\Models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\resturant\resources\views\web\layouts" />
@@ -261,7 +250,8 @@
       <workItem from="1611126595727" duration="30288000" />
       <workItem from="1611216143706" duration="23792000" />
       <workItem from="1611250883533" duration="820000" />
-      <workItem from="1611475121191" duration="14626000" />
+      <workItem from="1611475121191" duration="17379000" />
+      <workItem from="1611560155335" duration="3234000" />
     </task>
     <task id="LOCAL؜٠٠٠٠١" summary="Finish Dashboard">
       <created>1610021113400</created>
@@ -299,7 +289,13 @@
       <option name="presentableId" value="LOCAL؜٠٠٠٠٦" />
       <updated>1611241585570</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL؜٠٠٠٠٧" summary="Final commit">
+      <created>1611498124128</created>
+      <option name="number" value="LOCAL؜٠٠٠٠٧" />
+      <option name="presentableId" value="LOCAL؜٠٠٠٠٧" />
+      <updated>1611498124128</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -408,10 +404,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1611493403351" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1611495692215">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1611563360668">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1611495692215" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1611563360668" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

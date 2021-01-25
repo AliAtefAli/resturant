@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="tajribiudinasur.aait-sa.com " id="43b7b72b-82a3-4bde-927e-e229b0db6476" port="1289" customName="tajribiu" nameFormat="CUSTOM" username="tajribiu">
+        <option name="customName" value="tajribiu" />
+      </sshConfig>
+    </configs>
+  </component>
+</project>

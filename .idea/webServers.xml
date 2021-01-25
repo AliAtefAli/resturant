@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7e2bf122-dffa-4f47-94c8-20407ac1a2bc" name="tajribiu" url="http://tajribiudinasur.aait-sa.com ">
+        <fileTransfer rootFolder="/home/tajribiu/public_html" accessType="SFTP" host="tajribiudinasur.aait-sa.com " port="1289" sshConfigId="43b7b72b-82a3-4bde-927e-e229b0db6476" sshConfig="tajribiu">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
