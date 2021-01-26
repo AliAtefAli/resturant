@@ -9,11 +9,11 @@
 
 {{--    <div class="addthis_inline_share_toolbox_20m8" style="display: block"></div>--}}
     <div class="single-product single-product1">
-        <img src="{{asset('web_files/images/flower.png')}}" class="line-shep"/>
+        <img lazy="loading" src="{{asset('web_files/images/flower.png')}}" class="line-shep"/>
         <div class="container">
             <div class="product-slider-img">
                 <div class="img-pro">
-                    <img
+                    <img lazy="loading"no
                         src="@if($product->images->count() > 0){{asset('assets/uploads/products/' . $product->images->first()->path)}} @endif">
                     @if(auth()->check())
                         <a href="{{ route('products.makeFav', $product->id) }}" class="fiv">
@@ -25,7 +25,7 @@
                     @if($product->images->count() > 1)
                         @foreach($product->images as $index => $image)
                             <div class="img-pro img-sper @if($index == 0) active @endif">
-                                <img src="{{asset('assets/uploads/products/' . $image->path)}}">
+                                <img lazy="loading" src="{{asset('assets/uploads/products/' . $image->path)}}">
                             </div>
                         @endforeach
                     @endif
@@ -75,7 +75,7 @@
                 @foreach($related_products as $product)
                     <a href="{{ route('products.show', $product) }}" class="item wow fadeInDown">
                         <div class="img">
-                            <img
+                            <img lazy="loading"
                                 src="@if($product->images->count() > 1) {{asset('assets/uploads/products/' . $product->images->first()->path)}} @endif">
                         </div>
                         <div class="info-pro">

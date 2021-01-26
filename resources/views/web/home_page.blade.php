@@ -24,15 +24,15 @@
     <!--End Main Slider-->
     <!--Start Pace-->
     <div class="pace-section">
-        <img src="{{asset('web_files/images/flower.png')}}" class="line-shep"/>
+        <img lazy="loading" src="{{asset('web_files/images/flower.png')}}" class="line-shep"/>
         <div class="container">
             <h2 class="header-section wow zoomIn">
                 {{__('dashboard.subscriptions.Subscriptions')}}
             </h2>
             <div class="show-way">
                 {{__('site.Show style')}}
-                <span class="mulet"><img src="{{asset('web_files/images/mult.png')}}"></span>
-                <span class="single"><img src="{{asset('web_files/images/single.png')}}"></span>
+                <span class="mulet"><img lazy="loading" src="{{asset('web_files/images/mult.png')}}"></span>
+                <span class="single"><img lazy="loading" src="{{asset('web_files/images/single.png')}}"></span>
             </div>
             <div class="pace-items">
                 <div class="row justify-content-center">
@@ -59,7 +59,9 @@
     <!--Start Line-->
     <div class="line-section">
                 <span class="img">
-                        <img src="{{asset('web_files/images/logoo.png')}}">
+                    @if(isset($setting['logo']))
+                        <img lazy="loading" src="{{asset('assets/uploads/settings/' . $setting['logo'])}}">
+                    @endif
                     </span>
         <div class="container">
             <span></span>
@@ -131,7 +133,7 @@
                             <a href="{{ route('products.show', $product) }}" id="#{{$sub_category->id}}"
                                class="item wow fadeInDown">
                                 <div class="img">
-                                    <img
+                                    <img lazy="loading"
                                         src="@if($product->images->count() > 0){{ asset('assets/uploads/products/' . $product->images->first()->path ) }} @endif">
                                 </div>
                                 <div class="info-pro">
@@ -159,7 +161,7 @@
                 @foreach($rates as $rate)
                     <div class="item wow fadeInDown">
                         <div class="img">
-                            <img
+                            <img lazy="loading"
                                 src="@if(isset($rate->user->image)){{ asset('assets/uploads/users/' . $rate->user->image) }}@else {{ asset('web_files/images/person.png') }}@endif"
                                 width="90">
                         </div>

@@ -133,7 +133,7 @@
                 <div class="col-2 col-lg-2">
                     <a class="logo" href="{{route('home')}}">
                         @if(isset($setting['logo']))
-                            <img src="{{asset('assets/uploads/settings/' . $setting['logo'])}}">
+                            <img lazy="loading" src="{{asset('assets/uploads/settings/' . $setting['logo'])}}">
                         @endif
                     </a>
                 </div>
