@@ -20,23 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef31ec61-9c2d-4a2f-91c2-d668d1058e97" name="Default Changelist" comment="Final commit">
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/app.js.LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web_files/css/bundle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web_files/js/bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web_files/js/bundle.js.LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web_files/js/wow.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/home_page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/home_page.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/products/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/products/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +170,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/web_files/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../quemny" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -251,7 +237,8 @@
       <workItem from="1611216143706" duration="23792000" />
       <workItem from="1611250883533" duration="820000" />
       <workItem from="1611475121191" duration="17379000" />
-      <workItem from="1611560155335" duration="3234000" />
+      <workItem from="1611560155335" duration="8195000" />
+      <workItem from="1611646195309" duration="611000" />
     </task>
     <task id="LOCAL؜٠٠٠٠١" summary="Finish Dashboard">
       <created>1610021113400</created>
@@ -295,7 +282,13 @@
       <option name="presentableId" value="LOCAL؜٠٠٠٠٧" />
       <updated>1611498124128</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL؜٠٠٠٠٨" summary="last">
+      <created>1611565296224</created>
+      <option name="number" value="LOCAL؜٠٠٠٠٨" />
+      <option name="presentableId" value="LOCAL؜٠٠٠٠٨" />
+      <updated>1611565296224</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,7 +314,8 @@
     <MESSAGE value="Finish" />
     <MESSAGE value="Finish commit" />
     <MESSAGE value="Final commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final commit" />
+    <MESSAGE value="last" />
+    <option name="LAST_COMMIT_MESSAGE" value="last" />
   </component>
   <component name="WindowStateProjectService">
     <state x="493" y="242" key="#Composer" timestamp="1609335441878">
@@ -352,10 +346,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="537" y="244" key="Create Notification/0.0.1366.728@0.0.1366.728" timestamp="1611231600763" />
-    <state x="463" y="117" key="FileChooserDialogImpl" timestamp="1611496898031">
+    <state x="463" y="117" key="FileChooserDialogImpl" timestamp="1611567467429">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1611496898031" />
+    <state x="463" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1611567467429" />
     <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1609341754206">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -376,10 +370,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="487" y="85" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1611051453250" />
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1611241590144">
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1611565302579">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1611241590144" />
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1611565302579" />
     <state x="539" y="261" key="WebDeployment.AddServerDialog.v.1" timestamp="1611496995452">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -404,10 +398,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1611493403351" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1611563360668">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1611588040560">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1611563360668" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1611588040560" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,4 +1,14 @@
 @extends('web.layouts.app')
+<!--Start Loading-->
+<div class="loading">
+    <div>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<!--End Loading-->
 
 @section('content')
 

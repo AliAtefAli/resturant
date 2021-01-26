@@ -15,9 +15,7 @@
                         <div class="col-md-6 col-lg-4 col-xl-3">
                                 <a href="{{ route('products.show', $product) }}" class="item wow fadeInDown">
                                     <div class="img">
-                                        @foreach($product->images as $image)
-                                            <img lazy="loading" src="/assets/uploads/products/{{$image->path}}">
-                                        @endforeach
+                                            <img lazy="loading" src="@if($product->images->count() > 0)/assets/uploads/products/{{$product->images->first()->path}} @endif">
                                     </div>
                                     <div class="info-pro"><span class="name-product">{{$product->name}}</span>
                                         <span class="price">{{$product->price}} @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }} @endif
