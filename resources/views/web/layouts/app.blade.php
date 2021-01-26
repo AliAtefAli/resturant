@@ -5,17 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-{{--    <link rel="stylesheet" href="{{asset('web_files/css/bootstrap.min.css')}}">--}}
-    <!-- FontAwesome -->
-{{--    <link rel="stylesheet" href="{{asset('web_files/css/all.min.css')}}">--}}
-    <!--Owl Carousel-->
-{{--    <link rel="stylesheet" href="{{asset('web_files/css/owl.carousel.min.css')}}">--}}
-    <!--Animate-->
-{{--    <link rel="stylesheet" href="{{asset('web_files/css/animate.min.css')}}">--}}
-    <!-- Main Style -->
-{{--    <link rel="stylesheet" href="{{asset('web_files/css/style.css')}}">--}}
-
     <link rel="stylesheet" href="{{mix('web_files/css/bundle.css')}}">
     <link rel="shortcut icon" type="image/x-icon" href="@if(isset($setting['favicon'])){{asset('assets/uploads/settings/' . $setting['favicon'] )}} @else {{ asset('dashboard_files/app-assets/images/ico/favicon.ico') }} @endif">
 
