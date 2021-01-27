@@ -25,12 +25,6 @@ class Order extends Model
 
     public static function insertOrderDetails($request)
     {
-        $setting = Setting::all()->pluck('value', 'key');
-        // remove the delimiter
-        $total = explode(',', Cart::instance('cart')->total());
-        $billing_total = implode('', $total);
-
-        $request['billing_total'] = $billing_total - (floatval($setting['delivery_price'])) ?? 0;
         $request['user_id'] = auth()->user()->id;
 
         $order = Order::create($request);
@@ -52,5 +46,10 @@ class Order extends Model
         foreach ($admins as $admin) {
             $admin->notify(new NewOrderNotification($order));
         }
+    }
+
+    public function transactions()
+    {
+        return $this->morphMany(Transaction::class, "transactionable");
     }
 }

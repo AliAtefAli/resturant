@@ -140,7 +140,11 @@
                         </div>
                         <div>
                             <span>
-                                {{Cart::instance('cart')->total()}}
+                                @if(isset($setting['delivery_price']))
+                                    {!!  Cart::instance('cart')->total() + $setting['delivery_price'] !!}
+                                @else
+                                    {{Cart::instance('cart')->total() }}
+                                @endif
                                 @if(isset($setting[app()->getLocale() . '_currency']))
                                     {{ $setting[app()->getLocale() . '_currency'] }}
                                 @endif
@@ -164,21 +168,23 @@
                         {{ __('site.Confirm') }}
                     </button>
                 </form>
-                <form action="{{ route('order.store') }}" method="post" class="finsh-requet">
+                <form id="payment-form" action="{{ route('order.checkPayment') }}" method="post" class="finsh-requet">
                     @csrf
                     <p>
                         {{ __('site.Order.payment method') }}
                     </p>
                     <div>
                         <label>
-                            <input type="radio" name="payment_method" value="payment">
+                            <input id="payment" class="payment_method" type="radio" name="payment_method"
+                                   value="payment">
                             <span></span>
                             {{ __('site.Credit Card') }}
                         </label>
                     </div>
                     <div>
                         <label>
-                            <input type="radio" name="payment_method" value="on_delivery" checked>
+                            <input id="on_delivery" class="payment_method" type="radio" name="payment_method"
+                                   value="on_delivery" checked>
                             <span></span>
                             {{ __('site.On delivery') }}
                         </label>
@@ -190,7 +196,8 @@
                             {{__('site.Name')}}
                         </p>
                         <label class="input-style">
-                            <input type="text" name="billing_name" value="@if(auth()->check()) {{ auth()->user()->name }} @endif">
+                            <input type="text" name="billing_name"
+                                   value="@if(auth()->check()) {{ auth()->user()->name }} @endif">
                         </label>
                         @if ($errors->has('name'))
                             <div class="alert alert-danger">{{ $errors->first('name') }}</div>
@@ -199,7 +206,8 @@
                             {{__('site.Phone')}}
                         </p>
                         <label class="input-style">
-                            <input type="text" name="billing_phone" value="@if(auth()->check()){{ auth()->user()->phone }}@endif">
+                            <input type="text" name="billing_phone"
+                                   value="@if(auth()->check()){{ auth()->user()->phone }}@endif">
                             @if ($errors->has('phone'))
                                 <div class="alert alert-danger">{{ $errors->first('phone') }}</div>
                             @endif
@@ -208,7 +216,8 @@
                             {{__('site.E-mail')}}
                         </p>
                         <label class="input-style">
-                            <input type="email" name="billing_email" value="@if(auth()->check()){{ auth()->user()->email }}@endif">
+                            <input type="email" name="billing_email"
+                                   value="@if(auth()->check()){{ auth()->user()->email }}@endif">
                         </label>
                         @if ($errors->has('email'))
                             <div class="alert alert-danger">{{ $errors->first('email') }}</div>
@@ -221,8 +230,10 @@
                             <input type="text" class="form-control" name="billing_address"
                                    value="@if(auth()->check()){{ auth()->user()->address }}@endif" id="search-input">
                             <div class="map" id="map" style="width: 100%; height: 300px;"></div>
-                            <input type="hidden" id="lat" name="lat" value="@if(auth()->check()){{ auth()->user()->lat }}@endif">
-                            <input type="hidden" id="lng" name="lng" value="@if(auth()->check()){{ auth()->user()->lng }}@endif">
+                            <input type="hidden" id="lat" name="lat"
+                                   value="@if(auth()->check()){{ auth()->user()->lat }}@endif">
+                            <input type="hidden" id="lng" name="lng"
+                                   value="@if(auth()->check()){{ auth()->user()->lng }}@endif">
                         </label>
                         @if ($errors->has('address'))
                             <div class="alert alert-danger">{{ $errors->first('address') }}</div>

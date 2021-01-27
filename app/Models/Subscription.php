@@ -32,4 +32,9 @@ class Subscription extends Model
             $subscription->products()->detach($products);
         }
     }
+
+    public function transactions()
+    {
+        return $this->morphMany(Transaction::class, "transactionable");
+    }
 }

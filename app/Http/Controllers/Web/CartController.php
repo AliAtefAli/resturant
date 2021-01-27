@@ -11,10 +11,16 @@ class CartController extends Controller
 {
     public function index()
     {
+        // dd(Cart::instance('cart')->total());
         $featured_products = Product::with('images')
         ->whereFeatured(1)->get();
-
+        // return view('web.carts.paymen-gosell');
         return view('web.carts.index', compact('featured_products'));
+    }
+
+    public function redirect()
+    {
+        return view('web.carts.redirect');
     }
 
     public function addToCart(Request $request, Product $product)

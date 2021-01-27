@@ -13,7 +13,7 @@
         <div class="container">
             <div class="product-slider-img">
                 <div class="img-pro">
-                    <img lazy="loading"no
+                    <img lazy="loading"
                         src="@if($product->images->count() > 0){{asset('assets/uploads/products/' . $product->images->first()->path)}} @endif">
                     @if(auth()->check())
                         <a href="{{ route('products.makeFav', $product->id) }}" class="fiv">

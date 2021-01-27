@@ -47,8 +47,10 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
 //        Route::get('/reset_pass', 'HomeController@resetUserPassword')->name('reset_pass');
         Route::get('/notification', 'UserController@notifications')->name('user.notification');
         Route::get('/orders', 'OrderController@index')->name('orders');
-        Route::post('/order/', 'OrderController@store')->name('order.store');
+        Route::post('/order/checkPayment', 'OrderController@checkPayment')->name('order.checkPayment');
+        Route::post('/order/store', 'OrderController@store')->name('order.store');
         Route::get('/carts', 'CartController@index')->name('carts');
+        Route::get('/redirect', 'CartController@redirect')->name('payment.redirect');
         Route::get('/subscriptions/{subscription}', 'SubscriptionController@create')->name('subscriptions.create');
         Route::post('/subscriptions/{subscription}/store', 'SubscriptionController@store')->name('subscriptions.store');
         Route::get('/menus', 'MenuController@index')->name('menus');
@@ -57,5 +59,6 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
         Route::get('/users/fav', 'UserController@fav')->name('users.fav');
         Route::put('users/update/{user}', 'UserController@update')->name('update.profile');
         Route::get('/user_subscriptions', 'UserController@subscriptions')->name('user_subscriptions');
+        Route::get('payment', 'PaymentController@check')->name('payment.check');
     });
 });

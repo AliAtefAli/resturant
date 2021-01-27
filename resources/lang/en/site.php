@@ -167,4 +167,6 @@ return [
     'Password Changed Successfully' => 'Password Changed Successfully',
     'join us' => 'Join us',
     'Enter your email address' => 'Enter your email',
+
+    'Something went wrong, please try again' => 'Something went wrong please try again',
 ];

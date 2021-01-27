@@ -168,4 +168,6 @@ return [
     'Password Changed Successfully' => 'تم تغيير الرقم السري بنجاح',
     'join us' => 'انضم الينا',
     'Enter your email address' => 'ادخل بريدك الالكترونى',
+
+    'Something went wrong, please try again' => 'حدث خطأ ما برجاء المحاوله مره اخري',
 ];
