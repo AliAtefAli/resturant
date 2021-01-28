@@ -258,7 +258,7 @@ $(function () {
         pathFile = pathFile.split('\\');
         $('.user-section .user-info .img-user form .imgg img').attr('src', 'images/' + pathFile[pathFile.length - 1]);
     });
-    
+
     $('.open-nav-side-page').click(function () {
         var navSidePage = $('.user-section .nav-side-page');
         if(navSidePage.hasClass('open')){
@@ -268,15 +268,15 @@ $(function () {
         }
     });
     $('.local-global').change(function () {
-        if($(this).val() == 'global'){
+        if($(this).attr('id') == 'global'){
             $('.pic-select .hide-section').fadeIn(500);
         } else {
             $('.pic-select .hide-section').fadeOut(500);
         }
     });
     setTimeout(function () {
-        $('.loading').fadeOut(500);
-    }, 2000);
+        $('.loading').fadeOut(300);
+    }, 800);
     $('.faqs-section .faqs .faq-up .faq-qu').click(function () {
         var heightAn = $(this).next().find('.faq-an').innerHeight();
         if($(this).hasClass('open')){

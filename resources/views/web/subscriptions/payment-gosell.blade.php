@@ -101,7 +101,8 @@
                     email: false,
                     sms: true,
                 },
-                redirect: "http://resturant.dev.com/redirect",
+                redirect: "{{ route('subscriptions.redirect') }}",
+
                 post: null,
             }
         },

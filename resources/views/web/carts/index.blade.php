@@ -159,17 +159,19 @@
         </div>
         <div class="last-part small-container">
             <div class="container">
-                <p>
-                    {{ __('site.Do you have Coupon') }}
-                </p>
-                <form class="offer">
-                    <input type="text" placeholder="{{ __('dashboard.discounts.Code') }}">
-                    <button type="submit">
-                        {{ __('site.Confirm') }}
-                    </button>
-                </form>
                 <form id="payment-form" action="{{ route('order.checkPayment') }}" method="post" class="finsh-requet">
                     @csrf
+                    <div class="pic-select pic-select-auth pic-select-auth-any">
+                        <p class="name-input">
+                            {{ __('site.Do you have Coupon') }}
+                        </p>
+                        <label class="input-style">
+                            <input type="text" name="coupon" placeholder="{{ __('dashboard.discounts.Code') }}">
+                        </label>
+                        @if ($errors->has('coupon'))
+                            <div class="alert alert-danger">{{ $errors->first('coupon') }}</div>
+                        @endif
+                    </div>
                     <p>
                         {{ __('site.Order.payment method') }}
                     </p>
@@ -248,8 +250,15 @@
             </div>
         </div>
     @else
+
+        <div class="text-center pb-5">
+            <h2 class=" text-center text-danger">{{ __('site.The cart now is empty') }}</h2>
+            <a class="text-center" href="{{ route('products.index') }}">{{ __('site.Order now') }}</a>
+        </div>
+
         @include('web.layouts.our-meals')
     @endif
+
 @endsection
 @section('scripts')
     @include('partials.google-map', ['lat' => auth()->user()->lat, 'lng' => auth()->user()->lng])

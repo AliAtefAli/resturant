@@ -365,5 +365,15 @@ return [
         'News Letter' => 'News Letter',
         'Message' => 'News Text',
         'E-mails' => 'E-mails'
+    ]
+    ,
+    'Transactions' => [
+        'Transactions' => 'Transactions',
+        'User' => 'Transaction User',
+        'Payment Method' => 'Payment Method',
+        'Amount' => 'Amount',
+        'Type' => 'Type',
+        'Transaction id' => 'Transaction ID',
+        'Transaction type' => 'Transaction type',
     ],
 ];

@@ -28,41 +28,4 @@ class HomeController extends Controller
         return back();
     }
 
-    public function home()
-    {
-
-        return view('dashboard.layouts.app');
-
-    }// end of home
-
-
-    public function create()
-    {
-
-        return view('dashboard.admins.edit');
-
-    }// end of home
-
-
-    public function show()
-    {
-
-        return view('dashboard.admins.show');
-
-    }// end of home
-
-
-    public function new()
-    {
-
-        return view('new');
-
-    }// end of home
-
-    public function table()
-    {
-
-        return view('table');
-
-    }
 }

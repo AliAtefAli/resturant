@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCheckoutRequest;
+use App\Models\Discount;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Setting;
@@ -33,7 +34,7 @@ class OrderController extends Controller
         if ($request->payment_method == 'payment') {
             session()->forget('billing');
             session()->put('billing', $request->all());
-            return view('web.carts.paymen-gosell', compact('request'));
+            return view('web.carts.payment-gosell', compact('request'));
         }
         return $this->store($request);
 
@@ -41,12 +42,29 @@ class OrderController extends Controller
     public function store(StoreCheckoutRequest $request)
     {
         $request['billing_total'] = $this->getBillingTotal();
+        if ($request->has('coupon')) {
+            $coupon = Discount::where('code', $request->coupon)->first();
+            if (!$coupon) {
+                return back()->with('error', trans('site.Order.Coupon not found'));
+            }
+            if ($coupon->status == 'available') {
+                if ($coupon->discount_type == 'fixed') {
+                    $request['billing_total'] -= $coupon->amount;
+                } else {
+                    $request['billing_total'] = $request['billing_total'] - ($request['billing_total'] * ($coupon->amount / 100) );
+                }
+            }
+            else {
+                return back()->with('error', trans('site.Order.Coupon not Available'));
+            }
+        }
         $order = Order::insertOrderDetails($request->all());
 
         if ($request->payment_method == 'payment') {
             Transaction::create([
                 'transactionable_type' => Order::class,
                 'transactionable_id' => $order->id,
+                'transaction_id' => $request->transaction_id,
                 'user_id' => auth()->user()->id,
                 'payment_method' => $request->payment_type,
                 'amount' => $request['billing_total']

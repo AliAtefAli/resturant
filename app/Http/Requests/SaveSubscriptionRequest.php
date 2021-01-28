@@ -9,8 +9,8 @@ class SaveSubscriptionRequest extends FormRequest
     public function rules()
     {
         return [
-            'type' => 'required',
-            'payment_method' => 'required',
+            'shipping_type' => 'required',
+            'payment_type' => 'required',
             'subscription_id' => 'required',
             'start_date' => 'required',
         ];

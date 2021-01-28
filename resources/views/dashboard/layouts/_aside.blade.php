@@ -65,7 +65,10 @@
                                                             data-i18n="">{{trans('dashboard.main.Inbox')}}</span></a>
             </li>
 
-
+            <li class=" nav-item"><a href="{{ route('dashboard.transactions.index') }}"><i
+                        class="la la-money"></i><span class="menu-title"
+                                                   data-i18n="">{{trans('dashboard.Transactions.Transactions')}}</span></a>
+            </li>
 
             <li class=" nav-item"><a href="#"><i class="la la-cogs"></i>
                     <span class="menu-title"

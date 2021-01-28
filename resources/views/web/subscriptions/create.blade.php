@@ -13,7 +13,7 @@
     </div>
     <div class="over-to-shep">
         <img src="{{asset('web_files/images/flower.png')}}" class="line-shep"/>
-        <form class="form-pic-select" method="post" action="{{ route('subscriptions.store', $subscription) }}">
+        <form class="form-pic-select" method="post" action="{{ route('subscriptions.checkPayment', $subscription) }}">
             @csrf
 
             <div class="container">
@@ -33,20 +33,45 @@
                             {{__('site.People count')}} :
                         </p>
                         <label class="input-style">
-                            <input type="number" name="count" min="1" value="1">
+                            <input type="number" id="count" name="people_count" min="1" value="1">
                         </label>
+
                         @if ($errors->has('count'))
                             <div class="alert alert-danger">{{ $errors->first('count') }}</div>
                         @endif
                     </div>
+
+                    <div class="row my-3">
+                        <p class="name-input col col-md-2">
+                            {{__('site.price')}} :
+                        </p>
+                        <span class="sub-price" data-value="{{ $subscription->price }}">{{ $subscription->price }} :  </span>
+
+                        <span id="currency" data-value="@if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }}
+                        @endif">
+                             @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }}
+                            @endif
+                         </span>
+                    </div>
+
+                    <div class="row my-3">
+                        <p class="name-input col col-md-2">
+                            {{__('site.total')}} :
+                        </p>
+                        <span id="total" data-value="{{ $subscription->price }}">{{ $subscription->price }} : @if(isset($setting[app()->getLocale() . '_currency']))
+                                {{ $setting[app()->getLocale() . '_currency'] }}
+                            @endif </span>
+
+
+                    </div>
                     <div class="select-hh">
                         <label>
-                            <input class="local-global" type="radio" name="type" value="local" checked>
+                            <input class="local-global" id="local" type="radio" name="shipping_type" value="local" checked>
                             <span></span>
                             {{__('site.Locale')}}
                         </label>
                         <label>
-                            <input class="local-global" type="radio" name="type" value="global">
+                            <input class="local-global" id="global" type="radio" name="shipping_type" value="delivery">
                             <span></span>
                             {{ __('site.Delivery') }}
                             : @if(isset($setting[ 'delivery_price'])) {{ $setting['delivery_price'] }} @endif @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
@@ -60,7 +85,7 @@
                             {{__('site.Address')}}
                         </p>
                         <label class="input-style">
-                            <input type="text" name="address" id="search-input" value="{{ auth()->user()->address }}">
+                            <input type="text" name="billing_address" id="search-input" value="{{ auth()->user()->address }}">
                         </label>
                         <div class="map" id="map" style="width: 100%; height: 300px;"></div>
                         <input type="hidden" id="lat" name="lat" value="{{ (auth()->user()->lat) ?? '' }}">
@@ -69,7 +94,7 @@
                             {{__('site.Phone')}}  {{__('site.Optional')}}
                         </p>
                         <label class="input-style">
-                            <input type="text" name="phone_number" value="{{ old('phone_number') }}">
+                            <input type="text" name="billing_phone" value="{{ old('billing_phone') }}">
                         </label>
                     </div>
                     <p class="name-input">
@@ -77,12 +102,12 @@
                     </p>
                     <div class="select-hh">
                         <label>
-                            <input type="radio" name="payment_method" value="credit_card">
+                            <input type="radio" name="payment_type" value="credit_card">
                             <span></span>
                             {{__('site.Credit Card')}}
                         </label>
                         <label>
-                            <input type="radio" name="payment_method" value="on_delivery" checked>
+                            <input type="radio" name="payment_type" value="on_delivery" checked>
                             <span></span>
                             {{ __('site.On delivery') }}
                         </label>
@@ -94,7 +119,6 @@
 
                 </div>
                 <input type="hidden" name="subscription_id" value="{{$subscription->id}}">
-                <input type="hidden" name="count" value="1">
                 <button class="btn-aaa" type="submit">
                     {{__('site.Submit Now')}}
                 </button>
@@ -106,4 +130,15 @@
 
 @section('scripts')
     @include('partials.google-map', ['lat' => auth()->user()->lat, 'lng' => auth()->user()->lng])
+
+    <script>
+        var total = parseFloat($('#total').attr('data-value'));
+        var currency = ($('#currency').attr('data-value'));
+        $( "#count" ).change(function() {
+            var price = parseFloat($('.sub-price').attr('data-value'));
+            var count = $('#count').val();
+            total = price * count;
+            document.getElementById('total').innerHTML = total +' '+ currency;
+        });
+    </script>
 @endsection

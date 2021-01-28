@@ -16,6 +16,7 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->morphs("transactionable");
+            $table->string('transaction_id');
             $table->string('user_id');
             $table->string('payment_method');
             $table->double('amount', 10,2);

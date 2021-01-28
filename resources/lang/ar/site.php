@@ -156,6 +156,8 @@ return [
         'Billing address' => 'عنوان المشتري',
         'Please, this Quantity is not available' => 'عذرا هذه الكمية غير متاحة',
         'Confirm Order' => 'اتمام الطلب',
+        'Coupon not found' => 'عذرا الكويون ليس موجود',
+        'Coupon not Available' => 'عذرا الكويون ليس متاح الآن',
     ],
     'Rate' => [
         'Add your rate' => 'اضف تقييما',
@@ -170,4 +172,6 @@ return [
     'Enter your email address' => 'ادخل بريدك الالكترونى',
 
     'Something went wrong, please try again' => 'حدث خطأ ما برجاء المحاوله مره اخري',
+    'The cart now is empty' => 'السلة فارغة الآن',
+    'Order now' => 'تسوق الآن'
 ];

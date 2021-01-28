@@ -19,15 +19,15 @@ class HomeController extends Controller
     public function index()
     {
         $sliders = Slider::where('status', 'active')->get();
-        // dd($sliders);
         $subscriptions = Subscription::with('translations')->get();
         $categories = Category::whereNull('category_id')
-            ->with('translations', 'categories','categories.translations','products','products.translations')->get();
+            ->with('translations', 'categories','categories.translations','products','categories.products.translations', 'categories.products.images')
+            ->get();
         $rates = Rate::with('user')->limit(10)->get();
         $products = Product::with('images', 'translations')->limit(10)->get();
         $featured_products = Product::with('images')->whereFeatured(1)->limit(10)->get();
 
-        return view('web.home_page', compact('sliders', 'subscriptions', 'categories', 'rates', 'featured_products', 'products'));
+        return view('web.home', compact('sliders', 'subscriptions', 'categories', 'rates', 'featured_products', 'products'));
     }
 
     public function change_language()

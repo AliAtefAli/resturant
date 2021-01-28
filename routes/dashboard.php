@@ -50,6 +50,8 @@ Route::put('complaint/replyNotification/{complaint}', 'ComplaintController@reply
 Route::put('complaint/replySMS/{complaint}', 'ComplaintController@replySMS')->name('complaint.replySMS');
 Route::put('complaint/replyEmail/{complaint}', 'ComplaintController@replyEmail')->name('complaint.replyEmail');
 
+Route::get('/transactions', 'TransactionController@index')->name('transactions.index');
+
 Route::get('settings/general', 'SettingController@general')->name('settings.general');
 Route::get('settings/social', 'SettingController@social')->name('settings.social');
 Route::get('settings/api', 'SettingController@api')->name('settings.api');

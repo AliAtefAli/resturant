@@ -129,7 +129,7 @@
                 <div class="owl-carousel owl-theme section1-product-slider">
                     @foreach($category->categories as $sub_category)
 
-                        @foreach($products as $product)
+                        @foreach($sub_category->products as $product)
                             <a href="{{ route('products.show', $product) }}" id="#{{$sub_category->id}}"
                                class="item wow fadeInDown">
                                 <div class="img">

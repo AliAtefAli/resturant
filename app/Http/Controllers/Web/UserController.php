@@ -87,8 +87,10 @@ class UserController extends Controller
             ->with('products', 'products.translations', 'translations')
             ->where('end_date', '<', Carbon::today())
             ->get();
+        $featured_products = Product::with('images')
+            ->whereFeatured(1)->get();
 
-        return view('web.user_subscriptions.index', compact('subscribed_packages', 'finished_subscribed_packages'));
+        return view('web.users.subscriptions', compact('subscribed_packages', 'finished_subscribed_packages', 'featured_products'));
     }
 
     public function notifications()
@@ -96,7 +98,7 @@ class UserController extends Controller
         $notifications = auth()->user()->notifications->where('type', '!=', 'App\Notifications\NewOrderNotification');
         $notifications->markAsRead();
 
-        return view('web.notifications.index', compact('notifications'));
+        return view('web.users.notifications', compact('notifications'));
     }
 
 

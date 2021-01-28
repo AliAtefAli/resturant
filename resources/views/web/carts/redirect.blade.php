@@ -36,6 +36,7 @@
     <input type="hidden" id="lng" name="lng"
            value="{{ session()->get('billing.lng') }}">
 
+    <input id="transaction_id" name="transaction_id" type="text" value="">
     <input id="payment_type" name="payment_type" type="text" value="">
     <button type="submit">
         {{ __('site.Order.Confirm Order') }}
@@ -49,21 +50,13 @@
     console.log('redirect');
     goSell.showResult({
         callback: response => {
-            // alert(response.callback.acquirer.response.code);
-            // alert(response.callback.acquirer.response.message);
-            // console.log(response.callback.post)
-            // console.log('Message : ' + response.callback.response.message)
-            // console.log(response.callback.source.payment_method)
-            // console.log("callback", response);
-            // console.log("callback", response.callback);
-            // alert(response.callback);
             if (response.callback.response.message === 'Captured') {
-                // alert(response.callback.source.payment_method);
+                document.getElementById('transaction_id').value = response.callback.id;
                 document.getElementById('payment_type').value = response.callback.source.payment_method;
                 document.getElementById('payment-form').submit();
             } else {
                 {{ session()->flash('error', trans("site.Something went wrong, please try again")) }}
-                window.location.href = "{{ route('home') }}";
+                window.location.href = "{{ route('carts') }}";
             }
         }
     });

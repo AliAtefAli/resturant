@@ -370,4 +370,13 @@ return [
         'Message' => 'نص الخبر',
         'E-mails' => 'الايميلات',
     ],
+    'Transactions' => [
+        'Transactions' => 'المعاملات الماليه',
+        'User' => 'صاحب العملية',
+        'Payment Method' => 'طريقه الدفع',
+        'Amount' => 'القيمة',
+        'Type' => 'نوع',
+        'Transaction id' => 'رقم الطلب',
+        'Transaction type' => 'نوع الطلب',
+    ],
 ];

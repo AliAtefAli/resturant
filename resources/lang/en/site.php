@@ -156,6 +156,8 @@ return [
         'Billing address' => 'Billing address',
         'Please, this Quantity is not available' => 'Please, this Quantity is not available',
         'Confirm Order' => 'Confirm Order',
+        'Coupon not found' => 'Coupon not found',
+        'Coupon not Available' => 'Coupon not Available',
     ],
     'Rate' => [
         'Add your rate' => 'Add your rate',
@@ -169,4 +171,6 @@ return [
     'Enter your email address' => 'Enter your email',
 
     'Something went wrong, please try again' => 'Something went wrong please try again',
+    'The cart now is empty' => 'The cart now is empty',
+    'Order now' => 'Order now'
 ];

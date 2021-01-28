@@ -21,7 +21,7 @@ class User extends Authenticatable
 
     public function subscriptions()
     {
-        return $this->belongsToMany(Subscription::class)->withPivot('count');
+        return $this->belongsToMany(Subscription::class)->withPivot('people_count', 'billing_total');
     }
 
     public function favorites()
