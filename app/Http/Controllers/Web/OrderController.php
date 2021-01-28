@@ -43,20 +43,7 @@ class OrderController extends Controller
     {
         $request['billing_total'] = $this->getBillingTotal();
         if ($request->has('coupon')) {
-            $coupon = Discount::where('code', $request->coupon)->first();
-            if (!$coupon) {
-                return back()->with('error', trans('site.Order.Coupon not found'));
-            }
-            if ($coupon->status == 'available') {
-                if ($coupon->discount_type == 'fixed') {
-                    $request['billing_total'] -= $coupon->amount;
-                } else {
-                    $request['billing_total'] = $request['billing_total'] - ($request['billing_total'] * ($coupon->amount / 100) );
-                }
-            }
-            else {
-                return back()->with('error', trans('site.Order.Coupon not Available'));
-            }
+            Discount::checkCoupon($request);
         }
         $order = Order::insertOrderDetails($request->all());
 
