@@ -109,7 +109,7 @@
             }
         });
 
-    </script><!-- Go to www.addthis.com/dashboard to customize your tools -->
+    </script>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-600947398306150d"></script>
     <script>
 
@@ -136,9 +136,9 @@
                     })
                 },
                 error: function (response) {
-                    toastr.warning(response.error, "Progress Bar", {
-                        progressBar: !0
-                    });
+                    toastr.warn(response.success, {
+                        timeOut: "50000",
+                    })
                 },
             });
         });

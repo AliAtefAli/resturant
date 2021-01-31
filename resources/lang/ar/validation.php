@@ -207,6 +207,7 @@ return [
     'field_required_duration_in_day' => 'حقل المده بالايام مطلوب',
     'field_required_type' => 'حقل النوع مطلوب',
     'field_required_password' => 'حقل كلمه المرور مطلوب',
+    'field_required_old_password' => 'حقل كلمه المرور القديمة مطلوبة',
     'password_confirmed' => 'كلمة المرور غير متطابقة',
     'field_numeric' => 'الحقل لا بد أن يكون رقم',
     'field_whatsapp' => 'حقل الواتساب مطلوب',
@@ -219,4 +220,5 @@ return [
     'field_exists_code' => 'هذا الكود مستخدم من قبل',
     'field_exists_phone' => 'هذا الهاتف مستخدم من قبل',
     'field_exists_email' => 'هذا البريد الإلكتروني مستخدم من قبل',
+    'These credentials do not match our data.' => 'البيانات غير متطابقة من فضلك اعد المحاولة'
 ];

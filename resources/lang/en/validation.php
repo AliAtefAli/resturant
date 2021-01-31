@@ -187,6 +187,7 @@ return [
     'field_required_duration_in_day' => 'Duration in day field is required',
     'field_required_type' => 'Type field is required',
     'field_required_password' => 'Password field is required',
+    'field_required_old_password' => 'Old Password field is required',
     'password_confirmed' => 'Password is not confirmed',
     'field_numeric' => 'field must be numeric',
     'field_whatsapp' => 'Whatsapp field is required',
@@ -199,4 +200,5 @@ return [
     'field_exists_code' => 'Code already exsits',
     'field_exists_phone' => 'Phone already exsits',
     'field_exists_email' => 'Email already exsits',
+    'These credentials do not match our data.' => 'These credentials do not match our data, please try again'
 ];

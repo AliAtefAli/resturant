@@ -12,6 +12,12 @@
                     {{ __('site.Profile') }}
                 </a>
             </li>
+            <li>
+                <a href="{{route('users.getChangePassword')}}">
+                    <i class="fas fa-key"></i>
+                    {{ __('site.Change Password') }}
+                </a>
+            </li>
             <li class="{{ activeSidebar('web/user_subscriptions') }}">
                 <a href="{{route('user_subscriptions')}}">
                     <i class="fas fa-bread-slice"></i>

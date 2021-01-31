@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
@@ -53,5 +54,11 @@ class LoginController extends Controller
             return ['email' => $request->get('email'), 'password'=>$request->get('password')];
         }
         return ['username' => $request->get('email'), 'password'=>$request->get('password')];
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return back();
     }
 }

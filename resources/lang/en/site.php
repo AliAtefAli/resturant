@@ -26,6 +26,8 @@ return [
     'Register' => 'Register',
     'Remember_me' => 'Remember me',
     'Password' => 'Password',
+    'Old Password' => 'Old Password',
+    'Change Password' => 'Change Password',
     'Forget Password' => 'Forget Password ?',
     'Password confirmation' => 'Confirm Password',
 
@@ -167,6 +169,7 @@ return [
     ],
     'User not found' => 'User not found',
     'Password Changed Successfully' => 'Password Changed Successfully',
+    'Wrong Password, please try again' => 'Wrong Password, please try again',
     'join us' => 'Join us',
     'Enter your email address' => 'Enter your email',
 

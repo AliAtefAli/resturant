@@ -25,12 +25,11 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
     Route::get('/contact_us', 'SettingController@message')->name('contact_us');
     Route::post('send/message', 'SettingController@sendMessage')->name('sendMessage');
 
-    Route::get('/reset_pass', 'HomeController@resetUserPassword')->name('reset_pass');
-    Route::post('/get_code', 'HomeController@getCode')->name('get_code');
-    Route::get('/code_confirm/{user}', 'HomeController@codePage')->name('code_confirm');
-    Route::post('/code_confirmation', 'HomeController@codeConfirm')->name('set_confirm');
-    Route::get('/change_pass', 'HomeController@changePass')->name('change_pass');
-    Route::post('join-us', 'HomeController@joinUs')->name('join-us');
+    Route::get('/reset_pass', 'AuthController@resetUserPassword')->name('reset_pass');
+    Route::post('/get_code', 'AuthController@getCode')->name('get_code');
+    Route::get('/code_confirm/{user}', 'AuthController@codePage')->name('code_confirm');
+    Route::post('/code_confirmation', 'AuthController@codeConfirm')->name('set_confirm');
+    Route::post('join-us', 'AuthController@joinUs')->name('join-us');
 
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/rate', 'SettingController@rate')->name('rate');
@@ -52,6 +51,8 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
         Route::get('/users/fav', 'UserController@fav')->name('users.fav');
         Route::put('users/update/{user}', 'UserController@update')->name('update.profile');
         Route::get('/user_subscriptions', 'UserController@subscriptions')->name('user_subscriptions');
+        Route::get('/users/change-password', 'AuthController@getChangePassword')->name('users.getChangePassword');
+        Route::post('/users/change-password/{user}', 'AuthController@changePassword')->name('users.changePassword');
         Route::get('payment', 'PaymentController@check')->name('payment.check');
         Route::get('product/makeFav/{id}', 'UserController@makeFav')->name('products.makeFav');
         Route::get('product/makeUnFav/{id}', 'UserController@makeUnFav')->name('products.makeUnFav');

@@ -93,7 +93,7 @@
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                            {{ __('site.Logout') }}
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -183,7 +183,7 @@
                             </a>
                             <a href="{{ route('user.notification')  }}" title="{{__('site.Notification')}}">
                                 <i class="fas fa-bell"><span
-                                        style="color: #CC5641;"> {{ (auth()->user()) ? (auth()->user()->unreadNotifications()->count()) : 0 }} </span></i>
+                                        style="color: #CC5641;"> {{ (auth()->user()) ? (auth()->user()->unreadNotifications()->where('type', '!=', 'App\Notifications\NewOrderNotification')->count()) : 0 }} </span></i>
                             </a>
                             <a href="{{route('products.index')}}" title="{{ __('site.Products') }}">
                                 <i class="fas fa-utensils"></i>

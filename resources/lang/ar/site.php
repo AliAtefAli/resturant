@@ -26,6 +26,8 @@ return [
     'Register' => 'تسجيل جديد',
     'Remember_me' => 'تذكرني',
     'Password' => 'كلمه المرور',
+    'Old Password' => 'كلمة المرور القديمة',
+    'Change Password' => 'تغيير كلمة المرور',
     'Password confirmation' => 'تاكيد كلمه المرور',
 
     'Added successfully' => 'تم اضافه البيانات بنجاح',
@@ -120,7 +122,7 @@ return [
     'About us' => 'عن الموقع',
     'Select Start date for the Subscription' => 'تحديد تاريخ بداية الباقة',
     'Locale' => 'محلي',
-    'Credit Card' => 'يطاقة الائتمان',
+    'Credit Card' => 'بطاقة الائتمان',
     'On delivery' => 'عند الاستلام',
     'Note' => 'ملاحاظات',
     'Order' => [
@@ -168,10 +170,11 @@ return [
 ,
     'User not found' => 'المستخدم ليس له حساب',
     'Password Changed Successfully' => 'تم تغيير الرقم السري بنجاح',
+    'Wrong Password, please try again' => 'كلمة مرور خطأ من فضلك اعد المحاولة',
     'join us' => 'انضم الينا',
     'Enter your email address' => 'ادخل بريدك الالكترونى',
 
     'Something went wrong, please try again' => 'حدث خطأ ما برجاء المحاوله مره اخري',
     'The cart now is empty' => 'السلة فارغة الآن',
-    'Order now' => 'تسوق الآن'
+    'Order now' => 'تسوق الآن',
 ];
