@@ -5,6 +5,7 @@ return [
     'It was done successfully!' => 'It was done successfully!',
     'message deleted successfully!' => 'message deleted successfully!',
     'Our Services' => 'Services',
+    "Dashboard Statistics" => "Dashboard Statistics",
     'blog' => [
         'Add Blog' => 'Add Blog',
         'All Blogs' => 'All Blogs',
@@ -47,6 +48,7 @@ return [
         'Status' => 'Status',
         'discount type' => 'Discount type',
         'amount' => 'Amount',
+        'Value' => 'Value',
         'Code' => 'Code',
         'product' => 'Product',
         'Edit discount' => 'Edit Discount',
@@ -151,6 +153,8 @@ return [
         'Payment api' => 'Payment api',
     ],
     'order' => [
+        'orders' => 'Orders',
+        'New order' => 'New Orders',
         'All orders' => 'All orders',
         'Today Orders' => 'Today Orders',
         'Order date' => 'Order date',
@@ -186,6 +190,7 @@ return [
     ],
     'product' => [
         'Add Product' => 'Add Product',
+        'Edit Product' => 'Edit Product',
         'All Products' => 'All Products',
         'Category' => 'Category',
         'available' => 'Available',
@@ -318,6 +323,7 @@ return [
         'address' => 'User Address',
         'Status' => 'Status',
         'admin' => 'Admin',
+        'admins' => 'Admins',
         'User' => 'User',
         'edit user' => 'Edit User',
         'Delete user' => 'Delete User',

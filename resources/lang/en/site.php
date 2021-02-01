@@ -15,6 +15,8 @@ return [
     'Loading' => 'Loading',
     'Print' => 'Print',
 
+    'Days' => 'Days',
+
     'Confirm delete' => 'Confirm Delete',
     'Do you have Coupon' => 'Do you have Coupon ?',
     'Do you want to complete the purchase' => 'Do you want to complete the purchase ?',
@@ -35,6 +37,10 @@ return [
 
     'No data_found' => 'No Data Found',
     'No records' => 'No Records',
+
+    'Amount' => 'Amount',
+    'price' => 'Price',
+    'total' => 'Total',
 
     'Clients' => 'Clients',
     'Client name' => 'Client name',
@@ -74,6 +80,7 @@ return [
     'User Subscriptions' => 'User Subscriptions',
     'User Finished Subscriptions' => 'User Finished Subscriptions',
     'Other Subscriptions' => 'Other Subscriptions',
+    'Subscriptions Duration' => 'Subscriptions Duration',
     'Delivery' => 'Delivery',
     'All categories' => 'All categories',
     'Name' => 'Name',

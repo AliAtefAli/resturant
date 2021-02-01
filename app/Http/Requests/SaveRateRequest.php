@@ -14,6 +14,14 @@ class SaveRateRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'amount.required' => (trans('validation.field_rate_required')),
+            'comment.required' => (trans('validation.field_comment_required')),
+        ];
+    }
+
     public function authorize()
     {
         return true;

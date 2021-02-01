@@ -47,7 +47,7 @@
         <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
     @endif
 
-    <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
+{{--    <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">--}}
     <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/app-assets/vendors/css/tables/extensions/buttons.dataTables.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/app-assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/app-assets/vendors/css/extensions/sweetalert.css')}}">
@@ -130,23 +130,48 @@
 
     $(document).ready(function() {
 
-        $(".image").change(function () {
-
-            if (this.files && this.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('.image-preview').attr('src', e.target.result);
-                };
-
-                reader.readAsDataURL(this.files[0]);
-            }
-
-        });
+        // $(".image").change(function () {
+        //
+        //     if (this.files && this.files[0]) {
+        //         var reader = new FileReader();
+        //
+        //         reader.onload = function (e) {
+        //             $('.image-preview').attr('src', e.target.result);
+        //         };
+        //
+        //         reader.readAsDataURL(this.files[0]);
+        //     }
+        //
+        // });
 
     });
 
-    //end of summernote
+    // image preview
+
+    var imagesPreview = function(input, placeToInsertImagePreview) {
+
+        if (input.files) {
+            var filesAmount = input.files.length;
+
+            for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+
+                    $($.parseHTML('<img alt="Image" class="image-preview" width="150">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                };
+
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+
+    };
+
+    $('#multiImage').on('change', function() {
+        $('.product-image').css("display", "none");
+        imagesPreview(this, 'div.image-preview');
+    });
+
 
 </script>
 @yield('scripts')

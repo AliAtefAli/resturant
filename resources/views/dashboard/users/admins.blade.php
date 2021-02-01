@@ -6,15 +6,13 @@
         <!--content header -->
         <div class="content-header row">
             <div class="content-header-left col-md-6 col-12 mb-2">
-                <h1 class="content-header-title">{{trans('dashboard.category.Categories')}}</h1>
+                <h1>{{  trans('dashboard.main.Users') }}</h1>
                 <div class="row breadcrumbs-top">
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a
-                                    href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
-                            </li>
-                            <li class="breadcrumb-item active">{{trans('dashboard.category.Categories')}}
-                            </li>
+                                    href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a></li>
+                            <li class="breadcrumb-item active">{{ trans('dashboard.main.Users') }}</li>
                         </ol>
                     </div>
                 </div>
@@ -37,13 +35,13 @@
                                                     class="la la-ellipsis-v font-medium-3"></i></a>
                                             <div class="heading-elements">
                                                 <ul class="list-inline mb-0">
-                                                    <li><a href="{{ route('dashboard.categories.create') }}"
-                                                           class="btn btn-success btn-sm mr-1"><i
+                                                    <li><a href="{{ route('dashboard.users.create') }}" class="btn btn-success btn-sm mr-1"><i
                                                                 class="ft-plus-circle"></i> {{trans('dashboard.main.Create')}} </a>
                                                     </li>
                                                     <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                                                     <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
                                                     <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+
                                                 </ul>
 
                                             </div>
@@ -53,41 +51,45 @@
                                                 <table class="table table-striped table-bordered dom-jQuery-events">
                                                     <thead>
                                                     <tr>
-                                                        <th>{{trans('dashboard.category.Name')}}</th>
-                                                        <th>{{trans('dashboard.category.Type')}}</th>
-                                                        <th>{{trans('dashboard.category.Super Category')}}</th>
+                                                        <th>{{trans('dashboard.user.Name')}}</th>
+                                                        <th>{{trans('dashboard.user.Email')}}</th>
+                                                        <th>{{trans('dashboard.user.phone')}}</th>
+                                                        <th>{{trans('dashboard.user.Status')}}</th>
+                                                        <th>{{trans('dashboard.user.Last Active')}}</th>
                                                         <th>{{trans('dashboard.main.Actions')}}</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @foreach($categories as $category)
+                                                    @foreach($admins as $admin)
                                                         <tr>
-                                                            <td>{{ $category->name }}</td>
-                                                            @if($category->category_id == null)
-                                                                <td>
-                                                                    {{trans('dashboard.category.Super Category')}}
-                                                                </td>
-                                                            @else
-                                                                <td>
-                                                                    {{trans('dashboard.category.Sub Category')}}
-                                                                </td>
-                                                            @endif
+                                                            <td>{{ $admin->name }}</td>
+                                                            <td>{{ $admin->email }}</td>
+                                                            <td>{{ $admin->phone }}</td>
+                                                            <td>{{ $admin->status }}</td>
+                                                            <td>{{ ($admin->last_active_at)? $admin->last_active_at->diffForHumans() : "" }}</td>
                                                             <td>
-                                                                {{  ($category->category_id) ? \App\Models\Category::find($category->category_id)->name : '' }}
-                                                            </td>
-                                                            <td>
-                                                                <a href="">
-                                                                    <a href="{{ route('dashboard.categories.edit', $category) }}" class="btn btn-info btn-sm" title="">
-                                                                        <i class="ft-edit"></i>
-                                                                    </a>
+                                                                <a href="{{ route('dashboard.users.edit', $admin) }}">
+                                                                    <button class="btn btn-info btn-sm" title=""><i
+                                                                            class="ft-edit"></i></button>
                                                                 </a>
+                                                                @if($admin->status == 'active')
+                                                                <a href="{{ route('dashboard.users.block', $admin) }}"
+                                                                     class="btn btn-outline-danger btn-sm" title="">
+                                                                    <i class="ft-lock"  aria-hidden="true"></i>
+                                                                </a>
+                                                                @else
+                                                                <a href="{{ route('dashboard.users.unblock', $admin) }}"
+                                                                     class="btn btn-outline-success btn-sm" title="">
+                                                                    <i class="ft-unlock"  aria-hidden="true"></i>
+                                                                </a>
+                                                                @endif
                                                                 <a href="#" data-toggle="modal"
-                                                                   data-target="#delete-question-{{$category->id}}"
+                                                                   data-target="#delete-question-{{$admin->id}}"
                                                                    class="btn btn-danger btn-sm" title="">
                                                                     <i class="ft-trash-2"></i>
                                                                 </a>
                                                                 <div class="modal fade  custom-imodal"
-                                                                     id="delete-question-{{$category->id}}"
+                                                                     id="delete-question-{{$admin->id}}"
                                                                      tabindex="-1" role="dialog"
                                                                      aria-labelledby="exampleModalLabel"
                                                                      aria-hidden="true">
@@ -95,7 +97,7 @@
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
-                                                                                    id="exampleModalLabel">{{ trans('dashboard.category.Delete Category') }}</h5>
+                                                                                    id="exampleModalLabel">{{ trans('dashboard.user.Delete user') }}</h5>
                                                                                 <button type="button" class="close"
                                                                                         data-dismiss="modal"
                                                                                         aria-label="Close">
@@ -105,11 +107,11 @@
                                                                             </div>
                                                                             <div class="modal-body custom-addpro">
                                                                                 <div class="contact-page">
-                                                                                    <form action="{{ route('dashboard.categories.destroy', $category->id) }}"
+                                                                                    <form action="{{ route('dashboard.users.destroy', $admin->id) }}"
                                                                                           method="post">
                                                                                         @csrf
                                                                                         @method('DELETE')
-                                                                                        <h2>  {{ trans('dashboard.category.Do you want to delete this Category') }} </h2>
+                                                                                        <h2>  {{ trans('dashboard.user.Do you want to delete this user') }} </h2>
 
                                                                                         <div class="form-actions right">
                                                                                             <button type="submit" class="btn btn-danger">
@@ -125,7 +127,6 @@
                                                             </td>
                                                         </tr>
                                                     @endforeach
-                                                    </tbody>
                                                 </table>
                                             </div>
                                         </div>
@@ -136,14 +137,10 @@
                     </div>
                 </div>
             </section>
+            <!--/ Description -->
         </div>
+        <!--end of content body -->
     </div>
+    <!--end of content wrapper -->
 
-@endsection
-@section('scripts')
-    <script>
-        $('.modal').on('show', function () {
-            $('this').$('form-actions').focus();
-        });
-    </script>
 @endsection

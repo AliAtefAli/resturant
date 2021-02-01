@@ -39,7 +39,7 @@
                                                 <ul class="list-inline mb-0">
                                                     <li><a href="{{ route('dashboard.subscriptions.create') }}"
                                                            class="btn btn-success btn-sm mr-1"><i
-                                                                class="ft-plus-circle"></i> {{trans('create')}} </a>
+                                                                class="ft-plus-circle"></i> {{trans('dashboard.main.Create')}} </a>
                                                     </li>
                                                     <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                                                     <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>

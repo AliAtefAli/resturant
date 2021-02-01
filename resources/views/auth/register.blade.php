@@ -73,7 +73,7 @@
                     @endif
 
                     <div class="">
-                        <a href="#" class="link-forget">
+                        <a href="#" class="link-forget" data-toggle="modal" data-target="#policies">
                             {{__('site.Policies')}}
                         </a>
                     </div>
@@ -89,6 +89,29 @@
         </a>
     </div>
 @endsection
+
+{{--Policies pop up modal  --}}
+<div class="modal fade" id="policies" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{__('site.Policies')}}</h5>
+                <button type="button" class="close"  @if(lang() == 'ar') style="margin-right:260px" @endif  data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @if(isset($setting[app()->getLocale() . '_policies']))
+                    {!! $setting[app()->getLocale() . '_policies'] !!}
+                @endif
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
 @section('scripts')
     @include('partials.google-map', ['lat' => ($setting['lat']) ?? 28.44249902816536, 'lng' => ( $setting['lng']) ?? 36.48057637720706])
 @endsection

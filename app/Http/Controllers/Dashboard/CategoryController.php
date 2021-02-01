@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoryRequest;
+
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
 use App\Models\CategoryTranslation;
-use App\Models\Store;
+
 use App\Traits\Uploadable;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
@@ -21,12 +21,13 @@ class CategoryController extends Controller
         $categories = Category::with('translation')
             ->paginate();
 
+
         return view('dashboard.categories.index', compact('categories'));
     }
 
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::whereCategoryId(null)->get();
         return view('dashboard.categories.create', compact('categories'));
     }
 
@@ -45,15 +46,9 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        $categories = Category::all()/*->whereNotIn('id', $category->id)*/;
-        $super = Category::where('id', $category->category_id)->first();
-        if (! $super) {
-            $super = '';
-        } else {
-            $super = Category::where('id', $category->category_id)->first()->id;
-        }
+        $categories = Category::whereCategoryId(null)->where('id','!=',$category->id)->get();
 
-        return view('dashboard.categories.edit', compact('category', 'categories', 'super'));
+        return view('dashboard.categories.edit', compact('category', 'categories'));
     }
 
 

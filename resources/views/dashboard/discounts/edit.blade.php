@@ -48,7 +48,7 @@
                                 </div>
 
                                 <div class="form-group row {{ $errors->has('amount') ? ' has-error' : '' }}">
-                                    <label class="col-md-2" for="amount">{{trans('dashboard.discounts.amount')}}</label>
+                                    <label class="col-md-2" for="amount">{{trans('dashboard.discounts.Value')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative has-icon-left">
                                             <input type="float" id="amount" class="form-control"
@@ -104,7 +104,6 @@
                                         {{trans('dashboard.discounts.Add discount')}}
                                     </button>
                                 </div>
-                        </div>
                         </form>
                     </div>
                 </div>

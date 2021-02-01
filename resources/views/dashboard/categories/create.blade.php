@@ -54,7 +54,7 @@
                                 <div class="form-body">
                                     <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
                                         <label class="col-md-2"
-                                               for="name">{{ trans('dashboard.category.Sub Category')}}</label>
+                                               for="name">{{ trans('dashboard.category.Super Category')}}</label>
                                         <div class="col-md-10">
                                             <select class="custom-select" name="category_id">
                                                 <option value="">{{ trans('') }}</option>
@@ -72,7 +72,6 @@
                                         {{trans('dashboard.category.Add Category')}}
                                     </button>
                                 </div>
-                        </div>
                         </form>
                     </div>
                 </div>

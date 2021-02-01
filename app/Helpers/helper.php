@@ -46,27 +46,31 @@ if (!function_exists('editPhone')){
     {
         if (substr($phone, 0, 4) == '+966') {
 
-            $string = str_replace('-', '', $phone);
+            $string = str_replace(' ', '', $phone);
+            $string = str_replace('-', '', $string);
 
             return substr($string, 4);
 
         }elseif(substr($phone, 0, 5) == '00966')
         {
-            $string = str_replace('-', '', $phone);
+            $string = str_replace(' ', '', $phone);
+            $string = str_replace('-', '', $string);
 
             return substr($string, 5);
 
         }elseif(substr($phone, 0, 3) == '966')
         {
 
-            $string = str_replace('-', '', $phone);
+            $string = str_replace(' ', '', $phone);
+            $string = str_replace('-', '', $string);
 
             return substr($string, 3);
 
         }
         else
         {
-            $string = str_replace('-', '', $phone);
+            $string = str_replace(' ', '', $phone);
+            $string = str_replace('-', '', $string);
             return $string;
         }
     }

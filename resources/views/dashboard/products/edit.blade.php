@@ -97,8 +97,8 @@
                                     <label class="col-md-2" for="name">{{trans('dashboard.product.Image')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative has-icon-left">
-                                            <input type="file" id="image" class="form-control image"
-                                                   name="image[]" multiple/>
+                                            <input type="file" id="multiImage" class="form-control image"
+                                                   name="image[]" multiple />
                                             @include('dashboard.partials._errors', ['input' => 'image'])
                                         </div>
                                     </div>
@@ -106,18 +106,21 @@
 
                                 <div class="form-group row">
                                     <div class="col-md-2"></div>
-                                    <div class="col-md-10">
-                                        @if($image_count > 0)
-                                            @foreach($product->images as $image)
+                                    @if($image_count > 0)
+                                        @foreach($product->images as $image)
+                                            <div class="col-md-10 product-image">
                                                 <img src="{{ asset('assets/uploads/products/' . $image->path) }}"
-                                                     alt="Image" class="img-preview" width="150">
-                                            @endforeach
-                                        @endif
-                                    </div>
+                                                     alt="Image" class="image-preview" width="150">
+                                            </div>
+                                            <div class="col-md-10 image-preview">
+
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 </div>
 
                                 <div class="form-group row {{ $errors->has('price') ? ' has-error' : '' }}">
-                                    <label class="col-md-2" for="price">{{trans('dashboard.product.price')}}</label>
+                                    <label class="col-md-2" for="price">{{trans('dashboard.product.Price')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative has-icon-left">
                                             <input type="number" id="price" class="form-control"
@@ -141,7 +144,7 @@
 
                                 <div class="form-actions right">
                                     <button type="submit" class="btn btn-primary">
-                                        {{trans('dashboard.product.Add Product')}}
+                                        {{trans('dashboard.product.Edit Product')}}
                                     </button>
                                 </div>
 

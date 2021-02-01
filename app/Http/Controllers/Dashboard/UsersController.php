@@ -13,13 +13,21 @@ use Illuminate\Support\Facades\Hash;
 class UsersController extends Controller
 {
     use Uploadable;
+
     public function index()
     {
-        $users = User::where('type', 'user')
-            ->orderBy('created_at', 'DESC')
-            ->get();
+        $users = User::whereType('user')->orderBy('created_at', 'DESC')->get();
 
-        return view('dashboard.users.index', compact('users'));
+        return view('dashboard.users.users', compact('users'));
+    }
+
+
+    public function admins()
+    {
+
+        $admins = User::whereType('admin')->orderBy('created_at', 'DESC')->get();
+
+        return view('dashboard.users.admins', compact('admins'));
     }
 
 
@@ -33,7 +41,7 @@ class UsersController extends Controller
     public function store(StoreUserRequest $request)
     {
         $data = $request->validated();
-        $data['phone'] = $this->clean($request->phone);
+        $data['phone'] = editPhone($data['phone']);
         if ($request->has('image')) {
             $data['image'] = $this->uploadOne($request->image, 'users', null, null);
         }
@@ -63,7 +71,7 @@ class UsersController extends Controller
         $data['phone'] = $this->clean($data['phone']);
         if ($request->has('image')) {
             if (file_exists(public_path('assets/uploads/users/' . $user->image))) {
-                unlink(public_path('assets/uploads/users/' . $user->image));
+                @unlink(public_path('assets/uploads/users/' . $user->image));
             }
             $data['image'] = $this->uploadOne($request->image, 'users', null, null);
         }

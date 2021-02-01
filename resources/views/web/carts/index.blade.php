@@ -161,17 +161,27 @@
             <div class="container">
                 <form id="payment-form" action="{{ route('order.checkPayment') }}" method="post" class="finsh-requet">
                     @csrf
-                    <div class="pic-select pic-select-auth pic-select-auth-any">
-                        <p class="name-input">
-                            {{ __('site.Do you have Coupon') }}
-                        </p>
-                        <label class="input-style">
-                            <input type="text" name="coupon" placeholder="{{ __('dashboard.discounts.Code') }}">
-                        </label>
-                        @if ($errors->has('coupon'))
-                            <div class="alert alert-danger">{{ $errors->first('coupon') }}</div>
-                        @endif
-                    </div>
+                    <a href="{{route('order.coupon')}}" id="orderCoupon">
+                        <div class="pic-select pic-select-auth pic-select-auth-any row">
+                            <div class="col-md-9">
+                                <p class="name-input">
+                                    {{ __('site.Do you have Coupon') }}
+                                </p>
+                                <label class="input-style">
+                                    <input type="text" name="coupon" id="coupon"
+                                           placeholder="{{ __('dashboard.discounts.Code') }}">
+                                </label>
+                                @if ($errors->has('coupon'))
+                                    <div class="alert alert-danger">{{ $errors->first('coupon') }}</div>
+                                @endif
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-sm" type="submit" id="coupon-submit">
+                                    {{ __('site.coupon') }}
+                                </button>
+                            </div>
+                        </div>
+                    </a>
                     <p>
                         {{ __('site.Order.payment method') }}
                     </p>
@@ -262,4 +272,31 @@
 @endsection
 @section('scripts')
     @include('partials.google-map', ['lat' => auth()->user()->lat, 'lng' => auth()->user()->lng])
+
+    <script>
+        $(document).ready(function(){
+
+
+            $('#orderCoupon').click(function(e){
+                e.preventDefault();
+                // $.ajaxSetup({
+                //     headers: {
+                //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                //     }
+                // });
+                var coupon = $('#coupon').val();
+                $.ajax({
+                    url: '/order/coupon',
+                    method: 'post',
+                    data:{
+                        _token : "{{csrf_token()}}",
+                        coupon : coupon
+                    } , // prefer use serialize method
+                    success:function(data){
+                        // console.log(data);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

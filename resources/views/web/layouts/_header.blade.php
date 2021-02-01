@@ -102,14 +102,14 @@
                     </div>
                 </div>
             @else
-                <a class="top-page-link" href="{{route('login')}}">
+                <a class="top-page-link" href="{{route('login')}}" style="top: 8px;">
                     {{ trans('site.Login') }}
                 </a>
-                <a class="top-page-link" href="{{route('register')}}">
+                <a class="top-page-link" href="{{route('register')}}" style="top: 8px;">
                     {{ __('site.Register') }}
                 </a>
             @endauth
-            <div class="drop-lang">
+            <div class="drop-lang" style="top: 8px;">
                             <span>
                                  @if(lang() == 'ar') العربية @else  English @endif
                             </span>

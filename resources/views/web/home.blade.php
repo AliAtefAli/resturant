@@ -174,7 +174,8 @@
                                 </div>
                             </div>
                             <p>
-                                {{$rate->comment }}
+
+                                <span style="font-size:12px;font-family:monospace;word-break:break-all;word-wrap:break-word;">{{$rate->comment}}</span>
                             </p>
                         </div>
                     </div>

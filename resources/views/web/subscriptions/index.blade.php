@@ -52,7 +52,12 @@
 
             </div>
             <p class="price">
-                {{$subscription->price}}  @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
+                {{ __('site.Price') }}
+                : {{$subscription->price}}  @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
+            </p>
+            <p class="price">
+                {{ __('site.Subscriptions Duration') }}
+                : {{$subscription->duration_in_day}} {{ __('site.Days') }}
             </p>
             <p class="sheping">
                 {{ __('site.Delivery') }}

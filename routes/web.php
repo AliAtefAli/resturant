@@ -48,6 +48,8 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
         Route::get('/some/route', 'SubscriptionController@redirect')->name('subscriptions.redirect');
         Route::get('/menus', 'MenuController@index')->name('menus');
 
+        Route::post('/order/coupon', 'OrderController@coupon')->name('order.coupon');
+
         Route::get('/users', 'UserController@index')->name('users');
         Route::get('/users/fav', 'UserController@fav')->name('users.fav');
         Route::put('users/update/{user}', 'UserController@update')->name('update.profile');

@@ -62,8 +62,12 @@
                                                         <tr>
                                                             <th>{{ $index + 1 }}</th>
                                                             <th>{{ ($message->user->name) ?? '' }}</th>
-                                                            <th>{{ $message->message }}</th>
-                                                            <th>{{ ($message->answer) ?? '' }}</th>
+                                                            <th>
+                                                                <span style="font-size:12px;font-family:monospace;word-break:break-all;word-wrap:break-word;">{{ $message->message }}</span>
+                                                            </th>
+                                                            <th>
+                                                                <span style="font-size:12px;font-family:monospace;word-break:break-all;word-wrap:break-word;">{{ ($message->answer) ?? '' }}</span>
+                                                            </th>
                                                             <td>
                                                                 <a href="#" class="btn btn-success btn-sm"
                                                                    data-toggle="modal"

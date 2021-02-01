@@ -39,6 +39,13 @@ class OrderController extends Controller
         return $this->store($request);
 
     }
+
+    public function coupon(Request $request)
+    {
+
+    }
+
+
     public function store(StoreCheckoutRequest $request)
     {
         $request['billing_total'] = $this->getBillingTotal();

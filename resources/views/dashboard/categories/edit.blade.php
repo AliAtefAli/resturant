@@ -60,9 +60,8 @@
                                         <div class="col-md-10">
                                             <select class="custom-select" name="category_id">
                                                 <option value=""></option>
-                                                @foreach($categories as $cate)
-                                                    <option value="{{ $cate->id }}"
-                                                             @if($cate->id == $super) selected @endif>{{ $cate->name }}</option>
+                                                @foreach($categories as $cat)
+                                                    <option value="{{ $cat->id }}" {{ $category->category_id == $cat->id? 'selected' : '' }}>{{ $cat->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

@@ -60,12 +60,14 @@
                                                     @foreach($rates as $rate)
                                                         <tr>
                                                             <td>{{ $rate->user->name }}</td>
-                                                            <td>
+                                                            <td style="width: 140px">
                                                                 @for($i = 0; $i < 5; $i++)
                                                                     <span><i class="la la-star{{ $rate->amount <= $i ? '-o' : '' }}"></i></span>
                                                                 @endfor
                                                             </td>
-                                                            <td>{{ $rate->comment }}</td>
+                                                            <td>
+                                                                <span style="font-size:12px;font-family:monospace;width:200px;word-break:break-all;word-wrap:break-word;">{{ $rate->comment }}</span>
+                                                            </td>
                                                         </tr>
                                                     @endforeach
                                                     </tbody>

@@ -73,7 +73,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon1">+966</span>
                                                     </div>
-                                                    <input type="text" class="form-control phone-inputmask"
+                                                    <input dir="@if(lang() == 'ar') rtl @else ltr @endif" type="text" class="form-control"
                                                            id="phone-mask"
                                                            placeholder="Enter Phone Number" name="phone"
                                                            value="{{ old('phone') }}"/>

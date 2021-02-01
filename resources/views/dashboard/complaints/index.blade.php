@@ -60,8 +60,12 @@
                                                         <tr>
                                                             <th>{{ $index + 1 }}</th>
                                                             <th>{{ ($complaint->user->name) ?? '' }}</th>
-                                                            <th>{{ $complaint->message }}</th>
-                                                            <th>{{ $complaint->answer }}</th>
+                                                            <th>
+                                                                <span style="font-size:12px;font-family:monospace;word-break:break-all;word-wrap:break-word;">{{ $complaint->message }}</span>
+                                                            </th>
+                                                            <th>
+                                                                <span style="font-size:12px;font-family:monospace;word-break:break-all;word-wrap:break-word;">{{ $complaint->answer }}</span>
+                                                            </th>
                                                             <td>
                                                                 <a href="" class="btn btn-info btn-sm" title="">{{ trans('dashboard.complaints.SMS') }}</a>
                                                                 <a href="" class="btn btn-success btn-sm" title="">{{ trans('dashboard.complaints.notification') }}</a>

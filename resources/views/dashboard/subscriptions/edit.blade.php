@@ -93,7 +93,7 @@
                                 </div>
 
                                 <div class="form-group row {{ $errors->has('price') ? ' has-error' : '' }}">
-                                    <label class="col-md-2" for="price">{{trans('dashboard.product.price')}}</label>
+                                    <label class="col-md-2" for="price">{{trans('dashboard.product.Price')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative has-icon-left">
                                             <input type="number" id="price" class="form-control"

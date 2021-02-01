@@ -11,6 +11,7 @@ Route::get('/table', 'HomeController@table')->name('table');
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('users', 'UsersController');
+Route::get('/admins', 'UsersController@admins')->name('users.admins');
 Route::get('users/block/{user}', 'UsersController@block')->name('users.block');
 Route::get('users/unblock/{user}', 'UsersController@unBlock')->name('users.unblock');
 Route::resource('categories', 'CategoryController');
@@ -43,7 +44,7 @@ Route::put('message/replyNotification/{message}', 'MessageController@replyNotifi
 Route::put('message/replySMS/{message}', 'MessageController@replySMS')->name('message.replySMS');
 Route::put('message/replyEmail/{message}', 'MessageController@replyEmail')->name('message.replyEmail');
 // Complaints
-Route::get('complaint/', 'complaintController@index')->name('complaint.index');
+Route::get('complaint/', 'ComplaintController@index')->name('complaint.index');
 Route::get('complaint/{complaint}', 'ComplaintController@show')->name('complaint.show');
 Route::get('complaint/makeRead/{complaint}', 'ComplaintController@makeAsRead')->name('complaint.makeAsRead');
 Route::put('complaint/replyNotification/{complaint}', 'ComplaintController@replyNotification')->name('complaint.replyNotification');
