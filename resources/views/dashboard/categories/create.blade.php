@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-
+@section('title', trans('dashboard.category.Add Category'))
 @section('content')
     <!--content wrapper -->
     <div class="content-wrapper">
@@ -43,7 +43,7 @@
                                                 <div><input type="text" id="name" class="form-control"
                                                             placeholder="{{trans("dashboard.category.Name")}}"
                                                             name="{{$key}}[name]" value="{{ old("$key.name") }}"/>
-                                                    @include('dashboard.partials._errors', ['input' => 'name'])
+                                                    @include('dashboard.partials._errors', ['input' => "$key.name"])
                                                     <div class="form-control-position">
                                                     </div>
                                                 </div>
@@ -72,13 +72,12 @@
                                         {{trans('dashboard.category.Add Category')}}
                                     </button>
                                 </div>
+                            </form>
                         </div>
-                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <script>
         $(document).ready(function () {

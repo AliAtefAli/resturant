@@ -1,4 +1,5 @@
 @extends('dashboard.layouts.app')
+@section('title', trans('dashboard.order.Today Orders'))
 @section('content')
 
     <!--content wrapper -->
@@ -12,7 +13,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('home')}}">{{trans('home')}}</a>
                             </li>
-                            <li class="breadcrumb-item active">{{trans('dashboard.main.orders')}}
+                            <li class="breadcrumb-item active">{{trans('dashboard.order.Today Orders')}}
                             </li>
                         </ol>
                     </div>

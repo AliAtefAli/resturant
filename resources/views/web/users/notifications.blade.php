@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-
+@section('title', trans('site.Notification'))
 @section('content')
 
     <div class="text-section">

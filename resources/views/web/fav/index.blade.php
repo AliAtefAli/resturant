@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-
+@section('title', trans('site.Favorites'))
 @section('content')
 
     <!--Start Section1-->

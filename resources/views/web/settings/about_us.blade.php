@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-
+@section('title', trans('site.About us'))
 @section('content')
 
     <div class="about-us">

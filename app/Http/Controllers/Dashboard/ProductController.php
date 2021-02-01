@@ -32,6 +32,7 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
+        dd($request->all());
         $product = Product::create($request->validated());
 
         $images = $request['image'];

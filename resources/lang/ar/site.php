@@ -66,9 +66,11 @@ return [
     'E-mail' => 'البريد الاكتروني',
     'Image' => 'صوره',
     'Action' => 'اكشن',
+    'The Rate' => 'التقييم',
+    'Create Subscription' => 'اشتراك',
 
     'Permissions' => 'الصلاحيات',
-
+    'Show Product' => 'عرض منتج',
     'Categories' => 'الاقسام',
     'Sub Categories' => 'الاقسام الفرعية',
     'Subscriptions' => 'الاشتراكات',
@@ -179,4 +181,5 @@ return [
     'Something went wrong, please try again' => 'حدث خطأ ما برجاء المحاوله مره اخري',
     'The cart now is empty' => 'السلة فارغة الآن',
     'Order now' => 'تسوق الآن',
+    'You have been banned by the administration' => 'تم حظرك من قبل الإدارة',
 ];

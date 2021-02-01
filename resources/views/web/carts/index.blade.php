@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-
+@section('title', trans('site.Cart'))
 @section('content')
 
     @if(Cart::instance('cart')->count() > 0)

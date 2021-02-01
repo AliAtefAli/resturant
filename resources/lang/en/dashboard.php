@@ -186,6 +186,7 @@ return [
     ],
     'product' => [
         'Add Product' => 'Add Product',
+        'Edit Product' => 'Edit Product',
         'All Products' => 'All Products',
         'Category' => 'Category',
         'available' => 'Available',
@@ -349,6 +350,7 @@ return [
         'Answer English' => 'Answer English',
         'Add Question' => 'Add Question',
         'Edit Question' => 'Edit Question',
+        'Show Question' => 'Show Question',
         'Delete Question' => 'Delete Question',
         'Do Question you want to delete this Question' => 'Do you want to delete this Question ?',
     ],

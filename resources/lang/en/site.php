@@ -66,9 +66,12 @@ return [
     'E-mail' => 'E-mail',
     'Image' => 'Image',
     'Action' => 'Action',
-
+    'The Rate' => 'The Rate',
+    'Create Subscription' => 'Create Subscription',
     'Permissions' => 'Permissions',
 
+    'Show Category' => 'Show Category',
+    'Show Product' => 'Show Product',
     'Categories' => 'Categories',
     'Sub Categories' => 'Sub Categories',
     'Subscriptions' => 'Subscriptions',
@@ -177,5 +180,6 @@ return [
 
     'Something went wrong, please try again' => 'Something went wrong please try again',
     'The cart now is empty' => 'The cart now is empty',
-    'Order now' => 'Order now'
+    'Order now' => 'Order now',
+    'You have been banned by the administration' => 'You have been banned by the administration',
 ];

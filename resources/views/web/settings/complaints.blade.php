@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-
+@section('title', trans('site.Complaints'))
 @section('content')
 
     <div class="say-us-section complaints-and-suggestions">

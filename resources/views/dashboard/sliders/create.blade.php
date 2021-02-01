@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-
+@section('title', trans('dashboard.slider.Add Slider'))
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.0/trix.min.css">
 @endsection
@@ -55,7 +55,7 @@
                                         <label class="col-md-2"
                                                for="ordered">{{ trans('dashboard.slider.Order')}}</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="number" name="ordered" value="{{ old('orderd') }}" min="1">
+                                            <input class="form-control" type="number" name="ordered" value="{{ old('ordered') }}" min="1">
                                         </div>
                                     </div>
                                 </div>

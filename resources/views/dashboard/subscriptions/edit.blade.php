@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-
+@section('title', trans('dashboard.subscriptions.Edit Subscription'))
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.0/trix.min.css">
 @endsection
@@ -28,7 +28,6 @@
         </div>
 
         @include('dashboard.partials._alert')
-        @include('dashboard.partials._all_errors')
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -48,7 +47,7 @@
                                                 <div><input type="text" id="name" class="form-control"
                                                             placeholder="{{trans("dashboard.category.Name")}}"
                                                             name="{{$key}}[name]" value="{{ $subscription->translate($key)->name }}"/>
-                                                    @include('dashboard.partials._errors', ['input' => 'name'])
+                                                    @include('dashboard.partials._errors', ['input' => "$key.name"])
                                                     <div class="form-control-position">
                                                     </div>
                                                 </div>
@@ -65,6 +64,7 @@
                                                 <input id="{{$key}}.description" type="hidden" name="{{$key}}[description]"
                                                        value="{{ $subscription->translate($key)->description }}">
                                                 <trix-editor input="{{$key}}.description"></trix-editor>
+                                                @include('dashboard.partials._errors', ['input' => "$key.description"])
                                             </div>
                                         </div>
                                     </div>
@@ -93,7 +93,7 @@
                                 </div>
 
                                 <div class="form-group row {{ $errors->has('price') ? ' has-error' : '' }}">
-                                    <label class="col-md-2" for="price">{{trans('dashboard.product.price')}}</label>
+                                    <label class="col-md-2" for="price">{{trans('dashboard.product.Price')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative has-icon-left">
                                             <input type="number" id="price" class="form-control"

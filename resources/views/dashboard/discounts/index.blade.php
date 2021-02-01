@@ -1,4 +1,5 @@
 @extends('dashboard.layouts.app')
+@section('title', trans('dashboard.discounts.discounts'))
 @section('content')
 
     <!--content wrapper -->

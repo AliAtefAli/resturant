@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-
+@section('title', trans('site.Orders'))
 @section('content')
 
     <div class="user-section">

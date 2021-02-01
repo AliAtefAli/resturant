@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-
+@section('title', trans('dashboard.main.FAQ'))
 @section('content')
     <div class="about-us faqs-section">
         <div class="container">

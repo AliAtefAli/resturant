@@ -18,7 +18,7 @@
     @endif
     @yield('style')
 
-    <title>{{ $setting[lang() . '_name'] ?? "" }}</title>
+    <title>@yield('title', $setting[lang() . '_name'] ?? "")</title>
 </head>
 <body>
 <div class="above-all">
