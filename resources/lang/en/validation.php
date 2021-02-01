@@ -200,5 +200,6 @@ return [
     'field_exists_code' => 'Code already exsits',
     'field_exists_phone' => 'Phone already exsits',
     'field_exists_email' => 'Email already exsits',
-    'These credentials do not match our data.' => 'These credentials do not match our data, please try again'
+    'These credentials do not match our data.' => 'These credentials do not match our data, please try again',
+    'Please Enter Correct saudi arabia phone' => 'Please Enter Correct saudi arabia phone',
 ];

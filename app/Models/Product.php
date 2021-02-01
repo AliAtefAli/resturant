@@ -15,11 +15,11 @@ class Product extends Model
 
     public static function checkProductQuantity()
     {
-        foreach (Cart::content() as $cart) {
+        foreach (Cart::instance('cart')->content() as $cart) {
             if ($cart->qty > Product::find($cart->id)->quantity) {
-                return back()->with('error', trans('site.Order.Please, this Quantity is not available'));
+                return true;
             } else {
-                continue;
+                return false;
             }
         }
     }

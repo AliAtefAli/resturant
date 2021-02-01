@@ -29,11 +29,7 @@ class DiscountController extends Controller
     public function store(StoreDiscountRequest $request)
     {
         $data = $request->validated();
-        if ($request->status == 'on') {
-            $data['status'] = 'available';
-        } else {
-            $data['status'] = 'unavailable';
-        }
+
         Discount::create($data);
 
         return redirect()->route('dashboard.discounts.index')->with('success', trans('dashboard.It was done successfully!'));

@@ -124,6 +124,8 @@ return [
     'Locale' => 'محلي',
     'Credit Card' => 'بطاقة الائتمان',
     'On delivery' => 'عند الاستلام',
+    'credit_card' => 'بطاقة الائتمان',
+    'on_delivery' => 'عند الاستلام',
     'Note' => 'ملاحاظات',
     'Order' => [
         'Today Orders' => 'طلبات اليوم',
@@ -156,7 +158,7 @@ return [
         'Billing email' => 'ايميل المشتري',
         'Billing phone' => 'رقم المشتري',
         'Billing address' => 'عنوان المشتري',
-        'Please, this Quantity is not available' => 'عذرا هذه الكمية غير متاحة',
+        'Sorry, this Quantity is not available' => 'عذرا هذه الكمية غير متاحة',
         'Confirm Order' => 'اتمام الطلب',
         'Coupon not found' => 'عذرا الكويون ليس موجود',
         'Coupon not Available' => 'عذرا الكويون ليس متاح الآن',

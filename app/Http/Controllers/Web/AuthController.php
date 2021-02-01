@@ -101,8 +101,7 @@ class AuthController extends Controller
     public function changePassword(ChangePasswordRequest $request, User $user)
     {
         if (Hash::check($request->old_password, $user->password)) {
-            $user->password = Hash::make($request->password);
-            $user->save();
+            $user->update(['password' => Hash::make($request->password)]);
 
             return back()->with('success', trans('site.Password Changed Successfully'));
         } else {

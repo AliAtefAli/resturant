@@ -50,10 +50,9 @@ class LoginController extends Controller
         if(is_numeric($request->get('email'))){
             return ['phone'=>$request->get('email'),'password'=>$request->get('password')];
         }
-        elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
+        else{
             return ['email' => $request->get('email'), 'password'=>$request->get('password')];
         }
-        return ['username' => $request->get('email'), 'password'=>$request->get('password')];
     }
 
     public function logout(Request $request)

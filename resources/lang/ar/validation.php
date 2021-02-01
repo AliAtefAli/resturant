@@ -220,5 +220,6 @@ return [
     'field_exists_code' => 'هذا الكود مستخدم من قبل',
     'field_exists_phone' => 'هذا الهاتف مستخدم من قبل',
     'field_exists_email' => 'هذا البريد الإلكتروني مستخدم من قبل',
-    'These credentials do not match our data.' => 'البيانات غير متطابقة من فضلك اعد المحاولة'
+    'These credentials do not match our data.' => 'البيانات غير متطابقة من فضلك اعد المحاولة',
+    'Please Enter Correct saudi arabia phone' => 'من فضلك ادخل رقم سعودي صحيح'
 ];

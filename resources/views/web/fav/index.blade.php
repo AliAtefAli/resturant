@@ -18,7 +18,7 @@
                                         <i class="fas fa-heart"></i>
                                     </a>
                                 </div>
-                                <a href="{{ route('products.index') }}" class="item wow fadeInDown">
+                                <a href="Javascript::void();" class="item wow fadeInDown">
                                     <div class="img">
                                         <img
                                             src="@if($favorite->product->images->count() > 0){{ asset('assets/uploads/products/' . $favorite->product->images->first()->path ) }} @endif">

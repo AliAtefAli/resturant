@@ -51,7 +51,7 @@
                                         {{ $order->created_at->diffForHumans() }}
                                     </td>
                                     <td>
-                                        {{ $order->payment_method }}
+                                        {{ __("site.$order->payment_method") }}
                                     </td>
                                     <td>
                                         {{ $product->pivot->quantity * $product->price }}

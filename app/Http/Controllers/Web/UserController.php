@@ -17,10 +17,11 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     use Uploadable;
+
     public function index()
     {
         $featured_products = Product::with('images')
-        ->whereFeatured(1)->get();
+            ->whereFeatured(1)->get();
 
         return view('web.users.index', compact('featured_products'));
     }
@@ -29,7 +30,7 @@ class UserController extends Controller
     {
         $data = $request->all();
         if ($request->has('image')) {
-            if (file_exists(public_path('assets/uploads/users/' . $user->image))) {
+            if (file_exists(public_path('assets/uploads/users/' . $user->image) && is_file(public_path('assets/uploads/users/' . $user->image)))) {
                 unlink(public_path('assets/uploads/users/' . $user->image));
             }
             $data['image'] = $this->uploadOne($request->image, 'users', null, null);

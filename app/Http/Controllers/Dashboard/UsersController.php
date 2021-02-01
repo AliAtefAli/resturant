@@ -62,7 +62,7 @@ class UsersController extends Controller
         $data = $request->all();
         $data['phone'] = $this->clean($data['phone']);
         if ($request->has('image')) {
-            if (file_exists(public_path('assets/uploads/users/' . $user->image))) {
+            if (file_exists(public_path('assets/uploads/users/' . $user->image) && is_file(public_path('assets/uploads/users/' . $user->image)))) {
                 unlink(public_path('assets/uploads/users/' . $user->image));
             }
             $data['image'] = $this->uploadOne($request->image, 'users', null, null);

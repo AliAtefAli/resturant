@@ -59,6 +59,8 @@ class RegisterController extends Controller
             'phone' => ['required' , 'unique:users', 'string', 'phone:SA' ],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'address' => ['required'],
+        ],[
+            'phone.phone' => __('validation.Please Enter Correct saudi arabia phone')
         ]);
 
     }

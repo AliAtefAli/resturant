@@ -7,14 +7,14 @@
 
 @section('content')
 
-{{--    <div class="addthis_inline_share_toolbox_20m8" style="display: block"></div>--}}
+    {{--    <div class="addthis_inline_share_toolbox_20m8" style="display: block"></div>--}}
     <div class="single-product single-product1">
         <img lazy="loading" src="{{asset('web_files/images/flower.png')}}" class="line-shep"/>
         <div class="container">
             <div class="product-slider-img">
                 <div class="img-pro">
                     <img lazy="loading"
-                        src="@if($product->images->count() > 0){{asset('assets/uploads/products/' . $product->images->first()->path)}} @endif">
+                         src="@if($product->images->count() > 0){{asset('assets/uploads/products/' . $product->images->first()->path)}} @endif">
                     @if(auth()->check())
                         <a href="{{ route('products.makeFav', $product->id) }}" class="fiv">
                             <i class="fas fa-heart"></i>
@@ -76,7 +76,7 @@
                     <a href="{{ route('products.show', $product) }}" class="item wow fadeInDown">
                         <div class="img">
                             <img lazy="loading"
-                                src="@if($product->images->count() > 1) {{asset('assets/uploads/products/' . $product->images->first()->path)}} @endif">
+                                 src="@if($product->images->count() > 1) {{asset('assets/uploads/products/' . $product->images->first()->path)}} @endif">
                         </div>
                         <div class="info-pro">
                             <span class="name-product">{{$product->name}}</span>
@@ -130,13 +130,14 @@
                 },
 
                 success: function (response) {
-                    $("#cart-quantity").text(response.quantity);
-                    toastr.success(response.success, {
-                        timeOut: "50000",
-                    })
+                    if (response.status === true) {
+                        toastr.success(response.message, {timeOut: "50000",})
+                    } else {
+                        toastr.error(response.message, {timeOut: "50000",})
+                    }
                 },
                 error: function (response) {
-                    toastr.warn(response.success, {
+                    toastr.error(response.message, {
                         timeOut: "50000",
                     })
                 },

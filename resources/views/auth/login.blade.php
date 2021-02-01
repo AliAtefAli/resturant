@@ -15,7 +15,7 @@
                         {{__('site.Phone')}}
                     </p>
                     <label class="input-style">
-                        <input type="text" name="email">
+                        <input type="text" name="email" value="{{ old('email') }}" autofocus>
                         @if ($errors->has('email'))
                             <div class="alert alert-danger">{{ $errors->first('email') }}</div>
                         @endif
