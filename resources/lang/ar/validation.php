@@ -221,5 +221,9 @@ return [
     'field_exists_phone' => 'هذا الهاتف مستخدم من قبل',
     'field_exists_email' => 'هذا البريد الإلكتروني مستخدم من قبل',
     'These credentials do not match our data.' => 'البيانات غير متطابقة من فضلك اعد المحاولة',
-    'Please Enter Correct saudi arabia phone' => 'من فضلك ادخل رقم سعودي صحيح'
+    'Please Enter Correct saudi arabia phone' => 'من فضلك ادخل رقم سعودي صحيح',
+    'Please Enter Correct date' => 'من فضلك ادخل تاريخ صحيح',
+    'Please Enter The Start date' => 'من فضلك ادخل تاريخ البداية',
+    'Please Enter The End date' => 'من فضلك ادخل تاريخ التهاية',
+
 ];

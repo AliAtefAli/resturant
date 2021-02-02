@@ -161,17 +161,42 @@
             <div class="container">
                 <form id="payment-form" action="{{ route('order.checkPayment') }}" method="post" class="finsh-requet">
                     @csrf
-                    <div class="pic-select pic-select-auth pic-select-auth-any">
-                        <p class="name-input">
-                            {{ __('site.Do you have Coupon') }}
-                        </p>
-                        <label class="input-style">
-                            <input type="text" name="coupon" placeholder="{{ __('dashboard.discounts.Code') }}">
-                        </label>
-                        @if ($errors->has('coupon'))
-                            <div class="alert alert-danger">{{ $errors->first('coupon') }}</div>
-                        @endif
+
+                    <div class="pic-select pic-select-auth pic-select-auth-any row">
+                        <div class="col-md-9">
+                            <p class="name-input">
+                                {{ __('site.Do you have Coupon') }}
+                            </p>
+
+                            <label class="input-style">
+                                <input type="text" name="coupon" id="coupon"
+                                       placeholder="{{ __('dashboard.discounts.Code') }}">
+                            </label>
+                            @if ($errors->has('coupon'))
+                                <div class="alert alert-danger">{{ $errors->first('coupon') }}</div>
+                            @endif
+                        </div>
+                        <div class="col-md-3">
+                            <a class="btn btn-sm custom-button" id="coupon-submit">
+                                {{ __('site.Confirm Coupon') }}
+                            </a>
+                        </div>
+                        <div class="discount-preview" style="display: none">
+                            <div class="ml-3">
+                                <span>{{ __('site.Discount amount') }} : </span>
+                                <span id="discount_amount" class="text-danger">10</span>
+                            </div>
+                            <div class="ml-3">
+                                <span>{{ __('site.Total before discount') }} : </span>
+                                <span id="before_discount" class="text-danger">150</span>
+                            </div>
+                            <div class="ml-3">
+                                <span>{{ __('site.Total after discount') }} : </span>
+                                <span id="after_discount" class="text-danger">140</span>
+                            </div>
+                        </div>
                     </div>
+
                     <p>
                         {{ __('site.Order.payment method') }}
                     </p>
@@ -262,4 +287,39 @@
 @endsection
 @section('scripts')
     @include('partials.google-map', ['lat' => auth()->user()->lat, 'lng' => auth()->user()->lng])
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#coupon-submit').click(function (e) {
+                e.preventDefault();
+                var coupon = $('#coupon').val(),
+                    discountElement = $('.discount-preview'),
+                    totalBefore = document.getElementById('before_discount'),
+                    totalAfter = document.getElementById('after_discount'),
+                    discountAmount = document.getElementById('discount_amount');
+
+                $.ajax({
+                    url: "{{ route('product.checkCoupon') }}",
+                    type: "POST",
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        coupon: coupon
+                    },
+                    dataType: "json",
+                    success: function (response) {
+                        if (response.status === false) {
+                            toastr.error(response.msg, {timeOut: "50000",})
+                        } else {
+                            totalBefore.innerText = response.data.totalBefore;
+                            totalAfter.innerText = response.data.billing_total;
+                            discountAmount.innerText = response.data.coupon.amount;
+                            discountElement.removeAttr('style');
+                            toastr.success(response.msg, {timeOut: "50000",})
+                        }
+
+                    }
+                });
+            });
+        });
+
+    </script>
 @endsection

@@ -164,6 +164,7 @@ return [
         'Confirm Order' => 'اتمام الطلب',
         'Coupon not found' => 'عذرا الكويون ليس موجود',
         'Coupon not Available' => 'عذرا الكويون ليس متاح الآن',
+        'Enter Your coupon' => 'ادخل الكوبون',
     ],
     'Rate' => [
         'Add your rate' => 'اضف تقييما',
@@ -182,4 +183,10 @@ return [
     'The cart now is empty' => 'السلة فارغة الآن',
     'Order now' => 'تسوق الآن',
     'You have been banned by the administration' => 'تم حظرك من قبل الإدارة',
+    'Confirm Coupon' => 'تفعيل الكوبون',
+    'Discount period expired' => 'انتهت مدة الخصم',
+    'Discount is successfully' => 'تم الخصم بنجاح',
+    'Discount amount' => 'قيمه الخصم',
+    'Total before discount' => 'السعر الاجمالي قبل الخصم',
+    'Total after discount' => 'السعر الاجمالي بعد الخصم',
 ];

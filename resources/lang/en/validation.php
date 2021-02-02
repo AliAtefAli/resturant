@@ -202,4 +202,7 @@ return [
     'field_exists_email' => 'Email already exsits',
     'These credentials do not match our data.' => 'These credentials do not match our data, please try again',
     'Please Enter Correct saudi arabia phone' => 'Please Enter Correct saudi arabia phone',
+    'Please Enter Correct date' => 'Please Enter Correct date',
+    'Please Enter The Start date' => 'Please Enter The Start date',
+    'Please Enter The End date' => 'Please Enter The End date',
 ];

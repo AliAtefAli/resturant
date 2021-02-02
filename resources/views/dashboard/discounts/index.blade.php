@@ -59,7 +59,9 @@
                                                         <th>{{trans('dashboard.discounts.Status')}}</th>
                                                         <th>{{trans('dashboard.discounts.amount')}}</th>
                                                         <th>{{trans('dashboard.discounts.discount type')}}</th>
-                                                        <th>{{trans('dashboard.discounts.product')}}</th>
+                                                        <th>{{trans('dashboard.discounts.Start Date')}}</th>
+                                                        <th>{{trans('dashboard.discounts.End Date')}}</th>
+                                                        <th>{{ trans('dashboard.main.Actions')  }}</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -69,9 +71,8 @@
                                                             <td>{{ $discount->status }}</td>
                                                             <td>{{ $discount->amount }}</td>
                                                             <td>{{ $discount->discount_type }}</td>
-                                                            <td>
-                                                                <a href="{{ route('dashboard.products.show', $discount->product) }}">{{ $discount->product->name }}</a>
-                                                            </td>
+                                                            <td>{{ $discount->start_date }}</td>
+                                                            <td>{{ $discount->end_date }}</td>
                                                             <td>
                                                                 <a href="">
                                                                     <a href="{{ route('dashboard.discounts.edit', $discount) }}"

@@ -47,6 +47,8 @@ return [
         'discount type' => 'نوع الخصم',
         'amount' => 'الكميه',
         'Code' => 'الكود',
+        'Start Date' => 'تاريخ البداية',
+        'End Date' => 'تاريخ النهاية',
         'product' => 'المنتج',
         'Edit discount' => 'تعديل الخصم',
         'Add discount' => 'اضافه خصم',

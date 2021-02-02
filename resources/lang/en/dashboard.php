@@ -48,6 +48,8 @@ return [
         'discount type' => 'Discount type',
         'amount' => 'Amount',
         'Code' => 'Code',
+        'Start Date' => 'Start Date',
+        'End Date' => 'End Date',
         'product' => 'Product',
         'Edit discount' => 'Edit Discount',
         'Add discount' => 'Add Discount',

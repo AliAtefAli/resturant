@@ -41,6 +41,7 @@ class OrderController extends Controller
         return $this->store($request);
 
     }
+
     public function store(StoreCheckoutRequest $request)
     {
         $request['billing_total'] = $this->getBillingTotal();
@@ -65,6 +66,63 @@ class OrderController extends Controller
         Cart::instance('cart')->destroy();
 
         return redirect()->route('home')->with('success', trans('dashboard.order.Your order is in progress'));
+    }
+
+    public function checkCoupon(Request $request)
+    {
+        $request['billing_total'] = $this->getBillingTotal();
+        if ($request->coupon) {
+            $coupon = Discount::where('code', $request->coupon)->first();
+            if (!$coupon) {
+                return response()->json([
+                        'status' => false,
+                        'msg' => trans('site.Order.Coupon not found')
+                    ]
+                );
+            }
+            $request['coupon'] = $coupon;
+            if ($coupon->status == 'available') {
+                if ($coupon->end_date < today() || $coupon->start_date > today()) {
+                    return response()->json([
+                            'status' => false,
+                            'msg' => trans('site.Discount period expired'),
+                        ]
+                    );
+                }
+//                if ($coupon->start_date > today()) {
+//                    return response()->json([
+//                            'status' => false,
+//                            'msg' => trans('site.Discount period expired'),
+//                        ]
+//                    );
+//                }
+                if ($coupon->discount_type == 'fixed') {
+                    $request['totalBefore'] = $request['billing_total'];
+                    $request['billing_total'] -= $coupon->amount;
+                } else {
+                    $request['totalBefore'] = $request['billing_total'];
+                    $request['billing_total'] = $request['billing_total'] - ($request['billing_total'] * ($coupon->amount / 100));
+                }
+            } else {
+                return response()->json([
+                        'status' => false,
+                        'msg' => trans('site.Order.Coupon not Available')
+                    ]
+                );
+            }
+        } else {
+            return response()->json([
+                    'status' => false,
+                    'msg' => trans('site.Order.Enter Your coupon')
+                ]
+            );
+        }
+        return response()->json([
+                'status' => true,
+                'msg' => trans('site.Discount is successfully'),
+                'data' => $request->all()
+            ]
+        );
     }
 
     private function getBillingTotal()

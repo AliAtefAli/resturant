@@ -122,7 +122,6 @@
             $.ajax({
                 url: "/products/addToCart/" + id,
                 method: "POST",
-
                 data: {
                     _token: '{{ csrf_token() }}',
                     product: id,

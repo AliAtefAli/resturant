@@ -165,6 +165,7 @@ return [
         'Confirm Order' => 'Confirm Order',
         'Coupon not found' => 'Coupon not found',
         'Coupon not Available' => 'Coupon not Available',
+        'Enter Your coupon' => 'Enter Your coupon',
     ],
     'Rate' => [
         'Add your rate' => 'Add your rate',
@@ -182,4 +183,10 @@ return [
     'The cart now is empty' => 'The cart now is empty',
     'Order now' => 'Order now',
     'You have been banned by the administration' => 'You have been banned by the administration',
+    'Confirm Coupon' => 'Confirm Coupon',
+    'Discount period expired' => 'Discount period expired',
+    'Discount is successfully' => 'Discount is successfully',
+    'Discount amount' => 'Discount Amount',
+    'Total before discount' => 'Total before discount',
+    'Total after discount' => 'Total after discount',
 ];
