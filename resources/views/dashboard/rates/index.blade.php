@@ -48,7 +48,7 @@
                                         </div>
                                         <div class="card-content collapse show">
                                             <div class="card-body card-dashboard">
-                                                <table class="table table-striped table-bordered dom-jQuery-events">
+                                                <table class="table table-striped table-bordered ">
                                                     <thead>
                                                     <tr>
                                                         <th>{{trans('dashboard.rates.User')}}</th>
