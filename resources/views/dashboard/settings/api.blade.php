@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-
+@section('title', trans('dashboard.API.APIs'))
 @section('content')
     <!--content wrapper -->
     <div class="content-wrapper">
@@ -14,7 +14,7 @@
                                     href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
                             </li>
 
-                            <li class="breadcrumb-item active">{{ trans('dashboard.main.APIs') }}</li>
+                            <li class="breadcrumb-item active">{{ trans('dashboard.API.APIs') }}</li>
                         </ol>
                     </div>
                 </div>

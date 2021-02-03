@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-
+@section('title', trans('site.Show Product'))
 @section('style')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
@@ -122,7 +122,6 @@
             $.ajax({
                 url: "/products/addToCart/" + id,
                 method: "POST",
-
                 data: {
                     _token: '{{ csrf_token() }}',
                     product: id,

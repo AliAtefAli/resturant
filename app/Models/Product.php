@@ -24,11 +24,6 @@ class Product extends Model
         }
     }
 
-    public function discount()
-    {
-        return $this->hasMany(Product::class);
-    }
-
     public function images()
     {
         return $this->hasMany(Image::class);

@@ -12,7 +12,8 @@ class StoreDiscountRequest extends FormRequest
             'discount_type' => 'required',
             'status' => 'required',
             'amount' => 'required',
-            'product_id' => 'required',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
             'code' => 'required|unique:discounts'
         ];
     }
@@ -23,7 +24,10 @@ class StoreDiscountRequest extends FormRequest
             'discount_type.required' => (trans('validation.field_required_discount')),
             'status.required' => (trans('validation.field_required_status')),
             'amount.required' => (trans('validation.field_required_amount')),
-            'product_id.required' => (trans('validation.field_required_product')),
+            'start_date.date' => (trans('validation.Please Enter Correct date')),
+            'end_date.date' => (trans('validation.Please Enter Correct date')),
+            'start_date.required' => (trans('validation.Please Enter The Start date')),
+            'end_date.required' => (trans('validation.Please Enter The End date')),
             'code.required' => (trans('validation.field_required_code')),
             'code.unique' => (trans('validation.field_exists_code')),
         ];

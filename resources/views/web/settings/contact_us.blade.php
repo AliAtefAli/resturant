@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-
+@section('title', trans('site.Contact us'))
 @section('content')
 
     <div class="contact-us-info">
@@ -56,7 +56,7 @@
                         {{__('site.Name')}}
                     </p>
                     <label class="input-style">
-                        <input type="text" name="name">
+                        <input type="text" name="name" value="{{ auth()->user()->name }}">
                         @if ($errors->has('name'))
                             <div class="alert alert-danger">{{ $errors->first('name') }}</div>
                         @endif
@@ -65,7 +65,7 @@
                         {{__('site.E-mail')}}
                     </p>
                     <label class="input-style">
-                        <input type="email" name="email">
+                        <input type="email" name="email" value="{{ auth()->user()->email }}">
                         @if ($errors->has('email'))
                             <div class="alert alert-danger">{{ $errors->first('email') }}</div>
                         @endif
@@ -74,7 +74,7 @@
                         {{__('site.Phone')}}
                     </p>
                     <label class="input-style">
-                        <input type="tel" name="phone">
+                        <input type="tel" name="phone" value="{{ auth()->user()->phone }}">
                         @if ($errors->has('phone'))
                             <div class="alert alert-danger">{{ $errors->first('phone') }}</div>
                         @endif

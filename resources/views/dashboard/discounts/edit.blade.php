@@ -1,5 +1,8 @@
 @extends('dashboard.layouts.app')
-
+@section('title', trans('dashboard.discounts.Edit discount'))
+@section('style')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+@endsection
 @section('content')
     <!--content wrapper -->
     <div class="content-wrapper">
@@ -41,7 +44,7 @@
                                     <div class="col-md-10">
                                         <div class="position-relative">
                                             <input type="text" id="code" class="form-control"
-                                                   name="code"/>
+                                                   name="code" value="{{ $discount->code }}"/>
                                             @include('dashboard.partials._errors', ['input' => 'code'])
                                         </div>
                                     </div>
@@ -50,7 +53,7 @@
                                 <div class="form-group row {{ $errors->has('amount') ? ' has-error' : '' }}">
                                     <label class="col-md-2" for="amount">{{trans('dashboard.discounts.Value')}}</label>
                                     <div class="col-md-10">
-                                        <div class="position-relative has-icon-left">
+                                        <div class="position-relativ">
                                             <input type="float" id="amount" class="form-control"
                                                    name="amount" value="{{ $discount->amount }}"/>
                                             @include('dashboard.partials._errors', ['input' => 'amount'])
@@ -58,16 +61,27 @@
                                     </div>
                                 </div>
 
-                                <div class="form-body">
-                                    <div class="form-group row {{ $errors->has('product_id') ? ' has-error' : '' }}">
-                                        <label class="col-md-2"
-                                               for="product_id">{{ trans('dashboard.discounts.product')}}</label>
-                                        <div class="col-md-10">
-                                            <select class="custom-select" name="product_id">
-                                                @foreach($products as $product)
-                                                    <option value="{{ $product->id }}" @if($product->id == $discount->product->id) selected @endif>{{ $product->name }}</option>
-                                                @endforeach
-                                            </select>
+                                <div class="form-group row {{ $errors->has('amount') ? ' has-error' : '' }}">
+                                    <label class="col-md-2"
+                                           for="start_date">{{trans('dashboard.discounts.Start Date')}}</label>
+                                    <div class="col-md-10">
+                                        <div class="position-relative">
+                                            <input type="text" id="start_date" class="form-control"
+                                                   name="start_date" value="{{ $discount->start_date }}"/>
+                                            @include('dashboard.partials._errors', ['input' => 'start_date'])
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row {{ $errors->has('amount') ? ' has-error' : '' }}">
+                                    <label class="col-md-2"
+                                           for="end_date">{{trans('dashboard.discounts.End Date')}}</label>
+                                    <div class="col-md-10">
+                                        <div class="position-relative">
+                                            <input type="text" id="end_date" class="form-control"
+                                                   name="end_date" value="{{ $discount->end_date }}"/>
+                                            @include('dashboard.partials._errors', ['input' => 'end_date'])
                                         </div>
                                     </div>
                                 </div>
@@ -111,14 +125,13 @@
         </div>
     </div>
     </div>
+@endsection
+@section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
-        $(document).ready(function () {
-            $('#password, #password_confirmation').on('keyup', function () {
-                if ($('#password').val() == $('#password_confirmation').val()) {
-                    $('#message').html("{{trans('matching')}}").css('color', 'green');
-                } else
-                    $('#message').html("{{trans('not_matching')}}").css('color', 'red');
-            });
+        flatpickr("#startDate", {
+            minDate: "today",
+            defaultDate: "today"
         });
     </script>
 @endsection

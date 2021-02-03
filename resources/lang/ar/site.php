@@ -68,13 +68,15 @@ return [
     'E-mail' => 'البريد الاكتروني',
     'Image' => 'صوره',
     'Action' => 'اكشن',
+    'The Rate' => 'التقييم',
+    'Create Subscription' => 'اشتراك',
 
     'amount' => 'الكميه',
     'price' => 'السعر',
     'total' => 'الاجمالي',
 
     'Permissions' => 'الصلاحيات',
-
+    'Show Product' => 'عرض منتج',
     'Categories' => 'الاقسام',
     'Sub Categories' => 'الاقسام الفرعية',
     'Subscriptions' => 'الاشتراكات',
@@ -169,6 +171,7 @@ return [
         'Confirm Order' => 'اتمام الطلب',
         'Coupon not found' => 'عذرا الكويون ليس موجود',
         'Coupon not Available' => 'عذرا الكويون ليس متاح الآن',
+        'Enter Your coupon' => 'ادخل الكوبون',
     ],
     'Rate' => [
         'Add your rate' => 'اضف تقييما',
@@ -186,4 +189,11 @@ return [
     'Something went wrong, please try again' => 'حدث خطأ ما برجاء المحاوله مره اخري',
     'The cart now is empty' => 'السلة فارغة الآن',
     'Order now' => 'تسوق الآن',
+    'You have been banned by the administration' => 'تم حظرك من قبل الإدارة',
+    'Confirm Coupon' => 'تفعيل الكوبون',
+    'Discount period expired' => 'انتهت مدة الخصم',
+    'Discount is successfully' => 'تم الخصم بنجاح',
+    'Discount amount' => 'قيمه الخصم',
+    'Total before discount' => 'السعر الاجمالي قبل الخصم',
+    'Total after discount' => 'السعر الاجمالي بعد الخصم',
 ];

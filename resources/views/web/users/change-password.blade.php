@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-
+@section('title', trans('site.Change Password'))
 @section('content')
 
     <!--Start User-->

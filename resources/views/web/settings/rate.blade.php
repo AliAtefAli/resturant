@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-
+@section('title', trans('site.The Rate'))
 @section('content')
 
     <!--start rating-->

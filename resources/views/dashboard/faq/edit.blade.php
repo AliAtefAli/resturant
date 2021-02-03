@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-
+@section('title', trans('dashboard.FAQ.Edit Question'))
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.0/trix.min.css">
 @endsection
@@ -29,7 +29,6 @@
         </div>
 
         @include('dashboard.partials._alert')
-        @include('dashboard.partials._all_errors')
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -52,7 +51,7 @@
                                                        name="{{$key}}[question]"
                                                        value="{{ $question->translate($key)->question }}">
                                                 <trix-editor input="{{$key}}.question"></trix-editor>
-                                                @include('dashboard.partials._errors', ['input' => 'question'])
+                                                @include('dashboard.partials._errors', ['input' => "$key.question"])
                                                 <div class="form-control-position">
                                                 </div>
                                             </div>
@@ -70,7 +69,7 @@
                                                        name="{{$key}}[answer]"
                                                        value="{{ $question->translate($key)->answer }}">
                                                 <trix-editor input="{{$key}}.answer"></trix-editor>
-                                                @include('dashboard.partials._errors', ['input' => 'answer'])
+                                                @include('dashboard.partials._errors', ['input' => "$key.answer"])
                                                 <div class="form-control-position">
                                                 </div>
                                             </div>

@@ -1,4 +1,5 @@
 @extends('dashboard.layouts.app')
+@section('title', trans('dashboard.main.dashboard'))
 @section('content')
 
         <div class="content-wrapper">

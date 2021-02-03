@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('dashboard.complaint.replyNotification', $message->id ) }}" method="post">
+                <form action="{{ route('dashboard.complaint.replyNotification', $complaint->id ) }}" method="post">
                     @csrf
                     @method('PUT')
                     <div class="form-group">

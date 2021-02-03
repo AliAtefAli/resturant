@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-
+@section('title', trans('dashboard.News Letter.News Letter'))
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.0/trix.min.css">
 @endsection
@@ -25,7 +25,6 @@
         </div>
 
         @include('dashboard.partials._alert')
-        @include('dashboard.partials._all_errors')
         <div class="row">
             <div class="col-md-12">
                 <div class="card">

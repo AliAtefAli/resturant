@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-
+@section('title', trans('dashboard.product.Edit Product'))
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.0/trix.min.css">
 @endsection
@@ -20,7 +20,7 @@
                             <li class="breadcrumb-item">
                                 <a href="{{route('dashboard.products.index')}}">{{trans('dashboard.product.Products')}}</a>
                             </li>
-                            <li class="breadcrumb-item active">{{ trans('dashboard.main.Edit') }}</li>
+                            <li class="breadcrumb-item active">{{ trans('dashboard.product.Edit Product') }}</li>
                         </ol>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                                                             placeholder="{{trans("dashboard.category.Name")}}"
                                                             name="{{$key}}[name]"
                                                             value="{{ $product->translate($key)->name }}"/>
-                                                    @include('dashboard.partials._errors', ['input' => 'name'])
+                                                    @include('dashboard.partials._errors', ['input' => "$key.name"])
                                                     <div class="form-control-position">
                                                     </div>
                                                 </div>
@@ -69,7 +69,7 @@
                                                        name="{{$key}}[description]"
                                                        value="{{ $product->translate($key)->description }}"/>
                                                 <trix-editor input="{{$key}}.description"></trix-editor>
-                                                @include('dashboard.partials._errors', ['input' => 'name'])
+                                                @include('dashboard.partials._errors', ['input' => "$key.description"])
                                                 <div class="form-control-position">
                                                 </div>
                                             </div>

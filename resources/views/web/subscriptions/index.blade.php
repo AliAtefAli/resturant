@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-
+@section('title', trans('site.Subscriptions'))
 @section('content')
 
     <!--Start Head breadcramp-->

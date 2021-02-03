@@ -1,6 +1,5 @@
 @extends('dashboard.layouts.app')
-
-
+@section('title', trans('dashboard.product.products'))
 @section('content')
 
     <!--content wrapper -->
@@ -54,7 +53,7 @@
                                         <div class="card-content collapse show">
                                             <div class="card-body card-dashboard">
                                                 <table
-                                                    class="table table-striped table-bordered dom-jQuery-events text-center">
+                                                    class="table table-striped table-bordered  text-center">
                                                     <thead>
                                                     <tr>
                                                         <th>{{trans('dashboard.product.Name')}}</th>

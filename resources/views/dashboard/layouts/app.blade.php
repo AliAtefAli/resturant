@@ -4,11 +4,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <title>Dashboard</title>
-    <link rel="apple-touch-icon" href="@if(isset($setting['logo'])){{asset('assets/uploads/settings/' . $setting['logo'] )}} @else {{ asset('dashboard_files/app-assets/images/ico/favicon.ico') }} @endif">
-    <link rel="shortcut icon" type="image/x-icon" href="@if(isset($setting['favicon'])){{asset('assets/uploads/settings/' . $setting['favicon'] )}} @else {{ asset('dashboard_files/app-assets/images/ico/favicon.ico') }} @endif">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
-          rel="stylesheet">
+    <title>@yield('title', trans('dashboard.main.dashboard'))</title>
+    <link rel="apple-touch-icon"
+          href="@if(isset($setting['logo'])){{asset('assets/uploads/settings/' . $setting['logo'] )}} @else {{ asset('dashboard_files/app-assets/images/ico/favicon.ico') }} @endif">
+    <link rel="shortcut icon" type="image/x-icon"
+          href="@if(isset($setting['favicon'])){{asset('assets/uploads/settings/' . $setting['favicon'] )}} @else {{ asset('dashboard_files/app-assets/images/ico/favicon.ico') }} @endif">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
+        rel="stylesheet">
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
           rel="stylesheet">
 
@@ -172,8 +175,17 @@
         imagesPreview(this, 'div.image-preview');
     });
 
+    //end of summernote
 
 </script>
 @yield('scripts')
+@if(lang() === 'ar')
+    <script
+        src="{{ asset('dashboard_files/app-assets/js/scripts/tables/datatables-extensions/ar-translation.js') }}"></script>
+@else
+    <script>
+        $('.table').addClass('dom-jQuery-events');
+    </script>
+@endif
 </body>
 </html>

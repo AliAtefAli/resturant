@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-
+@section('title', trans('site.Categories'))
 @section('content')
 
     <div class="section1 section1-custom1">
@@ -11,7 +11,7 @@
             @foreach($categories as $category)
                 <div class="section1-container margin-responsive">
                     <h2 class="header-section1 wow zoomIn">
-                        <a href="#{{$category->id}}" style="color: inherit; text-decoration: none;">{{ $category->name }}</a>
+                        <a href="{{route('category.index' , $category->id)}}" style="color: inherit; text-decoration: none;">{{ $category->name }}</a>
                     </h2>
                     <div class="owl-carousel owl-theme section1-name-slider m-5">
                         @foreach($category->categories as $sub_category)

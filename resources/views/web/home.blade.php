@@ -9,7 +9,7 @@
     </div>
 </div>
 <!--End Loading-->
-
+@section('title', trans('site.Home'))
 @section('content')
 
     <!--Start Main Slider-->

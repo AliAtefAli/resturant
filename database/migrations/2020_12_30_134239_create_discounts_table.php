@@ -19,7 +19,8 @@ class CreateDiscountsTable extends Migration
             $table->enum('status', ['available', 'unavailable'])->default('available');
             $table->float('amount');
             $table->string('code')->unique();
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->timestamp('start_date')->nullable();
+            $table->timestamp('end_date')->nullable();
             $table->timestamps();
         });
     }

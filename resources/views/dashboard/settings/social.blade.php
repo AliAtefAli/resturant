@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-
+@section('title', trans('dashboard.Social.Edit Social links'))
 @section('content')
     <!--content wrapper -->
     <div class="content-wrapper">
@@ -40,8 +40,9 @@
                                     <div class="col-md-10">
                                         <div class="position-relative">
                                             <input type="text" id="linkedin" class="form-control"
-                                                   name="settings[linkedin]"
-                                                   value="@if(isset($settings['linkedin'])) {{ $settings['linkedin'] }} @endif"/>
+                                                   name="settings[social_linkedin]"
+
+                                                   value="@if(isset($settings['social_linkedin'])) {{ $settings['social_linkedin'] }} @endif"/>
                                             @include('dashboard.partials._errors', ['input' => 'linkedin'])
                                         </div>
                                     </div>
@@ -53,8 +54,8 @@
                                     <div class="col-md-10">
                                         <div class="position-relative">
                                             <input type="text" id="facebook" class="form-control"
-                                                   name="settings[facebook]"
-                                                   value="@if(isset($settings['facebook'])) {{ $settings['facebook'] }} @endif"/>
+                                                   name="settings[social_facebook]"
+                                                   value="@if(isset($settings['social_facebook'])) {{ $settings['social_facebook'] }} @endif"/>
                                             @include('dashboard.partials._errors', ['input' => 'facebook'])
                                         </div>
                                     </div>
@@ -66,8 +67,8 @@
                                     <div class="col-md-10">
                                         <div class="position-relative">
                                             <input type="text" id="twitter" class="form-control"
-                                                   name="settings[twitter]"
-                                                   value="@if(isset($settings['twitter'])) {{ $settings['twitter'] }} @endif"/>
+                                                   name="settings[social_twitter]"
+                                                   value="@if(isset($settings['social_twitter'])) {{ $settings['social_twitter'] }} @endif"/>
                                             @include('dashboard.partials._errors', ['input' => 'twitter'])
                                         </div>
                                     </div>
@@ -79,8 +80,8 @@
                                     <div class="col-md-10">
                                         <div class="position-relative">
                                             <input type="text" id="instagram" class="form-control"
-                                                   name="settings[instagram]"
-                                                   value="@if(isset($settings['instagram'])) {{ $settings['instagram'] }} @endif"/>
+                                                   name="settings[social_instagram]"
+                                                   value="@if(isset($settings['social_instagram'])) {{ $settings['social_instagram'] }} @endif"/>
                                             @include('dashboard.partials._errors', ['input' => 'instagram'])
                                         </div>
                                     </div>
@@ -97,21 +98,21 @@
                                                     <span class="input-group-text" id="basic-addon1">+966</span>
                                                 </div>
                                                 <input type="text" class="form-control phone-inputmask" id="phone-mask"
-                                                       placeholder="Enter Phone Number" name="settings[whatsapp]"
-                                                       value="@if(isset($settings['whatsapp'])) {{ $settings['whatsapp'] }} @endif"/>
+                                                       placeholder="Enter Phone Number" name="settings[social_whatsapp]"
+                                                       value="@if(isset($settings['social_whatsapp'])) {{ $settings['social_whatsapp'] }} @endif"/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            
+
                                 <div class="form-group row {{ $errors->has('snapchat') ? ' has-error' : '' }}">
                                     <label class="col-md-2"
                                            for="snapchat">{{trans('dashboard.Social.SnapChat')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative">
                                             <input type="text" id="snapchat" class="form-control"
-                                                   name="settings[snapchat]"
-                                                   value="@if(isset($settings['snapchat'])) {{ $settings['snapchat'] }} @endif"/>
+                                                   name="settings[social_snapchat]"
+                                                   value="@if(isset($settings['social_snapchat'])) {{ $settings['social_snapchat'] }} @endif"/>
                                             @include('dashboard.partials._errors', ['input' => 'snapchat'])
                                         </div>
                                     </div>

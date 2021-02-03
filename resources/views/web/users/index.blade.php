@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-
+@section('title', trans('site.Edit'))
 @section('content')
 
     <!--Start User-->

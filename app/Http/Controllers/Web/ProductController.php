@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Discount;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -29,10 +30,6 @@ class ProductController extends Controller
         return view('web.products.show', compact('product', 'related_products'));
     }
 
-    public function activeCoupon()
-    {
-
-    }
 
 
 }

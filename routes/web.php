@@ -15,7 +15,7 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
     Route::get('/terms', 'SettingController@terms')->name('terms');
 
     Route::resource('products', 'ProductController');
-    Route::post('products/addToCart/{product}/{row}', 'CartController@addToCart')->name('products.addToCart');
+    Route::post('products/addToCart/{product}', 'CartController@addToCart')->name('products.addToCart');
     Route::get('cart/remove/{row}', 'CartController@removeFromCart')->name('cart.remove');
 
     Route::get('/categories', 'CategoryController@categories')->name('categories.index');
@@ -38,6 +38,7 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
         Route::get('/notification', 'UserController@notifications')->name('user.notification');
         Route::get('/orders', 'OrderController@index')->name('orders');
         Route::post('/order/checkPayment', 'OrderController@checkPayment')->name('order.checkPayment');
+        Route::post('/order/checkCoupon', 'OrderController@checkCoupon')->name('product.checkCoupon');
         Route::post('/order/store', 'OrderController@store')->name('order.store');
         Route::get('/carts', 'CartController@index')->name('carts');
         Route::get('/redirect', 'CartController@redirect')->name('payment.redirect');

@@ -28,9 +28,7 @@ class DiscountController extends Controller
 
     public function store(StoreDiscountRequest $request)
     {
-        $data = $request->validated();
-
-        Discount::create($data);
+        Discount::create($request->validated());
 
         return redirect()->route('dashboard.discounts.index')->with('success', trans('dashboard.It was done successfully!'));
     }

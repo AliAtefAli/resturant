@@ -1,4 +1,5 @@
 @extends('dashboard.layouts.app')
+@section('title', trans('dashboard.subscriptions.Users Subscribed'))
 @section('content')
 
     <!--content wrapper -->

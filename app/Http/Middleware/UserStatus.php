@@ -19,7 +19,7 @@ class UserStatus
     {
         if ( $request->user() && $request->user()->status == 'block') {
             Auth::logout();
-            return response()->view('dashboard.errors.403');
+            return redirect()->route('home')->with('error', trans('site.You have been banned by the administration'));
         }
         return $next($request);
     }
