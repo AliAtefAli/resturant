@@ -27,10 +27,8 @@ Route::get('order/delivered/{order}', 'OrderController@delivered')->name('orders
 
 Route::resource('discounts', 'DiscountController');
 Route::resource('rates', 'RateController');
-
 Route::get('rates/off/{rate}', 'RateController@off')->name('rates.off');
 Route::get('rates/on/{rate}', 'RateController@on')->name('rates.on');
-
 Route::get('discounts/makeAsUnavailable/{discount}', 'DiscountController@makeAsUnavailable')->name('discounts.makeAsUnavailable');
 Route::get('discounts/makeAsAvailable/{discount}', 'DiscountController@makeAsAvailable')->name('discounts.makeAsAvailable');
 Route::resource('subscriptions', 'SubscriptionController');

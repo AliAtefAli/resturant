@@ -78,6 +78,7 @@ return [
     'Permissions' => 'الصلاحيات',
     'Show Product' => 'عرض منتج',
     'Categories' => 'الاقسام',
+    'Subscriptions Duration' => 'مده الاشتراك',
     'Sub Categories' => 'الاقسام الفرعية',
     'Subscriptions' => 'الاشتراكات',
     'Menu of the week' => 'المنيو الاسبوعى',

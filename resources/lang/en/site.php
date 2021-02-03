@@ -79,6 +79,7 @@ return [
     'Show Category' => 'Show Category',
     'Show Product' => 'Show Product',
     'Categories' => 'Categories',
+    'Subscriptions Duration' => 'Subscriptions Duration',
     'Sub Categories' => 'Sub Categories',
     'Subscriptions' => 'Subscriptions',
     'Menu of the week' => 'Menu of the week',

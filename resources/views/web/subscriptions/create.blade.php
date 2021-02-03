@@ -46,7 +46,7 @@
 
                     <div class="row my-3">
                         <p class="name-input col col-md-2">
-                            {{__('site.price')}} :
+                            {{__('site.Price')}} :
                         </p>
                         <span class="sub-price" data-value="{{ $subscription->price }}">{{ $subscription->price }} :  </span>
 
@@ -59,7 +59,7 @@
 
                     <div class="row my-3">
                         <p class="name-input col col-md-2">
-                            {{__('site.total')}} :
+                            {{__('site.Total')}} :
                         </p>
                         <span id="total" data-value="{{ $subscription->price }}">{{ $subscription->price }} : @if(isset($setting[app()->getLocale() . '_currency']))
                                 {{ $setting[app()->getLocale() . '_currency'] }}

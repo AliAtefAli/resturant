@@ -46,7 +46,7 @@
                                                             placeholder="{{trans("dashboard.category.Name")}}"
                                                             name="{{$key}}[name]"
                                                             value="{{ $category->translate($key)->name }}"/>
-                                                    @include('dashboard.partials._errors', ['input' => "$key.name"])
+                                                    @include('dashboard.partials._errors', ['input' => 'name'])
                                                     <div class="form-control-position">
                                                     </div>
                                                 </div>

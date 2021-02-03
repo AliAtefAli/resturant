@@ -43,16 +43,14 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 div.dataTables_wrapper div.dataTables_filter {
-    text-align: right;
-    position: absolute;
-    left: 877px;
-    bottom: 1075px
+    text-align: left;
+    position: relative;
 }
 
 div.dataTables_wrapper div.dataTables_filter label {
     font-weight: normal;
     white-space: nowrap;
-    text-align: right
+    text-align: left
 }
 
 div.dataTables_wrapper div.dataTables_filter input {

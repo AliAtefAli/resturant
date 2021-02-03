@@ -12,7 +12,7 @@
                         {{ __('site.Login') }}
                     </p>
                     <p class="name-input">
-                        {{__('site.Phone')}}
+                        {{__('site.Phone')}} & {{__('site.E-mail')}}
                     </p>
                     <label class="input-style">
                         <input type="text" name="email" value="{{ old('email') }}" autofocus>

@@ -50,10 +50,14 @@
         <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
     @endif
 
-{{--    <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">--}}
-    <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/app-assets/vendors/css/tables/extensions/buttons.dataTables.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/app-assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/app-assets/vendors/css/extensions/sweetalert.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('dashboard_files/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('dashboard_files/app-assets/vendors/css/tables/extensions/buttons.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('dashboard_files/app-assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('dashboard_files/app-assets/vendors/css/extensions/sweetalert.css')}}">
     <!-- End of DataTable -->
 
     <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/app-assets/css/image-preview.css')}}">
@@ -67,11 +71,11 @@
       data-open="click" data-menu="vertical-menu" data-col="2-columns">
 
 <!-- navbar-->
-    @include('dashboard.layouts._navbar')
+@include('dashboard.layouts._navbar')
 <!-- end of navbar-->
 
 <!-- side-menu -->
-    @include('dashboard.layouts._aside')
+@include('dashboard.layouts._aside')
 <!-- End of side-menu -->
 
 <!-- Main Content -->
@@ -132,27 +136,30 @@
 <!-- End of SweetAlert js -->
 <script src="{{asset('dashboard_files/app-assets/js/scripts/image-preview.js')}}" type="text/javascript"></script>
 
-                reader.readAsDataURL(input.files[i]);
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $(".image").change(function () {
+
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.image-preview').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(this.files[0]);
             }
-        }
 
-    };
+        });
 
-    $('#multiImage').on('change', function() {
-        $('.product-image').css("display", "none");
-        imagesPreview(this, 'div.image-preview');
     });
 
+    //end of summernote
 
 </script>
+
 @yield('scripts')
-@if(lang() === 'ar')
-    <script
-        src="{{ asset('dashboard_files/app-assets/js/scripts/tables/datatables-extensions/ar-translation.js') }}"></script>
-@else
-    <script>
-        $('.table').addClass('dom-jQuery-events');
-    </script>
-@endif
 </body>
 </html>

@@ -113,12 +113,12 @@
                             <span>
                                  @if(lang() == 'ar') العربية @else  English @endif
                             </span>
-                <div class="sub-menu">
-                    <a href="{{route('change.language')}}" class="top-page-link">
-                        @if(lang() == 'ar') English @else العربية  @endif
-                    </a>
+                    <div class="sub-menu">
+                        <a href="{{route('change.language')}}" class="top-page-link">
+                            @if(lang() == 'ar') English @else العربية  @endif
+                        </a>
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>

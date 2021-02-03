@@ -26,6 +26,10 @@
 
                 </a>
             </li>
+{{--            <li class=" nav-item"><a href="{{ route('dashboard.users.index') }}"><i class="la la-users"></i><span--}}
+{{--                        class="menu-title"--}}
+{{--                        data-i18n="">{{trans('dashboard.main.Users')}}</span></a>--}}
+{{--            </li>--}}
             <li class=" nav-item"><a href="{{ route('dashboard.categories.index') }}"><i class="la la-book"></i><span
                         class="menu-title"
                         data-i18n="">{{trans('dashboard.category.Categories')}}</span></a>
