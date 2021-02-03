@@ -17,8 +17,8 @@
             #DataTables_Table_0_length {
                 z-index: 2;
                 position: absolute;
-                right: 865px;
-                bottom: 15px;
+                /*right: 865px;*/
+                /*bottom: 15px;*/
             }
 
         </style>
