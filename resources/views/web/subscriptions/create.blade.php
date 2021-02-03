@@ -1,5 +1,7 @@
 @extends('web.layouts.app')
-
+@section('style')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+@endsection
 @section('content')
 
     <div class="header-pic">
@@ -22,7 +24,7 @@
                         {{__('site.Select Start date for the Subscription')}}
                     </p>
                     <label class="input-style">
-                        <input type="date" name="start_date" min="{{\Carbon\Carbon::today()->toDateString()}}">
+                        <input id="startDate" type="date" name="start_date" >
                         @if ($errors->has('start_date'))
                             <div class="alert alert-danger">{{ $errors->first('start_date') }}</div>
                         @endif
@@ -139,6 +141,13 @@
             var count = $('#count').val();
             total = price * count;
             document.getElementById('total').innerHTML = total +' '+ currency;
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr("#startDate", {
+            minDate: "today",
+            defaultDate: "today"
         });
     </script>
 @endsection

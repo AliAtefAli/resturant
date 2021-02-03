@@ -15,13 +15,19 @@
                         {{__('site.Phone')}}
                     </p>
                     <label class="input-style">
-                        <input type="text" name="email">
+                        <input type="text" name="email" value="{{ old('email') }}" autofocus>
+                        @if ($errors->has('email'))
+                            <div class="alert alert-danger">{{ $errors->first('email') }}</div>
+                        @endif
                     </label>
                     <p class="name-input">
                         {{__('site.Password')}}
                     </p>
                     <label class="input-style">
                         <input type="password" name="password">
+                        @if ($errors->has('password'))
+                            <div class="alert alert-danger">{{ $errors->first('password') }}</div>
+                        @endif
                     </label>
                     <div class="text-center">
                         <a href="{{route('reset_pass')}}" class="link-forget">

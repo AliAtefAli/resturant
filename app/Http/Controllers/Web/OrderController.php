@@ -27,7 +27,9 @@ class OrderController extends Controller
 
     public function checkPayment(StoreCheckoutRequest $request)
     {
-        Product::checkProductQuantity();
+        if (Product::checkProductQuantity()) {
+            return back()->with('error', trans('site.Order.Sorry, this Quantity is not available'));
+        }
         $request['billing_total'] = $this->getBillingTotal();
         $request['user_id'] = auth()->user()->id;
 
@@ -67,7 +69,7 @@ class OrderController extends Controller
 
         Order::notifyNewOrder($order);
 
-        Cart::destroy();
+        Cart::instance('cart')->destroy();
 
         return redirect()->route('home')->with('success', trans('dashboard.order.Your order is in progress'));
     }

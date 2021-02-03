@@ -28,6 +28,8 @@ return [
     'Register' => 'Register',
     'Remember_me' => 'Remember me',
     'Password' => 'Password',
+    'Old Password' => 'Old Password',
+    'Change Password' => 'Change Password',
     'Forget Password' => 'Forget Password ?',
     'Password confirmation' => 'Confirm Password',
 
@@ -129,6 +131,8 @@ return [
     'Locale' => 'Locale',
     'Credit Card' => 'Credit Card',
     'On delivery' => 'On delivery',
+    'credit_card' => 'Credit Card',
+    'on_delivery' => 'On delivery',
     'Note' => 'Note',
     'Order' => [
         'All orders' => 'All orders',
@@ -161,7 +165,7 @@ return [
         'Billing email' => 'Billing email',
         'Billing phone' => 'Billing phone',
         'Billing address' => 'Billing address',
-        'Please, this Quantity is not available' => 'Please, this Quantity is not available',
+        'Sorry, this Quantity is not available' => 'Sorry, this Quantity is not available',
         'Confirm Order' => 'Confirm Order',
         'Coupon not found' => 'Coupon not found',
         'Coupon not Available' => 'Coupon not Available',
@@ -174,6 +178,7 @@ return [
     ],
     'User not found' => 'User not found',
     'Password Changed Successfully' => 'Password Changed Successfully',
+    'Wrong Password, please try again' => 'Wrong Password, please try again',
     'join us' => 'Join us',
     'Enter your email address' => 'Enter your email',
 

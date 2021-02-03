@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => app()->getLocale() ?? 'en',
 
     'languages' => [
         'en' => 'English',

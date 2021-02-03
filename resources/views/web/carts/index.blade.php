@@ -211,8 +211,8 @@
                             <input type="text" name="billing_name"
                                    value="@if(auth()->check()) {{ auth()->user()->name }} @endif">
                         </label>
-                        @if ($errors->has('name'))
-                            <div class="alert alert-danger">{{ $errors->first('name') }}</div>
+                        @if ($errors->has('billing_name'))
+                            <div class="alert alert-danger">{{ $errors->first('billing_name') }}</div>
                         @endif
                         <p class="name-input">
                             {{__('site.Phone')}}
@@ -220,8 +220,8 @@
                         <label class="input-style">
                             <input type="text" name="billing_phone"
                                    value="@if(auth()->check()){{ auth()->user()->phone }}@endif">
-                            @if ($errors->has('phone'))
-                                <div class="alert alert-danger">{{ $errors->first('phone') }}</div>
+                            @if ($errors->has('billing_phone'))
+                                <div class="alert alert-danger">{{ $errors->first('billing_phone') }}</div>
                             @endif
                         </label>
                         <p class="name-input">
@@ -231,8 +231,8 @@
                             <input type="email" name="billing_email"
                                    value="@if(auth()->check()){{ auth()->user()->email }}@endif">
                         </label>
-                        @if ($errors->has('email'))
-                            <div class="alert alert-danger">{{ $errors->first('email') }}</div>
+                        @if ($errors->has('billing_email'))
+                            <div class="alert alert-danger">{{ $errors->first('billing_email') }}</div>
                         @endif
 
                         <p class="name-input">
@@ -247,8 +247,8 @@
                             <input type="hidden" id="lng" name="lng"
                                    value="@if(auth()->check()){{ auth()->user()->lng }}@endif">
                         </label>
-                        @if ($errors->has('address'))
-                            <div class="alert alert-danger">{{ $errors->first('address') }}</div>
+                        @if ($errors->has('billing_address'))
+                            <div class="alert alert-danger">{{ $errors->first('billing_address') }}</div>
                         @endif
 
 

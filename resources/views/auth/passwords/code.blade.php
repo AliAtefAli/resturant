@@ -10,13 +10,13 @@
                 <div class="pic-select pic-select-auth">
 
                     <p class="name-page">
-                        تفعيل الحساب
+                        {{ __('site.Confirm') }}
                     </p>
                     <p class="name-input">
-                        {{__('code')}}
+                        {{__('dashboard.discounts.Code')}}
                     </p>
                     <label class="input-style">
-                        <input type="text"name="code">
+                        <input type="text" name="code">
                     </label>
                     @if ($errors->has('code'))
                         <div class="alert alert-danger">{{ $errors->first('code') }}</div>

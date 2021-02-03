@@ -11,10 +11,9 @@ class CartController extends Controller
 {
     public function index()
     {
-        // dd(Cart::instance('cart')->total());
         $featured_products = Product::with('images')
         ->whereFeatured(1)->get();
-        // return view('web.carts.paymen-gosell');
+
         return view('web.carts.index', compact('featured_products'));
     }
 
@@ -25,21 +24,27 @@ class CartController extends Controller
 
     public function addToCart(Request $request, Product $product)
     {
+
         if ($request->qty > $product->quantity) {
-            return back()->with('error', trans('site.Order.Please, this Quantity is not available'));
+            return response()->json([
+                'status' => false,
+                'message' => trans('site.Order.Please, this Quantity is not available'),
+            ]);
+        }else {
+            Cart::instance('cart')->add([
+                'id' => $product->id,
+                'name' => $product->name,
+                'qty' => $request->qty,
+                'price' => $product->price,
+                'weight' => 0,
+                'options' => ['image' => ($product->images->first()->path) ?? '']
+            ])->associate(Product::class);
+
+            return response()->json([
+                'status' => true,
+                'message' => trans('site.Added to cart successfully'),
+            ]);
         }
-
-
-        Cart::instance('cart')->add([
-            'id' => $product->id,
-            'name' => $product->name,
-            'qty' => $request->qty,
-            'price' => $product->price,
-            'weight' => 0,
-            'options' => ['image' => ($product->images->first()->path) ?? '']
-        ])->associate(Product::class);
-
-        return response()->json(['success' => trans('site.Added to cart successfully'), 'quantity' => Cart::instance('cart')->count()]);
     }
 
     public function removeFromCart($row)

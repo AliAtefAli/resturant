@@ -28,6 +28,8 @@ return [
     'Register' => 'تسجيل جديد',
     'Remember_me' => 'تذكرني',
     'Password' => 'كلمه المرور',
+    'Old Password' => 'كلمة المرور القديمة',
+    'Change Password' => 'تغيير كلمة المرور',
     'Password confirmation' => 'تاكيد كلمه المرور',
 
     'Added successfully' => 'تم اضافه البيانات بنجاح',
@@ -129,6 +131,8 @@ return [
     'Locale' => 'محلي',
     'Credit Card' => 'بطاقة الائتمان',
     'On delivery' => 'عند الاستلام',
+    'credit_card' => 'بطاقة الائتمان',
+    'on_delivery' => 'عند الاستلام',
     'Note' => 'ملاحاظات',
     'Order' => [
         'Today Orders' => 'طلبات اليوم',
@@ -161,7 +165,7 @@ return [
         'Billing email' => 'ايميل المشتري',
         'Billing phone' => 'رقم المشتري',
         'Billing address' => 'عنوان المشتري',
-        'Please, this Quantity is not available' => 'عذرا هذه الكمية غير متاحة',
+        'Sorry, this Quantity is not available' => 'عذرا هذه الكمية غير متاحة',
         'Confirm Order' => 'اتمام الطلب',
         'Coupon not found' => 'عذرا الكويون ليس موجود',
         'Coupon not Available' => 'عذرا الكويون ليس متاح الآن',
@@ -175,10 +179,11 @@ return [
 ,
     'User not found' => 'المستخدم ليس له حساب',
     'Password Changed Successfully' => 'تم تغيير الرقم السري بنجاح',
+    'Wrong Password, please try again' => 'كلمة مرور خطأ من فضلك اعد المحاولة',
     'join us' => 'انضم الينا',
     'Enter your email address' => 'ادخل بريدك الالكترونى',
 
     'Something went wrong, please try again' => 'حدث خطأ ما برجاء المحاوله مره اخري',
     'The cart now is empty' => 'السلة فارغة الآن',
-    'Order now' => 'تسوق الآن'
+    'Order now' => 'تسوق الآن',
 ];

@@ -147,7 +147,6 @@ return [
     'attributes' => [],
 
     'field_min_6' => 'Field must be 6-digits at least',
-    'field_min_8' => 'Field must be 8-digits at least',
     'field_min_5' => 'Field must be 5-digits at least',
     'field_min_3' => 'Field must be 3-digits at least',
     'field_image' => 'Field must an image',
@@ -200,6 +199,4 @@ return [
     'field_exists_code' => 'Code already exsits',
     'field_exists_phone' => 'Phone already exsits',
     'field_exists_email' => 'Email already exsits',
-    'field_rate_required' => 'Rate field is required',
-    'field_comment_required' => 'Comment field is required',
 ];
