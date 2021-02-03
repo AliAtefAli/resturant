@@ -85,9 +85,9 @@ class UsersController extends Controller
 
     }
 
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('dashboard.users.show', compact('user'));
     }
 
 
@@ -114,7 +114,7 @@ class UsersController extends Controller
                 'name.required' => (trans('validation.field_required_name')),
                 'email.required' => (trans('validation.field_required_email')),
                 'email.email' => (trans('validation.field_email')),
-                'password.min' =>(trans('validation.field_min_6')),
+                'phone.phone' => __('validation.Please Enter Correct saudi arabia phone'),
                 'password.confirmed' => (trans('validation.password_confirmed')),
             ]
         );

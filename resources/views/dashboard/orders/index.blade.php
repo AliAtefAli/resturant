@@ -9,14 +9,15 @@
             div.dataTables_wrapper div.dataTables_filter {
                 text-align: left;
                 position: absolute  ;
-                left: 980px;
-                bottom: 5px
+                left: 840px;
+                bottom: 5px;
+                z-index: 3;
             }
 
             #table_length {
                 z-index: 2;
                 position: absolute;
-                right: 993px;
+                right: 865px;
                 bottom: 15px;
             }
 
@@ -65,9 +66,6 @@
                                                     <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                                                     <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
                                                     <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                                                    <li>
-                                                        <input type="button" value="Print this page" onClick="window.print()">
-                                                    </li>
                                                 </ul>
 
                                             </div>
@@ -165,9 +163,7 @@
         <script>
             $(document).ready(function () {
 
-                var table = $('.table').DataTable();
-
-                new $.fn.dataTable.Buttons(table, {
+                var table = $('.table').DataTable([{
                     language: {
 
                         "sEmptyTable": "ليست هناك بيانات متاحة في الجدول",
@@ -212,9 +208,22 @@
                             }
                         }
                     },
+                }]);
+
+                new $.fn.dataTable.Buttons(table, {
                     buttons: [
-                        'print'
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                                columns: ':visible'
+                            }
+                        },
+                        'colvis'
                     ],
+                    columnDefs: [ {
+                        targets: -1,
+                        visible: false
+                    } ],
                 });
                 table.buttons(0, null).container().prependTo(
                     table.table().container()
@@ -376,8 +385,18 @@
                         }
                     },
                     buttons: [
-                        'print'
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                                columns: ':visible'
+                            }
+                        },
+                        'colvis'
                     ],
+                    columnDefs: [ {
+                        targets: -1,
+                        visible: false
+                    } ],
                 });
                 table.buttons(0, null).container().prependTo(
                     table.table().container()
@@ -387,16 +406,4 @@
         </script>
     @endif
 @endsection
-@section('script')
-    <script type='text/javascript'>
 
-        $(document).ready(function() {
-            $('#example').DataTable( {
-                dom: 'Bfrtip',
-                buttons: [
-                    'print'
-                ]
-            } );
-        } );
-    </script>
-@endsection

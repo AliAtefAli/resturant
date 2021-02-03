@@ -54,7 +54,6 @@
                                                         <th>{{trans('dashboard.rates.User')}}</th>
                                                         <th>{{trans('dashboard.rates.Amount')}}</th>
                                                         <th>{{trans('dashboard.rates.Comment')}}</th>
-                                                        <th>{{trans('dashboard.rates.Comment')}}</th>
                                                         <th>{{trans('dashboard.rates.Status')}}</th>
 
                                                     </tr>

@@ -98,7 +98,6 @@
                                     <div class="col-md-10">
                                         <div class="position-relative has-icon-left">
                                             <span>
-                                                <span>Select Attachment</span>
                                                 <input type="file" id="image" class="form-control image"
                                                        name="image[]" multiple/>
                                             </span>
@@ -113,10 +112,10 @@
 {{--                                    </div>--}}
 {{--                                </div>--}}
 
-                                <div class="form-group row">
-                                    <div class="col-md-2"></div>
-                                    <output id="Filelist"></output>
-                                </div>
+{{--                                <div class="form-group row">--}}
+{{--                                    <div class="col-md-2"></div>--}}
+{{--                                    <output id="Filelist"></output>--}}
+{{--                                </div>--}}
 
 
                                 <div class="form-group row image-contain">

@@ -1,130 +1,159 @@
 @extends('dashboard.layouts.app')
+@section('title', trans('dashboard.user.Show user'))
 @section('content')
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title" id="horz-layout-icons">Timesheet</h4>
-                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                    <div class="heading-elements">
-                        <ul class="list-inline mb-0">
-                            <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                            <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                            <li><a data-action="close"><i class="ft-x"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card-content collpase show">
-                    <div class="card-body">
-                        <div class="card-text">
-                            <p>Add <code>.form-horizontal</code> class to the form tag to
-                                have horizontal form styling. This horizontal form shows
-                                the use of icons with form controls. Define the position
-                                of the icon using <code>has-icon-left</code> or <code>has-icon-right</code>                        class. Use <code>icon-*</code> class to define the icon for
-                                the form control. See Icons sections for the list of icons
-                                you can use. </p>
-                        </div>
-                        <form class="form form-horizontal">
-                            <div class="form-body">
-                                <div class="form-group row">
-                                    <label class="col-md-3 label-control" for="timesheetinput1">Employee Name</label>
-                                    <div class="col-md-9">
-                                        <div class="position-relative has-icon-left">
-                                            <input type="text" id="timesheetinput1" class="form-control" placeholder="employee name"
-                                                   name="employeename">
-                                            <div class="form-control-position">
-                                                <i class="ft-user"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 label-control" for="timesheetinput2">Project Name</label>
-                                    <div class="col-md-9">
-                                        <div class="position-relative has-icon-left">
-                                            <input type="text" id="timesheetinput2" class="form-control" placeholder="project name"
-                                                   name="projectname">
-                                            <div class="form-control-position">
-                                                <i class="la la-briefcase"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 label-control" for="timesheetinput3">Date</label>
-                                    <div class="col-md-9">
-                                        <div class="position-relative has-icon-left">
-                                            <input type="date" id="timesheetinput3" class="form-control" name="date">
-                                            <div class="form-control-position">
-                                                <i class="ft-message-square"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 label-control">Rate Per Hour</label>
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">$</span>
-                                            </div>
-                                            <input type="text" class="form-control" placeholder="Rate Per Hour" aria-label="Amount (to the nearest dollar)"
-                                                   name="rateperhour">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 label-control" for="timesheetinput5">Start Time</label>
-                                    <div class="col-md-9">
-                                        <div class="position-relative has-icon-left">
-                                            <input type="time" id="timesheetinput5" class="form-control" name="starttime">
-                                            <div class="form-control-position">
-                                                <i class="ft-clock"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 label-control" for="timesheetinput6">End Time</label>
-                                    <div class="col-md-9">
-                                        <div class="position-relative has-icon-left">
-                                            <input type="time" id="timesheetinput6" class="form-control" name="endtime">
-                                            <div class="form-control-position">
-                                                <i class="ft-clock"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 label-control" for="timesheetinput7">Notes</label>
-                                    <div class="col-md-9">
-                                        <div class="position-relative has-icon-left">
-                                            <textarea id="timesheetinput7" rows="5" class="form-control" name="notes" placeholder="notes"></textarea>
-                                            <div class="form-control-position">
-                                                <i class="ft-file"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-actions right">
-                                <button type="button" class="btn btn-warning mr-1">
-                                    <i class="ft-x"></i> Cancel
-                                </button>
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="la la-check-square-o"></i> Save
-                                </button>
-                            </div>
-                        </form>
+    <!--content wrapper -->
+    <div class="content-wrapper">
+        <!--content header -->
+        <div class="content-header row">
+            <div class="content-header-left col-md-6 col-12 mb-2">
+                <h1>{{  trans('dashboard.main.Users') }}</h1>
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a
+                                    href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a></li>
+                            <li class="breadcrumb-item"><a
+                                    href="{{route('dashboard.users.index')}}">{{ trans('dashboard.main.Users') }}</a>
+                            </li>
+                            <li class="breadcrumb-item">{{ trans('dashboard.user.Show user') }}</li>
+                        </ol>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
+        @include('dashboard.partials._alert')
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-content collpase show">
+                        <div class="card-body">
+                            <!-- form start -->
+                            <form class="form-horizontal" method="post"
+                                  action="{{ route('dashboard.users.update', $user) }}" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <div class="form-body">
+                                    <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
+                                        <label class="col-md-2" for="name">{{trans('dashboard.user.Name')}}</label>
+                                        <div class="col-md-10">
+                                            <div class="position-relative has-icon-left">
+                                                <input type="text" id="name" class="form-control"
+                                                       placeholder="{{trans('dashboard.user.Name')}}" readonly
+                                                       name="name" value="{{$user->name}}"/>
+                                                @include('dashboard.partials._errors', ['input' => 'name'])
+                                                <div class="form-control-position">
+                                                    <i class="ft-user"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">
+                                        <label class="col-md-2" for="name">{{trans('dashboard.user.Email')}}</label>
+                                        <div class="col-md-10">
+                                            <div class="position-relative has-icon-left">
+                                                <input type="text" id="email" class="form-control"
+                                                       placeholder="{{trans('email')}}" readonly
+                                                       name="email" value="{{ $user->email }}"/>
+                                                @include('dashboard.partials._errors', ['input' => 'email'])
+                                                <div class="form-control-position">
+                                                    <i class="ft-mail"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row {{ $errors->has('phone') ? ' has-error' : '' }}">
+                                        <label class="col-md-2"
+                                               for="phone-mask">{{trans('dashboard.user.phone')}}</label>
+                                        <div class="col-md-10">
+                                            <div class="position-relative">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon1">+966</span>
+                                                    </div>
+                                                    <input type="text" class="form-control"
+                                                           id="phone-mask" readonly
+                                                           placeholder="Enter Phone Number" name="phone"
+                                                           value="{{ $user->phone }}"/>
+                                                </div>
+                                                @include('dashboard.partials._errors', ['input' => 'phone'])
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            {{ trans('dashboard.user.Image') }}
+                                        </div>
+                                        <div class="col-md-10">
+                                            <img src="@if($user->image) {{ asset('assets/uploads/users/' . $user->image) }} @else {{ asset('web_files/images/person.png') }}@endif"
+                                                 alt="Image" class="img-preview" width="150">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row {{ $errors->has('type') ? ' has-error' : '' }}">
+                                        <label class="col-md-2"
+                                               for="type">{{trans('dashboard.user.role')}}</label>
+                                        <div class="col-md-10">
+                                            <div class="position-relative has-icon-left">
+
+                                                <input type="text" class="form-control"
+                                                       id="phone-mask" readonly
+                                                       placeholder="Enter Phone Number" name="phone"
+                                                       value="{{ $user->type }}"/>
+                                                @include('dashboard.partials._errors', ['input' => 'type'])
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row {{ $errors->has('status') ? ' has-error' : '' }}">
+                                        <label class="col-md-2"
+                                               for="status">{{trans('dashboard.user.Select User Status')}}</label>
+                                        <div class="col-md-10">
+                                            <div class="position-relative has-icon-left">
+
+                                                <input type="text" class="form-control"
+                                                       id="phone-mask" readonly
+                                                       placeholder="Enter Phone Number" name="phone"
+                                                       value="{{ $user->status }}"/>
+                                                @include('dashboard.partials._errors', ['input' => 'status'])
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-2">{{ __('dashboard.user.address') }}</div>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="address" readonly
+                                               value="{{ $user->address }}"
+                                               id="search-input">
+                                        <div class="map" id="map" style="width: 100%; height: 300px;"></div>
+                                        <input type="hidden" id="lat" name="lat"
+                                               value="{{ $user->lat }}">
+                                        <input type="hidden" id="lng" name="lng"
+                                               value="{{ $user->lng }}">
+                                        @include('dashboard.partials._errors', ['input' => 'address'])
+                                    </div>
+                                </div>
+
+                            </form>
+                            <!-- form end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+    </div>
+@endsection
+@section('scripts')
+    <script
+        src="{{ asset('dashboard_files/app-assets/vendors/js/forms/extended/inputmask/jquery.inputmask.bundle.min.js') }}"></script>
+    <script src="{{ asset('dashboard_files/app-assets/js/scripts/forms/extended/form-inputmask.min.js') }}"></script>
+    <script src="{{ asset('dashboard_files/assets/js/image-review.js') }}"></script>
+    @include('partials.google-map', ['lat' => ($user->lat) ?? 28.44249902816536, 'lng' => ( $user->lat) ?? 36.48057637720706])
 @endsection

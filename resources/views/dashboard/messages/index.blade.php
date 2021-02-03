@@ -62,7 +62,7 @@
                                                     @foreach($messages as $index => $message)
                                                         <tr>
                                                             <td>{{ $index + 1 }}</td>
-                                                            <td>{{ ($message->user->name) ?? '' }}</td>
+                                                            <td>@if($message->user)<a href="{{ route('dashboard.users.show', $message->user->id) }}"> {{ ($message->user->name) ?? '' }}@endif</a></td>
                                                             <td>
                                                                 <span style="font-size:12px;font-family:monospace;width:200px;word-break:break-all;word-wrap:break-word;">{{ $message->message }}</span>
                                                             </td>
@@ -70,21 +70,18 @@
                                                                 <span style="font-size:12px;font-family:monospace;width:200px;word-break:break-all;word-wrap:break-word;">{{ ($message->answer) ?? '' }}</span>
                                                             </td>
                                                             <td>
-                                                                <a href="#" class="btn btn-success btn-sm"
-                                                                   data-toggle="modal"
-                                                                   data-target="#replySMS">{{ trans('dashboard.complaints.SMS Reply') }}</a>
-                                                                <a href="#" class="btn btn-primary btn-sm"
-                                                                   data-toggle="modal"
-                                                                   data-target="#reply-email">{{ trans('dashboard.complaints.email Reply') }}</a>
-                                                                <a href="#" class="btn btn-secondary btn-sm"
-                                                                   data-toggle="modal"
-                                                                   data-target="#reply-notification">{{ trans('dashboard.complaints.Notification Reply') }}</a>
-
-                                                                <a href="{{ route('dashboard.message.show', $message) }}"
-                                                                   class="btn btn-danger btn-sm" title="">
-                                                                    <i class="ft ft-eye"></i> {{ trans('dashboard.messages.show') }}
-                                                                </a>
-
+                                                                <div class="dropdown">
+                                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        {{ __('dashboard.main.Actions') }}
+                                                                    </button>
+                                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                        <a href="#" class="btn btn-success btn-sm dropdown-item" data-toggle="modal" data-target="#replySMS">{{ trans('dashboard.complaints.SMS Reply') }}</a>
+                                                                        <a href="#" class="btn btn-primary btn-sm dropdown-item" data-toggle="modal" data-target="#reply-email">{{ trans('dashboard.complaints.email Reply') }}</a>
+                                                                        <a href="#" class="btn btn-secondary btn-sm dropdown-item" data-toggle="modal" data-target="#reply-notification">{{ trans('dashboard.complaints.Notification Reply') }}</a>
+                                                                        <a href="{{ route('dashboard.message.show', $message) }}" class="btn btn-danger btn-sm dropdown-item" title=""><i class="ft ft-eye"></i> {{ trans('dashboard.messages.show') }}
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
                                                             </td>
                                                         </tr>
                                                         @include('dashboard.messages.modal_reply_email')

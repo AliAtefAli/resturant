@@ -51,7 +51,7 @@ class OrderController extends Controller
 
         if ($request->payment_method == 'payment') {
             Transaction::create([
-                'transactionable_type' => Order::class,
+                'transactionable_type' => 'Order',
                 'transactionable_id' => $order->id,
                 'transaction_id' => $request->transaction_id,
                 'user_id' => auth()->user()->id,

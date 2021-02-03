@@ -129,11 +129,11 @@
                                             <div class="position-relative has-icon-left">
                                                 <select class="custom-select" name="status">
                                                     <option value="active"
-                                                            @if($user->type == 'active') selected @endif>{{ trans('dashboard.user.Active') }}</option>
+                                                            @if($user->status == 'active') selected @endif>{{ trans('dashboard.user.Active') }}</option>
                                                     <option value="pending"
-                                                            @if($user->type == 'pending') selected @endif>{{ trans('dashboard.user.Pending') }}</option>
+                                                            @if($user->status == 'pending') selected @endif>{{ trans('dashboard.user.Pending') }}</option>
                                                     <option value="block"
-                                                            @if($user->type == 'block') selected @endif>{{ trans('dashboard.user.Block') }}</option>
+                                                            @if($user->status == 'block') selected @endif>{{ trans('dashboard.user.Block') }}</option>
                                                 </select>
                                                 @include('dashboard.partials._errors', ['input' => 'status'])
                                             </div>

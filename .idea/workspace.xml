@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -27,7 +30,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47b9c118-0d90-4f9f-8560-1be7d85b3f4c" name="Default Changelist" comment="">
+    <list default="true" id="ef31ec61-9c2d-4a2f-91c2-d668d1058e97" name="Default Changelist" comment="fix coupon">
+      <change afterPath="$PROJECT_DIR$/public/assets/uploads/users/b2b35989-637e-4a97-9059-3a61f9453777.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/dashboard_files/app-assets/css-rtl/image-preview.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/dashboard_files/app-assets/js/scripts/image-preview.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/dashboard_files/app-assets/js/scripts/tables/datatables-extensions/ar-translation.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/users/admins.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/users/users.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/RateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/RateController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/UsersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/ChangePasswordRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/ChangePasswordRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreUserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreUserRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Rate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Rate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_31_095118_create_rates_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_31_095118_create_rates_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dashboard_files/app-assets/css-rtl/custom-rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/dashboard_files/app-assets/css-rtl/custom-rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dashboard_files/app-assets/css/vendors.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/dashboard_files/app-assets/css/vendors.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dashboard_files/app-assets/js/scripts/tables/datatables-extensions/ar-translation.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dashboard_files/app-assets/js/scripts/tables/datatables-extensions/ar-translation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dashboard_files/app-assets/vendors/css/tables/extensions/datatables.ar.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/dashboard_files/app-assets/vendors/css/tables/extensions/datatables.ar.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Helpers/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/helper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/RateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/RateController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/UsersController.php" afterDir="false" />
@@ -44,18 +68,65 @@
       <change beforePath="$PROJECT_DIR$/public/dashboard_files/app-assets/css/vendors.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/dashboard_files/app-assets/css/vendors.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/ar/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/dashboard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/ar/site.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/site.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/validation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/en/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/dashboard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/en/site.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/site.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/categories/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/categories/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/categories/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/categories/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/categories/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/categories/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/discounts/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/discounts/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/complaints/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/complaints/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/discounts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/discounts/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/faq/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/faq/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/_aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/_aside.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/orders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/orders/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/orders/today.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/orders/today.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/products/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/products/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/products/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/products/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/products/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/products/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/rates/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/rates/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/settings/api.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/settings/api.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/settings/general.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/settings/general.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/settings/social.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/settings/social.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/sliders/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/sliders/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/sliders/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/sliders/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/sliders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/sliders/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/subscriptions/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/subscriptions/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/subscriptions/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/subscriptions/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/subscriptions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/subscriptions/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/subscriptions/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/subscriptions/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/subscriptions/users.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/subscriptions/users.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/transactions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/transactions/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/users/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/users/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/users/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/web/carts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/carts/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/categories/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/categories/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/categories/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/categories/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/fav/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/fav/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/menus/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/menus/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/orders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/orders/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/products/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/products/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/products/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/settings/about_us.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/settings/about_us.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/settings/common_questions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/settings/common_questions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/settings/complaints.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/settings/complaints.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/settings/contact_us.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/settings/contact_us.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/settings/rate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/settings/rate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/settings/terms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/settings/terms.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/settings/who_are_we.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/settings/who_are_we.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/subscriptions/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/subscriptions/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/subscriptions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/subscriptions/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/users/change-password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/users/change-password.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/users/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/users/notifications.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/users/notifications.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/users/subscriptions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/users/subscriptions.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -335,12 +406,16 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../almenhag" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/dashboard_files/app-assets/css-rtl" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\resturant\public\dashboard_files\app-assets\css-rtl" />
+      <recent name="C:\xampp\htdocs\resturant\public\dashboard_files\app-assets\js\scripts" />
+      <recent name="C:\xampp\htdocs\resturant\resources\views\dashboard\users" />
+      <recent name="C:\xampp\htdocs\resturant\public\dashboard_files\app-assets\js\scripts\tables\datatables-extensions" />
       <recent name="C:\xampp\htdocs\resturant\resources\views\web\users" />
       <recent name="C:\xampp\htdocs\resturant\resources\views\web\carts" />
       <recent name="C:\xampp\htdocs\resturant\public\web_files\js" />
@@ -431,7 +506,9 @@
       <workItem from="1611820497483" duration="22880000" />
       <workItem from="1612078937645" duration="1797000" />
       <workItem from="1612084451307" duration="19453000" />
-      <workItem from="1612166031512" duration="28419000" />
+      <workItem from="1612166031512" duration="32205000" />
+      <workItem from="1612250486862" duration="26273000" />
+      <workItem from="1612340448706" duration="15109000" />
     </task>
     <task id="LOCAL؜٠٠٠٠١" summary="Finish Dashboard">
       <created>1610021113400</created>
@@ -529,7 +606,19 @@
       <option name="presentableId" value="LOCAL؜٠٠٠١٦" />
       <updated>1612180883644</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL؜٠٠٠١٧" summary="translation datatable">
+      <created>1612260263078</created>
+      <option name="number" value="LOCAL؜٠٠٠١٧" />
+      <option name="presentableId" value="LOCAL؜٠٠٠١٧" />
+      <updated>1612260263078</updated>
+    </task>
+    <task id="LOCAL؜٠٠٠١٨" summary="fix coupon">
+      <created>1612275884958</created>
+      <option name="number" value="LOCAL؜٠٠٠١٨" />
+      <option name="presentableId" value="LOCAL؜٠٠٠١٨" />
+      <updated>1612275884958</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -631,7 +720,9 @@
     <MESSAGE value="fix coupon" />
     <MESSAGE value="fix Login in" />
     <MESSAGE value="fix quantity alert and more fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix quantity alert and more fixes" />
+    <MESSAGE value="translation datatable" />
+    <MESSAGE value="fix coupon" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix coupon" />
   </component>
   <component name="WindowStateProjectService">
     <state x="493" y="242" key="#Composer" timestamp="1609335441878">
@@ -654,10 +745,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1611836481597" />
-    <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1612095094754">
+    <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1612278323863">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1612095094754" />
+    <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1612278323863" />
     <state x="543" y="273" key="Create Form Request" timestamp="1612096343104">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -666,10 +757,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="537" y="244" key="Create Notification/0.0.1366.728@0.0.1366.728" timestamp="1611231600763" />
-    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1612208938373">
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1612209389414">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1612208938373" />
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1612209389414" />
     <state x="463" y="117" key="FileChooserDialogImpl" timestamp="1612204820388">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -694,10 +785,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="487" y="85" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1611051453250" />
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1612180897944">
+    <state x="529" y="60" key="VCS.ChangeListViewerDialog" timestamp="1612209110361">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1612180897944" />
+    <state x="529" y="60" key="VCS.ChangeListViewerDialog/0.0.1366.728@0.0.1366.728" timestamp="1612209110361" />
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1612275890611">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1612275890611" />
     <state x="539" y="261" key="WebDeployment.AddServerDialog.v.1" timestamp="1611496995452">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -718,14 +813,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="324" y="78" width="700" height="530" key="recent.locations.popup/0.0.1366.728@0.0.1366.728" timestamp="1611238174308" />
-    <state x="339" y="157" key="run.anything.popup" timestamp="1611828227801">
+    <state x="339" y="157" key="run.anything.popup" timestamp="1612264781923">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1611828227801" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1612202686760">
+    <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1612264781923" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1612351012267">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1612202686760" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1612351012267" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

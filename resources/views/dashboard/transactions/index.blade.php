@@ -55,17 +55,17 @@
                                                         <th>{{trans('dashboard.Transactions.Payment Method')}}</th>
                                                         <th>{{trans('dashboard.Transactions.Amount')}}</th>
                                                         <th>{{trans('dashboard.Transactions.Transaction type')}}</th>
-                                                        <th>{{trans('dashboard.Transactions.Type')}}</th>
+                                                        <th>{{trans('dashboard.Transactions.Number')}}</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
                                                     @foreach($transactions as $transaction)
                                                         <tr>
                                                             <td>{{ $transaction->transaction_id }}</td>
-                                                            <td>{{ $transaction->user->name }}</td>
+                                                            <td><a href="{{ route('dashboard.users.show', $transaction->user->id) }}">{{ $transaction->user->name }}</a></td>
                                                             <td>{{ $transaction->payment_method }}</td>
                                                             <td>{{ $transaction->amount }}</td>
-                                                            <td>{{ $transaction->transactionable_type }}</td>
+                                                            <td>{{ trans("dashboard.Transactions.$transaction->transactionable_type") }}</td>
                                                             <td>{{ $transaction->transactionable_id }}</td>
                                                         </tr>
                                                     @endforeach

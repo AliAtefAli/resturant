@@ -59,22 +59,26 @@
                                                     <tbody>
                                                     @foreach($complaints as $index => $complaint)
                                                         <tr>
-                                                            <th>{{ $index + 1 }}</th>
-                                                            <th>{{ ($complaint->user->name) ?? '' }}</th>
-                                                            <th>
-                                                                <span style="font-size:12px;font-family:monospace;word-break:break-all;word-wrap:break-word;">{{ $complaint->message }}</span>
-                                                            </th>
-                                                            <th>
-                                                                <span style="font-size:12px;font-family:monospace;word-break:break-all;word-wrap:break-word;">{{ $complaint->answer }}</span>
-                                                            </th>
+                                                            <td>{{ $index + 1 }}</td>
+                                                            <td>@if($complaint->user)<a href="{{ route('dashboard.users.show', $complaint->user->id) }}"> {{ ($complaint->user->name) ?? '' }}@endif</a></td>
                                                             <td>
-                                                                <a href="" class="btn btn-info btn-sm" title="">{{ trans('dashboard.complaints.SMS') }}</a>
-                                                                <a href="" class="btn btn-success btn-sm" title="">{{ trans('dashboard.complaints.notification') }}</a>
-                                                                <a href="" class="btn btn-primary btn-sm" title="">E-mail</a>
-                                                                <a href="{{ route('dashboard.complaint.show', $complaint) }}" class="btn btn-danger btn-sm" title="">
-                                                                    <i class="ft ft-eye"></i> {{ trans('dashboard.complaints.show') }}
-                                                                </a>
-
+                                                                {{ $complaint->message }}
+                                                            </td>
+                                                            <td>
+                                                                {{ $complaint->answer }}
+                                                            </td>
+                                                            <td>
+                                                                <div class="dropdown">
+                                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        {{ __('dashboard.main.Actions') }}
+                                                                    </button>
+                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                    <a href="#" class="btn btn-success btn-sm dropdown-item" data-toggle="modal" data-target="#replySMS">{{ trans('dashboard.complaints.SMS Reply') }}</a>
+                                                                    <a href="#" class="btn btn-primary btn-sm dropdown-item" data-toggle="modal" data-target="#replyEmail">{{ trans('dashboard.complaints.email Reply') }}</a>
+                                                                    <a href="#" class="btn btn-secondary btn-sm dropdown-item" data-toggle="modal" data-target="#replyNotification">{{ trans('dashboard.complaints.Notification Reply') }}</a>
+                                                                    <a href="{{ route('dashboard.complaint.show', $complaint) }}" class="btn btn-danger btn-sm dropdown-item" title=""><i class="ft ft-eye"></i> {{ trans('dashboard.messages.show') }}
+                                                                    </a>
+                                                                </div>
                                                             </td>
                                                         </tr>
 

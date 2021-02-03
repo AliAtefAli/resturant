@@ -9,14 +9,15 @@
             div.dataTables_wrapper div.dataTables_filter {
                 text-align: left;
                 position: absolute  ;
-                left: 980px;
-                bottom: 5px
+                left: 840px;
+                bottom: 5px;
+                z-index: 3;
             }
 
             #DataTables_Table_0_length {
                 z-index: 2;
                 position: absolute;
-                right: 993px;
+                right: 865px;
                 bottom: 15px;
             }
 
@@ -162,9 +163,7 @@
         <script>
             $(document).ready(function () {
 
-                var table = $('.table').DataTable();
-
-                new $.fn.dataTable.Buttons(table, {
+                var table = $('.table').DataTable([{
                     language: {
 
                         "sEmptyTable": "ليست هناك بيانات متاحة في الجدول",
@@ -209,9 +208,22 @@
                             }
                         }
                     },
+                }]);
+
+                new $.fn.dataTable.Buttons(table, {
                     buttons: [
-                        'print'
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                                columns: ':visible'
+                            }
+                        },
+                        'colvis'
                     ],
+                    columnDefs: [ {
+                        targets: -1,
+                        visible: false
+                    } ],
                 });
                 table.buttons(0, null).container().prependTo(
                     table.table().container()
@@ -373,8 +385,18 @@
                         }
                     },
                     buttons: [
-                        'print'
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                                columns: ':visible'
+                            }
+                        },
+                        'colvis'
                     ],
+                    columnDefs: [ {
+                        targets: -1,
+                        visible: false
+                    } ],
                 });
                 table.buttons(0, null).container().prependTo(
                     table.table().container()
