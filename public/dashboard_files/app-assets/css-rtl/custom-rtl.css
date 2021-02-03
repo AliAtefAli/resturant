@@ -93,3 +93,6 @@ code[class*='language-'], pre[class*='language-'] {
 .jp-card .jp-card-front .jp-card-lower .jp-card-expiry {
   right : 65%;
 }
+
+.trix-button--icon-attach
+{ display: none; }

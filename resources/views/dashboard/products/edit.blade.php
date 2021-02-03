@@ -94,30 +94,44 @@
                                 </div>
 
                                 <div class="form-group row {{ $errors->has('image') ? ' has-error' : '' }}">
-                                    <label class="col-md-2" for="name">{{trans('dashboard.product.Image')}}</label>
+                                    <label class="col-md-2" for="image">{{trans('dashboard.product.Image')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative has-icon-left">
-                                            <input type="file" id="multiImage" class="form-control image"
-                                                   name="image[]" multiple />
+                                            <span>
+                                                <span>Select Attachment</span>
+                                                <input type="file" id="image" class="form-control image"
+                                                       name="image[]" multiple/>
+                                            </span>
                                             @include('dashboard.partials._errors', ['input' => 'image'])
                                         </div>
                                     </div>
                                 </div>
 
+{{--                                <div class="form-group row">--}}
+{{--                                    <div class="m-1 image-preview">--}}
+{{--                                        <output id="Filelist"></output>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+
                                 <div class="form-group row">
+                                    <div class="col-md-2"></div>
+                                    <output id="Filelist"></output>
+                                </div>
+
+
+                                <div class="form-group row image-contain">
                                     <div class="col-md-2"></div>
                                     @if($image_count > 0)
                                         @foreach($product->images as $image)
-                                            <div class="col-md-10 product-image">
+                                            <div class="m-1 image-preview">
                                                 <img src="{{ asset('assets/uploads/products/' . $image->path) }}"
-                                                     alt="Image" class="image-preview" width="150">
-                                            </div>
-                                            <div class="col-md-10 image-preview">
-
+                                                     alt="Image" class="image-preview" width="100">
                                             </div>
                                         @endforeach
                                     @endif
                                 </div>
+
+
 
                                 <div class="form-group row {{ $errors->has('price') ? ' has-error' : '' }}">
                                     <label class="col-md-2" for="price">{{trans('dashboard.product.Price')}}</label>

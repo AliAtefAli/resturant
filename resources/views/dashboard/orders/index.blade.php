@@ -41,12 +41,14 @@
                                                     <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                                                     <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
                                                     <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-
+                                                    <li>
+                                                        <input type="button" value="Print this page" onClick="window.print()">
+                                                    </li>
                                                 </ul>
 
                                             </div>
                                         </div>
-                                        <div class="card-content collapse show">
+                                        <div class="card-content collapse show" id='printThisDivIdOnButtonClick'>
                                             <div class="card-body card-dashboard">
                                                 <table class="table table-striped table-bordered">
                                                     <thead>
@@ -133,4 +135,17 @@
     </div>
     <!--end of content wrapper -->
 
+@endsection
+@section('script')
+    <script type='text/javascript'>
+
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'print'
+                ]
+            } );
+        } );
+    </script>
 @endsection

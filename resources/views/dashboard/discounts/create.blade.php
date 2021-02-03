@@ -94,9 +94,8 @@
                                                for="discount_type">{{ trans('dashboard.discounts.discount type')}}</label>
                                         <div class="col-md-10">
                                             <select class="custom-select" name="discount_type">
-                                                <option
-                                                    value="percent">{{ trans('dashboard.discounts.percent') }}</option>
-                                                <option value="fixed">{{ trans('dashboard.discounts.fixed') }}</option>
+                                                    <option value="percent">{{ trans('dashboard.discounts.percent') }}</option>
+                                                    <option value="fixed">{{ trans('dashboard.discounts.fixed') }}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -108,10 +107,8 @@
                                                for="status">{{ trans('dashboard.discounts.Status')}}</label>
                                         <div class="col-md-10">
                                             <select class="custom-select" name="status">
-                                                <option
-                                                    value="available">{{ trans('dashboard.discounts.available') }}</option>
-                                                <option
-                                                    value="unavailable">{{ trans('dashboard.discounts.unavailable') }}</option>
+                                                    <option value="available">{{ trans('dashboard.discounts.available') }}</option>
+                                                    <option value="unavailable">{{ trans('dashboard.discounts.unavailable') }}</option>
                                             </select>
                                         </div>
                                     </div>

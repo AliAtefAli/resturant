@@ -146,5 +146,13 @@
         $('.modal').on('show', function () {
             $('this').$('form-actions').focus();
         });
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'print'
+                ]
+            } );
+        } );
     </script>
 @endsection

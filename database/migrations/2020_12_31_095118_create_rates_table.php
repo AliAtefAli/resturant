@@ -18,6 +18,7 @@ class CreateRatesTable extends Migration
             $table->integer('amount');
             $table->text('comment');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->enum('status', ['on', 'off'])->default('off');
             $table->timestamps();
         });
     }

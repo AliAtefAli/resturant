@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rate extends Model
 {
-    protected $fillable = ['amount', 'comment', 'user_id'];
+    protected $fillable = ['amount', 'comment', 'user_id' ,'status'];
 
     public function user()
     {

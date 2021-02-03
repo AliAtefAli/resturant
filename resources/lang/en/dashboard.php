@@ -155,7 +155,7 @@ return [
         'Payment api' => 'Payment api',
     ],
     'order' => [
-        'orders' => 'Orders',
+        'Orders' => 'Orders',
         'New order' => 'New Orders',
         'All orders' => 'All orders',
         'Today Orders' => 'Today Orders',
@@ -356,6 +356,7 @@ return [
         'User' => 'User',
         'Comment' => 'Comment',
         'Amount' => 'Amount',
+        'Status' => 'Status',
     ],
     'FAQ' => [
         'Question' => 'Question',

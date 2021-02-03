@@ -54,6 +54,7 @@
                                                         <th>{{trans('dashboard.rates.User')}}</th>
                                                         <th>{{trans('dashboard.rates.Amount')}}</th>
                                                         <th>{{trans('dashboard.rates.Comment')}}</th>
+                                                        <th>{{trans('dashboard.rates.Comment')}}</th>
 
                                                     </tr>
                                                     </thead>
@@ -69,7 +70,21 @@
                                                             <td>
                                                                 <span style="font-size:12px;font-family:monospace;width:200px;word-break:break-all;word-wrap:break-word;">{{ $rate->comment }}</span>
                                                             </td>
+                                                            <td>
+                                                                @if($rate->status == 'on')
+                                                                    <a href="{{ route('dashboard.rates.off', $rate) }}"
+                                                                       class="btn btn-outline-danger btn-sm" title="">
+                                                                        <i class="ft-lock"  aria-hidden="true"></i>
+                                                                    </a>
+                                                                @else
+                                                                    <a href="{{ route('dashboard.rates.on', $rate) }}"
+                                                                       class="btn btn-outline-success btn-sm" title="">
+                                                                        <i class="ft-unlock"  aria-hidden="true"></i>
+                                                                    </a>
+                                                                @endif
+                                                            </td>
                                                         </tr>
+
                                                     @endforeach
                                                     </tbody>
                                                 </table>

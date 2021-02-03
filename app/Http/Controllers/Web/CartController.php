@@ -22,6 +22,24 @@ class CartController extends Controller
         return view('web.carts.redirect');
     }
 
+    public function changeLiked(Request $request){
+        $store = Stores::find($request['id']);
+        if($store->liked == 'true'){
+            $store->liked = 'false';
+            if($store->parent_id == 0){
+                $store->branches()->update(['liked'=>'false']);
+            }
+        }else{
+            $store->liked = 'true';
+            if($store->parent_id == 0){
+                $store->branches()->update(['liked'=>'true']);
+            }
+        }
+        $store->update();
+        return response()->json($store->liked);
+
+    }
+
     public function addToCart(Request $request, Product $product)
     {
 

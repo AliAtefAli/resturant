@@ -361,6 +361,7 @@ return [
         'User' => 'مستخدم',
         'Comment' => 'تعليق',
         'Amount' => 'كمية',
+        'Status' => 'الحاله',
     ],
     'FAQ' => [
         'Question' => 'السؤال',

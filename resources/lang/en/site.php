@@ -196,4 +196,8 @@ return [
     'Discount amount' => 'Discount Amount',
     'Total before discount' => 'Total before discount',
     'Total after discount' => 'Total after discount',
+    'Order now' => 'Order now',
+    'Discount amount' => 'Discount Amount',
+    'Total before discount' => 'Total before discount',
+    'Total after discount' => 'Total after discount',
 ];

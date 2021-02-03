@@ -196,4 +196,7 @@ return [
     'Discount amount' => 'قيمه الخصم',
     'Total before discount' => 'السعر الاجمالي قبل الخصم',
     'Total after discount' => 'السعر الاجمالي بعد الخصم',
+    'Discount amount' => 'قيمه الخصم',
+    'Total before discount' => 'السعر الاجمالي قبل الخصم',
+    'Total after discount' => 'السعر الاجمالي بعد الخصم',
 ];

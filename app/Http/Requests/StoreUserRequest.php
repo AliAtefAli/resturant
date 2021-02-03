@@ -10,14 +10,9 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
 
-        $request = Request::all();
-
-        $request['phone'] = editPhone($request['phone']);
-
         return [
             "name" => "required|string|min:3|max:141",
             'email'=>'required|email|unique:users',
-            'phone'=>'required|unique:users|phone:SA',
             'type'=>'required',
             'status'=>'required',
             'password' => 'required|confirmed|min:8',
@@ -35,8 +30,6 @@ class StoreUserRequest extends FormRequest
             'email.required' => (trans('validation.field_required_email')),
             'email.email' => (trans('validation.field_email')),
             'email.unique' => (trans('validation.field_exists_email')),
-            'phone.required' => (trans('validation.field_required_phone')),
-            'phone.unique' => (trans('validation.field_exists_phone')),
             'type.required' => (trans('validation.field_required_type')),
             'status.required' => (trans('validation.field_required_status')),
             'password.required' => (trans('validation.field_required_password')),

@@ -194,6 +194,21 @@
                                 <span>{{ __('site.Total after discount') }} : </span>
                                 <span id="after_discount" class="text-danger">140</span>
                             </div>
+
+                            <div>
+                                <div class="ml-3">
+                                    <span>{{ __('site.Discount amount') }} : </span>
+                                    <span id="discount_amount"></span>
+                                </div>
+                                <div class="ml-3">
+                                    <span>{{ __('site.Total before discount') }} : </span>
+                                    <span class="before_discount"></span>
+                                </div>
+                                <div class="ml-3">
+                                    <span>{{ __('site.Total after discount') }} : </span>
+                                    <span class="after_discount"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -320,6 +335,5 @@
                 });
             });
         });
-
     </script>
 @endsection

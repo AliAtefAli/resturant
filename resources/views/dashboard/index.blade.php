@@ -48,7 +48,7 @@
                                 <div class="card-content">
                                     <div class="media align-items-stretch">
                                         <div class="p-2 media-body text-left">
-                                            <h5>{{trans('dashboard.order.orders')}}</h5>
+                                            <h5>{{trans('dashboard.order.Orders')}}</h5>
                                             <h5 class="text-bold-400 mb-0">{{ $orders }}</h5>
                                         </div>
                                         <div class="p-2 text-center bg-danger rounded-right">
