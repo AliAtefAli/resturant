@@ -205,4 +205,10 @@ return [
     'Please Enter Correct date' => 'Please Enter Correct date',
     'Please Enter The Start date' => 'Please Enter The Start date',
     'Please Enter The End date' => 'Please Enter The End date',
+
+    'attributes' => [
+        'start_date' => 'Start date',
+        'end_date' => 'End date',
+    ]
+
 ];

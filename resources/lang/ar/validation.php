@@ -226,4 +226,9 @@ return [
     'Please Enter The Start date' => 'من فضلك ادخل تاريخ البداية',
     'Please Enter The End date' => 'من فضلك ادخل تاريخ التهاية',
 
+    'attributes' => [
+        'start_date' => 'تاريخ البدايه',
+        'end_date' => 'تاريخ الانتهاء',
+    ]
+
 ];

@@ -63,26 +63,26 @@
                                 </div>
 
 
-                                <div class="form-group row {{ $errors->has('amount') ? ' has-error' : '' }}">
+                                <div class="form-group row {{ $errors->has('start_date') ? ' has-error' : '' }}">
                                     <label class="col-md-2"
                                            for="start_date">{{trans('dashboard.discounts.Start Date')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative">
-                                            <input type="text" id="startDate" class="form-control"
-                                                   name="start_date"/>
+                                            <input type="date" id="startDate" class="form-control"
+                                                   name="start_date" min="{{\Carbon\Carbon::today()->toDateString()}}" />
                                             @include('dashboard.partials._errors', ['input' => 'start_date'])
                                         </div>
                                     </div>
                                 </div>
 
 
-                                <div class="form-group row {{ $errors->has('amount') ? ' has-error' : '' }}">
+                                <div class="form-group row {{ $errors->has('end_date') ? ' has-error' : '' }}">
                                     <label class="col-md-2"
                                            for="end_date">{{trans('dashboard.discounts.End Date')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative">
-                                            <input type="text" id="endDate" class="form-control"
-                                                   name="end_date"/>
+                                            <input type="date" id="endDate" class="form-control"
+                                                   name="end_date" min="{{\Carbon\Carbon::today()->toDateString()}}"/>
                                             @include('dashboard.partials._errors', ['input' => 'end_date'])
                                         </div>
                                     </div>
@@ -130,11 +130,6 @@
     </div>
 @endsection
 @section('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
-        $(document).ready(function () {
-            flatpickr("#startDate", {});
-            flatpickr("#end_date", {});
-        });
     </script>
 @endsection

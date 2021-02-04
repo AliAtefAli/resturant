@@ -13,7 +13,7 @@ class StoreDiscountRequest extends FormRequest
             'status' => 'required',
             'amount' => 'required',
             'start_date' => 'required|date',
-            'end_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
             'code' => 'required|unique:discounts'
         ];
     }
