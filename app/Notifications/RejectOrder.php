@@ -34,7 +34,7 @@ class RejectOrder extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail', 'database'];
+        return [/*'mail', */'database'];
     }
 
     public function toDatabase($notifiable)
