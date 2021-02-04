@@ -27,7 +27,9 @@ class SettingController extends Controller
 
     public function complaint()
     {
-        $featured_products = Product::whereFeatured(1)->get();
+        $featured_products = Product::whereFeatured(1)
+            ->where('quantity', '>', 0)
+            ->get();
 
         return view('web.settings.complaints',compact('featured_products'));
     }

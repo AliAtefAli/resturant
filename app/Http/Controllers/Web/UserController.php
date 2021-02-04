@@ -21,6 +21,7 @@ class UserController extends Controller
     public function index()
     {
         $featured_products = Product::with('images')
+            ->where('quantity', '>', 0)
             ->whereFeatured(1)->get();
 
         return view('web.users.index', compact('featured_products'));
@@ -89,6 +90,7 @@ class UserController extends Controller
             ->where('end_date', '<', Carbon::today())
             ->get();
         $featured_products = Product::with('images')
+            ->where('quantity', '>', 0)
             ->whereFeatured(1)->get();
 
         return view('web.users.subscriptions', compact('subscribed_packages', 'finished_subscribed_packages', 'featured_products'));
