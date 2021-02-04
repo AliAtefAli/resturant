@@ -78,12 +78,12 @@
                                                                 </a>
                                                                 @if($product->featured)
                                                                     <a href="{{ route('dashboard.products.unFeatured', $product) }}"
-                                                                       class="btn btn-success btn-sm" title="">
+                                                                       class="btn btn-success btn-sm" title="{{ __('dashboard.product.Make as UnFeatured') }}">
                                                                         <i class="ft-star"></i>
                                                                     </a>
                                                                 @else
                                                                     <a href="{{ route('dashboard.products.featured', $product) }}"
-                                                                       class="btn btn-outline-success btn-sm" title="">
+                                                                       class="btn btn-outline-success btn-sm" title="{{ __('dashboard.product.Make as Featured') }}">
                                                                         <i class="ft-star"></i>
                                                                     </a>
                                                                 @endif

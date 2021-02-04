@@ -81,8 +81,10 @@ class UsersController extends Controller
         $data['password'] = Hash::make($data['password']);
         User::create($data);
 
-        return redirect()->route('dashboard.users.index')->with("success", trans('dashboard.It was done successfully!'));
-
+        if ($request->type == 'user') {
+            return redirect()->route('dashboard.users.index')->with("success", trans('dashboard.It was done successfully!'));
+        }
+        return redirect()->route('dashboard.users.admins')->with("success", trans('dashboard.It was done successfully!'));
     }
 
     public function show(User $user)
@@ -129,7 +131,10 @@ class UsersController extends Controller
         }
         $user->update($data);
 
-        return redirect()->route('dashboard.users.index')->with("success", trans('dashboard.It was done successfully!'));
+        if ($request->type == 'user') {
+            return redirect()->route('dashboard.users.index')->with("success", trans('dashboard.It was done successfully!'));
+        }
+        return redirect()->route('dashboard.users.admins')->with("success", trans('dashboard.It was done successfully!'));
     }
 
 

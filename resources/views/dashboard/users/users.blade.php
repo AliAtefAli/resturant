@@ -75,12 +75,12 @@
                                                                 </a>
                                                                 @if($user->status == 'active')
                                                                 <a href="{{ route('dashboard.users.block', $user) }}"
-                                                                     class="btn btn-outline-danger btn-sm" title="">
+                                                                     class="btn btn-outline-danger btn-sm" title="{{ __('dashboard.user.Block') }}">
                                                                     <i class="ft-lock"  aria-hidden="true"></i>
                                                                 </a>
                                                                 @else
                                                                 <a href="{{ route('dashboard.users.unblock', $user) }}"
-                                                                     class="btn btn-outline-success btn-sm" title="">
+                                                                     class="btn btn-outline-success btn-sm" title="{{ __('dashboard.user.Un Block') }}">
                                                                     <i class="ft-unlock"  aria-hidden="true"></i>
                                                                 </a>
                                                                 @endif
