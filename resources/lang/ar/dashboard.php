@@ -396,7 +396,7 @@ return [
     ],
     'Transactions' => [
         'Transactions' => 'المعاملات الماليه',
-        'User' => 'صاحب العملية',
+        'User' => 'العميل',
         'Payment Method' => 'طريقه الدفع',
         'Amount' => 'القيمة',
         'Type' => 'نوع',

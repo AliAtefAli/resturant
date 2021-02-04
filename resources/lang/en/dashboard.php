@@ -393,8 +393,8 @@ return [
     ,
     'Transactions' => [
         'Transactions' => 'Transactions',
-        'User' => 'Transaction User',
-        'Payment Method' => 'Payment Method',
+        'User' => 'User',
+        'Payment Method' => 'Method',
         'Amount' => 'Amount',
         'Type' => 'Type',
         'Number' => 'Number',

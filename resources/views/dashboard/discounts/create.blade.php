@@ -66,10 +66,8 @@
                                            for="start_date">{{trans('dashboard.discounts.Start Date')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative">
-                                            <div class="pic-select">
-                                                <input type="text" id="startDate" class="form-control"
-                                                       name="start_date" value="{{ old('start_date') }}"/>
-                                            </div>
+                                            <input type="date" id="startDate" class="form-control"
+                                                   name="start_date" min="{{\Carbon\Carbon::today()->toDateString()}}" />
                                             @include('dashboard.partials._errors', ['input' => 'start_date'])
                                         </div>
                                     </div>
@@ -81,8 +79,8 @@
                                            for="end_date">{{trans('dashboard.discounts.End Date')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative">
-                                            <input type="text" id="endDate" class="form-control"
-                                                   name="end_date" value="{{ old('end_date') }}"/>
+                                            <input type="date" id="endDate" class="form-control"
+                                                   name="end_date" min="{{\Carbon\Carbon::today()->toDateString()}}"/>
                                             @include('dashboard.partials._errors', ['input' => 'end_date'])
                                         </div>
                                     </div>

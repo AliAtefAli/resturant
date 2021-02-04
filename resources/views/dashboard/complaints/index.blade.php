@@ -60,9 +60,12 @@
                                                     @foreach($complaints as $index => $complaint)
                                                         <tr>
                                                             <td>{{ $index + 1 }}</td>
-                                                            <td>@if($complaint->user)<a href="{{ route('dashboard.users.show', $complaint->user->id) }}"> {{ ($complaint->user->name) ?? '' }}@endif</a></td>
+                                                            <td>{{ ($complaint->user->name) ?? '' }}</td>
                                                             <td>
-                                                                {{ $complaint->message }}
+                                                                <span style="font-size:12px;font-family:monospace;width:200px;word-break:break-all;word-wrap:break-word;">{{ $complaint->message }}</span>
+                                                            </td>
+                                                            <td>
+                                                                <span style="font-size:12px;font-family:monospace;width:200px;word-break:break-all;word-wrap:break-word;">{{ $complaint->answer }}</span>
                                                             </td>
                                                             <td>
                                                                 {{ $complaint->answer }}

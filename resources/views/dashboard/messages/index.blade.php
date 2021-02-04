@@ -62,7 +62,7 @@
                                                     @foreach($messages as $index => $message)
                                                         <tr>
                                                             <td>{{ $index + 1 }}</td>
-                                                            <td>@if($message->user)<a href="{{ route('dashboard.users.show', $message->user->id) }}"> {{ ($message->user->name) ?? '' }}@endif</a></td>
+                                                            <td>{{ ($message->user->name) ?? '' }}</td>
                                                             <td>
                                                                 <span style="font-size:12px;font-family:monospace;width:200px;word-break:break-all;word-wrap:break-word;">{{ $message->message }}</span>
                                                             </td>
