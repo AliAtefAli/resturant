@@ -147,6 +147,8 @@ return [
         'size' => 'الحجم',
         'image' => 'صوره',
         'permissions' => 'الصلاحيات',
+        'start_date' => 'تاريخ البدايه',
+        'end_date' => 'تاريخ الانتهاء',
         'ar' => [
             'name' => 'الاسم بالغه العربيه',
             'title' => 'العنوان بالغه العربيه',
@@ -195,7 +197,7 @@ return [
     'field_required_category' => 'حقل ألاقسام مطلوب',
     'field_required_code' => 'حقل الرمز مطلوب',
     'field_required_product' => 'حقل المنتجات مطلوب',
-    'field_required_amount' => 'حقل الكميه مطلوب',
+    'field_required_amount' => 'حقل القيمة مطلوب',
     'field_required_status' => 'حقل الحاله مطلوب',
     'field_required_discount' => 'حقل التخفيض مطلوب',
     'field_email' => 'حقل لا بد أن يكون بريد إلكتروني',
@@ -226,10 +228,5 @@ return [
     'Please Enter Correct date' => 'من فضلك ادخل تاريخ صحيح',
     'Please Enter The Start date' => 'من فضلك ادخل تاريخ البداية',
     'Please Enter The End date' => 'من فضلك ادخل تاريخ التهاية',
-
-    'attributes' => [
-        'start_date' => 'تاريخ البدايه',
-        'end_date' => 'تاريخ الانتهاء',
-    ]
 
 ];

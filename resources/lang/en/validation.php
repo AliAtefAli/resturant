@@ -174,7 +174,7 @@ return [
     'field_required_category' => 'Category field is required',
     'field_required_code' => 'Code field is required',
     'field_required_product' => 'Product field is required',
-    'field_required_amount' => 'Amount field is required',
+    'field_required_amount' => 'Value field is required',
     'field_required_status' => 'Status field is required',
     'field_required_discount' => 'Discount field is required',
     'field_email' => 'Email field is required',
