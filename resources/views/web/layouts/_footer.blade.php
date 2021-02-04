@@ -122,7 +122,7 @@
                                 </a>
                             @endif
                             @if(isset($setting['social_whatsapp']))
-                                <a href="tel:{{$setting['social_whatsapp']}}" class="whatsapp wow fadeInDown"
+                                <a href="https://api.whatsapp.com/send?phone=966{{$setting['social_whatsapp']}}" class="whatsapp wow fadeInDown"
                                    data-wow-delay=".6s">
                                     <i class="fab fa-whatsapp"></i>
                                 </a>

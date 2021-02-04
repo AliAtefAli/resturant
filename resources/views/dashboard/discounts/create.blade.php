@@ -2,8 +2,6 @@
 @section('title', trans('dashboard.discounts.Add discount'))
 @section('style')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
 @endsection
 @section('content')
     <!--content wrapper -->
@@ -45,7 +43,7 @@
                                     <div class="col-md-10">
                                         <div class="position-relative">
                                             <input type="text" id="code" class="form-control"
-                                                   name="code"/>
+                                                   name="code" value="{{ old('code') }}"/>
                                             @include('dashboard.partials._errors', ['input' => 'code'])
                                         </div>
                                     </div>
@@ -56,33 +54,35 @@
                                     <div class="col-md-10">
                                         <div class="position-relative">
                                             <input type="float" id="amount" class="form-control"
-                                                   name="amount"/>
+                                                   name="amount" value="{{ old('amount') }}"/>
                                             @include('dashboard.partials._errors', ['input' => 'amount'])
                                         </div>
                                     </div>
                                 </div>
 
 
-                                <div class="form-group row {{ $errors->has('amount') ? ' has-error' : '' }}">
+                                <div class="form-group row {{ $errors->has('start_date') ? ' has-error' : '' }}">
                                     <label class="col-md-2"
                                            for="start_date">{{trans('dashboard.discounts.Start Date')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative">
-                                            <input type="text" id="startDate" class="form-control"
-                                                   name="start_date"/>
+                                            <div class="pic-select">
+                                                <input type="text" id="startDate" class="form-control"
+                                                       name="start_date" value="{{ old('start_date') }}"/>
+                                            </div>
                                             @include('dashboard.partials._errors', ['input' => 'start_date'])
                                         </div>
                                     </div>
                                 </div>
 
 
-                                <div class="form-group row {{ $errors->has('amount') ? ' has-error' : '' }}">
+                                <div class="form-group row {{ $errors->has('end_date') ? ' has-error' : '' }}">
                                     <label class="col-md-2"
                                            for="end_date">{{trans('dashboard.discounts.End Date')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative">
                                             <input type="text" id="endDate" class="form-control"
-                                                   name="end_date"/>
+                                                   name="end_date" value="{{ old('end_date') }}"/>
                                             @include('dashboard.partials._errors', ['input' => 'end_date'])
                                         </div>
                                     </div>
@@ -94,8 +94,10 @@
                                                for="discount_type">{{ trans('dashboard.discounts.discount type')}}</label>
                                         <div class="col-md-10">
                                             <select class="custom-select" name="discount_type">
-                                                    <option value="percent">{{ trans('dashboard.discounts.percent') }}</option>
-                                                    <option value="fixed">{{ trans('dashboard.discounts.fixed') }}</option>
+                                                <option value="percent"
+                                                        @if(old('discount_type') == 'percent') selected @endif>{{ trans('dashboard.discounts.percent') }}</option>
+                                                <option value="fixed"
+                                                        @if(old('discount_type') == 'fixed') selected @endif>{{ trans('dashboard.discounts.fixed') }}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -107,8 +109,10 @@
                                                for="status">{{ trans('dashboard.discounts.Status')}}</label>
                                         <div class="col-md-10">
                                             <select class="custom-select" name="status">
-                                                    <option value="available">{{ trans('dashboard.discounts.available') }}</option>
-                                                    <option value="unavailable">{{ trans('dashboard.discounts.unavailable') }}</option>
+                                                <option value="available"
+                                                        @if(old('status') == 'available') selected @endif >{{ trans('dashboard.discounts.available') }}</option>
+                                                <option value="unavailable"
+                                                        @if(old('status') == 'unavailable') selected @endif>{{ trans('dashboard.discounts.unavailable') }}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -128,13 +132,4 @@
         </div>
     </div>
     </div>
-@endsection
-@section('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        $(document).ready(function () {
-            flatpickr("#startDate", {});
-            flatpickr("#end_date", {});
-        });
-    </script>
 @endsection

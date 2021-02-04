@@ -34,7 +34,7 @@ class SlidersController extends Controller
 
         Slider::create($data);
 
-        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.slider.created successfully'));
+        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.It was done successfully!'));
 
     }
 
@@ -62,7 +62,7 @@ class SlidersController extends Controller
         }
         $slider->update($data);
 
-        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.slider.updated successfully'));
+        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.It was done successfully!'));
     }
 
 
@@ -70,19 +70,19 @@ class SlidersController extends Controller
     {
         $slider->delete();
 
-        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.slider.updated successfully'));
+        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.It was done successfully!'));
     }
     public function makeAsPending(Slider $slider)
     {
         $slider->update(['status' => 'pending'] );
 
-        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.slider.updated successfully'));
+        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.It was done successfully!'));
     }
     public function makeAsActive(Slider $slider)
     {
         $slider->update(['status' => 'active'] );
 
-        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.slider.updated successfully'));
+        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.It was done successfully!'));
     }
 
 

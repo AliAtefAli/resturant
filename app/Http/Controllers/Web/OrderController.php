@@ -20,6 +20,7 @@ class OrderController extends Controller
         $orders = auth()->user()->orders->load('products', 'products.translations');
 
         $featured_products = Product::with('images')
+            ->where('quantity', '>', 0)
             ->whereFeatured(1)->get();
 
         return view('web.orders.index', compact('orders', 'featured_products'));
@@ -88,13 +89,13 @@ class OrderController extends Controller
                         ]
                     );
                 }
-//                if ($coupon->start_date > today()) {
-//                    return response()->json([
-//                            'status' => false,
-//                            'msg' => trans('site.Discount period expired'),
-//                        ]
-//                    );
-//                }
+                if ($coupon->start_date > today()) {
+                    return response()->json([
+                            'status' => false,
+                            'msg' => trans('site.Discount period expired'),
+                        ]
+                    );
+                }
                 if ($coupon->discount_type == 'fixed') {
                     $request['totalBefore'] = $request['billing_total'];
                     $request['billing_total'] -= $coupon->amount;

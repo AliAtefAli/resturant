@@ -24,8 +24,11 @@ class HomeController extends Controller
             ->with('translations', 'categories','categories.translations','products','categories.products.translations', 'categories.products.images')
             ->get();
         $rates = Rate::with('user')->where('status' , 'on')->limit(10)->get();
-        $products = Product::with('images', 'translations')->limit(10)->get();
-        $featured_products = Product::with('images')->whereFeatured(1)->limit(10)->get();
+        $products = Product::with('images', 'translations')
+            ->where('quantity', '>', 0)->limit(10)->get();
+        $featured_products = Product::with('images')
+            ->where('quantity', '>', 0)
+            ->whereFeatured(1)->limit(10)->get();
 
         return view('web.home', compact('sliders', 'subscriptions', 'categories', 'rates', 'featured_products', 'products'));
     }
