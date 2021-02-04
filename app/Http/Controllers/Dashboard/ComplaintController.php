@@ -11,9 +11,7 @@ class ComplaintController extends Controller
 {
     public function index()
     {
-        $complaints = Complaint::where('replied_at', null)
-            ->latest()
-            ->paginate(10);
+        $complaints = Complaint::all();
 
         return view('dashboard.complaints.index', compact('complaints'));
     }

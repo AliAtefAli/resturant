@@ -11,8 +11,7 @@ class MessageController extends Controller
 {
     public function index()
     {
-        $messages = Message::where('replied_at', null)
-            ->paginate(10);
+        $messages = Message::all();
 
         return view('dashboard.messages.index', compact('messages'));
     }
