@@ -116,9 +116,24 @@
         @foreach($categories as $category)
             <div class="section1-container margin-responsive">
                 <h2 class="header-section1 wow zoomIn">
-                    <a href="#{{$category->id}}" class="">{{ $category->name }}</a>
+                    <a href="{{route('category.index' , $category->id)}}" class="">{{ $category->name }}</a>
                 </h2>
-                <div class="owl-carousel owl-theme section1-name-slider">
+                <div class="owl-carousel owl-theme section1-product-slider">
+                    @foreach($category->products as $product)
+                        <a href="{{ route('products.show', $product) }}" id="#{{$category->id}}"
+                               class="item wow fadeInDown">
+                                <div class="img">
+                                    <img lazy="loading"
+                                         src="@if($product->images->count() > 0){{ asset('assets/uploads/products/' . $product->images->first()->path ) }} @endif">
+                                </div>
+                                <div class="info-pro">
+                                    <span class="name-product">{{ $product->name }}</span>
+                                    <span class="price">{{ $product->price }} @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }} @endif</span>
+                                </div>
+                            </a>
+                    @endforeach
+                </div>
+                <div class="owl-carousel pt-5 owl-theme section1-name-slider">
                     @foreach($category->categories as $sub_category)
                         <a href="{{route('category.index' , $sub_category->id)}}"
                         class="item wow fadeInDown {{ $loop->first ? 'active' : '' }}">
