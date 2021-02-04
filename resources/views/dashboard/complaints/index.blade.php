@@ -59,14 +59,14 @@
                                                     <tbody>
                                                     @foreach($complaints as $index => $complaint)
                                                         <tr>
-                                                            <th>{{ $index + 1 }}</th>
-                                                            <th>{{ ($complaint->user->name) ?? '' }}</th>
-                                                            <th>
-                                                                <span style="font-size:12px;font-family:monospace;word-break:break-all;word-wrap:break-word;">{{ $complaint->message }}</span>
-                                                            </th>
-                                                            <th>
-                                                                <span style="font-size:12px;font-family:monospace;word-break:break-all;word-wrap:break-word;">{{ $complaint->answer }}</span>
-                                                            </th>
+                                                            <td>{{ $index + 1 }}</td>
+                                                            <td>{{ ($complaint->user->name) ?? '' }}</td>
+                                                            <td>
+                                                                <span style="font-size:12px;font-family:monospace;width:200px;word-break:break-all;word-wrap:break-word;">{{ $complaint->message }}</span>
+                                                            </td>
+                                                            <td>
+                                                                <span style="font-size:12px;font-family:monospace;width:200px;word-break:break-all;word-wrap:break-word;">{{ $complaint->answer }}</span>
+                                                            </td>
                                                             <td>
                                                                 <a href="" class="btn btn-info btn-sm" title="">{{ trans('dashboard.complaints.SMS') }}</a>
                                                                 <a href="" class="btn btn-success btn-sm" title="">{{ trans('dashboard.complaints.notification') }}</a>

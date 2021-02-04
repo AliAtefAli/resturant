@@ -61,14 +61,14 @@
                                                     <tbody>
                                                     @foreach($messages as $index => $message)
                                                         <tr>
-                                                            <th>{{ $index + 1 }}</th>
-                                                            <th>{{ ($message->user->name) ?? '' }}</th>
-                                                            <th>
-                                                                <span style="font-size:12px;font-family:monospace;word-break:break-all;word-wrap:break-word;">{{ $message->message }}</span>
-                                                            </th>
-                                                            <th>
-                                                                <span style="font-size:12px;font-family:monospace;word-break:break-all;word-wrap:break-word;">{{ ($message->answer) ?? '' }}</span>
-                                                            </th>
+                                                            <td>{{ $index + 1 }}</td>
+                                                            <td>{{ ($message->user->name) ?? '' }}</td>
+                                                            <td>
+                                                                <span style="font-size:12px;font-family:monospace;width:200px;word-break:break-all;word-wrap:break-word;">{{ $message->message }}</span>
+                                                            </td>
+                                                            <td>
+                                                                <span style="font-size:12px;font-family:monospace;width:200px;word-break:break-all;word-wrap:break-word;">{{ ($message->answer) ?? '' }}</span>
+                                                            </td>
                                                             <td>
                                                                 <a href="#" class="btn btn-success btn-sm"
                                                                    data-toggle="modal"

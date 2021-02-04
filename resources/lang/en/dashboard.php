@@ -388,11 +388,14 @@ return [
     ,
     'Transactions' => [
         'Transactions' => 'Transactions',
-        'User' => 'Transaction User',
-        'Payment Method' => 'Payment Method',
+        'User' => 'User',
+        'Payment Method' => 'Method',
         'Amount' => 'Amount',
         'Type' => 'Type',
-        'Transaction id' => 'Transaction ID',
+        'Number' => 'Number',
+        'Subscription' => 'Subscription',
+        'Order' => 'Order',
+        'Transaction id' => 'ID',
         'Transaction type' => 'Transaction type',
     ],
 ];
