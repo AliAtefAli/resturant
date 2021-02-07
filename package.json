@@ -30,7 +30,9 @@
   "directories": {
     "test": "tests"
   },
-  "dependencies": {},
+  "dependencies": {
+    "flatpickr": "^4.6.9"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AliAtefAli/resturant.git"
