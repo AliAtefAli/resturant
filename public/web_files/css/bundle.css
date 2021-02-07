@@ -20040,7 +20040,7 @@ body {
 }
 
 .thay-say-us .thay-say-us-slider .item .img {
-    background-image: url(../images/person.png);
+    /*background-image: url(../images/person.png);*/
     background-size: cover;
     background-position: center center;
     width: 90px;

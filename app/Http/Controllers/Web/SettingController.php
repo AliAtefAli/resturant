@@ -69,16 +69,27 @@ class SettingController extends Controller
 
     public function rate()
     {
-        return view('web.settings.rate');
+        $rate = auth()->user()->rate;
+        // dd($rate);
+        return view('web.settings.rate', compact('rate'));
     }
 
     public function saveRate(SaveRateRequest $request)
     {
-        Rate::create([
-            'amount' => $request->amount,
-            'comment' => $request->comment,
-            'user_id' => (auth()->user()->id) ?? 1,
-        ]);
+        if (auth()->user()->rate) {
+            auth()->user()->rate->update([
+                'amount' => $request->amount,
+                'comment' => $request->comment,
+                'user_id' => (auth()->user()->id) ?? 1,
+                'status' => 'off'
+            ]);
+        } else {
+            Rate::create([
+                'amount' => $request->amount,
+                'comment' => $request->comment,
+                'user_id' => (auth()->user()->id) ?? 1,
+            ]);
+        }
 
         return redirect()->route('home')->with('success', trans('site.Rate.Thank you for your Rate'));
     }

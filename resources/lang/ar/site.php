@@ -177,7 +177,7 @@ return [
     'Rate' => [
         'Add your rate' => 'اضف تقييما',
         'Comment' => 'اكتب تعليقك',
-        'Rate' => 'قييم',
+        'Rate' => 'قيم',
         'Thank you for your Rate' => 'شكرا علي تقييمك',
     ]
 ,
@@ -197,7 +197,5 @@ return [
     'Discount amount' => 'قيمه الخصم',
     'Total before discount' => 'السعر الاجمالي قبل الخصم',
     'Total after discount' => 'السعر الاجمالي بعد الخصم',
-    'Discount amount' => 'قيمه الخصم',
-    'Total before discount' => 'السعر الاجمالي قبل الخصم',
-    'Total after discount' => 'السعر الاجمالي بعد الخصم',
+    'Sorry, This Product is not available now' => 'عذرا، هذا المنتج غبر متاح الآن',
 ];

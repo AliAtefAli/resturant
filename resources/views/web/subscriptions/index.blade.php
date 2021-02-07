@@ -51,11 +51,11 @@
                 @endforeach
 
             </div>
-            <p class="price">
+            <p id="price" class="price">
                 {{ __('site.Price') }}
                 : {{$subscription->price}}  @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
             </p>
-            <p class="price">
+            <p id="duration" class="price">
                 {{ __('site.Subscriptions Duration') }}
                 : {{$subscription->duration_in_day}} {{ __('site.Days') }}
             </p>
@@ -135,4 +135,21 @@
 
         });
     </script>
+    @if(app()->getLocale() == 'ar')
+    <script>
+        String.prototype.toArabicDigits = function () {
+            var id = ['۰', '۱', '۲', '۳', '٤', '٥', '٦', '۷', '۸', '۹'];
+            return this.replace(/[0-9]/g, function (w) {
+                return id[+w]
+            });
+        }
+        var price = $('#price'),
+            duration = $('#duration'),
+            sheping = $('.sheping');
+        price.text(price.text().toArabicDigits());
+        duration.text(duration.text().toArabicDigits());
+        sheping.text(sheping.text().toArabicDigits());
+
+    </script>
+    @endif
 @endsection

@@ -177,7 +177,7 @@
                     <div class="item wow fadeInDown">
                         <div class="img">
                             <img lazy="loading"
-                                src="@if(isset($rate->user->image)){{ asset('assets/uploads/users/' . $rate->user->image) }}@else {{ asset('web_files/images/person.png') }}@endif"
+                                 src="@if(isset($rate->user->image)){{ asset('assets/uploads/users/' . $rate->user->image) }}@else {{ asset('web_files/images/person.png') }}@endif"
                                 width="90">
                         </div>
                         <div class="text">
