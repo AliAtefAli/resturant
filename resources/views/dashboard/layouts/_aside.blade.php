@@ -6,30 +6,16 @@
                         class="menu-title"
                         data-i18n="">{{trans('dashboard.main.home')}}</span></a>
             </li>
-            <li class=" nav-item">
-                <a href="#">
-                    <i class="la la-users"></i>
-                    <span class="menu-title" data-i18n="">{{trans('dashboard.main.Users')}}</span>
-                    <ul class="menu-content">
-                        <li>
-                            <a class="menu-item" href="{{ route('dashboard.users.admins') }}"
-                               data-i18n="nav.page_layouts.2_columns">
-                                {{trans('dashboard.user.admins')}}
-                            </a>
-                        </li>
-                        <li>
-                            <a class="menu-item" href="{{ route('dashboard.users.index') }}" data-i18n="nav.page_layouts.1_column">
-                                {{trans('dashboard.main.Users')}}
-                            </a>
-                        </li>
-                    </ul>
 
-                </a>
+            <li class=" nav-item"><a href="{{ route('dashboard.users.admins') }}"><i class="fa fa-users-cog"></i><span
+                        class="menu-title"
+                        data-i18n="">{{trans('dashboard.user.admins')}}</span></a>
             </li>
-{{--            <li class=" nav-item"><a href="{{ route('dashboard.users.index') }}"><i class="la la-users"></i><span--}}
-{{--                        class="menu-title"--}}
-{{--                        data-i18n="">{{trans('dashboard.main.Users')}}</span></a>--}}
-{{--            </li>--}}
+
+            <li class=" nav-item"><a href="{{ route('dashboard.users.index') }}"><i class="la la-users"></i><span
+                        class="menu-title"
+                        data-i18n="">{{trans('dashboard.main.Users')}}</span></a>
+            </li>
             <li class=" nav-item"><a href="{{ route('dashboard.categories.index') }}"><i class="la la-book"></i><span
                         class="menu-title"
                         data-i18n="">{{trans('dashboard.category.Categories')}}</span></a>
