@@ -7,13 +7,13 @@
         <!--content header -->
         <div class="content-header row">
             <div class="content-header-left col-md-6 col-12 mb-2">
-                <h1>{{  trans('dashboard.main.Users') }}</h1>
+                <h1>{{  trans('dashboard.user.admins') }}</h1>
                 <div class="row breadcrumbs-top">
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a
                                     href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a></li>
-                            <li class="breadcrumb-item active">{{ trans('dashboard.main.Users') }}</li>
+                            <li class="breadcrumb-item active">{{ trans('dashboard.user.admins') }}</li>
                         </ol>
                     </div>
                 </div>
