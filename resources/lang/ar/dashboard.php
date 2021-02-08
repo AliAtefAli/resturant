@@ -345,7 +345,7 @@ return [
         "Select User Status" => "حدد حالة الستخدم",
         "address" => "عنوان المستخدم",
         "admin" => "مشرف",
-        "admins" => "مشرفين",
+        "admins" => "المشرفين",
         "edit user" => "تحرير العضو",
         "Show user" => "عرض العضو",
         "Delete user" => "حذف العضو",

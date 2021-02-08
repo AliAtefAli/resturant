@@ -43,6 +43,22 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-xl-3 col-lg-6 col-12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="media align-items-stretch">
+                                    <div class="p-2 media-body text-left">
+                                        <h5>{{trans('dashboard.user.admins')}}</h5>
+                                        <h5 class="text-bold-400 mb-0">{{ $admins }}</h5>
+                                    </div>
+                                    <div class="p-2 text-center bg-info rounded-right">
+                                        <i class="fa fa-users-cog font-large-2 text-white"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-xl-3 col-lg-6 col-12">
                         <div class="card">
                             <div class="card-content">

@@ -13,12 +13,14 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $users = User::all()->count();
+        $users = User::where('type', 'user')->get()->count();
+        $admins = User::where('type', 'admin')->get()->count();
+        // $admins = User::all()->count();
         $products = Product::all()->count();
         $orders = Order::all()->count();
         $new_orders = Order::whereDate('created_at', '>=' , Carbon::today())->count();
 
-        return view('dashboard.index', compact('users', 'products', 'orders','new_orders'));
+        return view('dashboard.index', compact('users', 'products', 'orders','new_orders', 'admins'));
     }
 
     public function change_language() {
