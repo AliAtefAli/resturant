@@ -105,11 +105,19 @@ footer .info-form .info-form-aa form [type='submit']{
     margin-left: 0;
     margin-right: 20px;
 }
-.last-part .finsh-requet > div label span{
-    right: auto;
-    left: 0;
-}
 .user-section .nav-side-page{
+    position: absolute;
+    height: 100%;
+    width: 30%;
+    right: auto;
+    top: 0;
+    left: 0;
+    background-color: #f0efe2;
+    padding-top: 25px;
+    transition: all .7s;
+    z-index: 2;
+}
+.last-part .finsh-requet > div label span{
     right: auto;
     left: 0;
 }

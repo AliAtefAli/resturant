@@ -61,7 +61,7 @@
 
         <a href="{{ route('carts') }}">
             <i class="fas fa-shopping-cart"> <span style="color: #CC5641;" id="cart-quantity">
-             {{ Cart::count() }}
+             <span style="color: #CC5641;"> {{ Cart::instance('cart')->count() }} </span>
             </span></i>
 
         </a>
@@ -137,7 +137,7 @@
                         @endif
                     </a>
                 </div>
-                <div class="col-10 col-lg-6">
+                <div class="col-10 col-lg-6" @if(lang() == 'ar')style="padding-right: 100px" @else style="padding-left: 115px; padding-right: 1px"  @endif>
                     <ul class="list-unstyled menus-menu">
                         <li class="active">
                             <a href="{{route('home')}}">
@@ -177,8 +177,7 @@
                             </a>
                             <a href="{{route('carts')}}" title="{{ __('site.Cart') }}">
                                 <i class="fas fa-shopping-cart">
-                                    <span
-                                        style="color: #CC5641;"> {{ Cart::instance('cart')->count() }} </span>
+                                    <span style="color: #CC5641;"> {{ Cart::instance('cart')->count() }} </span>
                                 </i>
                             </a>
                             <a href="{{route('users.fav')}}" title="{{ __('site.Favorites') }}">
