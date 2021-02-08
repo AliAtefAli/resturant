@@ -80,10 +80,9 @@ class UserController extends Controller
     {
         $subscribed_packages = auth()->user()->subscriptions()
             ->with('translations', 'products.translations', 'products')
-            ->where('start_date', '<', Carbon::today())
-            ->orWhere('end_date', '>', Carbon::today())
+            ->where('start_date', '<=', Carbon::today())
+            ->where('end_date', '>=', Carbon::today())
             ->get();
-
 
         $finished_subscribed_packages = auth()->user()->subscriptions()
             ->with('products', 'products.translations', 'translations')

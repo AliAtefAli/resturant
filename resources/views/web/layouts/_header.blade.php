@@ -176,7 +176,10 @@
                                 <i class="fas fa-user"></i>
                             </a>
                             <a href="{{route('carts')}}" title="{{ __('site.Cart') }}">
-                                <i class="fas fa-shopping-cart"></i>
+                                <i class="fas fa-shopping-cart">
+                                    <span
+                                        style="color: #CC5641;"> {{ Cart::instance('cart')->count() }} </span>
+                                </i>
                             </a>
                             <a href="{{route('users.fav')}}" title="{{ __('site.Favorites') }}">
                                 <i class="fas fa-heart"></i>

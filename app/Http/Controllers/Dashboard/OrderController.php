@@ -42,7 +42,7 @@ class OrderController extends Controller
         $order->update(['order_status' => 'accepted']);
         $user = $order->user;
         $from = Setting::where('key', 'email')->get('value')->first()->value;
-        $message = trans('dashboard.order.Order Is Successfully Accepted And We are preparing it');
+        $message = 'Order Is Successfully Accepted And We are preparing it';
 
         $user->notify(new AcceptOrder($message, $from));
         return back()->with('success', trans('dashboard.It was done successfully!'));
@@ -54,7 +54,7 @@ class OrderController extends Controller
         $order->update(['order_status' => 'delivered']);
         $user = $order->user;
         $from = Setting::where('key', 'email')->get('value')->first()->value;
-        $message = trans('dashboard.order.Order Is Successfully Processed And Your Order Is On The Way,');
+        $message = 'Order Is Successfully Processed And Your Order Is On The Way';
 
         $user->notify(new DeliveredOrder($message, $from));
         return back()->with('success', trans('dashboard.It was done successfully!'));
@@ -65,7 +65,7 @@ class OrderController extends Controller
         $order->update(['order_status' => 'cancelled']);
         $user = $order->user;
         $from = Setting::where('key', 'email')->get('value')->first()->value;
-        $message = trans('dashboard.order.Sorry Order Is unSuccessfully Processed ');
+        $message = 'Sorry Order Is unSuccessfully Processed';
 
         $user->notify(new RejectOrder($message, $from));
         return back()->with('success', trans('dashboard.It was done successfully!'));

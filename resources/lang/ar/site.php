@@ -197,5 +197,7 @@ return [
     'Discount amount' => 'قيمه الخصم',
     'Total before discount' => 'السعر الاجمالي قبل الخصم',
     'Total after discount' => 'السعر الاجمالي بعد الخصم',
-    'Sorry, This Product is not available now' => 'عذرا، هذا المنتج غبر متاح الآن',
+    'Order Is Successfully Accepted And We are preparing it' => 'تم قبول الطلب بنجاح و نحن نقوم بتحضيره ',
+    'Order Is Successfully Processed And Your Order Is On The Way' => 'تمت الانتهاء من الطلب بنجاح ,طلبك في الطريق الان',
+    'Sorry Order Is unSuccessfully Processed' => 'عذرا ، لم يتم شحن طلبك',
 ];

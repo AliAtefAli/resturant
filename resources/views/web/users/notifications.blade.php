@@ -11,7 +11,7 @@
                         <img src="{{ asset('web_files/images/notices.png') }}">
                         <div class="text-n">
                             <p>
-                                {!! $notification->data['data'] !!}
+                                {{ trans("site." . $notification->data['data']) }}
                             </p>
                             <span>{{ ($notification->created_at) ? $notification->created_at->diffForHumans() : '' }}</span>
                         </div>

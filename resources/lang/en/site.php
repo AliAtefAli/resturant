@@ -198,4 +198,7 @@ return [
     'Total before discount' => 'Total before discount',
     'Total after discount' => 'Total after discount',
     'Sorry, This Product is not available now' => 'Sorry, This Product is not available now',
+    'Order Is Successfully Accepted And We are preparing it' => 'Order Is Successfully Accepted And We are preparing it',
+    'Order Is Successfully Processed And Your Order Is On The Way' => 'Order Is Successfully Processed And Your Order Is On The Way',
+    'Sorry Order Is unSuccessfully Processed' => 'Sorry Order Is unSuccessfully Processed',
 ];
