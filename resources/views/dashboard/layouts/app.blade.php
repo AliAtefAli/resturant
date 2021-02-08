@@ -27,7 +27,12 @@
             <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/app-assets/vendors/css/cryptocoins/cryptocoins.css')}}">
             <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/assets/css/style-rtl.css')}}">
             <link rel="stylesheet" type="text/css" href="{{asset('dashboard_files/app-assets/css-rtl/pages/error.css')}}">
-
+            <style>
+                body.vertical-layout.vertical-menu.menu-expanded .main-menu .navigation li.has-sub > a:not(.mm-next):after {
+                    content: "\f111";
+                    font-family: 'LineAwesome';
+                }
+            </style>
         <!-- END RTL CSS-->
     @else
         <!-- BEGIN LTR CSS-->

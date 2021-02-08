@@ -182,7 +182,7 @@
                             </a>
                             <a href="{{route('users.fav')}}" title="{{ __('site.Favorites') }}">
                                 <i class="fas fa-heart">
-                                    <span style="color: #CC5641;"> {{ auth()->user()->favorites->count() }} </span>
+                                    <span style="color: #CC5641;"> {{auth()->user() ? auth()->user()->favorites->count() : '' }} </span>
                                 </i>
                             </a>
                             <a href="{{ route('user.notification')  }}" title="{{__('site.Notification')}}">
