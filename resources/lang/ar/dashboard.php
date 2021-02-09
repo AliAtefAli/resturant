@@ -181,6 +181,7 @@ return [
         "model" => "طلب",
         "not delivered" => "لم يتم تسليمها",
         "phone" => "هاتف",
+        "E-mail" => "البريد",
         "shipped" => "شحنها",
         'In progress' => 'جاري التجهيز',
         'Make as shipped' => 'جعله كمشحون',

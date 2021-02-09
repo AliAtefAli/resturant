@@ -174,6 +174,7 @@ return [
         'model' => 'Order',
         'not delivered' => 'Not Delivered',
         'phone' => 'Phone',
+        'E-mail' => 'E-mail',
         'shipped' => 'Shipped',
         'In progress' => 'In progress',
         'Make as shipped' => 'Make as Shipped',
