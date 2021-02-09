@@ -118,17 +118,17 @@
 {{--                                </div>--}}
 
 
-                                <div class="form-group row image-contain">
-                                    <div class="col-md-2"></div>
-                                    @if($image_count > 0)
-                                        @foreach($product->images as $image)
-                                            <div class="m-1 image-preview">
-                                                <img src="{{ asset('assets/uploads/products/' . $image->path) }}"
-                                                     alt="Image" class="image-preview" width="100">
-                                            </div>
-                                        @endforeach
-                                    @endif
-                                </div>
+{{--                                <div class="form-group row image-contain">--}}
+{{--                                    <div class="col-md-2"></div>--}}
+{{--                                    @if($image_count > 0)--}}
+{{--                                        @foreach($product->images as $image)--}}
+{{--                                            <div class="m-1 image-preview">--}}
+{{--                                                <img src="{{ asset('assets/uploads/products/' . $image->path) }}"--}}
+{{--                                                     alt="Image" class="image-preview" width="100">--}}
+{{--                                            </div>--}}
+{{--                                        @endforeach--}}
+{{--                                    @endif--}}
+{{--                                </div>--}}
 
 
 
