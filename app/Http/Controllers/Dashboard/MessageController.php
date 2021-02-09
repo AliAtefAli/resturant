@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Message;
+use App\Models\User;
+use App\Notifications\ReplyMessageNotification;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -21,7 +23,7 @@ class MessageController extends Controller
         return view('dashboard.messages.show', compact('message'));
     }
 
-    public function replyNotification(Request $request, $id)
+    public function replyNotification(Request $request, Message $message)
     {
         $validation = \Validator::make($request->all(), [
             'answer' => 'required',
@@ -32,14 +34,16 @@ class MessageController extends Controller
             return back()->with('error', $validation->errors()->first());
         }
 
-        $message = Message::find($id);
         $message->update([
             'answer' => $request->answer,
             'replied_at' => Carbon::now()
         ]);
         // Send Notification
-
-        return back()->with('success', trans('dashboard.It was done successfully!'));
+        if ($message->user) {
+            $user = User::find($message->user->id);
+            $user->notify(new ReplyMessageNotification($request->answer));
+        }
+        return back()->with('success', trans('site.Message Sent successfully'));
     }
 
     public function replySMS(Request $request, $id)
@@ -59,7 +63,7 @@ class MessageController extends Controller
         ]);
         // Send SMS
 
-        return back()->with('success', trans('dashboard.It was done successfully!'));
+        return back()->with('success', trans('site.Message Sent successfully'));
     }
 
     public function replyEmail(Request $request, $id)
@@ -79,7 +83,7 @@ class MessageController extends Controller
         ]);
         // Send mail
 
-        return back()->with('success', trans('dashboard.It was done successfully!'));
+        return back()->with('success', trans('site.Message Sent successfully'));
     }
 
     public function makeAsRead($id)

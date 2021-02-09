@@ -1,8 +1,8 @@
 $(function () {
     var dir = $('body').css('direction');
-
+    var loops = $('.main-slider-slider').hasClass('loop');
     $('.main-slider-slider').owlCarousel({
-        loop:true,
+        loop:(loops == true)?true:false,
         margin:0,
         nav:true,
         dots: false,
@@ -10,10 +10,11 @@ $(function () {
         rtl: (dir == 'rtl')?true:false,
         autoplay: true,
         smartSpeed: 750,
-        navText: (dir == 'rtl')?['<i class="fas fa-arrow-right"></i>', '<i class="fas fa-arrow-left"></i>']:['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>']
+        navText: (dir == 'rtl')?['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>']:['<i class="fas fa-arrow-right"></i>', '<i class="fas fa-arrow-left"></i>']
     });
+    loops = $('.section1-name-slider').hasClass('loop');
     $('.section1-name-slider').owlCarousel({
-        loop:true,
+        loop:(loops == true)?true:false,
         margin:30,
         nav:true,
         dots: false,
@@ -21,7 +22,7 @@ $(function () {
         autoplay: true,
         smartSpeed: 750,
         freeDrag: true,
-        navText: (dir == 'rtl')?['<i class="fas fa-arrow-right"></i>', '<i class="fas fa-arrow-left"></i>']:['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>'],
+        navText: (dir == 'rtl')?['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>']:['<i class="fas fa-arrow-right"></i>', '<i class="fas fa-arrow-left"></i>'],
         responsive:{
             0:{
                 items: 1
@@ -41,9 +42,9 @@ $(function () {
         }
     });
 
-
+    loops = $('.section1-product-slider').hasClass('loop');
     $('.section1-product-slider').owlCarousel({
-        loop:true,
+        loop:(loops == true)?true:false,
         margin:30,
         nav:true,
         dots: false,
@@ -51,7 +52,7 @@ $(function () {
         autoplay: true,
         smartSpeed: 750,
         freeDrag: true,
-        navText: (dir == 'rtl')?['<i class="fas fa-arrow-right"></i>', '<i class="fas fa-arrow-left"></i>']:['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>'],
+        navText: (dir == 'rtl')?['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>']:['<i class="fas fa-arrow-right"></i>', '<i class="fas fa-arrow-left"></i>'],
         responsive:{
             0:{
                 items: 1
@@ -71,8 +72,9 @@ $(function () {
         }
     });
 
+    loops = $('.thay-say-us-slider').hasClass('loop');
     $('.thay-say-us-slider').owlCarousel({
-        loop:true,
+        loop:(loops == true)?true:false,
         margin:15,
         nav:true,
         dots: false,
@@ -80,7 +82,7 @@ $(function () {
         autoplay: true,
         smartSpeed: 750,
         freeDrag: true,
-        navText: (dir == 'rtl')?['<i class="fas fa-arrow-right"></i>', '<i class="fas fa-arrow-left"></i>']:['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>'],
+        navText: (dir == 'rtl')?['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>']:['<i class="fas fa-arrow-right"></i>', '<i class="fas fa-arrow-left"></i>'],
         responsive:{
             0:{
                 items: 1
@@ -99,8 +101,9 @@ $(function () {
             }
         }
     });
+    loops = $('.our-meal-slider').hasClass('loop');
     $('.our-meal-slider').owlCarousel({
-        loop:true,
+        loop:(loops == true)?true:false,
         margin:15,
         nav:true,
         dots: false,
@@ -108,7 +111,7 @@ $(function () {
         autoplay: true,
         smartSpeed: 750,
         freeDrag: true,
-        navText: (dir == 'rtl')?['<i class="fas fa-arrow-right"></i>', '<i class="fas fa-arrow-left"></i>']:['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>'],
+        navText: (dir == 'rtl')?['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>']:['<i class="fas fa-arrow-right"></i>', '<i class="fas fa-arrow-left"></i>'],
         responsive:{
             0:{
                 items: 1
@@ -127,8 +130,9 @@ $(function () {
             }
         }
     });
+    loops = $('.pic-slider').hasClass('loop');
     $('.pic-slider').owlCarousel({
-        loop:true,
+        loop:(loops == true)?true:false,
         margin:15,
         nav:true,
         dots: false,
@@ -136,7 +140,7 @@ $(function () {
         autoplay: true,
         smartSpeed: 750,
         freeDrag: true,
-        navText: (dir == 'rtl')?['<i class="fas fa-arrow-right"></i>', '<i class="fas fa-arrow-left"></i>']:['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>'],
+        navText: (dir == 'rtl')?['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>']:['<i class="fas fa-arrow-right"></i>', '<i class="fas fa-arrow-left"></i>'],
         responsive:{
             0:{
                 items: 1

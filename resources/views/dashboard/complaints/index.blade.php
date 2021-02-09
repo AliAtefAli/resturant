@@ -69,19 +69,20 @@
                                                                 <span style="font-size:12px;font-family:monospace;width:200px;word-break:break-all;word-wrap:break-word;">{{ $complaint->answer }}</span>
                                                             </td>
                                                             <td>
-                                                                {{ $complaint->answer }}
-                                                            </td>
-                                                            <td>
-                                                                <div class="dropdown">
-                                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                        {{ __('dashboard.main.Actions') }}
-                                                                    </button>
-                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                    <a href="#" class="btn btn-success btn-sm dropdown-item" data-toggle="modal" data-target="#replySMS">{{ trans('dashboard.complaints.SMS Reply') }}</a>
-                                                                    <a href="#" class="btn btn-primary btn-sm dropdown-item" data-toggle="modal" data-target="#replyEmail">{{ trans('dashboard.complaints.email Reply') }}</a>
-                                                                    <a href="#" class="btn btn-secondary btn-sm dropdown-item" data-toggle="modal" data-target="#replyNotification">{{ trans('dashboard.complaints.Notification Reply') }}</a>
-                                                                    <a href="{{ route('dashboard.complaint.show', $complaint) }}" class="btn btn-danger btn-sm dropdown-item" title=""><i class="ft ft-eye"></i> {{ trans('dashboard.messages.show') }}
-                                                                    </a>
+                                                                <div class="col-sm-3 col-6">
+                                                                    <div class="btn-group mr-1 mb-1" style="font-size: 15px;">
+                                                                        <div class="dropdown">
+                                                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                {{ __('dashboard.main.Actions') }}
+                                                                            </button>
+                                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                                <a href="#" class="btn btn-success btn-sm dropdown-item" style="padding: 10px 0px;" data-toggle="modal" data-target="#replySMS-{{$complaint->id}}">{{ trans('dashboard.complaints.SMS Reply') }}</a>
+                                                                                <a href="#" class="btn btn-primary btn-sm dropdown-item" style="padding: 10px 0px;" data-toggle="modal" data-target="#replyEmail-{{$complaint->id}}">{{ trans('dashboard.complaints.email Reply') }}</a>
+                                                                                <a href="#" class="btn btn-secondary btn-sm dropdown-item" style="padding: 10px 0px;" data-toggle="modal" data-target="#replyNotification-{{$complaint->id}}">{{ trans('dashboard.complaints.Notification Reply') }}</a>
+                                                                                <a href="{{ route('dashboard.complaint.show', $complaint) }}" class="btn btn-danger btn-sm dropdown-item" style="padding: 10px 0px;" title=""><i class="ft ft-eye"></i> {{ trans('dashboard.messages.show') }}</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -159,6 +160,11 @@
                 });
             });
 
+        </script>
+        <script>
+            $('.modal').on('shown.bs.modal', function () {
+                $('.answer').focus();
+            })
         </script>
     @else
         <script>
@@ -312,6 +318,12 @@
                     }
                 },
             });
+        </script>
+        <script>
+            $('.modal').on('shown.bs.modal', function () {
+                console.log(this);
+                $('.answer').focus();
+            })
         </script>
     @endif
 @endsection

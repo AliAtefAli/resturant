@@ -54,7 +54,7 @@
                                                         <th>#</th>
                                                         <th>{{trans('dashboard.messages.owner')}}</th>
                                                         <th>{{trans('dashboard.messages.content')}}</th>
-                                                        <th>{{trans('dashboard.messages.The answer')}}</th>
+                                                        <th>{{trans('dashboard.messages.The Answer')}}</th>
                                                         <th>{{trans('dashboard.main.Actions')}}</th>
                                                     </tr>
                                                     </thead>
@@ -75,10 +75,10 @@
                                                                         {{ __('dashboard.main.Actions') }}
                                                                     </button>
                                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                        <a href="#" class="btn btn-success btn-sm dropdown-item" data-toggle="modal" data-target="#replySMS">{{ trans('dashboard.complaints.SMS Reply') }}</a>
-                                                                        <a href="#" class="btn btn-primary btn-sm dropdown-item" data-toggle="modal" data-target="#reply-email">{{ trans('dashboard.complaints.email Reply') }}</a>
-                                                                        <a href="#" class="btn btn-secondary btn-sm dropdown-item" data-toggle="modal" data-target="#reply-notification">{{ trans('dashboard.complaints.Notification Reply') }}</a>
-                                                                        <a href="{{ route('dashboard.message.show', $message) }}" class="btn btn-danger btn-sm dropdown-item" title=""><i class="ft ft-eye"></i> {{ trans('dashboard.messages.show') }}
+                                                                        <a href="#" class="btn btn-success btn-sm dropdown-item" style="padding: 10px 0px;" data-toggle="modal" data-target="#replySMS-{{$message->id}}">{{ trans('dashboard.complaints.SMS Reply') }}</a>
+                                                                        <a href="#" class="btn btn-primary btn-sm dropdown-item message-item" style="padding: 10px 0px;" data-toggle="modal" data-target="#reply-email-{{$message->id}}">{{ trans('dashboard.complaints.email Reply') }}</a>
+                                                                        <a href="#" class="btn btn-secondary btn-sm dropdown-item message-item" style="padding: 10px 0px;" data-toggle="modal" data-target="#reply-notification-{{$message->id}}">{{ trans('dashboard.complaints.Notification Reply') }}</a>
+                                                                        <a href="{{ route('dashboard.message.show', $message) }}" class="btn btn-danger btn-sm dropdown-item" style="padding: 10px 0px;" title=""><i class="ft ft-eye"></i> {{ trans('dashboard.messages.show') }}
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -160,6 +160,11 @@
                 });
             });
 
+        </script>
+        <script>
+            $('.modal').on('shown.bs.modal', function () {
+                $('.answer').focus();
+            })
         </script>
     @else
         <script>
@@ -313,6 +318,11 @@
                     }
                 },
             });
+        </script>
+        <script>
+            $('.modal').on('shown.bs.modal', function () {
+                $('.answer').focus();
+            })
         </script>
     @endif
 @endsection

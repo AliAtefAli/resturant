@@ -41,9 +41,9 @@
             </section>
             <section class="card-footer">
                 <div class="card-footer">
-                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#reply-email">{{ trans('dashboard.messages.email Reply') }}</a>
-                    <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#replySMS">{{ trans('dashboard.messages.SMS Reply') }}</a>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#reply-notification">{{ trans('dashboard.messages.Notification Reply') }}</a>
+                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#reply-email-{{$message->id}}">{{ trans('dashboard.messages.email Reply') }}</a>
+                    <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#replySMS-{{$message->id}}">{{ trans('dashboard.messages.SMS Reply') }}</a>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#reply-notification-{{$message->id}}">{{ trans('dashboard.messages.Notification Reply') }}</a>
                 </div>
                 @include('dashboard.messages.modal_reply_email')
                 @include('dashboard.messages.modal_reply_SMS')

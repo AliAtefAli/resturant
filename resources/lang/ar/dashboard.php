@@ -84,7 +84,7 @@ return [
         'Notification Reply' => 'رد بالاشعارات',
         'show' => 'عرض',
         'Reply' => 'رد',
-        'The answer' => 'الاجابه',
+        'The Answer' => 'الرد',
     ],
     'complaints' => [
         'owner' => 'المالك',
@@ -97,7 +97,7 @@ return [
         'Notification Reply' => 'رد بالاشعارات',
         'show' => 'عرض',
         'Reply' => 'رد',
-        'The answer' => 'الاجابه',
+        'The Answer' => 'الرد',
     ],
     "main" => [
         "Account settings" => "اعدادات الحساب",

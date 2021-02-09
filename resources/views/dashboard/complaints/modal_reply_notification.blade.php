@@ -1,4 +1,4 @@
-<div class="modal fade" id="replyNotification" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="replyNotification-{{$complaint->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -12,7 +12,7 @@
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        <textarea class="form-control" name="answer"></textarea>
+                        <textarea class="form-control answer" name="answer"></textarea>
                     </div>
 
                     <button class="btn btn-success">{{ trans('dashboard.messages.Reply') }}</button>

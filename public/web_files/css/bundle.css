@@ -22048,3 +22048,8 @@ label.star:before {
     font-weight: 700;
     font-size: 17px
 }
+.owl-theme .owl-nav{
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+}

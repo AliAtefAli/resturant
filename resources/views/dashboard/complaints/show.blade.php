@@ -40,9 +40,9 @@
             </section>
             <section class="card-footer">
                 <div class="card-footer">
-                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#replySMS">{{ trans('dashboard.complaints.SMS Reply') }}</a>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#reply-email">{{ trans('dashboard.complaints.email Reply') }}</a>
-                    <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#reply-notification">{{ trans('dashboard.complaints.Notification Reply') }}</a>
+                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#replySMS-{{$complaint->id}}">{{ trans('dashboard.complaints.SMS Reply') }}</a>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#replyEmail-{{$complaint->id}}">{{ trans('dashboard.complaints.email Reply') }}</a>
+                    <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#replyNotification-{{$complaint->id}}">{{ trans('dashboard.complaints.Notification Reply') }}</a>
                 </div>
             </section>
         </div>

@@ -85,7 +85,7 @@ return [
         'Notification Reply' => 'Notification Reply',
         'show' => 'Show',
         'Reply' => 'Reply',
-        'The answer' => 'The answer',
+        'The Answer' => 'The answer',
     ],
     'complaints' => [
         'owner' => 'Owner',
