@@ -24,15 +24,7 @@
     <div class="main-slider main-slider-custom-1">
         <div class="owl-carousel owl-theme main-slider-slider">
             <a href="#" class="item"
-               style="background-image: url('{{asset('web_files/images/healthy-food-bowl.jpg')}}')"></a>
-            <a href="#" class="item"
-               style="background-image: url('{{asset('web_files/images/healthy-food-bowl.jpg')}}')"></a>
-            <a href="#" class="item"
-               style="background-image: url('{{asset('web_files/images/healthy-food-bowl.jpg')}}')"></a>
-            <a href="#" class="item"
-               style="background-image: url('{{asset('web_files/images/healthy-food-bowl.jpg')}}')"></a>
-            <a href="#" class="item"
-               style="background-image: url('{{asset('web_files/images/healthy-food-bowl.jpg')}}')"></a>
+               style="background-image: url('{{asset('assets/uploads/subscriptions/' . $subscription->image)}}')"></a>
         </div>
     </div>
 
