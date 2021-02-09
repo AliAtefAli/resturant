@@ -45,27 +45,26 @@
                     </div>
 
                     <div class="row my-3">
-                        <p class="name-input col col-md-2">
-                            {{__('site.Price')}} :
-                        </p>
-                        <span class="sub-price" data-value="{{ $subscription->price }}">{{ $subscription->price }} :  </span>
+                        <p class="name-input col col-md-3">
+                            {{__('site.Price')}} : <span class="sub-price mr-1" data-value="{{ $subscription->price }}">{{ $subscription->price }}  </span>
 
-                        <span id="currency" data-value="@if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }}
-                        @endif">
+                            <span id="currency"
+                                  data-value="@if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }}
+                                  @endif">
                              @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }}
-                            @endif
+                                @endif
                          </span>
+                        </p>
                     </div>
 
                     <div class="row my-3">
-                        <p class="name-input col col-md-2">
+                        <p class="name-input col col-md-3">
                             {{__('site.Total')}} :
+
+                            <span id="total" class="sub-price mr-1"
+                                  data-value="{{ $subscription->price }}"> {{ $subscription->price }}  @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }}
+                                @endif </span>
                         </p>
-                        <span id="total" data-value="{{ $subscription->price }}">{{ $subscription->price }} : @if(isset($setting[app()->getLocale() . '_currency']))
-                                {{ $setting[app()->getLocale() . '_currency'] }}
-                            @endif </span>
-
-
                     </div>
                     <div class="select-hh">
                         <label>

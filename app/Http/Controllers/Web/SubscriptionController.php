@@ -31,6 +31,25 @@ class SubscriptionController extends Controller
     {
         $setting = Setting::all()->pluck('value', 'key');
         $subscription = Subscription::findOrFail($request->subscription_id);
+
+//        $membership = SubscriptionUser::where('user_id',$request['user_id'])->exists();
+
+        $userSubs = SubscriptionUser::where('user_id',auth()->user()->id)
+            ->where(function ($q) use($request)
+            {
+                $q->where('start_date', '<=' ,Carbon::now());
+                $q->where('end_date', '>=' ,Carbon::now());
+            }
+            )->get();
+
+//        dd($userSubs);
+
+        if (!empty($userSubs)) {
+            if ($request->start_date <= $userSubs->end_date) {
+                return back()->with('error', 'لديك اشتراك بالفعل');
+            }
+        }
+
         $daysToAdd = $subscription->duration_in_day;
         $start_date = $request->start_date;
         $date = Carbon::parse($start_date)->addDays($daysToAdd)->toDateString();

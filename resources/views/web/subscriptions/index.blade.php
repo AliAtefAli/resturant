@@ -48,8 +48,13 @@
                 : {{$subscription->price}}  @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
             </p>
             <p id="duration" class="price">
-                {{ __('site.Subscriptions Duration') }}
-                : {{$subscription->duration_in_day}} {{ __('site.Days') }}
+                @if($subscription->duration_in_day <= 10)
+                    {{ __('site.Subscriptions Duration') }}
+                    : {{$subscription->duration_in_day}} {{ __('site.Days') }}
+                @else
+                    {{ __('site.Subscriptions Duration') }}
+                    : {{$subscription->duration_in_day}} {{ __('site.Day') }}
+                @endif
             </p>
             <p class="sheping">
                 {{ __('site.Delivery') }}
