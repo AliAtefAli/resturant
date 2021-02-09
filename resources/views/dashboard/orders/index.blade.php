@@ -20,11 +20,13 @@
                 /*right: 865px;*/
                 /*bottom: 15px;*/
             }
-            .table th, .table td {
-                 padding: 0.75rem 1rem;
-            }
         </style>
     @endif
+    <style>
+        .table th, .table td {
+            padding: 0.75rem 1rem;
+        }
+    </style>
 @endsection
 @section('content')
 
@@ -80,7 +82,7 @@
                                                         <th>#</th>
                                                         <th>{{trans('dashboard.order.payment method')}}</th>
                                                         <th>{{trans('dashboard.order.Order date')}}</th>
-                                                        <th style="min-width: 150px; !important;">{{trans('dashboard.order.address')}}</th>
+                                                        <th style="min-width: 130px; !important;">{{trans('dashboard.order.address')}}</th>
                                                         <th>{{trans('dashboard.user.Name')}}</th>
                                                         <th>{{trans('dashboard.order.phone')}}</th>
                                                         <th>{{trans('dashboard.user.Email')}}</th>
@@ -95,7 +97,7 @@
                                                             <td>{{ $order->id }}</td>
                                                             <td>{{ __("dashboard.order.$order->payment_method") }}</td>
                                                             <td>{{ ( $order->created_at) ? $order->created_at->diffForHumans()  : '' }}</td>
-                                                            <td style="min-width: 150px; !important;">{{ $order->billing_address }}</td>
+                                                            <td style="min-width: 130px; !important;">{{ $order->billing_address }}</td>
                                                             <td>{{ $order->billing_name }}</td>
                                                             <td>{{ $order->billing_phone }}</td>
                                                             <td>{{ $order->billing_email }}</td>

@@ -1,5 +1,34 @@
 @extends('dashboard.layouts.app')
 @section('title', trans('dashboard.subscriptions.Users Subscribed'))
+@section('styles')
+    @if(app()->getLocale() == 'ar')
+        <style>
+            .dataTables_wrapper .row {
+                min-height: 55px;
+            }
+
+            div.dataTables_wrapper div.dataTables_filter {
+                text-align: left;
+                position: absolute;
+                left: 300px;
+                bottom: 10px;
+                z-index: 3;
+            }
+
+            #table_length {
+                z-index: 2;
+                position: absolute;
+                /*right: 865px;*/
+                /*bottom: 15px;*/
+            }
+        </style>
+    @endif
+    <style>
+        .table th, .table td {
+            padding: 0.75rem 1rem;
+        }
+    </style>
+@endsection
 @section('content')
 
     <!--content wrapper -->
@@ -23,32 +52,325 @@
                 </div>
             </div>
         </div>
-        <!-- end of content header -->
 
-        <section id="description" class="card">
-            <div class="card-content">
-                <div class="card-body">
-                    <!-- HTML5 export buttons table -->
-                    <section id="dom">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="row">
-                                    @if($users->count() > 0)
-                                        @foreach($users as $user)
-                                            <div class="col-md-2">
-                                                <a href="{{ route('dashboard.users.show', $user) }}">{{ $user->name }}</a>
+        <div class="content-body">
+            <!-- Description -->
+            <section id="description" class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <!-- HTML5 export buttons table -->
+                        <section id="dom">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <a class="heading-elements-toggle"><i
+                                                    class="la la-ellipsis-v font-medium-3"></i></a>
+                                            <div class="heading-elements">
+                                                <ul class="list-inline mb-0">
+                                                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+
+                                                </ul>
+
                                             </div>
-                                        @endforeach
-                                    @else
-                                        {{ trans('dashboard.subscriptions.No Subscribed Users') }}
-                                    @endif
+                                        </div>
+                                        <div class="card-content collapse show">
+                                            <div class="card-body card-dashboard">
+                                                <table class="table table-striped table-bordered text-cente"
+                                                       style="font-size: xx-small;">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>{{trans('dashboard.user.Name')}}</th>
+                                                        <th>{{trans('dashboard.subscriptions.Start Date')}}</th>
+                                                        <th>{{trans('dashboard.subscriptions.End Date')}}</th>
+                                                        <th>{{trans('dashboard.subscriptions.Shipping type')}}</th>
+                                                        <th>{{trans('dashboard.subscriptions.Total Price')}}</th>
+                                                        <th style="width: 80px;!important;">{{trans('dashboard.subscriptions.Address')}}</th>
+                                                        <th>{{trans('dashboard.subscriptions.phone')}}</th>
+                                                        <th>{{trans('dashboard.subscriptions.People count')}}</th>
+                                                        <th>{{trans('dashboard.subscriptions.payment method')}}</th>
+                                                        <th style="width: 80px;!important;">{{trans('dashboard.subscriptions.Note')}}</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach($users as $user)
+                                                        <tr>
+                                                            <td>{{ $user->name }}</td>
+                                                            <td>{{ $user->pivot->start_date }}</td>
+                                                            <td>{{ $user->pivot->end_date }}</td>
+                                                            <td>{{ trans("dashboard.subscriptions." . $user->pivot->shipping_type) }}</td>
+                                                            <td>{{ $user->pivot->billing_total }}</td>
+                                                            <td style="width: 80px;!important;">{{ $user->pivot->billing_address }}</td>
+                                                            <td>{{ $user->pivot->billing_phone }}</td>
+                                                            <td>{{ $user->pivot->people_count }}</td>
+                                                            <td>{{ trans("dashboard.subscriptions." . $user->pivot->payment_type) }}</td>
+                                                            <td style="width: 80px;!important;">{{ $user->pivot->note }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
+                        </section>
+                        <!--/ HTML5 export buttons table -->
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+            <!--/ Description -->
+        </div>
     </div>
+@endsection
+@section('scripts')
+    @if(lang() === 'ar')
+        <script>
+            $(document).ready(function () {
+
+                var table = $('.table').DataTable([{
+                    language: {
+
+                        "sEmptyTable": "ليست هناك بيانات متاحة في الجدول",
+                        "sLoadingRecords": "جارٍ التحميل...",
+                        "sProcessing": "جارٍ التحميل...",
+                        "sLengthMenu": "أظهر _MENU_ مدخلات",
+                        "sZeroRecords": "لم يعثر على أية سجلات",
+                        "sInfo": "إظهار _START_ إلى _END_ من أصل _TOTAL_ مدخل",
+                        "sInfoEmpty": "يعرض 0 إلى 0 من أصل 0 سجل",
+                        "sInfoFiltered": "(منتقاة من مجموع _MAX_ مُدخل)",
+                        "sSearch": "ابحث:",
+                        "oPaginate": {
+                            "sFirst": "الأول",
+                            "sPrevious": "السابق",
+                            "sNext": "التالي",
+                            "sLast": "الأخير"
+                        },
+                        "oAria": {
+                            "sSortAscending": ": تفعيل لترتيب العمود تصاعدياً",
+                            "sSortDescending": ": تفعيل لترتيب العمود تنازلياً"
+                        },
+                        "select": {
+                            "rows": {
+                                "_": "%d قيمة محددة",
+                                "0": "",
+                                "1": "1 قيمة محددة"
+                            }
+                        },
+                        "buttons": {
+                            "print": "طباعة",
+                            "colvis": "الأعمدة الظاهرة",
+                            "copy": "نسخ إلى الحافظة",
+                            "copyTitle": "نسخ",
+                            "copyKeys": "زر <i>ctrl</i> أو <i>\u2318</i> + <i>C</i> من الجدول<br>ليتم نسخها إلى الحافظة<br><br>للإلغاء اضغط على الرسالة أو اضغط على زر الخروج.",
+                            "copySuccess": {
+                                "_": "%d قيمة نسخت",
+                                "1": "1 قيمة نسخت"
+                            },
+                            "pageLength": {
+                                "-1": "اظهار الكل",
+                                "_": "إظهار %d أسطر"
+                            }
+                        }
+                    },
+                }]);
+
+                new $.fn.dataTable.Buttons(table, {
+                    buttons: [
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                                columns: ':visible'
+                            }
+                        },
+                        'colvis'
+                    ],
+                    columnDefs: [{
+                        targets: -1,
+                        visible: false
+                    }],
+                });
+                table.buttons(0, null).container().prependTo(
+                    table.table().container()
+                );
+                var eventsTable = $('.dom-jQuery-events').DataTable();
+            });
+        </script>
+    @else
+        <script>
+            // $('.table').addClass('dom-jQuery-events');
+            $(document).ready(function () {
+
+                var table = $('.table').DataTable();
+
+                new $.fn.dataTable.Buttons(table, {
+                    language: {
+                        "emptyTable": "No data available in table",
+                        "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+                        "infoEmpty": "Showing 0 to 0 of 0 entries",
+                        "infoFiltered": "(filtered from _MAX_ total entries)",
+                        "infoThousands": ",",
+                        "lengthMenu": "Show _MENU_ entries",
+                        "loadingRecords": "Loading...",
+                        "processing": "Processing...",
+                        "search": "Search:",
+                        "zeroRecords": "No matching records found",
+                        "thousands": ",",
+                        "paginate": {
+                            "first": "First",
+                            "last": "Last",
+                            "next": "Next",
+                            "previous": "Previous"
+                        },
+                        "aria": {
+                            "sortAscending": ": activate to sort column ascending",
+                            "sortDescending": ": activate to sort column descending"
+                        },
+                        "autoFill": {
+                            "cancel": "Cancel",
+                            "fill": "Fill all cells with <i>%d<\/i>",
+                            "fillHorizontal": "Fill cells horizontally",
+                            "fillVertical": "Fill cells vertically"
+                        },
+                        "buttons": {
+                            "collection": "Collection <span class='ui-button-icon-primary ui-icon ui-icon-triangle-1-s'\/>",
+                            "colvis": "Column Visibility",
+                            "colvisRestore": "Restore visibility",
+                            "copy": "Copy",
+                            "copyKeys": "Press ctrl or u2318 + C to copy the table data to your system clipboard.<br><br>To cancel, click this message or press escape.",
+                            "copySuccess": {
+                                "1": "Copied 1 row to clipboard",
+                                "_": "Copied %d rows to clipboard"
+                            },
+                            "copyTitle": "Copy to Clipboard",
+                            "csv": "CSV",
+                            "excel": "Excel",
+                            "pageLength": {
+                                "-1": "Show all rows",
+                                "1": "Show 1 row",
+                                "_": "Show %d rows"
+                            },
+                            "pdf": "PDF",
+                            "print": "Print"
+                        },
+                        "searchBuilder": {
+                            "add": "Add Condition",
+                            "button": {
+                                "0": "Search Builder",
+                                "_": "Search Builder (%d)"
+                            },
+                            "clearAll": "Clear All",
+                            "condition": "Condition",
+                            "conditions": {
+                                "date": {
+                                    "after": "After",
+                                    "before": "Before",
+                                    "between": "Between",
+                                    "empty": "Empty",
+                                    "equals": "Equals",
+                                    "not": "Not",
+                                    "notBetween": "Not Between",
+                                    "notEmpty": "Not Empty"
+                                },
+                                "moment": {
+                                    "after": "After",
+                                    "before": "Before",
+                                    "between": "Between",
+                                    "empty": "Empty",
+                                    "equals": "Equals",
+                                    "not": "Not",
+                                    "notBetween": "Not Between",
+                                    "notEmpty": "Not Empty"
+                                },
+                                "number": {
+                                    "between": "Between",
+                                    "empty": "Empty",
+                                    "equals": "Equals",
+                                    "gt": "Greater Than",
+                                    "gte": "Greater Than Equal To",
+                                    "lt": "Less Than",
+                                    "lte": "Less Than Equal To",
+                                    "not": "Not",
+                                    "notBetween": "Not Between",
+                                    "notEmpty": "Not Empty"
+                                },
+                                "string": {
+                                    "contains": "Contains",
+                                    "empty": "Empty",
+                                    "endsWith": "Ends With",
+                                    "equals": "Equals",
+                                    "not": "Not",
+                                    "notEmpty": "Not Empty",
+                                    "startsWith": "Starts With"
+                                },
+                                "array": {
+                                    "without": "Without",
+                                    "notEmpty": "Not Empty",
+                                    "not": "Not",
+                                    "contains": "Contains",
+                                    "empty": "Empty",
+                                    "equals": "Equals"
+                                }
+                            },
+                            "data": "Data",
+                            "deleteTitle": "Delete filtering rule",
+                            "leftTitle": "Outdent Criteria",
+                            "logicAnd": "And",
+                            "logicOr": "Or",
+                            "rightTitle": "Indent Criteria",
+                            "title": {
+                                "0": "Search Builder",
+                                "_": "Search Builder (%d)"
+                            },
+                            "value": "Value"
+                        },
+                        "searchPanes": {
+                            "clearMessage": "Clear All",
+                            "collapse": {
+                                "0": "SearchPanes",
+                                "_": "SearchPanes (%d)"
+                            },
+                            "count": "{total}",
+                            "countFiltered": "{shown} ({total})",
+                            "emptyPanes": "No SearchPanes",
+                            "loadMessage": "Loading SearchPanes",
+                            "title": "Filters Active - %d"
+                        },
+                        "select": {
+                            "1": "%d row selected",
+                            "_": "%d rows selected",
+                            "cells": {
+                                "1": "1 cell selected",
+                                "_": "%d cells selected"
+                            },
+                            "columns": {
+                                "1": "1 column selected",
+                                "_": "%d columns selected"
+                            }
+                        }
+                    },
+                    buttons: [
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                                columns: ':visible'
+                            }
+                        },
+                        'colvis'
+                    ],
+                    columnDefs: [{
+                        targets: -1,
+                        visible: false
+                    }],
+                });
+                table.buttons(0, null).container().prependTo(
+                    table.table().container()
+                );
+                var eventsTable = $('.dom-jQuery-events').DataTable();
+            });
+        </script>
+    @endif
 @endsection
 

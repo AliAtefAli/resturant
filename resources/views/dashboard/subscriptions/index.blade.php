@@ -23,6 +23,7 @@
         </div>
 
         <!--content body -->
+        @include('dashboard.partials._alert')
         <div class="content-body">
             <!-- Description -->
             <section id="description" class="card">

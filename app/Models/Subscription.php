@@ -22,7 +22,9 @@ class Subscription extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class)->withPivot('people_count', 'billing_total');
+        return $this->belongsToMany(User::class)
+            ->withPivot('start_date', 'end_date', 'people_count', 'billing_total', 'shipping_type', 'billing_address', 'payment_type', 'billing_phone', 'note')
+            ->orderBy('start_date', 'desc');
     }
 
     protected static function detachProducts($subscription, $productRequests, $subscriptionProducts)

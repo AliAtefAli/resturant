@@ -79,6 +79,9 @@ class SubscriptionController extends Controller
     public function destroy(Subscription $subscription)
     {
         // check if no subscriptions
+        if ($subscription->users->count() > 1) {
+            return back()->with('error', trans('dashboard.subscriptions.Sorry you can not delete this Subscription'));
+        }
         $subscription->delete();
 
         return redirect()->route('subscription.index')->with('success', trans('dashboard.subscription.deleted successfully'));
