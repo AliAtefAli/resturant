@@ -117,7 +117,9 @@
             e.preventDefault();
 
             var id = $(this).attr("data-id");
-            var qty = $('#quantity').val();
+            var qty = $('#quantity').val(),
+                cartCountWeb = $('#cart-count-web'),
+                cartCountMobile = $('#cart-count-mobile');
 
             $.ajax({
                 url: "/products/addToCart/" + id,
@@ -130,9 +132,14 @@
 
                 success: function (response) {
                     if (response.status === true) {
-                        toastr.success(response.message, {timeOut: "50000",})
+                        toastr.success(response.message, {timeOut: "50000",});
+                        cartCountWeb.text(response.quantity);
+                        cartCountMobile.text(response.quantity);
+
                     } else {
                         toastr.error(response.message, {timeOut: "50000",})
+                        cartCountWeb.text(response.quantity);
+                        cartCountMobile.text(response.quantity);
                     }
                 },
                 error: function (response) {

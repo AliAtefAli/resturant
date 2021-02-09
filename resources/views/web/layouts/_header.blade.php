@@ -61,7 +61,7 @@
 
         <a href="{{ route('carts') }}">
             <i class="fas fa-shopping-cart"> <span style="color: #CC5641;" id="cart-quantity">
-             <span style="color: #CC5641;"> {{ Cart::instance('cart')->count() }} </span>
+             <span id="cart-count-mobile" style="color: #CC5641;"> {{ Cart::instance('cart')->count() }} </span>
             </span></i>
 
         </a>
@@ -177,7 +177,7 @@
                             </a>
                             <a href="{{route('carts')}}" title="{{ __('site.Cart') }}">
                                 <i class="fas fa-shopping-cart">
-                                    <span style="color: #CC5641;"> {{ Cart::instance('cart')->count() }} </span>
+                                    <span id="cart-count-web" style="color: #CC5641;"> {{ Cart::instance('cart')->count() }} </span>
                                 </i>
                             </a>
                             <a href="{{route('users.fav')}}" title="{{ __('site.Favorites') }}">

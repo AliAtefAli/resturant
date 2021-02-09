@@ -49,6 +49,7 @@ class CartController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => trans('site.Order.Sorry, this Quantity is not available'),
+                'quantity' => Cart::count()
             ]);
         } else {
             Cart::instance('cart')->add([
@@ -63,6 +64,7 @@ class CartController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => trans('site.Added to cart successfully'),
+                'quantity' => Cart::count()
             ]);
         }
     }
