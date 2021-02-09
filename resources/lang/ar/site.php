@@ -199,5 +199,5 @@ return [
     'Total after discount' => 'السعر الاجمالي بعد الخصم',
     'Order Is Successfully Accepted And We are preparing it' => 'تم قبول الطلب بنجاح و نحن نقوم بتحضيره ',
     'Order Is Successfully Processed And Your Order Is On The Way' => 'تمت الانتهاء من الطلب بنجاح ,طلبك في الطريق الان',
-    'Sorry Order Is unSuccessfully Processed' => 'عذرا ، لم يتم شحن طلبك',
+    'Sorry Order Is unSuccessfully Processed' => 'عذرا ، عذرا تم رفض طلبك',
 ];
