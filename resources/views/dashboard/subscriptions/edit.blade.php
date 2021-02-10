@@ -96,7 +96,7 @@
                                     <label class="col-md-2" for="price">{{trans('dashboard.product.Price')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative has-icon-left">
-                                            <input type="number" id="price" class="form-control"
+                                            <input type="text" id="price" class="form-control"
                                                    name="price" value="{{ $subscription->price }}"/>
                                             @include('dashboard.partials._errors', ['input' => 'price'])
                                         </div>
@@ -120,7 +120,7 @@
                                            for="durations_in_day">{{trans('dashboard.subscriptions.duration in days')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative has-icon-left">
-                                            <input type="number" id="durations_in_day" class="form-control"
+                                            <input type="text" id="durations_in_day" class="form-control"
                                                    name="duration_in_day" value="{{ $subscription->duration_in_day }}"/>
                                             @include('dashboard.partials._errors', ['input' => 'durations_in_day'])
                                         </div>

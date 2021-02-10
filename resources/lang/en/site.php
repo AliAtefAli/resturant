@@ -193,7 +193,8 @@ return [
     'Order now' => 'Order now',
     'You have been banned by the administration' => 'You have been banned by the administration',
     'Confirm Coupon' => 'Confirm Coupon',
-    'Discount period expired' => 'Discount period expired',
+    'Discount period expired' => 'This coupon is unavailable',
+
     'Discount is successfully' => 'Discount is successfully',
     'Discount amount' => 'Discount Amount',
     'Total before discount' => 'Total before discount',

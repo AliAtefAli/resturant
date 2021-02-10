@@ -136,7 +136,7 @@
                                     <label class="col-md-2" for="price">{{trans('dashboard.product.Price')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative has-icon-left">
-                                            <input type="number" id="price" class="form-control"
+                                            <input type="text" id="price" class="form-control"
                                                    name="price" value="{{  $product->price }}"/>
                                             @include('dashboard.partials._errors', ['input' => 'price'])
                                         </div>
@@ -148,7 +148,7 @@
                                            for="quantity">{{trans('dashboard.product.Quantity')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative has-icon-left">
-                                            <input type="number" id="quantity" class="form-control"
+                                            <input type="text" id="quantity" class="form-control"
                                                    name="quantity" value="{{ $product->quantity }}"/>
                                             @include('dashboard.partials._errors', ['input' => 'quantity'])
                                         </div>

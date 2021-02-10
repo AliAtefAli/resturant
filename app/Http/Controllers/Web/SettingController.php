@@ -70,8 +70,14 @@ class SettingController extends Controller
     public function rate()
     {
         $rate = auth()->user()->rate;
-        // dd($rate);
-        return view('web.settings.rate', compact('rate'));
+
+        if ($rate->count > 0 || $rate->status == 'on' )
+        {
+            return back()->with('error', trans('لقد قمت بالتقييم من قبل'));
+        }
+
+
+        return view('web.settings.rate');
     }
 
     public function saveRate(SaveRateRequest $request)

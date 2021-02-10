@@ -193,8 +193,9 @@ return [
     'Order now' => 'تسوق الآن',
     'You have been banned by the administration' => 'تم حظرك من قبل الإدارة',
     'Confirm Coupon' => 'تفعيل الكوبون',
-    'Discount period expired' => 'انتهت مدة الخصم',
+    'Discount period expired' => 'غير متاح حاليا',
     'Discount is successfully' => 'تم الخصم بنجاح',
+
     'Discount amount' => 'قيمه الخصم',
     'Total before discount' => 'السعر الاجمالي قبل الخصم',
     'Total after discount' => 'السعر الاجمالي بعد الخصم',

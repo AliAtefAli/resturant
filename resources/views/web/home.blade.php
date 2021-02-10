@@ -22,6 +22,7 @@
         </div>
     </div>
     <!--End Main Slider-->
+
     <!--Start Pace-->
     <div class="pace-section">
         <img lazy="loading" src="{{asset('web_files/images/flower.png')}}" class="line-shep"/>
