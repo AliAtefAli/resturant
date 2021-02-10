@@ -68,7 +68,7 @@
                                                             <td><img src="{{ asset('assets/uploads/sliders/' . $slider->image ) }}" width="150" alt=""></td>
                                                             <td><a href="{{ url($slider->url) }}">{{ $slider->url }}</a></td>
                                                             <td>{{ $slider->ordered }}</td>
-                                                            <td>{{ $slider->status }}</td>
+                                                            <td>{{  trans('dashboard.slider.'.$slider->status) }}</td>
                                                             <td>
                                                                 <a href="{{ route('dashboard.sliders.edit', $slider) }}"
                                                                    class="btn btn-info btn-sm"
@@ -76,28 +76,58 @@
                                                                     <i class="ft-edit"></i>
                                                                 </a>
                                                                 @if($slider->status == 'active')
+
                                                                     <a href="{{ route('dashboard.sliders.makeAsPending', $slider) }}"
-                                                                       class="btn btn-outline-success btn-sm">
-                                                                        {{ trans('dashboard.slider.Pending') }}
+                                                                       class="btn btn-outline-warning btn-sm" title="{{ trans('dashboard.slider.Pending') }}">
+                                                                        <i class="ft-lock"  aria-hidden="true"></i>
                                                                     </a>
                                                                 @else
                                                                     <a href="{{ route('dashboard.sliders.makeAsActive', $slider) }}"
-                                                                       class="btn btn-success btn-sm">
-                                                                        {{ trans('dashboard.slider.Active') }}
+                                                                       class="btn btn-outline-success btn-sm" title="{{ trans('dashboard.slider.Active') }}">
+                                                                        <i class="ft-unlock"  aria-hidden="true"></i>
                                                                     </a>
                                                                 @endif
-                                                                <form
-                                                                    action="{{ route('dashboard.sliders.destroy', $slider) }}"
-                                                                    id="delete-confirm" method="post"
-                                                                    style="display: inline-block">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit"
-                                                                            class="btn btn-danger btn-sm"
-                                                                            id="confirm-text"><i
-                                                                            class="ft-trash-2"></i>
-                                                                    </button>
-                                                                </form>
+                                                                <a href="#" data-toggle="modal"
+                                                                   data-target="#delete-question-{{$slider->id}}"
+                                                                   class="btn btn-danger btn-sm" title="">
+                                                                    <i class="ft-trash-2"></i>
+                                                                </a>
+                                                                <div class="modal fade  custom-imodal"
+                                                                     id="delete-question-{{$slider->id}}"
+                                                                     tabindex="-1" role="dialog"
+                                                                     aria-labelledby="exampleModalLabel"
+                                                                     aria-hidden="true">
+                                                                    <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title"
+                                                                                    id="exampleModalLabel">{{ trans('dashboard.slider.delete_slider') }}</h5>
+                                                                                <button type="button" class="close"
+                                                                                        data-dismiss="modal"
+                                                                                        aria-label="Close">
+                                                                                    <span
+                                                                                            aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body custom-addpro">
+                                                                                <div class="contact-page">
+                                                                                    <form action="{{ route('dashboard.sliders.destroy', $slider) }}"
+                                                                                          method="post">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+                                                                                        <h2>  {{ trans('dashboard.slider.do_you_want_to_delete_this_slider') }} </h2>
+
+                                                                                        <div class="form-actions right">
+                                                                                            <button type="submit" class="btn btn-danger">
+                                                                                                {{trans('dashboard.main.delete')}}
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </td>
                                                         </tr>
                                                     @endforeach

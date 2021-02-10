@@ -6,6 +6,7 @@ return [
     'Updated successfully!' => 'Updated successfully!',
     "deleted_successfully" => "Deleted successfully",
     "created_successfully" => "Created successfully",
+    "edit" => "Edit",
     'message deleted successfully!' => 'message deleted successfully!',
     'Our Services' => 'Services',
     'Logout' => 'Logout',
@@ -340,15 +341,17 @@ return [
         'Url' => 'Url',
         'Order' => 'Order',
         'Status' => 'Status',
-        'Pending' => 'Pending',
-        'Active' => 'Active',
+        'pending' => 'Pending',
+        'active' => 'Active',
         'Slider Details In Arabic' => 'Slider Details In Arabic',
         'Slider Details In English' => 'Slider Details In English',
         'Slider Image' => 'Slider Image',
         'Title' => 'Title',
         'model' => 'Slider',
         'original_price' => 'Original price',
-        'price' => 'price'
+        'price' => 'price',
+        'delete_slider' => 'Delete slider',
+        "do_you_want_to_delete_this_slider" => "Do you want to delete this slider"
     ],
     'user' => [
         'Add user' => 'Add User',

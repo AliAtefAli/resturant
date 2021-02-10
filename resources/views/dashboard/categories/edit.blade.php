@@ -71,7 +71,7 @@
 
                                 <div class="form-actions right">
                                     <button type="submit" class="btn btn-primary">
-                                        {{trans('edit')}}
+                                        {{trans('dashboard.edit')}}
                                     </button>
                                 </div>
                             </form>

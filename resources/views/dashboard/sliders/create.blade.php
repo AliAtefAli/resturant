@@ -66,8 +66,8 @@
                                                for="status">{{ trans('dashboard.slider.Status')}}</label>
                                         <div class="col-md-10">
                                             <select class="custom-select" name="status">
-                                                <option value="pending">{{ trans('dashboard.slider.Pending') }}</option>
-                                                <option value="active">{{ trans('dashboard.slider.Active') }}</option>
+                                                <option value="pending">{{ trans('dashboard.slider.pending') }}</option>
+                                                <option value="active">{{ trans('dashboard.slider.active') }}</option>
                                             </select>
                                         </div>
                                     </div>

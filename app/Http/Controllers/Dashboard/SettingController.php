@@ -66,7 +66,7 @@ class SettingController extends Controller
             ($setting) ? $setting->update(['value' => $value]) : Setting::create(['key' => $key, 'value' => $value]);
 
         }
-        return back()->with('success', trans('dashboard.It was done successfully!'));
+        return back()->with('success', trans('dashboard.Updated successfully!'));
     }
 
     private function clean($string)

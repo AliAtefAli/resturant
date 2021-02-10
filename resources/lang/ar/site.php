@@ -16,7 +16,7 @@ return [
     'Print' => 'طبع',
 
     'Days' => 'أيام',
-    'DayCoupon not found' => 'يوم',
+    'Day' => 'يوم',
 
     'Confirm delete' => 'تاكيد الحذف',
     'Do you have Coupon' => 'هل لديك كوبون خصم؟',

@@ -73,12 +73,12 @@
                                                             <td>
                                                                 @if($rate->status == 'on')
                                                                     <a href="{{ route('dashboard.rates.off', $rate) }}"
-                                                                       class="btn btn-outline-danger btn-sm" title="">
+                                                                       class="btn btn-outline-danger btn-sm" title="{{ trans('dashboard.discounts.make as unavailable') }}">
                                                                         <i class="ft-lock"  aria-hidden="true"></i>
                                                                     </a>
                                                                 @else
                                                                     <a href="{{ route('dashboard.rates.on', $rate) }}"
-                                                                       class="btn btn-outline-success btn-sm" title="">
+                                                                       class="btn btn-outline-success btn-sm" title="{{ trans('dashboard.discounts.make as available') }}">
                                                                         <i class="ft-unlock"  aria-hidden="true"></i>
                                                                     </a>
                                                                 @endif

@@ -4,6 +4,7 @@ return [
     "Updated successfully!" => "تم التعديل بنجاح!",
     "deleted_successfully" => "تم الحذف بنجاح!",
     "created_successfully" => "تم الاضافه بنجاح",
+    "edit" => "تعديل",
     "Our Company" => "شركتنا",
     "Our Services" => "خدماتنا",
     "Dashboard Statistics" => "احصائيات لوحه التحكم",
@@ -331,8 +332,8 @@ return [
         'Url' => 'العنوان',
         'Order' => 'الترتيب',
         'Status' => 'الحاله',
-        'Pending' => 'قيد الانتظار',
-        'Active' => 'مفعل',
+        'pending' => 'قيد الانتظار',
+        'active' => 'مفعل',
         "Add Slider" => "أضف سلايدر",
         "All Sliders" => "جميع السلايدرز",
         "Description" => "وصف",
@@ -350,7 +351,9 @@ return [
         "Title" => "عنوان",
         "model" => "السلايدر",
         "original_price" => "السعر الأصلي",
-        "price" => "السعر"
+        "price" => "السعر",
+        'delete_slider' => 'مسح السلايدر',
+        "do_you_want_to_delete_this_slider" => "هل تريد حذف هذا السلايدر ؟"
     ],
     "user" => [
         'Status' => 'الحاله',

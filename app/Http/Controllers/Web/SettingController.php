@@ -71,13 +71,26 @@ class SettingController extends Controller
     {
         $rate = auth()->user()->rate;
 
-        if ($rate->count > 0 || $rate->status == 'on' )
+
+        if (isset($rate)) {
+
+            if($rate->status == 'on')
+            {
+
+                return back()->with('error', trans('لقد قمت بالتقييم من قبل'));
+
+            }elseif($rate->status == 'off') {
+
+
+                return view('web.settings.rate');
+            }
+
+        }else
         {
-            return back()->with('error', trans('لقد قمت بالتقييم من قبل'));
+            return view('web.settings.rate');
         }
 
-
-        return view('web.settings.rate');
+//        return view('web.settings.rate');
     }
 
     public function saveRate(SaveRateRequest $request)
