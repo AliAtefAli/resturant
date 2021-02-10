@@ -44,7 +44,7 @@ class ProductController extends Controller
                 'product_id' => $product->id
             ]);
         }
-        return redirect()->route('dashboard.products.index')->with('success', trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.products.index')->with('success', trans('dashboard.created_successfully'));
     }
 
     public function show(Product $product)
@@ -85,7 +85,7 @@ class ProductController extends Controller
             }
         }
 
-        return redirect()->route('dashboard.products.index')->with('success', trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.products.index')->with('success', trans('dashboard.Updated successfully!'));
 
     }
 
@@ -109,7 +109,7 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->route('dashboard.products.index')->with('success', trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.products.index')->with('success', trans('dashboard.deleted_successfully'));
     }
 
     public function featured(Product $product)

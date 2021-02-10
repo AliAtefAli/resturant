@@ -174,6 +174,8 @@ return [
     'field_required_category' => 'Category field is required',
     'field_required_code' => 'Code field is required',
     'field_required_product' => 'Product field is required',
+    'field_required_comment' => 'Comment field is required',
+    'field_rate_required' => 'ٌRate field is required',
     'field_required_amount' => 'Value field is required',
     'field_required_status' => 'Status field is required',
     'field_required_discount' => 'Discount field is required',
@@ -200,11 +202,18 @@ return [
     'field_exists_code' => 'Code already exsits',
     'field_exists_phone' => 'Phone already exsits',
     'field_exists_email' => 'Email already exsits',
+    'field_required' => 'This field is required',
+    'field_wrong_code' => 'This code is incorrect',
     'These credentials do not match our data.' => 'These credentials do not match our data, please try again',
+    'These credentials is wrong' => 'These credentials is wrong',
     'Please Enter Correct saudi arabia phone' => 'Please Enter Correct saudi arabia phone',
     'Please Enter Correct date' => 'Please Enter Correct date',
     'Please Enter The Start date' => 'Please Enter The Start date',
     'Please Enter The End date' => 'Please Enter The End date',
+
+    'policy' => 'You must agree to our policy to sign up',
+
+    'policy_check' => 'I agree that I have read and acknowledge the',
 
     'attributes' => [
         'start_date' => 'Start date',

@@ -198,6 +198,8 @@ return [
     'field_required_code' => 'حقل الرمز مطلوب',
     'field_required_product' => 'حقل المنتجات مطلوب',
     'field_required_amount' => 'حقل القيمة مطلوب',
+    'field_required_comment' => 'حقل التعليق مطلوب',
+    'field_rate_required' => 'حقل التقييم مطلوب',
     'field_required_status' => 'حقل الحاله مطلوب',
     'field_required_discount' => 'حقل التخفيض مطلوب',
     'field_email' => 'حقل لا بد أن يكون بريد إلكتروني',
@@ -221,12 +223,24 @@ return [
     'field_snapchat' => 'حقل سناب شات مطلوب',
     'field_exists' => 'حقل موجود من قبل',
     'field_exists_code' => 'هذا الكود مستخدم من قبل',
+    'field_wrong_code' => 'هذا الكود غير صحيح',
     'field_exists_phone' => 'هذا الهاتف مستخدم من قبل',
     'field_exists_email' => 'هذا البريد الإلكتروني مستخدم من قبل',
-    'These credentials do not match our data.' => 'البيانات غير متطابقة من فضلك اعد المحاولة',
+    'field_required' => 'هذا الحقل مطلوب',
+    'These credentials do not match our data.' => 'البيانات غير مسجله من قبل ,  من فضلك اعد المحاولة',
+    'These credentials is wrong' => 'البيانات غير صحيحه ,  من فضلك اعد المحاولة',
     'Please Enter Correct saudi arabia phone' => 'من فضلك ادخل رقم سعودي صحيح',
     'Please Enter Correct date' => 'من فضلك ادخل تاريخ صحيح',
     'Please Enter The Start date' => 'من فضلك ادخل تاريخ البداية',
     'Please Enter The End date' => 'من فضلك ادخل تاريخ التهاية',
+
+    'policy' => 'يجب أن توافق على سياستنا للتسجيل',
+
+    'policy_check' => 'أوافق على أنني قد قرأت وأقر بـ',
+
+    'attributes' => [
+    'start_date' => 'تاريخ البداية',
+    'end_date' => 'تاريخ الانتهاء',
+]
 
 ];

@@ -44,7 +44,7 @@
 
                     <input type="hidden" name="user_id" value="{{ $user->id }}">
                     <button class="btn-aaa" type="submit">
-                        {{__('confirm')}}
+                        {{__('site.Confirm')}}
                     </button>
                 </div>
             </div>

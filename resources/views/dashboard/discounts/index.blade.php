@@ -57,7 +57,7 @@
                                                     <tr>
                                                         <th>{{trans('dashboard.discounts.Code')}}</th>
                                                         <th>{{trans('dashboard.discounts.Status')}}</th>
-                                                        <th>{{trans('dashboard.discounts.amount')}}</th>
+                                                        <th>{{trans('dashboard.discounts.Value')}}</th>
                                                         <th>{{trans('dashboard.discounts.discount type')}}</th>
                                                         <th>{{trans('dashboard.discounts.Start Date')}}</th>
                                                         <th>{{trans('dashboard.discounts.End Date')}}</th>
@@ -68,11 +68,15 @@
                                                     @foreach($discounts as $discount)
                                                         <tr>
                                                             <td>{{ $discount->code }}</td>
-                                                            <td>{{ $discount->status }}</td>
+                                                            <td>
+                                                                {{  trans('dashboard.discounts.'. $discount->status) }}
+                                                            </td>
                                                             <td>{{ $discount->amount }}</td>
-                                                            <td>{{ $discount->discount_type }}</td>
-                                                            <td>{{ $discount->start_date }}</td>
-                                                            <td>{{ $discount->end_date }}</td>
+                                                            <td>{{  trans('dashboard.discounts.'. $discount->discount_type) }}</td>
+                                                            <td>
+                                                                {{ \Carbon\Carbon::parse($discount->start_date)->toDateString()}}
+                                                            </td>
+                                                            <td>{{ \Carbon\Carbon::parse($discount->end_date)->toDateString() }}</td>
                                                             <td>
                                                                 <a href="">
                                                                     <a href="{{ route('dashboard.discounts.edit', $discount) }}"
@@ -82,28 +86,58 @@
                                                                     </a>
                                                                 </a>
                                                                 @if($discount->status == 'available')
+
                                                                     <a href="{{ route('dashboard.discounts.makeAsUnavailable', $discount) }}"
-                                                                       class="btn btn-outline-success btn-sm">
-                                                                        {{ trans('dashboard.discounts.make as unavailable') }}
+                                                                       class="btn btn-outline-danger btn-sm" title="{{ trans('dashboard.discounts.make as unavailable') }}">
+                                                                        <i class="ft-lock"  aria-hidden="true"></i>
                                                                     </a>
                                                                 @else
                                                                     <a href="{{ route('dashboard.discounts.makeAsAvailable', $discount) }}"
-                                                                       class="btn btn-success btn-sm">
-                                                                        {{ trans('dashboard.discounts.make as available') }}
+                                                                       class="btn btn-outline-success btn-sm" title="{{ trans('dashboard.discounts.make as available') }}">
+                                                                        <i class="ft-unlock"  aria-hidden="true"></i>
                                                                     </a>
                                                                 @endif
-                                                                <form
-                                                                    action="{{ route('dashboard.discounts.destroy', $discount) }}"
-                                                                    id="delete-confirm" method="post"
-                                                                    style="display: inline-block">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit"
-                                                                            class="btn btn-danger btn-sm"
-                                                                            id="confirm-text"><i
-                                                                            class="ft-trash-2"></i>
-                                                                    </button>
-                                                                </form>
+                                                                <a href="#" data-toggle="modal"
+                                                                   data-target="#delete-question-{{$discount->id}}"
+                                                                   class="btn btn-danger btn-sm" title="">
+                                                                    <i class="ft-trash-2"></i>
+                                                                </a>
+                                                                <div class="modal fade  custom-imodal"
+                                                                     id="delete-question-{{$discount->id}}"
+                                                                     tabindex="-1" role="dialog"
+                                                                     aria-labelledby="exampleModalLabel"
+                                                                     aria-hidden="true">
+                                                                    <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title"
+                                                                                    id="exampleModalLabel">{{ trans('dashboard.discounts.delete_discount') }}</h5>
+                                                                                <button type="button" class="close"
+                                                                                        data-dismiss="modal"
+                                                                                        aria-label="Close">
+                                                                                    <span
+                                                                                            aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body custom-addpro">
+                                                                                <div class="contact-page">
+                                                                                    <form action="{{ route('dashboard.discounts.destroy', $discount) }}"
+                                                                                          method="post">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+                                                                                        <h2>  {{ trans('dashboard.discounts.do_you_want_to_delete_this_user') }} </h2>
+
+                                                                                        <div class="form-actions right">
+                                                                                            <button type="submit" class="btn btn-danger">
+                                                                                                {{trans('dashboard.main.delete')}}
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </td>
                                                         </tr>
                                                     @endforeach

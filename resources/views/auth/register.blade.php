@@ -73,9 +73,14 @@
                     @endif
 
                     <div class="">
+                        <input type="checkbox" name="policy" @if(old('policy') == 'on' ) checked @endif>
+                        {{trans('validation.policy_check')}}
                         <a href="#" class="link-forget" data-toggle="modal" data-target="#policies">
                             {{__('site.Policies')}}
                         </a>
+                        @if ($errors->has('policy'))
+                            <div class="alert alert-danger">{{ $errors->first('policy') }}</div>
+                        @endif
                     </div>
                     <button class="btn-aaa" type="submit">
                         {{__('site.Register')}}

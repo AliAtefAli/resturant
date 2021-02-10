@@ -30,7 +30,7 @@ class DiscountController extends Controller
     {
         Discount::create($request->validated());
 
-        return redirect()->route('dashboard.discounts.index')->with('success', trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.discounts.index')->with('success', trans('dashboard.created_successfully'));
     }
 
     public function show($id)
@@ -49,26 +49,26 @@ class DiscountController extends Controller
     {
         $discount->update($request->validated());
 
-        return redirect()->route('dashboard.discounts.index')->with('success', trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.discounts.index')->with('success', trans('dashboard.Updated successfully!'));
     }
 
     public function destroy(Discount $discount)
     {
         $discount->delete();
 
-        return redirect()->route('dashboard.discounts.index')->with('success', trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.discounts.index')->with('success', trans('dashboard.deleted_successfully'));
     }
 
     public function makeAsUnavailable(Discount $discount)
     {
         $discount->update(['status' => 'unavailable'] );
 
-        return redirect()->route('dashboard.discounts.index')->with("success", trans('dashboard.slider.updated successfully'));
+        return redirect()->route('dashboard.discounts.index')->with("success", trans('dashboard.Updated successfully!'));
     }
     public function makeAsAvailable(Discount $discount)
     {
         $discount->update(['status' => 'available'] );
 
-        return redirect()->route('dashboard.discounts.index')->with("success", trans('dashboard.slider.updated successfully'));
+        return redirect()->route('dashboard.discounts.index')->with("success", trans('dashboard.Updated successfully!'));
     }
 }

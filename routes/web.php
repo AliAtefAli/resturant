@@ -6,6 +6,8 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
 
     Route::get('/', 'HomeController@index')->name('home');
 
+    Route::post('/user_login', 'AuthController@userLogin')->name('User.login');
+
     Route::get('/change_language', 'HomeController@change_language')->name('change.language');
 
     Route::get('about-us', 'SettingController@aboutUs')->name('about_us');

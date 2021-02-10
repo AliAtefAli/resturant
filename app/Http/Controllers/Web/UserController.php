@@ -39,7 +39,7 @@ class UserController extends Controller
         $data['phone'] = $this->clean($data['phone']);
         $user->update($data);
 
-        return back()->with("success", trans('dashboard.It was done successfully!'));
+        return back()->with("success", trans('dashboard.Updated successfully!'));
     }
 
     private function clean($string)
@@ -66,14 +66,14 @@ class UserController extends Controller
         if (in_array($id, $user_favorites)) {
             $product = Favorite::where('product_id', $id);
             $product->delete();
-            return back();
+            return back()->with('success',trans('site.It has been deleted to the favorites'));
         }
 
         Favorite::create([
             'product_id' => $id,
             'user_id' => (auth()->user()->id) ?? ''
         ]);
-        return back();
+        return back()->with('success',trans('site.It has been added to the favorites'));
     }
 
     public function subscriptions()

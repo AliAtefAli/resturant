@@ -15,7 +15,10 @@
                         {{__('site.Phone')}} & {{__('site.E-mail')}}
                     </p>
                     <label class="input-style">
-                        <input type="text" name="email">
+                        <input type="text" name="email" value="{{ old('email') }}" autofocus>
+                        @if ($errors->has('email'))
+                            <div class="alert alert-danger">{{ $errors->first('email') }}</div>
+                        @endif
                     </label>
                     <button class="btn-aaa" type="submit">
                         {{ __('site.Confirm') }}

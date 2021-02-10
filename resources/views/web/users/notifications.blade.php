@@ -3,12 +3,12 @@
 @section('content')
 
     <div class="text-section">
-        <img class="line" src="images/flower.png">
+        <img class="line" src="images/flower.png" style="opacity: 0">
         <div class="container">
             @foreach($notifications as $notification)
                 <div class="notices">
                     <div>
-                        <img src="{{ asset('web_files/images/notices.png') }}">
+                        <img src="{{ asset('web_files/images/notices.png') }}" >
                         <div class="text-n">
                             <p>
                                 @if($notification->type == 'App\Notifications\RejectOrder' ||$notification->type == 'App\Notifications\DeliveredOrder' ||$notification->type == 'App\Notifications\AcceptOrder')

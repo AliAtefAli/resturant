@@ -16,6 +16,7 @@ return [
     'Print' => 'Print',
 
     'Days' => 'Days',
+    'Day' => 'Day',
 
     'Confirm delete' => 'Confirm Delete',
     'Do you have Coupon' => 'Do you have Coupon ?',
@@ -200,5 +201,10 @@ return [
     'Sorry, This Product is not available now' => 'Sorry, This Product is not available now',
     'Order Is Successfully Accepted And We are preparing it' => 'Order Is Successfully Accepted And We are preparing it',
     'Order Is Successfully Processed And Your Order Is On The Way' => 'Order Is Successfully Processed And Your Order Is On The Way',
+    'Sorry Order Is unSuccessfully Processed' => 'Sorry Order Is unSuccessfully Processed',
+
+    'It has been added to the favorites' => 'It has been added to the favorites',
+    'It has been deleted to the favorites' => 'It has been deleted to the favorites',
+
     'Sorry Order Is unSuccessfully Processed' => 'Sorry, your Order was rejected',
 ];

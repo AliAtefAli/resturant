@@ -59,8 +59,20 @@ class RegisterController extends Controller
             'phone' => ['required', 'unique:users', 'string', 'phone:SA'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'address' => ['required'],
+            'policy' => ['required'],
         ], [
-            'phone.phone' => __('validation.Please Enter Correct saudi arabia phone')
+            'name.required' => (trans('validation.field_required_name')),
+            'email.required' => (trans('validation.field_required_email')),
+            'email.email' => (trans('validation.field_email')),
+            'email.unique' => (trans('validation.field_exists_email')),
+            'phone.required' => (trans('validation.field_required_phone')),
+            'phone.unique' => (trans('validation.field_exists_phone')),
+            'phone.phone' => (trans('validation.Please Enter Correct saudi arabia phone')),
+            'password.required' => (trans('validation.field_required_password')),
+            'password.min' =>(trans('validation.field_min_8')),
+            'password.confirmed' => (trans('validation.password_confirmed')),
+            'address.required' => (trans('validation.field_required_address')),
+            'policy.required' => (trans('validation.policy'))
         ]);
 
     }

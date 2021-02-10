@@ -145,7 +145,7 @@
 
                                 <div class="form-group row {{ $errors->has('quantity') ? ' has-error' : '' }}">
                                     <label class="col-md-2"
-                                           for="quantity">{{trans('dashboard.product.quantity')}}</label>
+                                           for="quantity">{{trans('dashboard.product.Quantity')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative has-icon-left">
                                             <input type="number" id="quantity" class="form-control"

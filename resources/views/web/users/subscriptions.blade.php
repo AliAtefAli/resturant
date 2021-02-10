@@ -38,8 +38,10 @@
                                 {{ $package->pivot->billing_total }} @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }} @endif
                             </p>
                             <p class="shiping">
-                                {{ __('site.Delivery') }}
-                                : @if(isset($setting[ 'delivery_price'])) {{ $setting['delivery_price'] }} @endif @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif                        </p>
+                                @if($package->pivot->shipping_type == 'delivery')
+                                    {{ __('site.Delivery') }}
+                                    : @if(isset($setting[ 'delivery_price'])) {{ $setting['delivery_price'] }} @endif @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif </p>
+                                @endif
                             <p class="person-number">
                                 {{ __('site.People count') }} : {{$package->pivot->people_count}}
                             </p>

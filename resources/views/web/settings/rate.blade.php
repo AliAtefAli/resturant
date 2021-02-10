@@ -40,7 +40,7 @@
                 @else
                     <div>
                         <div class="stars-section d-flex justify-content-center">
-                            <input class="star star-5" id="star-5" type="radio" name="amount" value="5" checked/>
+                            <input class="star star-5" id="star-5" type="radio" name="amount" value="5"/>
                             <label class="star star-5" for="star-5"></label>
                             <input class="star star-4" id="star-4" type="radio" name="amount" value="4"/>
                             <label class="star star-4" for="star-4"></label>

@@ -18,7 +18,7 @@ class SaveRateRequest extends FormRequest
     {
         return [
             'amount.required' => (trans('validation.field_rate_required')),
-            'comment.required' => (trans('validation.field_comment_required')),
+            'comment.required' => (trans('validation.field_required_comment')),
         ];
     }
 

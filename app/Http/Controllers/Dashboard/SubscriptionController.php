@@ -37,7 +37,7 @@ class SubscriptionController extends Controller
         $subscription = Subscription::create($data);
         $subscription->products()->attach($request->input('products'));
 
-        return redirect()->route('dashboard.subscriptions.index')->with('success', trans('dashboard.subscription.created successfully'));
+        return redirect()->route('dashboard.subscriptions.index')->with('success', trans('dashboard.created_successfully'));
     }
 
     public function show(Subscription $subscription)
@@ -72,7 +72,7 @@ class SubscriptionController extends Controller
         }
         $subscription->update($data);
 
-        return redirect()->route('dashboard.subscriptions.index')->with('success', trans('dashboard.subscription.updated successfully'));
+        return redirect()->route('dashboard.subscriptions.index')->with('success', trans('dashboard.Updated successfully!'));
 
     }
 
@@ -84,7 +84,7 @@ class SubscriptionController extends Controller
         }
         $subscription->delete();
 
-        return redirect()->route('subscription.index')->with('success', trans('dashboard.subscription.deleted successfully'));
+        return redirect()->route('dashboard.subscriptions.index')->with('success', trans('dashboard.deleted_successfully'));
     }
 
     public function users(Subscription $subscription)

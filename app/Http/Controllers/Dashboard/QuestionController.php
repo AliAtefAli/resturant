@@ -26,7 +26,7 @@ class QuestionController extends Controller
     {
         Question::create($request->validated());
 
-        return redirect()->route('dashboard.questions.index')->with('success', trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.questions.index')->with('success', trans('dashboard.created_successfully'));
     }
 
     public function show(Question $question)
@@ -43,7 +43,7 @@ class QuestionController extends Controller
     {
         $question->update($request->validated());
 
-        return redirect()->route('dashboard.questions.index')->with('success', trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.questions.index')->with('success', trans('dashboard.Updated successfully!'));
     }
 
     public function destroy(Question $question)
@@ -56,6 +56,6 @@ class QuestionController extends Controller
         }
         $question->delete();
 
-        return redirect()->route('dashboard.questions.index')->with('success', trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.questions.index')->with('success', trans('dashboard.deleted_successfully'));
     }
 }

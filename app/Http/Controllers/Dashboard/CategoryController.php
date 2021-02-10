@@ -35,7 +35,7 @@ class CategoryController extends Controller
     {
         Category::create($request->validated());
 
-        return redirect()->route('dashboard.categories.index')->with('success', trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.categories.index')->with('success', trans('dashboard.created_successfully'));
     }
 
     public function show(Category $category)
@@ -66,7 +66,7 @@ class CategoryController extends Controller
 
         $category->update($data);
 
-        return redirect()->route('dashboard.categories.index')->with('success', trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.categories.index')->with('success', trans('dashboard.Updated successfully!'));
 
     }
 
@@ -85,6 +85,6 @@ class CategoryController extends Controller
         }
 
         $category->delete();
-        return redirect()->route('dashboard.categories.index')->with('success', trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.categories.index')->with('success', trans('dashboard.deleted_successfully'));
     }
 }

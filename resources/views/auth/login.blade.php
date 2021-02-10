@@ -4,7 +4,7 @@
     <!--Select Pic-->
     <div class="over-to-shep">
         <img src="{{asset('web_files/images/flower.png')}}" class="line-shep"/>
-        <form method="POST" action="{{ route('login') }}" class="form-pic-select">
+        <form method="POST" action="{{ route('User.login') }}" class="form-pic-select">
             @csrf
             <div class="container">
                 <div class="pic-select pic-select-auth">

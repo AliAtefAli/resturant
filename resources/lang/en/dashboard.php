@@ -3,6 +3,9 @@
 return [
 
     'It was done successfully!' => 'It was done successfully!',
+    'Updated successfully!' => 'Updated successfully!',
+    "deleted_successfully" => "Deleted successfully",
+    "created_successfully" => "Created successfully",
     'message deleted successfully!' => 'message deleted successfully!',
     'Our Services' => 'Services',
     'Logout' => 'Logout',
@@ -56,6 +59,8 @@ return [
         'product' => 'Product',
         'Edit discount' => 'Edit Discount',
         'Add discount' => 'Add Discount',
+        'delete_discount' => 'Delete discount',
+        'do_you_want_to_delete_this_user' => 'Do you want to delete this discount',
         'available' => 'Available',
         'unavailable' => 'Unavailable',
         'percent' => 'Percent',

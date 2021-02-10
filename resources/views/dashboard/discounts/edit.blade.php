@@ -61,26 +61,30 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row {{ $errors->has('amount') ? ' has-error' : '' }}">
+                                <div class="form-group row {{ $errors->has('start_date') ? ' has-error' : '' }}">
                                     <label class="col-md-2"
                                            for="start_date">{{trans('dashboard.discounts.Start Date')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative">
-                                            <input type="text" id="start_date" class="form-control"
-                                                   name="start_date" value="{{ $discount->start_date }}"/>
+                                            <input type="date" id="start_date" class="form-control"
+                                                   name="start_date"
+                                                   min="{{\Carbon\Carbon::today()->toDateString()}}"
+                                                   value="{{ $discount->start_date->toDateString() }}"/>
                                             @include('dashboard.partials._errors', ['input' => 'start_date'])
                                         </div>
                                     </div>
                                 </div>
 
 
-                                <div class="form-group row {{ $errors->has('amount') ? ' has-error' : '' }}">
+                                <div class="form-group row {{ $errors->has('end_date') ? ' has-error' : '' }}">
                                     <label class="col-md-2"
                                            for="end_date">{{trans('dashboard.discounts.End Date')}}</label>
                                     <div class="col-md-10">
                                         <div class="position-relative">
-                                            <input type="text" id="end_date" class="form-control"
-                                                   name="end_date" value="{{ $discount->end_date }}"/>
+                                            <input type="date" id="end_date" class="form-control"
+                                                   name="end_date"
+                                                   min="{{\Carbon\Carbon::today()->toDateString()}}"
+                                                   value="{{ $discount->end_date->toDateString() }}"/>
                                             @include('dashboard.partials._errors', ['input' => 'end_date'])
                                         </div>
                                     </div>
@@ -115,7 +119,7 @@
 
                                 <div class="form-actions right">
                                     <button type="submit" class="btn btn-primary">
-                                        {{trans('dashboard.discounts.Add discount')}}
+                                        {{trans('dashboard.discounts.Edit discount')}}
                                     </button>
                                 </div>
                         </form>

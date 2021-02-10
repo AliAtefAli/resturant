@@ -16,6 +16,7 @@ return [
     'Print' => 'طبع',
 
     'Days' => 'أيام',
+    'DayCoupon not found' => 'يوم',
 
     'Confirm delete' => 'تاكيد الحذف',
     'Do you have Coupon' => 'هل لديك كوبون خصم؟',
@@ -48,7 +49,7 @@ return [
     'Complaint Subject' => 'عنوان الشكوي',
     'Complaint Content' => 'نص الشكوي',
     'Complaint Sent successfully' => 'تم ارسال الشكوي بنجاح',
-    'Forget Password' => 'نسيا كلمة المرور ؟',
+    'Forget Password' => 'نسيت كلمة المرور ؟',
     'Send' => 'ارسال',
     'Submit Now' => 'اشترك الان',
     'Optional' => 'اضافي',
@@ -170,7 +171,7 @@ return [
         'Billing address' => 'عنوان المشتري',
         'Sorry, this Quantity is not available' => 'عذرا هذه الكمية غير متاحة',
         'Confirm Order' => 'اتمام الطلب',
-        'Coupon not found' => 'عذرا الكويون ليس موجود',
+        'Coupon not found' => 'عذرا الكوبون ليس موجود',
         'Coupon not Available' => 'عذرا الكويون ليس متاح الآن',
         'Enter Your coupon' => 'ادخل الكوبون',
     ],
@@ -199,5 +200,9 @@ return [
     'Total after discount' => 'السعر الاجمالي بعد الخصم',
     'Order Is Successfully Accepted And We are preparing it' => 'تم قبول الطلب بنجاح و نحن نقوم بتحضيره ',
     'Order Is Successfully Processed And Your Order Is On The Way' => 'تمت الانتهاء من الطلب بنجاح ,طلبك في الطريق الان',
+    'Sorry Order Is unSuccessfully Processed' => 'عذرا ، لم يتم شحن طلبك',
+
+    'It has been added to the favorites' => 'تم اضافته الي المفضله',
+    'It has been deleted to the favorites' => 'تم حذفه من المفضله',
     'Sorry Order Is unSuccessfully Processed' => 'عذرا ، عذرا تم رفض طلبك',
 ];

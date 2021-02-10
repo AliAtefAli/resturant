@@ -82,9 +82,9 @@ class UsersController extends Controller
         User::create($data);
 
         if ($request->type == 'user') {
-            return redirect()->route('dashboard.users.index')->with("success", trans('dashboard.It was done successfully!'));
+            return redirect()->route('dashboard.users.index')->with("success", trans('dashboard.created_successfully'));
         }
-        return redirect()->route('dashboard.users.admins')->with("success", trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.users.admins')->with("success", trans('dashboard.created_successfully'));
     }
 
     public function show(User $user)
@@ -132,16 +132,16 @@ class UsersController extends Controller
         $user->update($data);
 
         if ($request->type == 'user') {
-            return redirect()->route('dashboard.users.index')->with("success", trans('dashboard.It was done successfully!'));
+            return redirect()->route('dashboard.users.index')->with("success", trans('dashboard.Updated successfully!'));
         }
-        return redirect()->route('dashboard.users.admins')->with("success", trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.users.admins')->with("success", trans('dashboard.Updated successfully!'));
     }
 
 
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('dashboard.users.index')->with("success", trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.users.index')->with("success", trans('dashboard.deleted_successfully'));
 
     }
 

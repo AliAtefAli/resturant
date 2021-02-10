@@ -1,6 +1,9 @@
 <?php
 return [
     "It was done successfully!" => "تم ذلك بنجاح!",
+    "Updated successfully!" => "تم التعديل بنجاح!",
+    "deleted_successfully" => "تم الحذف بنجاح!",
+    "created_successfully" => "تم الاضافه بنجاح",
     "Our Company" => "شركتنا",
     "Our Services" => "خدماتنا",
     "Dashboard Statistics" => "احصائيات لوحه التحكم",
@@ -55,6 +58,8 @@ return [
         'product' => 'المنتج',
         'Edit discount' => 'تعديل الخصم',
         'Add discount' => 'اضافه خصم',
+        'delete_discount' => 'حذف الخصم',
+        'do_you_want_to_delete_this_user' => 'هل تريد حذف هذا الخصم ؟',
         'available' => 'متاح',
         'unavailable' => 'غير متاح',
         'percent' => 'النسبه',
@@ -358,7 +363,7 @@ return [
         "Confirm Password" => "تأكيد كلمة المرور",
         "Email" => "البريد الإلكتروني",
         "Image" => "صورة",
-        "Name" => "اسم",
+        "Name" => "اسم العميل",
         "Password" => "كلمه السر",
         "Select User Role" => "حدد دور المستخدم",
         "Select User Status" => "حدد حالة الستخدم",

@@ -25,7 +25,7 @@
                         <input type="password" name="password_confirmation">
                     </label>
                     <button class="btn-aaa" type="submit">
-                        {{__('site.confirm')}}
+                        {{__('site.Confirm')}}
                     </button>
                 </div>
             </div>

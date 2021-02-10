@@ -71,6 +71,9 @@
     @yield('styles')
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 </head>
 <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar"
@@ -138,9 +141,25 @@
 <!-- End of Datatable js -->
 
 <!-- SweetAlert js -->
-<script src="{{asset('dashboard_files/app-assets/js/scripts/extensions/sweet-alerts.js')}}" type="text/javascript"></script>
+{{--<script src="{{asset('dashboard_files/app-assets/js/scripts/extensions/sweet-alerts.js')}}" type="text/javascript"></script>--}}
 <!-- End of SweetAlert js -->
-<script src="{{asset('dashboard_files/app-assets/js/scripts/image-preview.js')}}" type="text/javascript"></script>
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        @if(session()->has('success'))
+        toastr.success("{{ session()->get('success') }}");
+        @elseif(session()->has('error'))
+        toastr.error("{{ session()->get('error') }}");
+        @endif
+        // toastr.error("hello");
+    });
+</script>
+
 @yield('scripts')
 </body>
 </html>
