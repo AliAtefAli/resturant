@@ -29,7 +29,6 @@
         </div>
 
         @include('dashboard.partials._alert')
-        @include('dashboard.partials._all_errors')
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -56,6 +55,7 @@
                                                for="ordered">{{ trans('dashboard.slider.Order')}}</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="number" name="ordered" value="{{ $slider->ordered }}">
+                                            @include('dashboard.partials._errors', ['input' => 'ordered'])
                                         </div>
                                     </div>
                                 </div>
@@ -69,6 +69,7 @@
                                                 <option value="pending" @if($slider->status == 'pending') selected @endif>{{ trans('dashboard.slider.Pending') }}</option>
                                                 <option value="active" @if($slider->status == 'active') selected @endif>{{ trans('dashboard.slider.Active') }}</option>
                                             </select>
+                                            @include('dashboard.partials._errors', ['input' => 'status'])
                                         </div>
                                     </div>
                                 </div>

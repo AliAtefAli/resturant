@@ -186,6 +186,7 @@ return [
     'field_required_payment_method' => 'Payment method field is required',
     'field_required_url' => 'Url field is required',
     'field_required_ordered' => 'Ordered field is required',
+    'field_unique_ordered' => 'Please select other Ordered',
     'field_required_duration_in_day' => 'Duration in day field is required',
     'field_required_type' => 'Type field is required',
     'field_required_password' => 'Password field is required',

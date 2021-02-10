@@ -4,6 +4,8 @@ return [
     "Updated successfully!" => "تم التعديل بنجاح!",
     "deleted_successfully" => "تم الحذف بنجاح!",
     "created_successfully" => "تم الاضافه بنجاح",
+    "made_asPending" => "تم جعلها كمعلقة",
+    "made_asActive" => "تم جعلها كنشطة",
     "edit" => "تعديل",
     "Our Company" => "شركتنا",
     "Our Services" => "خدماتنا",

@@ -10,9 +10,9 @@ class StoreSliderRequest extends FormRequest
     {
         return [
             'url' => 'sometimes|required',
-            'image' => 'required|image|mimes:jpg,jpeg,svg,png',
+            'image' => 'required|image|mimes:jpg,jpeg,svg,png,gif',
             'status' => 'sometimes|required',
-            'ordered' => 'sometimes|required',
+            'ordered' => 'sometimes|required|unique:sliders',
         ];
     }
 
@@ -24,6 +24,7 @@ class StoreSliderRequest extends FormRequest
             'image.image' => (trans('validation.field_image')),
             'status.required' => (trans('validation.field_required_status')),
             'ordered.required' => (trans('validation.field_required_ordered')),
+            'ordered.unique' => (trans('validation.field_unique_ordered')),
         ];
     }
 

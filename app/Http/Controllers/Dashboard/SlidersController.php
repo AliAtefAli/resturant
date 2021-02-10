@@ -76,13 +76,13 @@ class SlidersController extends Controller
     {
         $slider->update(['status' => 'pending'] );
 
-        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.made_asPending'));
     }
     public function makeAsActive(Slider $slider)
     {
         $slider->update(['status' => 'active'] );
 
-        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.It was done successfully!'));
+        return redirect()->route('dashboard.sliders.index')->with("success", trans('dashboard.made_asActive'));
     }
 
 

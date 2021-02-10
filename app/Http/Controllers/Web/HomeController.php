@@ -18,7 +18,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $sliders = Slider::where('status', 'active')->get();
+        $sliders = Slider::where('status', 'active')->orderBy('ordered', 'asc')->get();
         $subscriptions = Subscription::with('translations')->get();
         $categories = Category::whereNull('category_id')
             ->with('translations', 'categories','categories.translations','products','categories.products.translations', 'categories.products.images')
@@ -29,7 +29,6 @@ class HomeController extends Controller
         $featured_products = Product::with('images')
             ->where('quantity', '>', 0)
             ->whereFeatured(1)->limit(10)->get();
-
         return view('web.home', compact('sliders', 'subscriptions', 'categories', 'rates', 'featured_products', 'products'));
     }
 

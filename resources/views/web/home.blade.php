@@ -14,7 +14,7 @@
 
     <!--Start Main Slider-->
     <div class="main-slider">
-        <div class="owl-carousel owl-theme main-slider-slider">
+        <div class="owl-carousel owl-theme main-slider-slider loop">
             @foreach($sliders as $slider)
                 <a href="@if(isset($slider->url)) {{ url($slider->url) }} @endif" class="item"
                    style="background-image: url( {{ asset('assets/uploads/sliders/' . $slider->image) }}"></a>
@@ -119,7 +119,7 @@
                 <h2 class="header-section1 wow zoomIn">
                     <a href="{{route('category.index' , $category->id)}}" class="">{{ $category->name }}</a>
                 </h2>
-                <div class="owl-carousel owl-theme section1-product-slider">
+                <div class="owl-carousel owl-theme section1-product-slider loop">
                     @foreach($category->products as $product)
                         <a href="{{ route('products.show', $product) }}" id="#{{$category->id}}"
                                class="item wow fadeInDown">
@@ -142,7 +142,7 @@
                     </a>
                     @endforeach
                 </div>
-                <div class="owl-carousel owl-theme section1-product-slider">
+                <div class="owl-carousel owl-theme section2-product-slider @if($category->categories->count() > 4) loop @endif">
                     @foreach($category->categories as $sub_category)
 
                         @foreach($sub_category->products as $product)
@@ -173,7 +173,7 @@
             </h2>
         </div>
         <div class="margin-responsive">
-            <div class="owl-carousel owl-theme thay-say-us-slider">
+            <div class="owl-carousel owl-theme thay-say-us-slider loop @if($rates->count() > 4) loop @endif">
                 @foreach($rates as $rate)
                     <div class="item wow fadeInDown">
                         <div class="img">

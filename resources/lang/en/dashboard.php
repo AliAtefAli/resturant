@@ -6,6 +6,8 @@ return [
     'Updated successfully!' => 'Updated successfully!',
     "deleted_successfully" => "Deleted successfully",
     "created_successfully" => "Created successfully",
+    "made_asPending" => "Made as Pending successfully",
+    "made_asActive" => "Made as Active Successfully",
     "edit" => "Edit",
     'message deleted successfully!' => 'message deleted successfully!',
     'Our Services' => 'Services',

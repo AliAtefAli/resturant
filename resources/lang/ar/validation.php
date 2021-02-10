@@ -209,6 +209,7 @@ return [
     'field_required_payment_method' => 'حقل طريقه الدفع مطلوب',
     'field_required_url' => 'حقل العنوان مطلوب',
     'field_required_ordered' => 'حقل الترتيب مطلوب',
+    'field_unique_ordered' => 'من فضلك اختر ترتيب اخر',
     'field_required_duration_in_day' => 'حقل المده بالايام مطلوب',
     'field_required_type' => 'حقل النوع مطلوب',
     'field_required_password' => 'حقل كلمه المرور مطلوب',
