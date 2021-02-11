@@ -60,6 +60,7 @@ return [
     'Add order' => 'اضف طلب',
     'Add to cart' => 'اضف للسلة',
     'Added to cart successfully' => 'تم اضافتها للسلة بنجاح',
+    'Updated to cart successfully' => 'تم تعديل السلة بنجاح',
     'Deleted from cart successfully' => 'تم حذف المنتج من السلة',
     'Sorry, Did not Deleted from cart successfully' => 'عفوا لم يتم الحذف',
     'Edit order' => 'تعديل طلب',
