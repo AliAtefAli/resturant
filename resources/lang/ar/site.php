@@ -17,6 +17,7 @@ return [
 
     'Days' => 'أيام',
     'Day' => 'يوم',
+    'DayCoupon not found' => 'يوم',
 
     'Confirm delete' => 'تاكيد الحذف',
     'Do you have Coupon' => 'هل لديك كوبون خصم؟',
@@ -86,7 +87,6 @@ return [
     'User Subscriptions' => 'الباقات المشترك بها',
     'User Finished Subscriptions' => 'الباقات المنتهيه',
     'Other Subscriptions' => 'اشتراكات اخري',
-    'Subscriptions Duration' => 'مده الاشتراك',
     'Delivery' => 'التوصيل',
     'All categories' => 'كل الاقسام',
     'Name' => 'الاسم',
@@ -195,15 +195,22 @@ return [
     'Confirm Coupon' => 'تفعيل الكوبون',
     'Discount period expired' => 'غير متاح حاليا',
     'Discount is successfully' => 'تم الخصم بنجاح',
-
     'Discount amount' => 'قيمه الخصم',
     'Total before discount' => 'السعر الاجمالي قبل الخصم',
     'Total after discount' => 'السعر الاجمالي بعد الخصم',
     'Order Is Successfully Accepted And We are preparing it' => 'تم قبول الطلب بنجاح و نحن نقوم بتحضيره ',
     'Order Is Successfully Processed And Your Order Is On The Way' => 'تمت الانتهاء من الطلب بنجاح ,طلبك في الطريق الان',
-    'Sorry Order Is unSuccessfully Processed' => 'عذرا ، لم يتم شحن طلبك',
-
     'It has been added to the favorites' => 'تم اضافته الي المفضله',
     'It has been deleted to the favorites' => 'تم حذفه من المفضله',
     'Sorry Order Is unSuccessfully Processed' => 'عذرا ، عذرا تم رفض طلبك',
+    'Sorry, You already have a subscription' => 'عذرا لديك اشتراك بالفعل',
+    'Do you want to this Stop subscription ?' => 'هل تود فعلا ايقاف هذا الاشتراك ؟',
+    'Do you want to this Run subscription ?' => 'هل تود فعلا اعادة تشغيل هذا الاشتراك ؟',
+    'Stop subscription' => 'ايقاف الاشتراك',
+    'Run subscription' => 'تشغيل الاشتراك',
+    'Yes, Stop subscription' => 'نعم اريد ايقاف الاشتراك',
+    'Yes, Restart subscription' => 'نعم اريد اعادة تشغيل الاشتراك',
+    'The subscription has been successfully suspended' => 'تم ايقاف الاشتراك بنجاح وسيتم ايقافها من الغد',
+    'The subscription has been successfully restarted' => 'تم اعادة تشغيل الباقة بنجاح',
+    'Sorry, the subscription cannot be suspended because this subscription will expire today' => 'عذرا لايمكن الغاء الاشتراك لان هذا الاشتراك سينتهي اليوم',
 ];

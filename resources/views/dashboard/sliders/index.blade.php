@@ -78,12 +78,12 @@
                                                                 @if($slider->status == 'active')
 
                                                                     <a href="{{ route('dashboard.sliders.makeAsPending', $slider) }}"
-                                                                       class="btn btn-outline-warning btn-sm" title="{{ trans('dashboard.slider.Pending') }}">
+                                                                       class="btn btn-outline-danger btn-sm" title="{{ trans('dashboard.slider.pending') }}">
                                                                         <i class="ft-lock"  aria-hidden="true"></i>
                                                                     </a>
                                                                 @else
                                                                     <a href="{{ route('dashboard.sliders.makeAsActive', $slider) }}"
-                                                                       class="btn btn-outline-success btn-sm" title="{{ trans('dashboard.slider.Active') }}">
+                                                                       class="btn btn-outline-success btn-sm" title="{{ trans('dashboard.slider.active') }}">
                                                                         <i class="ft-unlock"  aria-hidden="true"></i>
                                                                     </a>
                                                                 @endif

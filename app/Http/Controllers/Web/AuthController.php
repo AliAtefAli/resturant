@@ -151,7 +151,11 @@ class AuthController extends Controller
 
             if ($user) {
                 if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
-                    return redirect()->route('home');
+                    if (auth()->user() && auth()->user()->type == 'admin') {
+                        return redirect('/dashboard');
+                    } else {
+                        return redirect('/');
+                    }
                 }
             }
         }
@@ -171,7 +175,11 @@ class AuthController extends Controller
 
             if ($user) {
                 if (Auth::guard('web')->attempt(['phone' => $request->email, 'password' => $request->password])) {
-                    return redirect()->route('home');
+                    if (auth()->user() && auth()->user()->type == 'admin') {
+                        return redirect('/dashboard');
+                    } else {
+                        return redirect('/');
+                    }
                 }
             }
 

@@ -144,25 +144,11 @@
                             <tr>
                                 <td
                                     style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 50%;">
-                                    <h5
-                                        style="font-size: 16px; font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">
-                                        Your Shipping Address</h5>
-                                    <p
-                                        style="text-align: left;font-weight: normal; font-size: 14px; color: #000000;line-height: 21px;    margin-top: 0;">
-                                        268 Cambridge Lane New Albany,<br> IN 47150268 Cambridge Lane <br>New Albany, IN
-                                        47150</p>
+                                    <h5 style="font-size: 16px; font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">{{ trans('dashboard.order.Your Shipping Address') }}</h5>
+                                    <p style="text-align: left;font-weight: normal; font-size: 14px; color: #000000;line-height: 21px;    margin-top: 0;">{{ $order->billing_address }}</p>
                                 </td>
                                 </td>
-                                <td
-                                    style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 50%;">
-                                    <h5
-                                        style="font-size: 16px;font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">
-                                        Your Billing Address:</h5>
-                                    <p
-                                        style="text-align: left;font-weight: normal; font-size: 14px; color: #000000;line-height: 21px;    margin-top: 0;">
-                                        268 Cambridge Lane New Albany,<br> IN 47150268 Cambridge Lane <br>New Albany, IN
-                                        47150</p>
-                                </td>
+
                             </tr>
                         </tbody>
                     </table>
@@ -177,15 +163,15 @@
                         @foreach($order->products as $product)
                         <tr>
                             <td>
-                                @foreach($product->images as $image)
-                                <img src="{{ asset('assets/uploads/products/' . $image->path ) }}" alt="" width="80">
-                                @endforeach
+{{--                                @foreach($product->images as $image)--}}
+                                <img src="{{ asset('assets/uploads/products/' . $product->images->first()->path ) }}" alt="" width="80">
+{{--                                @endforeach--}}
                             </td>
                             <td valign="top" style="padding-left: 15px;">
                                 {!! $product->name !!}
                             </td>
                             <td valign="top" style="padding-left: 15px;">
-                                <h5 style="font-size: 14px; color:#444;margin-top: 10px;">QTY : <span>{{ $product->pivot->quantity }}</span></h5>
+                                <h5 style="font-size: 14px; color:#444;margin-top: 10px;">{{ trans('site.Order.Quantity') }} : <span>{{ $product->pivot->quantity }}</span></h5>
                             </td>
                             <td valign="top" style="padding-left: 15px;">
                                 <h5 style="font-size: 14px; color:#444;margin-top:15px"><b>${{ $product->price }}</b></h5>

@@ -22,7 +22,8 @@ class User extends Authenticatable
     public function subscriptions()
     {
         return $this->belongsToMany(Subscription::class)
-            ->withPivot('start_date', 'end_date', 'people_count', 'billing_total', 'shipping_type', 'billing_address', 'payment_type',  'billing_phone', 'note')
+            ->withPivot('start_date', 'end_date', 'people_count', 'billing_total', 'shipping_type',
+                'billing_address', 'payment_type',  'billing_phone', 'note', 'id')
             ->orderBy('start_date', 'desc');
     }
 

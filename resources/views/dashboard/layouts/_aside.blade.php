@@ -53,9 +53,39 @@
                 </a>
             </li>
 
-            <li class=" nav-item"><a href="{{ route('dashboard.subscriptions.index') }}"><i
-                        class="la la-ticket"></i><span class="menu-title"
-                                                       data-i18n="">{{trans('dashboard.subscriptions.Subscriptions')}}</span></a>
+            <li class=" nav-item">
+                <a href="#">
+                    <i class="la la-ticket"></i>
+                    <span class="menu-title" data-i18n="">{{trans('dashboard.subscriptions.Subscriptions')}}</span>
+                    <ul class="menu-content">
+                        <li>
+                            <a class="menu-item" href="{{ route('dashboard.subscriptions.index') }}" data-i18n="nav.page_layouts.1_column">
+                                {{ trans('dashboard.subscriptions.Show Subscriptions') }}
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="menu-item" href="{{ route('dashboard.subscriptions.todaySubscriptions') }}" data-i18n="nav.page_layouts.1_column">
+                                {{ trans('dashboard.subscriptions.Today Subscriptions') }}
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="menu-item" href="{{ route('dashboard.subscriptions.allSubscriptions') }}"
+                               data-i18n="nav.page_layouts.2_columns">
+                                {{ trans('dashboard.subscriptions.All Subscriptions') }}
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="menu-item" href="{{ route('dashboard.subscriptions.finishedSubscriptions') }}" data-i18n="nav.page_layouts.1_column">
+                                {{ trans('dashboard.subscriptions.Finished Subscriptions') }}
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </a>
             </li>
 
             <li class=" nav-item"><a href="{{ route('dashboard.rates.index') }}"><i class="la la-star-o"></i><span class="menu-title"

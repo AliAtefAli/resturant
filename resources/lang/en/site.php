@@ -202,10 +202,18 @@ return [
     'Sorry, This Product is not available now' => 'Sorry, This Product is not available now',
     'Order Is Successfully Accepted And We are preparing it' => 'Order Is Successfully Accepted And We are preparing it',
     'Order Is Successfully Processed And Your Order Is On The Way' => 'Order Is Successfully Processed And Your Order Is On The Way',
-    'Sorry Order Is unSuccessfully Processed' => 'Sorry Order Is unSuccessfully Processed',
-
     'It has been added to the favorites' => 'It has been added to the favorites',
     'It has been deleted to the favorites' => 'It has been deleted to the favorites',
 
     'Sorry Order Is unSuccessfully Processed' => 'Sorry, your Order was rejected',
+    'Sorry, You already have a subscription' => 'Sorry, You already have a subscription',
+    'Stop subscription' => 'Stop subscription',
+    'Run subscription' => 'Run subscription',
+    'Do you want to this Stop subscription ?' => 'Do you want to this Stop subscription ?',
+    'Do you want to this Run subscription ?' => 'Do you want to this Restart subscription ?',
+    'Yes, Stop subscription' => 'Yes, I want to stop this Subscription',
+    'Yes, Restart subscription' => 'Yes, I want to Restart this Subscription',
+    'The subscription has been successfully suspended' => 'The subscription has been successfully suspended, It will be suspended from tomorrow',
+    'The subscription has been successfully restarted' => 'The subscription has been successfully restarted',
+    'Sorry, the subscription cannot be suspended because this subscription will expire today' => 'Sorry, the subscription cannot be suspended because this subscription will expire today',
 ];

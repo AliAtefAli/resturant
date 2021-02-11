@@ -78,20 +78,26 @@ class UserController extends Controller
 
     public function subscriptions()
     {
-        $subscribed_packages = auth()->user()->subscriptions()
-            ->with('translations', 'products.translations', 'products')
-            ->where('start_date', '<=', Carbon::today())
+        $subscribed_packages = SubscriptionUser::with('subscription', 'subscription.products')
+//        ->where('start_date', '<=', Carbon::today())
+            ->where('user_id', auth()->user()->id)
             ->where('end_date', '>=', Carbon::today())
+            // ->orWhere('stopped_at', null)
+            // ->whereNull('stopped_at')
             ->get();
 
-        $finished_subscribed_packages = auth()->user()->subscriptions()
-            ->with('products', 'products.translations', 'translations')
+        $finished_subscribed_packages = SubscriptionUser::with('subscription', 'subscription.products')
             ->where('end_date', '<', Carbon::today())
+            ->where('user_id', auth()->user()->id)
             ->get();
         $featured_products = Product::with('images')
             ->where('quantity', '>', 0)
             ->whereFeatured(1)->get();
 
+//        $s = SubscriptionUser::where('start_date', '<=', Carbon::today())
+//            ->where('user_id', auth()->user()->id)
+//            ->get();
+        // dd($subscribed_packages, $finished_subscribed_packages);
         return view('web.users.subscriptions', compact('subscribed_packages', 'finished_subscribed_packages', 'featured_products'));
     }
 
