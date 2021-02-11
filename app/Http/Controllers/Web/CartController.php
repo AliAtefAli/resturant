@@ -11,6 +11,7 @@ class CartController extends Controller
 {
     public function index()
     {
+
         $featured_products = Product::with('images')
             ->whereFeatured(1)
             ->where('quantity', '>', 0)
@@ -45,6 +46,9 @@ class CartController extends Controller
 
     public function addToCart(Request $request, Product $product)
     {
+        $id = $product->id;
+        $rows = Cart::instance('cart')->content();
+
         if ($request->qty > $product->quantity) {
             return response()->json([
                 'status' => false,
@@ -52,20 +56,54 @@ class CartController extends Controller
                 'quantity' => Cart::count()
             ]);
         } else {
-            Cart::instance('cart')->add([
-                'id' => $product->id,
-                'name' => $product->name,
-                'qty' => $request->qty,
-                'price' => $product->price,
-                'weight' => 0,
-                'options' => ['image' => ($product->images->first()->path) ?? '']
-            ])->associate(Product::class);
+            if (Cart::instance('cart')->count() == 0) {
+                Cart::instance('cart')->add([
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'qty' => $request->qty,
+                    'price' => $product->price,
+                    'weight' => 0,
+                    'options' => ['image' => ($product->images->first()->path) ?? '']
+                ])->associate(Product::class);
+                return response()->json([
+                    'status' => true,
+                    'message' => trans('site.Added to cart successfully'),
+                    'quantity' => Cart::count()
+                ]);
+            } else {
+                if ($rows->where('id', $id)->first()) {
+                    $rowId = $rows->where('id', $id)->first()->rowId;
+                    Cart::instance('cart')->update($rowId, [
+                        'id' => $product->id,
+                        'name' => $product->name,
+                        'qty' => $request->qty,
+                        'price' => $product->price,
+                        'weight' => 0,
+                        'options' => ['image' => ($product->images->first()->path) ?? '']
+                    ])->associate(Product::class);
+                    return response()->json([
+                        'status' => true,
+                        'message' => trans('site.Updated to cart successfully'),
+                        'quantity' => Cart::count()
+                    ]);
+                } else {
 
-            return response()->json([
-                'status' => true,
-                'message' => trans('site.Added to cart successfully'),
-                'quantity' => Cart::count()
-            ]);
+                    Cart::instance('cart')->add([
+                        'id' => $product->id,
+                        'name' => $product->name,
+                        'qty' => $request->qty,
+                        'price' => $product->price,
+                        'weight' => 0,
+                        'options' => ['image' => ($product->images->first()->path) ?? '']
+                    ])->associate(Product::class);
+                    return response()->json([
+                        'status' => true,
+                        'message' => trans('site.Added to cart successfully'),
+                        'quantity' => Cart::count()
+                    ]);
+                }
+
+            }
         }
     }
 

@@ -63,6 +63,7 @@ return [
     'Add order' => 'Add Order',
     'Add to cart' => 'Add to cart',
     'Added to cart successfully' => 'Added to cart successfully',
+    'Updated to cart successfully' => 'Updated to cart successfully',
     'Deleted from cart successfully' => 'Deleted from cart successfully',
     'Sorry, Did not Deleted from cart successfully' => 'Sorry, Did not Deleted from cart successfully',
     'Edit order' => 'Edit Order',
