@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SaveRateRequest;
 use App\Http\Requests\SaveSubscriptionRequest;
 use App\Models\Setting;
 use App\Models\Subscription;
 use App\Models\SubscriptionUser;
 use App\Models\Transaction;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
 {
@@ -31,33 +29,27 @@ class SubscriptionController extends Controller
     {
         $setting = Setting::all()->pluck('value', 'key');
         $subscription = Subscription::findOrFail($request->subscription_id);
-
-//        $membership = SubscriptionUser::where('user_id',$request['user_id'])->exists();
-
-        $userSubs = SubscriptionUser::where('user_id',auth()->user()->id)
-            ->where(function ($q) use($request)
-            {
-                $q->where('start_date', '<=' ,Carbon::now());
-                $q->where('end_date', '>=' ,Carbon::now());
-            }
-            )->get();
-
-//        dd($userSubs);
-
-        if (!empty($userSubs)) {
-            if ($request->start_date <= $userSubs->end_date) {
-                return back()->with('error', 'لديك اشتراك بالفعل');
-            }
-        }
-
         $daysToAdd = $subscription->duration_in_day;
         $start_date = $request->start_date;
-        $date = Carbon::parse($start_date)->addDays($daysToAdd)->toDateString();
+        $date = Carbon::parse($start_date)->addDays($daysToAdd - 1)->toDateString();
         $request['end_date'] = $date;
         $request['billing_total'] = ($subscription->price * $request->people_count) + ($request->shipping_type == 'delivery' ? ($setting['delivery_price']) : 0);
         $request['user_id'] = auth()->user()->id;
+        $currentSubscriptions = SubscriptionUser::with('subscription', 'subscription.products')
+            ->where('end_date', '>=', Carbon::today())
+            ->where('user_id', auth()->user()->id)
+            ->whereNull('stopped_at')
+            ->get();
+        $currentSubscriptionsWhenFinished = SubscriptionUser::with('subscription', 'subscription.products')
+            ->where('end_date', '>=', ($request['start_date']))
+            ->where('user_id', auth()->user()->id)
+            ->get();
 
-
+        if ($currentSubscriptions->count() > 0) {
+            if ($currentSubscriptionsWhenFinished->count() > 0) {
+                return back()->with('error', trans('site.Sorry, You already have a subscription'));
+            }
+        }
         if ($request->payment_type == 'credit_card') {
             session()->forget('subscription');
             session()->put('subscription', $request->all());
@@ -83,6 +75,36 @@ class SubscriptionController extends Controller
         auth()->user()->subscriptions()->attach($request->subscription_id, $request->except('_token', 'payment_method', 'transaction_id'));
 
         return redirect()->route('user_subscriptions')->with('success', trans('site.Added successfully'));
+    }
+
+    public function offSubscription($id)
+    {
+
+        $subscription = SubscriptionUser::findOrFail($id);
+        if(Carbon::parse($subscription->end_date) == Carbon::today()) {
+            return back()->with('error', trans('site.Sorry, the subscription cannot be suspended because this subscription will expire today'));
+        }
+        $subscription->update(['stopped_at' => Carbon::tomorrow()]);
+
+        return back()->with('success', trans('site.The subscription has been successfully suspended'));
+    }
+
+    public function onSubscription($id)
+    {
+        $subscription = SubscriptionUser::findOrFail($id);
+        $startDate = today();
+        $endDate = Carbon::parse($subscription->end_date);
+        $stoppedDate = Carbon::parse($subscription->stopped_at);
+        $diffDays = $stoppedDate->diffInDays($endDate);
+        $newEndDate = $startDate->addDays($diffDays)->toDateString();
+
+        $subscription->update([
+            'start_date' => today(),
+            'end_date' => $newEndDate,
+            'stopped_at' => null
+        ]);
+
+        return back()->with('success', trans('site.The subscription has been successfully restarted'));
     }
 
     public function redirect()

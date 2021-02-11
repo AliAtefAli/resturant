@@ -44,6 +44,8 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
         Route::post('/order/store', 'OrderController@store')->name('order.store');
         Route::get('/carts', 'CartController@index')->name('carts');
         Route::get('/redirect', 'CartController@redirect')->name('payment.redirect');
+        Route::get('/subscriptions/{id}/off', 'SubscriptionController@offSubscription')->name('subscriptions.offSubscription');
+        Route::get('/subscriptions/{id}/on', 'SubscriptionController@onSubscription')->name('subscriptions.onSubscription');
         Route::get('/subscriptions/{subscription}', 'SubscriptionController@create')->name('subscriptions.create');
         Route::post('/subscriptions/store', 'SubscriptionController@store')->name('subscriptions.store');
         Route::post('/subscriptions/{subscription}/checkPayment', 'SubscriptionController@checkPayment')->name('subscriptions.checkPayment');
@@ -58,7 +60,7 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
         Route::get('/user_subscriptions', 'UserController@subscriptions')->name('user_subscriptions');
         Route::get('/users/change-password', 'AuthController@getChangePassword')->name('users.getChangePassword');
         Route::post('/users/change-password/{user}', 'AuthController@changePassword')->name('users.changePassword');
-        Route::get('payment', 'PaymentController@check')->name('payment.check');
+        // Route::get('payment', 'PaymentController@check')->name('payment.check');
         Route::get('product/makeFav/{id}', 'UserController@makeFav')->name('products.makeFav');
         Route::get('product/makeUnFav/{id}', 'UserController@makeUnFav')->name('products.makeUnFav');
     });

@@ -76,7 +76,7 @@
                             <input class="local-global" id="global" type="radio" name="shipping_type" value="delivery">
                             <span></span>
                             {{ __('site.Delivery') }}
-                            : @if(isset($setting[ 'delivery_price'])) {{ $setting['delivery_price'] }} @endif @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
+                            : @if(isset($setting[ 'delivery_price'])) {{ $setting['delivery_price'] * $subscription->duration_in_day }} @endif @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
                         </label>
                         @if ($errors->has('type'))
                             <div class="alert alert-danger">{{ $errors->first('type') }}</div>
@@ -141,6 +141,15 @@
             var count = $('#count').val();
             total = price * count;
             document.getElementById('total').innerHTML = total +' '+ currency;
+        });
+        $('.local-global').change(function () {
+            if($(this).attr('id') === 'global'){
+                total += ({{ $setting['delivery_price'] * $subscription->duration_in_day }} ) ?? 0 ;
+                document.getElementById('total').innerHTML = total +' '+ currency;
+            } else {
+                total -= ( {{ $setting['delivery_price'] * $subscription->duration_in_day }} ) ?? 0 ;
+                document.getElementById('total').innerHTML = total +' '+ currency;
+            }
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

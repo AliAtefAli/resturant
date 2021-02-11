@@ -208,6 +208,7 @@ return [
         "cancelled" => "Cancelled",
         "accepted" => "Accepted",
         'processing' => 'Processing',
+        'Your Shipping Address' => 'Your Shipping Address',
     ],
     'product' => [
         'Add Product' => 'Add Product',
@@ -247,6 +248,9 @@ return [
         'Delete Subscription' => 'Delete Subscription',
         'All Subscriptions' => 'All Subscriptions',
         'Subscriptions' => 'Subscriptions',
+        'Finished Subscriptions' => 'Finished Subscriptions',
+        'Today Subscriptions' => 'Today Subscriptions',
+        'Show Subscriptions' => 'Show Subscriptions',
         'Subscription' => 'Subscription',
         'show' => 'Show',
         'Subscription detail in Arabic' => 'Subscription Details In Arabic',
@@ -283,6 +287,7 @@ return [
         'On delivery' => 'On delivery',
         'credit_card' => 'Credit Card',
         'on_delivery' => 'On delivery',
+        'delivery' => 'Delivery',
         'local' => 'Local',
         'global' => 'Global',
 

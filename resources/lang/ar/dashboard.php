@@ -207,6 +207,7 @@ return [
         "cancelled" => "ملغي",
         "accepted" => "تم الموافقة",
         'processing' => 'جاري التحضير',
+        'Your Shipping Address' => 'عنوان ارسال الفواتير الخاص بك',
     ],
     "product" => [
         'available' => 'متاح',
@@ -249,6 +250,9 @@ return [
         'Delete Subscription' => 'مسح الاشتراك',
         'All Subscriptions' => 'كل الاشتراكات',
         'Subscriptions' => 'الاشتراكات',
+        'Finished Subscriptions' => 'الاشتراكات المجمدة',
+        'Today Subscriptions' => 'اشتراكات اليوم',
+        'Show Subscriptions' => 'عرض الاشتراكات',
         'Subscription' => 'الاشتراك',
         'show' => 'عرض',
         'Subscription detail in Arabic' => 'تفاصيل الاشتراك  باللغه العربية',

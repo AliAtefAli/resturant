@@ -27,6 +27,7 @@ class CreateSubscriptionUserTable extends Migration
             $table->integer('people_count')->default(1);
             $table->enum('payment_type', ['credit_card', 'on_delivery']);
             $table->text('note')->nullable();
+            $table->timestamp('stopped_at')->nullable();
             $table->foreignId('subscription_id')->constrained('subscriptions')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();

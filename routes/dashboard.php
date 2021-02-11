@@ -31,10 +31,13 @@ Route::get('rates/off/{rate}', 'RateController@off')->name('rates.off');
 Route::get('rates/on/{rate}', 'RateController@on')->name('rates.on');
 Route::get('discounts/makeAsUnavailable/{discount}', 'DiscountController@makeAsUnavailable')->name('discounts.makeAsUnavailable');
 Route::get('discounts/makeAsAvailable/{discount}', 'DiscountController@makeAsAvailable')->name('discounts.makeAsAvailable');
-Route::resource('subscriptions', 'SubscriptionController');
 Route::get('subscriptions/users/{subscription}', 'SubscriptionController@users')->name('subscriptionUsers');
-Route::resource('questions', 'QuestionController');
+Route::get('subscriptions/todaySubscriptions', 'SubscriptionController@todaySubscription')->name('subscriptions.todaySubscriptions');
+Route::get('subscriptions/finishedSubscriptions', 'SubscriptionController@finishedSubscription')->name('subscriptions.finishedSubscriptions');
+Route::get('subscriptions/allSubscriptions', 'SubscriptionController@allSubscription')->name('subscriptions.allSubscriptions');
+Route::resource('subscriptions', 'SubscriptionController');
 
+Route::resource('questions', 'QuestionController');
 Route::resource("sliders", "SlidersController");
 Route::get('sliders/makeAsPending/{slider}', 'SlidersController@makeAsPending')->name('sliders.makeAsPending');
 Route::get('sliders/makeAsActive/{slider}', 'SlidersController@makeAsActive')->name('sliders.makeAsActive');

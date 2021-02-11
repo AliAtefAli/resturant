@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-@section('title', trans('dashboard.subscriptions.Users Subscribed'))
+@section('title', trans('dashboard.subscriptions.Finished Subscriptions'))
 @section('styles')
     @if(app()->getLocale() == 'ar')
         <style>
@@ -49,7 +49,7 @@
                             <li class="breadcrumb-item"><a
                                     href="{{ route('dashboard.subscriptions.index') }}">{{trans('dashboard.subscriptions.Subscriptions')}}
                                 </a></li>
-                            <li class="breadcrumb-item active">{{trans('dashboard.subscriptions.Users Subscribed')}}</li>
+                            <li class="breadcrumb-item active">{{trans('dashboard.subscriptions.Finished Subscriptions')}}</li>
                         </ol>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                                                        style="font-size: xx-small;">
                                                     <thead>
                                                     <tr>
-                                                        <th>{{trans('dashboard.user.Name')}}</th>
+                                                        <td>{{trans('dashboard.user.Name')}}</td>
                                                         <th>{{trans('dashboard.subscriptions.Start Date')}}</th>
                                                         <th>{{trans('dashboard.subscriptions.End Date')}}</th>
                                                         <th>{{trans('dashboard.subscriptions.Shipping type')}}</th>
@@ -98,18 +98,18 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @foreach($users as $user)
+                                                    @foreach($subscriptions as $subscription)
                                                         <tr>
-                                                            <td>{{ $user->name }}</td>
-                                                            <td>{{ $user->pivot->start_date }}</td>
-                                                            <td>{{ $user->pivot->end_date }}</td>
-                                                            <td>{{ trans("dashboard.subscriptions." . $user->pivot->shipping_type) }}</td>
-                                                            <td>{{ $user->pivot->billing_total }}</td>
-                                                            <td style="width: 80px;!important;">{{ $user->pivot->billing_address }}</td>
-                                                            <td>{{ $user->pivot->billing_phone }}</td>
-                                                            <td>{{ $user->pivot->people_count }}</td>
-                                                            <td>{{ trans("dashboard.subscriptions." . $user->pivot->payment_type) }}</td>
-                                                            <td style="width: 80px;!important;">{{ $user->pivot->note }}</td>
+                                                            <th><a href="{{ route('dashboard.users.show', $subscription->user->id) }}">{{ $subscription->user->name }}</a></th>
+                                                            <td>{{ \Carbon\Carbon::parse($subscription->start_date)->toDateString() }}</td>
+                                                            <td>{{ \Carbon\Carbon::parse($subscription->end_date)->toDateString() }}</td>
+                                                            <td>{{ trans("dashboard.subscriptions." . $subscription->shipping_type) }}</td>
+                                                            <td>{{ $subscription->billing_total }}</td>
+                                                            <td style="width: 80px;!important;">{{ $subscription->billing_address }}</td>
+                                                            <td>{{ $subscription->billing_phone }}</td>
+                                                            <td>{{ $subscription->people_count }}</td>
+                                                            <td>{{ trans("dashboard.subscriptions." . $subscription->payment_type) }}</td>
+                                                            <td style="width: 80px;!important;">{{ $subscription->note }}</td>
                                                         </tr>
                                                     @endforeach
                                                     </tbody>

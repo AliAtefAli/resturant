@@ -42,6 +42,36 @@ $(function () {
         }
     });
 
+    loops = $('.section2-name-slider').hasClass('loop');
+    $('.section2-name-slider').owlCarousel({
+        loop:(loops == true)?true:false,
+        margin:30,
+        nav:true,
+        dots: false,
+        rtl: (dir == 'rtl')?true:false,
+        autoplay: true,
+        smartSpeed: 750,
+        freeDrag: true,
+        navText: (dir == 'rtl')?['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>']:['<i class="fas fa-arrow-right"></i>', '<i class="fas fa-arrow-left"></i>'],
+        responsive:{
+            0:{
+                items: 1
+            },
+            576:{
+                items: 2
+            },
+            768:{
+                items:3
+            },
+            992:{
+                items:4
+            },
+            1200:{
+                items:5
+            }
+        }
+    });
+
     loops = $('.section1-product-slider').hasClass('loop');
     $('.section1-product-slider').owlCarousel({
         loop:(loops == true)?true:false,
@@ -132,6 +162,36 @@ $(function () {
     });
     loops = $('.pic-slider').hasClass('loop');
     $('.pic-slider').owlCarousel({
+        loop:(loops == true)?true:false,
+        margin:15,
+        nav:true,
+        dots: false,
+        rtl: (dir == 'rtl')?true:false,
+        autoplay: true,
+        smartSpeed: 750,
+        freeDrag: true,
+        navText: (dir == 'rtl')?['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>']:['<i class="fas fa-arrow-right"></i>', '<i class="fas fa-arrow-left"></i>'],
+        responsive:{
+            0:{
+                items: 1
+            },
+            576:{
+                items: 1
+            },
+            768:{
+                items:2
+            },
+            992:{
+                items:2
+            },
+            1200:{
+                items:2
+            }
+        }
+    });
+
+    loops = $('.pic2-slider').hasClass('loop');
+    $('.pic2-slider').owlCarousel({
         loop:(loops == true)?true:false,
         margin:15,
         nav:true,

@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class SubscriptionUser extends Model
 {
     protected $table = 'subscription_user';
-    protected $fillable = ['start_date','end_date', 'type', 'address', 'phone_number', 'latitude', 'longitude', 'count', 'payment_method', 'note', 'subscription_id', 'user_id'];
+    protected $fillable = ['start_date','end_date', 'type', 'address', 'phone_number', 'latitude',
+        'longitude', 'count', 'payment_method', 'note', 'subscription_id', 'user_id', 'stopped_at'];
 
 
     public function subscription()

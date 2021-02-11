@@ -4,16 +4,17 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSubscriptionRequest;
-use App\Http\Requests\SubscriptionRequest;
 use App\Http\Requests\UpdateSubscriptionRequest;
 use App\Models\Product;
 use App\Models\Subscription;
+use App\Models\SubscriptionUser;
 use App\Traits\Uploadable;
-use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class SubscriptionController extends Controller
 {
     use Uploadable;
+
     public function index()
     {
         $subscriptions = Subscription::latest()->paginate(25);
@@ -30,7 +31,7 @@ class SubscriptionController extends Controller
     {
         $data = $request->validated();
 
-        if ($request->has('image')){
+        if ($request->has('image')) {
             $path = $this->uploadOne($request['image'], 'subscriptions', null, null);
             $data['image'] = $path;
         }
@@ -63,7 +64,7 @@ class SubscriptionController extends Controller
 
         $data = $request->validated();
 
-        if ($request->has('image')){
+        if ($request->has('image')) {
             if (public_path('assets/uploads/subscriptions/' . $subscription->image)) {
                 unlink(public_path('assets/uploads/subscriptions/' . $subscription->image));
             }
@@ -92,5 +93,35 @@ class SubscriptionController extends Controller
         $users = $subscription->users;
 
         return view('dashboard.subscriptions.users', compact('users', 'subscription'));
+    }
+
+    public function todaySubscription()
+    {
+        $subscriptions = SubscriptionUser::with('subscription', 'subscription.products')
+            ->where('start_date', '<=', Carbon::today())
+            ->where('end_date', '>=',  Carbon::today())
+            ->get();
+
+        return view('dashboard.subscriptions.today', compact('subscriptions'));
+    }
+
+    public function finishedSubscription()
+    {
+        $subscriptions = SubscriptionUser::with('subscription', 'subscription.products')
+            ->where('end_date', '<',  Carbon::today())
+            ->whereNull('stopped_at')
+            ->get();
+
+        return view('dashboard.subscriptions.finished', compact('subscriptions'));
+    }
+
+    public function allSubscription()
+    {
+        $subscriptions = SubscriptionUser::with('subscription', 'subscription.products')
+            // ->where('end_date', '>=',  Carbon::today())
+            ->whereNull('stopped_at')
+            ->get();
+
+        return view('dashboard.subscriptions.all', compact('subscriptions'));
     }
 }
