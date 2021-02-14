@@ -21,6 +21,10 @@
                 /*right: 865px;*/
                 /*bottom: 15px;*/
             }
+            .card-body
+            {
+                padding: 0; !important;
+            }
         </style>
     @endif
     <style>

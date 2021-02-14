@@ -23,6 +23,10 @@
             .table th, .table td {
                 padding: 0.75rem 1rem;
             }
+            .card-body
+            {
+                padding: 0; !important;
+            }
         </style>
     @endif
     <style>
