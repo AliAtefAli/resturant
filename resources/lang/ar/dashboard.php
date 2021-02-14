@@ -12,6 +12,8 @@ return [
     "Our Services" => "خدماتنا",
     "Dashboard Statistics" => "احصائيات لوحه التحكم",
     'Logout' => 'تسجيل الخروج',
+    'active' => 'مفعل',
+    'block' => 'حظر',
     "blog" => [
         "Add Blog" => "أضف مدونة",
         "All Blogs" => "جميع المدونات",

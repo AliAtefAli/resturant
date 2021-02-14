@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +20,7 @@ class UserStatus
     {
         if ( $request->user() && $request->user()->status == 'block') {
             app()->setLocale(session()->get('lang'));
+            Cart::instance('cart')->destroy();
             Auth::logout();
             return redirect()->route('home')->with('error', trans('site.You have been banned by the administration'));
         }

@@ -14,6 +14,8 @@ return [
     'Our Services' => 'Services',
     'Logout' => 'Logout',
     "Dashboard Statistics" => "Dashboard Statistics",
+    'active' => 'Active',
+    'block' => 'Block',
     'blog' => [
         'Add Blog' => 'Add Blog',
         'All Blogs' => 'All Blogs',
