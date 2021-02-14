@@ -54,11 +54,7 @@
                         }
                     },
                     'colvis'
-                ],
-                columnDefs: [{
-                    targets: -1,
-                    visible: false
-                }],
+                ]
             });
             table.buttons(0, null).container().prependTo(
                 table.table().container()
@@ -222,11 +218,7 @@
                         }
                     },
                     'colvis'
-                ],
-                columnDefs: [{
-                    targets: -1,
-                    visible: false
-                }],
+                ]
             });
             table.buttons(0, null).container().prependTo(
                 table.table().container()
