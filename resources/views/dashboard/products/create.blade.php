@@ -2,6 +2,12 @@
 @section('title', trans('dashboard.product.Add Product'))
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.0/trix.min.css">
+    <style>
+        .img-uploaded img{
+            width: 100px;
+            margin: 5px;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -97,6 +103,17 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group row ">
+                                    <label class="col-md-2" for="image"></label>
+                                    <div class="col-md-10">
+                                        <div class="position-relative multi-img-result d-flex align-items-center flex-wrap">
+                                                    <div class="img-uploaded uploaded-image m-1">
+
+                                                    </div>
+                                           </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-group row {{ $errors->has('price') ? ' has-error' : '' }}">
                                     <label class="col-md-2" for="price">{{trans('dashboard.product.Price')}}</label>
                                     <div class="col-md-10">
@@ -126,7 +143,7 @@
                                         <div class="col-md-10">
                                             <select class="custom-select" name="featured">
                                                     <option value="1">{{ trans('dashboard.product.Featured') }}</option>
-                                                    <option value="0">{{ trans('dashboard.product.Original') }}</option>
+                                                    <option value="0">{{ trans('dashboard.product.Normal') }}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -148,4 +165,5 @@
 @endsection
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.0/trix.min.js"></script>
+    <script src="{{ asset('dashboard_files/assets/js/image-preview-2.js') }}"></script>
 @endsection
