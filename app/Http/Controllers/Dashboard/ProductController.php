@@ -68,7 +68,7 @@ class ProductController extends Controller
             $old_images = Image::where('product_id', $product->id)->get();
 
             foreach ($old_images as $old_image) {
-                if (file_exists(public_path('assets/products/' . $old_image->path))) {
+                if (file_exists(public_path('assets/products/' . $old_image->path)) && is_file(public_path('assets/products/' . $old_image->path))) {
                     unlink(public_path('assets/products/' . $old_image->path));
                 }
                 $old_image->delete();

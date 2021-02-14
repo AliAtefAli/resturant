@@ -2,6 +2,12 @@
 @section('title', trans('dashboard.product.Edit Product'))
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.0/trix.min.css">
+    <style>
+        .img-uploaded img{
+            width: 100px;
+            margin: 5px;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -98,38 +104,30 @@
                                     <div class="col-md-10">
                                         <div class="position-relative has-icon-left">
                                             <span>
-                                                <input type="file" id="image" class="form-control image"
-                                                       name="image[]" multiple/>
+                                                <input name="image[]" autocomplete="off"
+                                                       class="form-control hedden-input"
+                                                       id="image" type="file" accept="image/*" multiple="">
                                             </span>
                                             @include('dashboard.partials._errors', ['input' => 'image'])
                                         </div>
                                     </div>
                                 </div>
 
-{{--                                <div class="form-group row">--}}
-{{--                                    <div class="m-1 image-preview">--}}
-{{--                                        <output id="Filelist"></output>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-{{--                                <div class="form-group row">--}}
-{{--                                    <div class="col-md-2"></div>--}}
-{{--                                    <output id="Filelist"></output>--}}
-{{--                                </div>--}}
-
-
-{{--                                <div class="form-group row image-contain">--}}
-{{--                                    <div class="col-md-2"></div>--}}
-{{--                                    @if($image_count > 0)--}}
-{{--                                        @foreach($product->images as $image)--}}
-{{--                                            <div class="m-1 image-preview">--}}
-{{--                                                <img src="{{ asset('assets/uploads/products/' . $image->path) }}"--}}
-{{--                                                     alt="Image" class="image-preview" width="100">--}}
-{{--                                            </div>--}}
-{{--                                        @endforeach--}}
-{{--                                    @endif--}}
-{{--                                </div>--}}
-
+                                <div class="form-group row ">
+                                    <label class="col-md-2" for="image"></label>
+                                    <div class="col-md-10">
+                                        <div class="position-relative multi-img-result d-flex align-items-center flex-wrap">
+                                            @if($image_count > 0)
+                                                    @foreach($product->images as $image)
+                                                        <div class="img-uploaded uploaded-image m-1">
+                                                            <img src="{{ asset('assets/uploads/products/' . $image->path) }}"
+                                                                alt="" width="100">
+                                                        </div>
+                                                    @endforeach
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
 
 
                                 <div class="form-group row {{ $errors->has('price') ? ' has-error' : '' }}">
@@ -171,5 +169,5 @@
 @endsection
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.0/trix.min.js"></script>
-    <script src="{{ asset('dashboard_files/assets/js/image-review.js') }}"></script>
+    <script src="{{ asset('dashboard_files/assets/js/image-preview-2.js') }}"></script>
 @endsection

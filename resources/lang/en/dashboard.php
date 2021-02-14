@@ -239,7 +239,7 @@ return [
         'Featured' => 'Featured',
         'Make as Featured' => 'Make as Featured',
         'Make as UnFeatured' => 'Make as UnFeatured',
-        'Original' => 'Original',
+        'Normal' => 'Normal',
         'Do you want to delete this product' => 'Do you want to delete this Product ?',
     ],
     'subscriptions' => [
