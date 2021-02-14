@@ -203,7 +203,7 @@ return [
     'Order Is Successfully Processed And Your Order Is On The Way' => 'تمت الانتهاء من الطلب بنجاح ,طلبك في الطريق الان',
     'It has been added to the favorites' => 'تم اضافته الي المفضله',
     'It has been deleted to the favorites' => 'تم حذفه من المفضله',
-    'Sorry Order Is unSuccessfully Processed' => 'عذرا ، عذرا تم رفض طلبك',
+    'Sorry Order Is unSuccessfully Processed' => 'عذرا ، تم رفض طلبك',
     'Sorry, You already have a subscription' => 'عذرا لديك اشتراك بالفعل',
     'Do you want to this Stop subscription ?' => 'هل تود فعلا ايقاف هذا الاشتراك ؟',
     'Do you want to this Run subscription ?' => 'هل تود فعلا اعادة تشغيل هذا الاشتراك ؟',

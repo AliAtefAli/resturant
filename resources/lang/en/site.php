@@ -166,7 +166,7 @@ return [
         'view' => 'View Order',
         'shipping charge' => 'Shipping Charge',
         'Order Is Successfully Processed And Your Order Is On The Way,' => 'Order Is Successfully Processed And Your Order Is On The Way,',
-        'Sorry Order Is unSuccessfully Processed ' => 'Sorry, Your Order Is not shipped',
+        'Sorry Order Is unSuccessfully Processed ' => 'Sorry, Your Order Is rejected',
         'Billing name' => 'Billing name',
         'Billing email' => 'Billing email',
         'Billing phone' => 'Billing phone',
