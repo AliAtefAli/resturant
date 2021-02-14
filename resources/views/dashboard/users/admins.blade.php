@@ -66,7 +66,7 @@
                                                             <td>{{ $admin->name }}</td>
                                                             <td>{{ $admin->email }}</td>
                                                             <td>{{ $admin->phone }}</td>
-                                                            <td>{{ $admin->status }}</td>
+                                                            <td>{{  trans('dashboard.'.$admin->status) }}</td>
                                                             <td>{{ ($admin->last_active_at)? $admin->last_active_at->diffForHumans() : "" }}</td>
                                                             <td>
                                                                 <a href="{{ route('dashboard.users.edit', $admin) }}">

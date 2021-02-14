@@ -149,6 +149,11 @@ class AuthController extends Controller
 
             $user = User::where('email', $request->email)->first();
 
+            if (!Hash::check($request->password, $user->password))
+            {
+                return back()->with('error',trans('auth.failed'));
+            }
+
             if ($user) {
                 if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
                     if (auth()->user() && auth()->user()->type == 'admin') {
