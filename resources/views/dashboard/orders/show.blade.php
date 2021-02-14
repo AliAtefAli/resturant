@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Invioce</title>
+    <title>{{trans('dashboard.order.order_invioce')}}</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
 
     <style type="text/css">
@@ -131,7 +131,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <p style="font-size: 14px;"><b>Hi, {{ $order->user->name }}</b></p>
+                                <p style="font-size: 14px;"><b>{{trans('dashboard.hi')}}, {{ $order->user->name }}</b></p>
                                 <p style="font-size: 14px;">{{ trans('dashboard.order.Order Is Successfully Processed And Your Order Is On The Way,') }}</p>
                                 <p style="font-size: 14px;">{{ trans('dashboard.Transactions.Transaction id') }} : {{ $order->id }}</p>
                             </td>
