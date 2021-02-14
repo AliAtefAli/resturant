@@ -76,12 +76,11 @@
                                                     <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                                                     <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
                                                     <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-
                                                 </ul>
 
                                             </div>
                                         </div>
-                                        <div class="card-content collapse show">
+                                        <div class="card-content collapse show" id='printThisDivIdOnButtonClick'>
                                             <div class="card-body card-dashboard">
                                                 <table id="table" class="table table-striped table-bordered text-center" style="font-size:xx-small;">
                                                     <thead>
@@ -89,7 +88,7 @@
                                                         <th>#</th>
                                                         <th>{{trans('dashboard.order.payment method')}}</th>
                                                         <th>{{trans('dashboard.order.Order date')}}</th>
-                                                        <th style="min-width: 150px; !important;">{{trans('dashboard.order.address')}}</th>
+                                                        <th style="min-width: 130px; !important;">{{trans('dashboard.order.address')}}</th>
                                                         <th>{{trans('dashboard.user.Name')}}</th>
                                                         <th>{{trans('dashboard.order.phone')}}</th>
                                                         <th>{{trans('dashboard.user.Email')}}</th>
@@ -104,7 +103,7 @@
                                                             <td>{{ $order->id }}</td>
                                                             <td>{{ __("dashboard.order.$order->payment_method") }}</td>
                                                             <td>{{ ( $order->created_at) ? $order->created_at->diffForHumans()  : '' }}</td>
-                                                            <td style="min-width: 150px; !important;">{{ $order->billing_address }}</td>
+                                                            <td style="min-width: 130px; !important;">{{ $order->billing_address }}</td>
                                                             <td>{{ $order->billing_name }}</td>
                                                             <td>{{ $order->billing_phone }}</td>
                                                             <td>{{ $order->billing_email }}</td>
@@ -121,35 +120,35 @@
                                                                             @else
                                                                                 <a href="{{ route('dashboard.orders.show', $order) }}">
                                                                                     <button
-                                                                                            class="btn btn-primary  dropdown-item"
-                                                                                            title="{{ trans('dashboard.order.show order') }}">
+                                                                                        class="btn btn-primary  dropdown-item"
+                                                                                        title="{{ trans('dashboard.order.show order') }}">
                                                                                         {{ trans('dashboard.order.show order') }}</button>
                                                                                 </a>
                                                                                 @if($order->order_status ==  'accepted')
                                                                                     <a href="{{ route('dashboard.orders.delivered', $order) }}">
                                                                                         <button
-                                                                                                class="btn btn-primary  dropdown-item"
-                                                                                                title="{{ trans('dashboard.order.Make as shipped') }}">
+                                                                                            class="btn btn-primary  dropdown-item"
+                                                                                            title="{{ trans('dashboard.order.Make as shipped') }}">
                                                                                             {{ trans('dashboard.order.Make as shipped') }}</button>
                                                                                     </a>
                                                                                 @elseif($order->order_status ==  'processing')
                                                                                     <a href="{{ route('dashboard.orders.accepted', $order) }}">
                                                                                         <button
-                                                                                                class="btn btn-info  dropdown-item"
-                                                                                                title="{{ trans('dashboard.order.Make as In Progress') }}">
+                                                                                            class="btn btn-info  dropdown-item"
+                                                                                            title="{{ trans('dashboard.order.Make as In Progress') }}">
                                                                                             {{ trans('dashboard.order.Make as In Progress') }}</button>
                                                                                     </a>
                                                                                     <a href="{{ route('dashboard.orders.rejected', $order) }}">
                                                                                         <button
-                                                                                                class="btn btn-danger  dropdown-item"
-                                                                                                title="{{ trans('dashboard.order.Make as Rejected') }}">
+                                                                                            class="btn btn-danger  dropdown-item"
+                                                                                            title="{{ trans('dashboard.order.Make as Rejected') }}">
                                                                                             {{ trans('dashboard.order.Make as Rejected') }}</button>
                                                                                     </a>
                                                                                 @else
                                                                                     <a href="{{ route('dashboard.orders.delivered', $order) }}">
                                                                                         <button
-                                                                                                class="btn btn-primary  dropdown-item"
-                                                                                                title="{{ trans('dashboard.order.Make as shipped') }}">
+                                                                                            class="btn btn-primary  dropdown-item"
+                                                                                            title="{{ trans('dashboard.order.Make as shipped') }}">
                                                                                             {{ trans('dashboard.order.Make as shipped') }}</button>
                                                                                     </a>
                                                                                 @endif
