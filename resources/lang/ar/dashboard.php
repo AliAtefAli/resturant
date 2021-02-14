@@ -50,6 +50,7 @@ return [
     ],
     'discounts' => [
         'discounts' => 'الخصومات',
+        'discount' => 'الخصم',
         'Action' => 'عمل',
         'Status' => 'الحالة',
         'discount type' => 'نوع الخصم',

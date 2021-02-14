@@ -23,6 +23,8 @@ class CreateOrdersTable extends Migration
             $table->text('billing_address');
             $table->string('lng')->nullable();
             $table->string('lat')->nullable();
+            $table->string('coupon_amount')->nullable();
+            $table->string('coupon_type')->nullable();
             $table->enum('payment_method', ['payment', 'on_delivery'])->default('on_delivery');
             $table->enum('payment_status', ['failed', 'done'])->default('done');
             $table->enum('order_status', ['delivered', 'processing', 'accepted', 'cancelled'])->default('processing');

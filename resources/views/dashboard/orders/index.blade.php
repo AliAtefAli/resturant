@@ -85,7 +85,7 @@
                                                         <th>#</th>
                                                         <th>{{trans('dashboard.order.payment method')}}</th>
                                                         <th>{{trans('dashboard.order.Order date')}}</th>
-                                                        <th style="min-width: 130px; !important;">{{trans('dashboard.order.address')}}</th>
+{{--                                                        <th style="min-width: 130px; !important;">{{trans('dashboard.order.address')}}</th>--}}
                                                         <th>{{trans('dashboard.user.Name')}}</th>
                                                         <th>{{trans('dashboard.order.phone')}}</th>
                                                         <th>{{trans('dashboard.user.Email')}}</th>
@@ -100,7 +100,7 @@
                                                             <td>{{ $order->id }}</td>
                                                             <td>{{ __("dashboard.order.$order->payment_method") }}</td>
                                                             <td>{{ ( $order->created_at) ? $order->created_at->diffForHumans()  : '' }}</td>
-                                                            <td style="min-width: 130px; !important;">{{ $order->billing_address }}</td>
+{{--                                                            <td style="min-width: 130px; !important;">{{ $order->billing_address }}</td>--}}
                                                             <td>{{ $order->billing_name }}</td>
                                                             <td>{{ $order->billing_phone }}</td>
                                                             <td>{{ $order->billing_email }}</td>
@@ -113,33 +113,42 @@
                                                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                         </button>
                                                                         <div class="dropdown-menu arrow">
-                                                                            @if($order->order_status ==  'accepted')
-                                                                                <a href="{{ route('dashboard.orders.delivered', $order) }}">
-                                                                                    <button
-                                                                                        class="btn btn-primary  dropdown-item"
-                                                                                        title="{{ trans('dashboard.order.Make as shipped') }}">
-                                                                                        {{ trans('dashboard.order.Make as shipped') }}</button>
-                                                                                </a>
-                                                                            @elseif($order->order_status ==  'processing')
-                                                                                <a href="{{ route('dashboard.orders.accepted', $order) }}">
-                                                                                    <button
-                                                                                        class="btn btn-info  dropdown-item"
-                                                                                        title="{{ trans('dashboard.order.Make as In Progress') }}">
-                                                                                        {{ trans('dashboard.order.Make as In Progress') }}</button>
-                                                                                </a>
-                                                                                <a href="{{ route('dashboard.orders.rejected', $order) }}">
-                                                                                    <button
-                                                                                        class="btn btn-danger  dropdown-item"
-                                                                                        title="{{ trans('dashboard.order.Make as Rejected') }}">
-                                                                                        {{ trans('dashboard.order.Make as Rejected') }}</button>
-                                                                                </a>
+                                                                            @if($order->order_status == 'cancelled')
                                                                             @else
-                                                                                <a href="{{ route('dashboard.orders.delivered', $order) }}">
+                                                                                <a href="{{ route('dashboard.orders.show', $order) }}">
                                                                                     <button
-                                                                                        class="btn btn-primary  dropdown-item"
-                                                                                        title="{{ trans('dashboard.order.Make as shipped') }}">
-                                                                                        {{ trans('dashboard.order.Make as shipped') }}</button>
+                                                                                            class="btn btn-primary  dropdown-item"
+                                                                                            title="{{ trans('dashboard.order.show order') }}">
+                                                                                        {{ trans('dashboard.order.show order') }}</button>
                                                                                 </a>
+                                                                                @if($order->order_status ==  'accepted')
+                                                                                    <a href="{{ route('dashboard.orders.delivered', $order) }}">
+                                                                                        <button
+                                                                                                class="btn btn-primary  dropdown-item"
+                                                                                                title="{{ trans('dashboard.order.Make as shipped') }}">
+                                                                                            {{ trans('dashboard.order.Make as shipped') }}</button>
+                                                                                    </a>
+                                                                                @elseif($order->order_status ==  'processing')
+                                                                                    <a href="{{ route('dashboard.orders.accepted', $order) }}">
+                                                                                        <button
+                                                                                                class="btn btn-info  dropdown-item"
+                                                                                                title="{{ trans('dashboard.order.Make as In Progress') }}">
+                                                                                            {{ trans('dashboard.order.Make as In Progress') }}</button>
+                                                                                    </a>
+                                                                                    <a href="{{ route('dashboard.orders.rejected', $order) }}">
+                                                                                        <button
+                                                                                                class="btn btn-danger  dropdown-item"
+                                                                                                title="{{ trans('dashboard.order.Make as Rejected') }}">
+                                                                                            {{ trans('dashboard.order.Make as Rejected') }}</button>
+                                                                                    </a>
+                                                                                @else
+                                                                                    <a href="{{ route('dashboard.orders.delivered', $order) }}">
+                                                                                        <button
+                                                                                                class="btn btn-primary  dropdown-item"
+                                                                                                title="{{ trans('dashboard.order.Make as shipped') }}">
+                                                                                            {{ trans('dashboard.order.Make as shipped') }}</button>
+                                                                                    </a>
+                                                                                @endif
                                                                             @endif
                                                                         </div>
                                                                     </div>

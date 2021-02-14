@@ -20,8 +20,12 @@ class Discount extends Model
                 return back()->with('error', trans('site.Discount period expired'));
             }
             if ($coupon->discount_type == 'fixed') {
+                $request['coupon_amount'] = $coupon->amount;
+                $request['coupon_type'] = $coupon->discount_type;
                 $request['billing_total'] -= $coupon->amount;
             } else {
+                $request['coupon_amount'] = $coupon->amount;
+                $request['coupon_type'] = $coupon->discount_type;
                 $request['billing_total'] = $request['billing_total'] - ($request['billing_total'] * ($coupon->amount / 100));
             }
         } else {

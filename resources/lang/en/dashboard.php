@@ -51,6 +51,7 @@ return [
     ],
     'discounts' => [
         'discounts' => 'Discounts',
+        'discount' => 'Discount',
         'Action' => 'Action',
         'Status' => 'Status',
         'discount type' => 'Discount type',

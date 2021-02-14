@@ -133,7 +133,7 @@
                             <td>
                                 <p style="font-size: 14px;"><b>Hi, {{ $order->user->name }}</b></p>
                                 <p style="font-size: 14px;">{{ trans('dashboard.order.Order Is Successfully Processed And Your Order Is On The Way,') }}</p>
-                                <p style="font-size: 14px;">Transaction ID : 267676GHERT105467,</p>
+                                <p style="font-size: 14px;">{{ trans('dashboard.Transactions.Transaction id') }} : {{ $order->id }}</p>
                             </td>
                         </tr>
                     </table>
@@ -142,147 +142,138 @@
                         style="width: 100%;margin-top: 10px;    margin-bottom: 10px;">
                         <tbody>
                             <tr>
-                                <td
-                                    style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 50%;">
-                                    <h5 style="font-size: 16px; font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">{{ trans('dashboard.order.Your Shipping Address') }}</h5>
-                                    <p style="text-align: left;font-weight: normal; font-size: 14px; color: #000000;line-height: 21px;    margin-top: 0;">{{ $order->billing_address }}</p>
+                                <td style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 50%;">
+                                    <h5 style="text-align: center;font-size: 16px; font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">{{ trans('dashboard.order.E-mail') }}</h5>
+                                    <p style="text-align: center;font-weight: normal; font-size: 14px; color: #000000;line-height: 21px;    margin-top: 0;">{{ $order->billing_email}}</p>
                                 </td>
+                                <td style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 50%;">
+                                    <h5 style="text-align: center;font-size: 16px; font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">{{ trans('dashboard.order.phone') }}</h5>
+                                    <p style="text-align: center;font-weight: normal; font-size: 14px; color: #000000;line-height: 21px;    margin-top: 0;">{{ $order->billing_phone }}</p>
                                 </td>
 
                             </tr>
                         </tbody>
                     </table>
+                    <table cellpadding="0" cellspacing="0" border="0" align="left"
+                           style="width: 100%;margin-top: 10px;    margin-bottom: 10px;">
+                        <tbody>
+                        <tr>
+                            <td style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 50%;">
+                                <h5 style="text-align: center; font-size: 16px; font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">{{ trans('dashboard.order.Your Shipping Address') }}</h5>
+                                <p style=" text-align: center;font-weight: normal; font-size: 14px; color: #000000;line-height: 21px;    margin-top: 0;">{{ $order->billing_address }}</p>
+                            </td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <table cellpadding="0" cellspacing="0" border="0" align="left"
+                           style="width: 100%;margin-top: 10px;    margin-bottom: 10px;">
+                        <tbody>
+                        <tr>
+                                <td style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 25%;">
+                                <h5 style="text-align: center; font-size: 16px; font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">{{ trans('dashboard.order.Product images') }}</h5>
+                                @foreach($order->products as $product)
+                                <img src="{{ asset('assets/uploads/products/' . $product->images->first()->path ) }}"
+                                     alt="" width="80">
+                                @endforeach
+{{--                                <p style=" text-align: center;font-weight: normal; font-size: 14px; color: #000000;line-height: 21px;    margin-top: 0;">{{ $order->billing_address }}</p>--}}
+                            </td>
+                            <td style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 25%;">
+                                <h5 style="text-align: center; font-size: 16px; font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">{{ trans('dashboard.order.Product Name') }}</h5>
+                                @foreach($order->products as $product)
+                                    <p style=" text-align: center;font-weight: normal; font-size: 14px; color: #000000; margin-top: 0;height: 81px;margin-bottom: 0;line-height: 81px">{{ $product->name }}</p>
+                                @endforeach
+                            </td>
+                            <td style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 25%;">
+                                <h5 style="text-align: center; font-size: 16px; font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">{{ trans('site.Order.Quantity') }}</h5>
+                                @foreach($order->products as $product)
+                                    <p style=" text-align: center;font-weight: normal; font-size: 14px; color: #000000; margin-top: 0;height: 81px;margin-bottom: 0;line-height: 81px">{{ $product->pivot->quantity }}</p>
+                                @endforeach
+                            </td>
+                            <td style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 25%;">
+                                <h5 style="text-align: center; font-size: 16px; font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">{{ trans('site.Order.Price') }}</h5>
+                                @foreach($order->products as $product)
+                                    <p style=" text-align: center;font-weight: normal; font-size: 14px; color: #000000; margin-top: 0;height: 81px;margin-bottom: 0;line-height: 81px">{{ $product->price }}</p>
+                                @endforeach
+                            </td>
+
+                        </tr>
+                        </tbody>
+                    </table>
                     <table class="order-detail" border="0" cellpadding="0" cellspacing="0" align="left"
                         style="width: 100%;    margin-bottom: 50px;">
-                        <tr align="left">
-                            <th>{{ trans('dashboard.order.Product images') }}</th>
-                            <th style="padding-left: 15px;">{{ trans('dashboard.order.Product Name') }}</th>
-                            <th>{{ trans('dashboard.order.Quantity') }}</th>
-                            <th>PRICE </th>
-                        </tr>
-                        @foreach($order->products as $product)
-                        <tr>
-                            <td>
-{{--                                @foreach($product->images as $image)--}}
-                                <img src="{{ asset('assets/uploads/products/' . $product->images->first()->path ) }}" alt="" width="80">
-{{--                                @endforeach--}}
+                        <tr class="pad-left-right-space">
+                            <td colspan="2" align="left">
+                                <p style="font-size: 14px;">{{ trans('dashboard.order.payment method') }} :</p>
                             </td>
-                            <td valign="top" style="padding-left: 15px;">
-                                {!! $product->name !!}
-                            </td>
-                            <td valign="top" style="padding-left: 15px;">
-                                <h5 style="font-size: 14px; color:#444;margin-top: 10px;">{{ trans('site.Order.Quantity') }} : <span>{{ $product->pivot->quantity }}</span></h5>
-                            </td>
-                            <td valign="top" style="padding-left: 15px;">
-                                <h5 style="font-size: 14px; color:#444;margin-top:15px"><b>${{ $product->price }}</b></h5>
+                            <td colspan="2" align="right">
+                                <b> {{ __("dashboard.order.$order->payment_method") }}</b>
                             </td>
                         </tr>
-                        @endforeach
                         <tr class="pad-left-right-space ">
-                            <td class="m-t-5" colspan="2" align="left">
-                                <p style="font-size: 14px;">Subtotal : </p>
+                            <td class="m-b-5" colspan="2" align="left">
+                                <p style="font-size: 14px;">{{trans('dashboard.main.status')}} :</p>
                             </td>
-                            <td class="m-t-5" colspan="2" align="right">
-                                <b style>$2000</b>
-                            </td>
-                        <tr class="pad-left-right-space">
-                            <td colspan="2" align="left">
-                                <p style="font-size: 14px;">TAX :</p>
-                            </td>
-                            <td colspan="2" align="right">
-                                <b>$5</b>
+                            <td class="m-b-5" colspan="2" align="right">
+                                <b>{{ __("dashboard.order.$order->order_status") }}</b>
                             </td>
                         </tr>
-                        <tr class="pad-left-right-space">
-                            <td colspan="2" align="left">
-                                <p style="font-size: 14px;">VAT :</p>
-                            </td>
-                            <td colspan="2" align="right">
-                                <b>$5</b>
-                            </td>
-                        </tr>
+                        @if($order->coupon_amount == null|| $order->coupon_amount ==null)
+                        @else
+                            <tr class="pad-left-right-space ">
+                                <td class="m-b-5" colspan="2" align="left">
+                                    <p style="font-size: 14px;">{{trans('dashboard.discounts.discount')}} :</p>
+                                </td>
+                                @if($order->coupon_type == 'percent')
+                                    <td class="m-b-5" colspan="2" align="right">
+                                        <b>% {{$order->coupon_amount}}</b>
+                                    </td>
+                                @else
+                                    <td class="m-b-5" colspan="2" align="right">
+                                        <b>
+                                            {{$order->coupon_amount}}
+                                            @if(isset($setting[app()->getLocale() . '_currency']))
+                                                {{ $setting[app()->getLocale() . '_currency'] }}
+                                            @endif
+                                        </b>
+
+                                    </td>
+                                @endif
+                            </tr>
+                        @endif
                         <tr class="pad-left-right-space">
                             <td colspan="2" align="left">
                                 <p style="font-size: 14px;">{{ trans('dashboard.order.shipping charge') }} :</p>
                             </td>
                             <td colspan="2" align="right">
-                                <b>${{ $setting->delivery_price }}</b>
-                            </td>
-                        </tr>
-                        <tr class="pad-left-right-space">
-                            <td colspan="2" align="left">
-                                <p style="font-size: 14px;">Discount :</p>
-                            </td>
-                            <td colspan="2" align="right">
-                                <b> $1000</b>
+                                <b>
+                                    @if(isset($setting['delivery_price']))
+                                        {{ $setting['delivery_price'] }}
+                                    @endif
+                                    @if(isset($setting[app()->getLocale() . '_currency']))
+                                        {{ $setting[app()->getLocale() . '_currency'] }}
+                                    @endif
+                                </b>
                             </td>
                         </tr>
                         <tr class="pad-left-right-space ">
-                            <td class="m-b-5" colspan="2" align="left">
-                                <p style="font-size: 14px;">Total :</p>
+                            <td class="m-t-5" colspan="2" align="left">
+                                <p style="font-size: 14px;">{{ trans('dashboard.order.Total Price') }} : </p>
                             </td>
-                            <td class="m-b-5" colspan="2" align="right">
-                                <b>$2600</b>
+                            <td class="m-t-5" colspan="2" align="right">
+                                <b style>
+                                    {{ $order->billing_total }}
+                                    @if(isset($setting[app()->getLocale() . '_currency']))
+                                        {{ $setting[app()->getLocale() . '_currency'] }}
+                                    @endif
+                                </b>
                             </td>
                         </tr>
-
                     </table>
-
                 </td>
             </tr>
         </tbody>
-    </table>
-    <table class="main-bg-light text-center top-0" align="center" border="0" cellpadding="0" cellspacing="0"
-        width="100%">
-        <tr>
-            <td style="padding: 30px;">
-                <div>
-                    <h4 class="title" style="margin:0;text-align: center;">Follow us</h4>
-                </div>
-                <table border="0" cellpadding="0" cellspacing="0" class="footer-social-icon" align="center"
-                    class="text-center" style="margin-top:20px;">
-                    <tr>
-                        <td>
-                            <a href="#"><img src="../assets/images/email-temp/facebook.png" alt=""></a>
-                        </td>
-                        <td>
-                            <a href="#"><img src="../assets/images/email-temp/youtube.png" alt=""></a>
-                        </td>
-                        <td>
-                            <a href="#"><img src="../assets/images/email-temp/twitter.png" alt=""></a>
-                        </td>
-                        <td>
-                            <a href="#"><img src="../assets/images/email-temp/gplus.png" alt=""></a>
-                        </td>
-                        <td>
-                            <a href="#"><img src="../assets/images/email-temp/linkedin.png" alt=""></a>
-                        </td>
-                        <td>
-                            <a href="#"><img src="../assets/images/email-temp/pinterest.png" alt=""></a>
-                        </td>
-                    </tr>
-                </table>
-                <div style="border-top: 1px solid #ddd; margin: 20px auto 0;"></div>
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 20px auto 0;">
-                    <tr>
-                        <td>
-                            <a href="#" style="font-size:13px">Want to change how you receive these emails?</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p style="font-size:13px; margin:0;">2018 - 19 Copy Right by Themeforest powerd by Pixel
-                                Strap</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="#" style="font-size:13px; margin:0;text-decoration: underline;">Unsubscribe</a>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
     </table>
 </body>
 

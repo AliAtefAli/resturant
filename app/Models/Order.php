@@ -10,12 +10,12 @@ class Order extends Model
 {
     protected $fillable = [
         'user_id', 'billing_address', 'billing_phone', 'billing_email', 'billing_name',
-        'billing_total', 'payment_method', 'payment_status', 'order_status', 'lat', 'lng'
+        'billing_total', 'payment_method', 'payment_status', 'order_status', 'lat', 'lng', 'coupon_amount', 'coupon_type'
     ];
 
     public function products()
     {
-        return $this->belongsToMany(Product::class)->withPivot('quantity');
+        return $this->belongsToMany(Product::class)->withPivot('quantity','product_id');
     }
 
     public function user()
