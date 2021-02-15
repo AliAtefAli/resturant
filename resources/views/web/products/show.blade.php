@@ -135,6 +135,7 @@
                         toastr.success(response.message, {timeOut: "50000",});
                         cartCountWeb.text(response.quantity);
                         cartCountMobile.text(response.quantity);
+                        document.getElementById("quantity").value = 1;
 
                     } else {
                         toastr.error(response.message, {timeOut: "50000",})

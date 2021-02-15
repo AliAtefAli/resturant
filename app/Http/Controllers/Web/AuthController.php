@@ -64,7 +64,8 @@ class AuthController extends Controller
 
         $user = User::where('phone', $request->get('email'))->first();
 
-        $code = mt_rand(1111, 9999);
+//        $code = mt_rand(1111, 9999);
+        $code = 12345;
         $user->update(['code' => $code]);
 
         return redirect()->route('code_confirm', $user);
