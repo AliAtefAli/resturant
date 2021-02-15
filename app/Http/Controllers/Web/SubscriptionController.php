@@ -43,6 +43,7 @@ class SubscriptionController extends Controller
         $currentSubscriptionsWhenFinished = SubscriptionUser::with('subscription', 'subscription.products')
             ->where('end_date', '>=', ($request['start_date']))
             ->where('user_id', auth()->user()->id)
+            ->whereNull('stopped_at')
             ->get();
 
         if ($currentSubscriptions->count() > 0) {
