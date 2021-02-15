@@ -35,6 +35,9 @@ class OrderController extends Controller
         $request['user_id'] = auth()->user()->id;
 
         if ($request->payment_method == 'payment') {
+            if ($request->has('coupon')) {
+                Discount::checkCoupon($request);
+            }
             session()->forget('billing');
             session()->put('billing', $request->all());
             return view('web.carts.payment-gosell', compact('request'));
