@@ -17,6 +17,22 @@
     @if(lang() == 'en')
         <link rel="stylesheet" href="{{asset('web_files/css/en.css')}}">
     @endif
+    <style>
+        .badgeIcon{
+            position: absolute;
+            top: -8px;
+            right: -6px;
+            background-color: #fff;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            font-size: 10px;
+            line-height: 22px;
+            text-align: center;
+            color: #cc5641;
+            border: 2px solid #969696;
+        }
+    </style>
     @yield('style')
 
     <title>@yield('title', $setting[lang() . '_name'] ?? "")</title>

@@ -60,20 +60,21 @@
         </a>
 
         <a href="{{ route('carts') }}">
-            <i class="fas fa-shopping-cart"> <span style="color: #CC5641;" id="cart-quantity">
-             <span id="cart-count-mobile" style="color: #CC5641;"> {{ Cart::instance('cart')->count() }} </span>
-            </span></i>
-
+            <i class="fas fa-shopping-cart"></i>
+            @if(Cart::instance('cart')->count() > 0)
+            <span id="cart-count-web" class="badgeIcon">{{ Cart::instance('cart')->count() }}</span>
+                @endif
         </a>
         <a href="{{ route('users.fav') }}">
             <i class="fas fa-heart"></i>
+            <span class="badgeIcon">{{auth()->user() ? auth()->user()->favorites->count() : '' }}</span>
         </a>
-        @if(auth()->check())
+
             <a href="{{ route('user.notification')  }}" title="{{__('site.Notification')}}">
-                <i class="fas fa-bell"><span
-                        style="color: #CC5641;"> {{ (auth()->user()) ? (auth()->user()->unreadNotifications()->count()) : 0 }} </span></i>
+                <i class="fas fa-bell"></i>
+                <span class="badgeIcon">{{ (auth()->user()) ? (auth()->user()->unreadNotifications()->where('type', '!=', 'App\Notifications\NewOrderNotification')->count()) : 0 }}</span>
             </a>
-        @endif
+
     </div>
 </div>
 <!--End Small Screen-->
@@ -176,18 +177,16 @@
                                 <i class="fas fa-user"></i>
                             </a>
                             <a href="{{route('carts')}}" title="{{ __('site.Cart') }}">
-                                <i class="fas fa-shopping-cart">
-                                    <span id="cart-count-web" style="color: #CC5641;"> {{ Cart::instance('cart')->count() }} </span>
-                                </i>
+                                <i class="fas fa-shopping-cart"></i>
+                                <span id="cart-count-web" class="badgeIcon">{{ Cart::instance('cart')->count() }}</span>
                             </a>
                             <a href="{{route('users.fav')}}" title="{{ __('site.Favorites') }}">
-                                <i class="fas fa-heart">
-                                    <span style="color: #CC5641;"> {{auth()->user() ? auth()->user()->favorites->count() : '' }} </span>
-                                </i>
+                                <i class="fas fa-heart"></i>
+                                <span class="badgeIcon">{{auth()->user() ? auth()->user()->favorites->count() : '' }}</span>
                             </a>
                             <a href="{{ route('user.notification')  }}" title="{{__('site.Notification')}}">
-                                <i class="fas fa-bell"><span
-                                        style="color: #CC5641;"> {{ (auth()->user()) ? (auth()->user()->unreadNotifications()->where('type', '!=', 'App\Notifications\NewOrderNotification')->count()) : 0 }} </span></i>
+                                <i class="fas fa-bell"></i>
+                                <span class="badgeIcon">{{ (auth()->user()) ? (auth()->user()->unreadNotifications()->where('type', '!=', 'App\Notifications\NewOrderNotification')->count()) : 0 }}</span>
                             </a>
                             <a href="{{route('products.index')}}" title="{{ __('site.Products') }}">
                                 <i class="fas fa-utensils"></i>
