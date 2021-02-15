@@ -61,7 +61,7 @@
 
         <a href="{{ route('carts') }}">
             <i class="fas fa-shopping-cart"></i>
-            <span id="cart-count-web" class="badgeIcon">{{ Cart::instance('cart')->count() }}</span>
+            <span id="cart-count-mobile" class="badgeIcon">{{ Cart::instance('cart')->count() }}</span>
         </a>
         <a href="{{ route('users.fav') }}">
             <i class="fas fa-heart"></i>
