@@ -311,7 +311,7 @@
                         } else {
                             totalBefore.innerText = response.data.totalBefore;
                             totalAfter.innerText = response.data.billing_total;
-                            discountAmount.innerText = response.data.coupon.amount;
+                            discountAmount.innerText = (response.data.coupon.discount_type === 'percent') ? response.data.coupon.amount + ' %' : response.data.coupon.amount;
                             discountElement.removeAttr('style');
                             toastr.success(response.msg, {timeOut: "50000",})
                         }
