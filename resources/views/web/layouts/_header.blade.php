@@ -61,9 +61,7 @@
 
         <a href="{{ route('carts') }}">
             <i class="fas fa-shopping-cart"></i>
-            @if(Cart::instance('cart')->count() > 0)
             <span id="cart-count-web" class="badgeIcon">{{ Cart::instance('cart')->count() }}</span>
-                @endif
         </a>
         <a href="{{ route('users.fav') }}">
             <i class="fas fa-heart"></i>
@@ -172,7 +170,6 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="icons-action">
-{{--                        @if(auth()->check())--}}
                             <a href="{{route('users')}}" title="{{ __('site.Profile') }}">
                                 <i class="fas fa-user"></i>
                             </a>
@@ -191,7 +188,6 @@
                             <a href="{{route('products.index')}}" title="{{ __('site.Products') }}">
                                 <i class="fas fa-utensils"></i>
                             </a>
-{{--                        @endif--}}
                     </div>
                 </div>
             </div>
