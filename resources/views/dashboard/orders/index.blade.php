@@ -1,6 +1,32 @@
 @extends('dashboard.layouts.app')
 @section('title', trans('dashboard.main.orders'))
 @section('styles')
+    @if(app()->getLocale() == 'ar')
+        <style>
+            .dataTables_wrapper .row {
+                min-height: 55px;
+            }
+            div.dataTables_wrapper div.dataTables_filter {
+                text-align: left;
+                position: absolute  ;
+                left: 300px;
+                bottom: 10px;
+                z-index: 3;
+            }
+
+            #table_length {
+                z-index: 2;
+                position: absolute;
+                /*right: 865px;*/
+                /*bottom: 15px;*/
+            }
+
+            .card-body
+            {
+                padding: 0; !important;
+            }
+        </style>
+    @endif
     <style>
         .table th, .table td {
             padding: 0.75rem 1rem;

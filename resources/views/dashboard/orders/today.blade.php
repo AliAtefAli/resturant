@@ -1,10 +1,35 @@
 @extends('dashboard.layouts.app')
 @section('title', trans('dashboard.order.Today Orders'))
 @section('styles')
+    @if(app()->getLocale() == 'ar')
+        <style>
+            .dataTables_wrapper .row {
+                min-height: 55px;
+            }
+            div.dataTables_wrapper div.dataTables_filter {
+                text-align: left;
+                position: absolute  ;
+                left: 300px;
+                bottom: 10px;
+                z-index: 3;
+            }
+
+            #DataTables_Table_0_length {
+                z-index: 2;
+                position: absolute;
+                /*right: 865px;*/
+                /*bottom: 15px;*/
+            }
+            .table th, .table td {
+                padding: 0.75rem 1rem;
+            }
+            .card-body
+            {
+                padding: 0; !important;
+            }
+        </style>
+    @endif
     <style>
-        .table th, .table td {
-            padding: 0.75rem 1rem;
-        }
         .dropdown-menu {
             right: inherit;
         }
@@ -21,10 +46,9 @@
                 <div class="row breadcrumbs-top">
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a
-                                    href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
                             </li>
-                            <li class="breadcrumb-item active">{{trans('dashboard.main.orders')}}
+                            <li class="breadcrumb-item active">{{trans('dashboard.order.Today Orders')}}
                             </li>
                         </ol>
                     </div>
