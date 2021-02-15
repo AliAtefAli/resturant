@@ -97,7 +97,14 @@ class SubscriptionController extends Controller
         $stoppedDate = Carbon::parse($subscription->stopped_at);
         $diffDays = $stoppedDate->diffInDays($endDate);
         $newEndDate = $startDate->addDays($diffDays)->toDateString();
-
+        $currentSubscriptions = SubscriptionUser::with('subscription', 'subscription.products')
+            ->where('end_date', '>=', Carbon::today())
+            ->where('user_id', auth()->user()->id)
+            ->whereNull('stopped_at')
+            ->get();
+        if ($currentSubscriptions->count() > 0) {
+            return back()->with('error', trans('site.Sorry, You already have a subscription'));
+        }
         $subscription->update([
             'start_date' => today(),
             'end_date' => $newEndDate,
