@@ -80,6 +80,7 @@ return [
 
     'Permissions' => 'الصلاحيات',
     'Show Category' => 'التصنيفات',
+
     'Show Product' => 'عرض منتج',
     'Categories' => 'الاقسام',
     'Subscriptions Duration' => 'مده الاشتراك',
