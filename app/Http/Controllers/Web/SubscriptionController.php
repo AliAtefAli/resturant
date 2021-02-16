@@ -35,22 +35,40 @@ class SubscriptionController extends Controller
         $request['end_date'] = $date;
         $request['billing_total'] = ($subscription->price * $request->people_count) + ($request->shipping_type == 'delivery' ? ($setting['delivery_price']) : 0);
         $request['user_id'] = auth()->user()->id;
+
+
         $currentSubscriptions = SubscriptionUser::with('subscription', 'subscription.products')
             ->where('end_date', '>=', Carbon::today())
             ->where('user_id', auth()->user()->id)
             ->whereNull('stopped_at')
             ->get();
-        $currentSubscriptionsWhenFinished = SubscriptionUser::with('subscription', 'subscription.products')
-            ->where('end_date', '>=', ($request['start_date']))
+
+        $stoppedSubscriptions = SubscriptionUser::with('subscription', 'subscription.products')
             ->where('user_id', auth()->user()->id)
             ->whereNull('stopped_at')
             ->get();
 
-        if ($currentSubscriptions->count() > 0) {
-            if ($currentSubscriptionsWhenFinished->count() > 0) {
+        $start = Carbon::parse($request['start_date']);
+        $end = Carbon::parse($request['end_date']);
+
+
+        foreach ($currentSubscriptions as $current)
+        {
+            if ($start->between(Carbon::parse($current->start_date),Carbon::parse($current->end_date)) || $end->between(Carbon::parse($current->start_date),Carbon::parse($current->end_date))) {
+
                 return back()->with('error', trans('site.Sorry, You already have a subscription'));
             }
         }
+
+        foreach ($stoppedSubscriptions as $stopped)
+        {
+            if ($start->between(Carbon::parse($stopped->start_date),Carbon::parse($stopped->end_date)) || $end->between(Carbon::parse($stopped->start_date),Carbon::parse($stopped->end_date))) {
+
+                return back()->with('error', trans('site.Sorry, You already have a subscription'));
+            }
+        }
+
+
         if ($request->payment_type == 'credit_card') {
             session()->forget('subscription');
             session()->put('subscription', $request->all());
@@ -95,17 +113,54 @@ class SubscriptionController extends Controller
         $subscription = SubscriptionUser::findOrFail($id);
         $startDate = today();
         $endDate = Carbon::parse($subscription->end_date);
-        $stoppedDate = Carbon::parse($subscription->stopped_at);
+        $stoppedDate = Carbon::parse($subscription->start_date);
         $diffDays = $stoppedDate->diffInDays($endDate);
         $newEndDate = $startDate->addDays($diffDays)->toDateString();
+
         $currentSubscriptions = SubscriptionUser::with('subscription', 'subscription.products')
             ->where('end_date', '>=', Carbon::today())
             ->where('user_id', auth()->user()->id)
             ->whereNull('stopped_at')
             ->get();
-        if ($currentSubscriptions->count() > 0) {
-            return back()->with('error', trans('site.Sorry, You already have a subscription'));
+
+        $stoppedSubscriptions = SubscriptionUser::with('subscription', 'subscription.products')
+            ->where('user_id', auth()->user()->id)
+            ->whereNull('stopped_at')
+            ->get();
+
+        $start = Carbon::parse($subscription->start_date);
+        $end = Carbon::parse($subscription->end_date);
+
+
+        foreach ($currentSubscriptions as $current)
+        {
+            if ($start->between(Carbon::parse($current->start_date),Carbon::parse($current->end_date)) || $end->between(Carbon::parse($current->start_date),Carbon::parse($current->end_date))) {
+
+                return back()->with('error', trans('site.Sorry, You already have a subscription'));
+            }
         }
+
+        foreach ($stoppedSubscriptions as $stopped)
+        {
+            if ($start->between(Carbon::parse($stopped->start_date),Carbon::parse($stopped->end_date)) || $end->between(Carbon::parse($stopped->start_date),Carbon::parse($stopped->end_date))) {
+
+                return back()->with('error', trans('site.Sorry, You already have a subscription'));
+            }
+        }
+
+
+        if (today() < Carbon::parse($subscription->start_date) ) {
+            if ($subscription->start_date > today()) {
+                $subscription->update([
+                    'stopped_at' => null
+                ]);
+
+                return back()->with('success', trans('site.The subscription has been successfully restarted'));
+            } else {
+                return back()->with('error', trans('site.Sorry, You already have a subscription'));
+            }
+        }
+
         $subscription->update([
             'start_date' => today(),
             'end_date' => $newEndDate,
