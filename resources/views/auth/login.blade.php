@@ -25,9 +25,13 @@
                     </p>
                     <label class="input-style">
                         <input type="password" name="password">
+                        @if(session()->has('passwordCheck'))
+                            <div class="alert alert-danger">{{session()->get('passwordCheck')}}</div>
+                        @endif
                         @if ($errors->has('password'))
                             <div class="alert alert-danger">{{ $errors->first('password') }}</div>
                         @endif
+
                     </label>
                     <div class="text-center">
                         <a href="{{route('reset_pass')}}" class="link-forget">

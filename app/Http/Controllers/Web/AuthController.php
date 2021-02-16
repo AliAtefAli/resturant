@@ -153,7 +153,7 @@ class AuthController extends Controller
 
             if (!Hash::check($request->password, $user->password))
             {
-                return back()->with('error',trans('auth.failed'));
+                return back()->with('passwordCheck',trans('auth.failed'));
             }
 
             if ($user) {
