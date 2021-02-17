@@ -66,7 +66,7 @@
 
                         <li>
                             <a class="menu-item" href="{{ route('dashboard.subscriptions.todaySubscriptions') }}" data-i18n="nav.page_layouts.1_column">
-                                {{ trans('dashboard.subscriptions.Today Subscriptions') }}<span class="badge badge badge-danger badge-pill float-right mr-2">{{$newSubscriptions->count()}}</span>
+                                {{ trans('dashboard.subscriptions.active_subscriptions') }}<span class="badge badge badge-danger badge-pill float-right mr-2">{{$newSubscriptions->count()}}</span>
                             </a>
                         </li>
 

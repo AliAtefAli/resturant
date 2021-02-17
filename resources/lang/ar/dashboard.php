@@ -256,6 +256,7 @@ return [
         'Delete Subscription' => 'مسح الاشتراك',
         'All Subscriptions' => 'كل الاشتراكات',
         'Subscriptions' => 'الاشتراكات',
+        'active_subscriptions' => 'الاشتراكات المفعله',
         'Finished Subscriptions' => 'الاشتراكات المجمدة',
         'stopped_subscriptions' => 'الاشتراكات المتوقفه',
         'finished' => 'المجمدة',

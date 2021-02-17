@@ -53,7 +53,7 @@
                             <li class="breadcrumb-item"><a
                                     href="{{ route('dashboard.subscriptions.index') }}">{{trans('dashboard.subscriptions.Subscriptions')}}
                                 </a></li>
-                            <li class="breadcrumb-item active">{{trans('dashboard.subscriptions.Today Subscriptions')}}</li>
+                            <li class="breadcrumb-item active">{{trans('dashboard.subscriptions.active_subscriptions')}}</li>
                         </ol>
                     </div>
                 </div>

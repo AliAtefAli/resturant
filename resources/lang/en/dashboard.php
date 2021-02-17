@@ -254,6 +254,7 @@ return [
         'Delete Subscription' => 'Delete Subscription',
         'All Subscriptions' => 'All Subscriptions',
         'Subscriptions' => 'Subscriptions',
+        'active_subscriptions' => 'Active Subscriptions',
         'Finished Subscriptions' => 'Finished Subscriptions',
         'stopped_subscriptions' => 'Stopped Subscriptions',
         'finished' => 'Finished',

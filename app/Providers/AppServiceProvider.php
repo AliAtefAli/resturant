@@ -34,8 +34,8 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         // $notifications = auth()->user()->notifications->where('type', '!=', 'App\Notifications\NewOrderNotification')->get();
         View::share('setting', Setting::all()->pluck('value', 'key'));
-        View::share('newSubscriptions', SubscriptionUser::where('start_date', '<=', Carbon::today())
-            ->where('end_date', '>=',  Carbon::today())
+        View::share('newSubscriptions', SubscriptionUser::
+        where('start_date', Carbon::today())
             ->whereNull('stopped_at')
             ->get());
         // View::share('notifications', $notifications);
