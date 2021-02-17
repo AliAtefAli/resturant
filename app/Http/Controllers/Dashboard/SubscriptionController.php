@@ -100,9 +100,19 @@ class SubscriptionController extends Controller
         $subscriptions = SubscriptionUser::with('subscription', 'subscription.products')
             ->where('start_date', '<=', Carbon::today())
             ->where('end_date', '>=',  Carbon::today())
+            ->whereNull('stopped_at')
             ->get();
 
         return view('dashboard.subscriptions.today', compact('subscriptions'));
+    }
+
+    public function stoppedSubscription()
+    {
+        $subscriptions = SubscriptionUser::with('subscription', 'subscription.products')
+            ->whereNotNull('stopped_at')
+            ->get();
+
+        return view('dashboard.subscriptions.stopped', compact('subscriptions'));
     }
 
     public function finishedSubscription()
@@ -118,9 +128,7 @@ class SubscriptionController extends Controller
     public function allSubscription()
     {
         $subscriptions = SubscriptionUser::with('subscription', 'subscription.products')
-            // ->where('end_date', '>=',  Carbon::today())
-            ->whereNull('stopped_at')
-            ->get();
+            ->latest()->get();
 
         return view('dashboard.subscriptions.all', compact('subscriptions'));
     }

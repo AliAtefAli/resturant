@@ -66,8 +66,8 @@
                                                for="status">{{ trans('dashboard.slider.Status')}}</label>
                                         <div class="col-md-10">
                                             <select class="custom-select" name="status">
-                                                <option value="pending" @if($slider->status == 'pending') selected @endif>{{ trans('dashboard.slider.Pending') }}</option>
-                                                <option value="active" @if($slider->status == 'active') selected @endif>{{ trans('dashboard.slider.Active') }}</option>
+                                                <option value="pending" @if($slider->status == 'pending') selected @endif>{{ trans('dashboard.slider.pending') }}</option>
+                                                <option value="active" @if($slider->status == 'active') selected @endif>{{ trans('dashboard.slider.active') }}</option>
                                             </select>
                                             @include('dashboard.partials._errors', ['input' => 'status'])
                                         </div>

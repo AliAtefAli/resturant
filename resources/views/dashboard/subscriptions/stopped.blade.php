@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-@section('title', trans('dashboard.subscriptions.All Subscriptions'))
+@section('title', trans('dashboard.subscriptions.Today Subscriptions'))
 @section('styles')
     @if(app()->getLocale() == 'ar')
         <style>
@@ -48,12 +48,12 @@
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a
-                                    href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
+                                        href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
                             </li>
                             <li class="breadcrumb-item"><a
-                                    href="{{ route('dashboard.subscriptions.index') }}">{{trans('dashboard.subscriptions.Subscriptions')}}
+                                        href="{{ route('dashboard.subscriptions.index') }}">{{trans('dashboard.subscriptions.Subscriptions')}}
                                 </a></li>
-                            <li class="breadcrumb-item active">{{trans('dashboard.subscriptions.All Subscriptions')}}</li>
+                            <li class="breadcrumb-item active">{{trans('dashboard.subscriptions.stopped_subscriptions')}}</li>
                         </ol>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                                     <div class="card">
                                         <div class="card-header">
                                             <a class="heading-elements-toggle"><i
-                                                    class="la la-ellipsis-v font-medium-3"></i></a>
+                                                        class="la la-ellipsis-v font-medium-3"></i></a>
                                             <div class="heading-elements">
                                                 <ul class="list-inline mb-0">
                                                     <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
@@ -92,13 +92,13 @@
                                                         <th>{{trans('dashboard.user.Name')}}</th>
                                                         <th>{{trans('dashboard.subscriptions.Start Date')}}</th>
                                                         <th>{{trans('dashboard.subscriptions.End Date')}}</th>
+                                                        <th>{{trans('dashboard.subscriptions.stopped_date')}}</th>
                                                         <th>{{trans('dashboard.subscriptions.Shipping type')}}</th>
                                                         <th>{{trans('dashboard.subscriptions.Total Price')}}</th>
                                                         <th style="width: 80px;!important;">{{trans('dashboard.subscriptions.Address')}}</th>
                                                         <th>{{trans('dashboard.subscriptions.phone')}}</th>
                                                         <th>{{trans('dashboard.subscriptions.People count')}}</th>
                                                         <th>{{trans('dashboard.subscriptions.payment method')}}</th>
-                                                        <th>{{trans('dashboard.main.status')}}</th>
                                                         <th style="width: 80px;!important;">{{trans('dashboard.subscriptions.Note')}}</th>
                                                     </tr>
                                                     </thead>
@@ -108,19 +108,13 @@
                                                             <th><a href="{{ route('dashboard.users.show', $subscription->user->id) }}">{{ $subscription->user->name }}</a></th>
                                                             <td>{{ \Carbon\Carbon::parse($subscription->start_date)->toDateString() }}</td>
                                                             <td>{{ \Carbon\Carbon::parse($subscription->end_date)->toDateString() }}</td>
+                                                            <td>{{ \Carbon\Carbon::parse($subscription->stopped_at)->toDateString() }}</td>
                                                             <td>{{ trans("dashboard.subscriptions." . $subscription->shipping_type) }}</td>
                                                             <td>{{ $subscription->billing_total }}</td>
                                                             <td style="width: 80px;!important;">{{ $subscription->billing_address }}</td>
                                                             <td>{{ $subscription->billing_phone }}</td>
                                                             <td>{{ $subscription->people_count }}</td>
                                                             <td>{{ trans("dashboard.subscriptions." . $subscription->payment_type) }}</td>
-                                                            @if($subscription->stopped_at != null )
-                                                                <td><span class="text-warning">{{ trans('dashboard.subscriptions.stopped') }}</span></td>
-                                                            @elseif($subscription->stopped_at == null && $subscription->end_date > Carbon\Carbon::today())
-                                                                <td><span class="text-success">{{ trans('dashboard.subscriptions.active') }}</span></td>
-                                                            @elseif($subscription->end_date < Carbon\Carbon::today())
-                                                                <td><span class="text-danger">{{ trans('dashboard.subscriptions.finished') }}</span></td>
-                                                            @endif
                                                             <td style="width: 80px;!important;">{{ $subscription->note }}</td>
                                                         </tr>
                                                     @endforeach

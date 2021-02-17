@@ -33,6 +33,7 @@ Route::get('discounts/makeAsUnavailable/{discount}', 'DiscountController@makeAsU
 Route::get('discounts/makeAsAvailable/{discount}', 'DiscountController@makeAsAvailable')->name('discounts.makeAsAvailable');
 Route::get('subscriptions/users/{subscription}', 'SubscriptionController@users')->name('subscriptionUsers');
 Route::get('subscriptions/todaySubscriptions', 'SubscriptionController@todaySubscription')->name('subscriptions.todaySubscriptions');
+Route::get('subscriptions/stoppedSubscriptions', 'SubscriptionController@stoppedSubscription')->name('subscriptions.stoppedSubscriptions');
 Route::get('subscriptions/finishedSubscriptions', 'SubscriptionController@finishedSubscription')->name('subscriptions.finishedSubscriptions');
 Route::get('subscriptions/allSubscriptions', 'SubscriptionController@allSubscription')->name('subscriptions.allSubscriptions');
 Route::resource('subscriptions', 'SubscriptionController');
