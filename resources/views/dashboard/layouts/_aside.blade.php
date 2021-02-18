@@ -57,6 +57,7 @@
                 <a href="#">
                     <i class="la la-ticket"></i>
                     <span class="menu-title" data-i18n="">{{trans('dashboard.subscriptions.Subscriptions')}}</span>
+                    <span class="badge badge badge-danger badge-pill float-right mr-2">{{$newSubscriptions->count()}}</span>
                     <ul class="menu-content">
                         <li>
                             <a class="menu-item" href="{{ route('dashboard.subscriptions.index') }}" data-i18n="nav.page_layouts.1_column">
@@ -66,7 +67,7 @@
 
                         <li>
                             <a class="menu-item" href="{{ route('dashboard.subscriptions.todaySubscriptions') }}" data-i18n="nav.page_layouts.1_column">
-                                {{ trans('dashboard.subscriptions.active_subscriptions') }}<span class="badge badge badge-danger badge-pill float-right mr-2">{{$newSubscriptions->count()}}</span>
+                                {{ trans('dashboard.subscriptions.active_subscriptions') }}
                             </a>
                         </li>
 
