@@ -32,6 +32,7 @@
                     },
                     "buttons": {
                         "print": "طباعة",
+                        "excel": "Excel",
                         "colvis": "الأعمدة الظاهرة",
                         "copy": "نسخ إلى الحافظة",
                         "copyTitle": "نسخ",
@@ -48,7 +49,13 @@
                 },
                 buttons: [
                     {
-                        extend: 'print',
+                        extend:'print',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend:'excel',
                         exportOptions: {
                             columns: ':visible'
                         }
@@ -213,6 +220,12 @@
                 buttons: [
                     {
                         extend: 'print',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend:'excel',
                         exportOptions: {
                             columns: ':visible'
                         }

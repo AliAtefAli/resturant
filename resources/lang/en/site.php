@@ -14,6 +14,8 @@ return [
     'Show' => 'Show',
     'Loading' => 'Loading',
     'Print' => 'Print',
+    'receipt_from_our_place_in_alNaeem_neighborhood' => 'Receipt from our place in Al-Naeem neighborhood',
+    'to_facilitate_the_delivery_process' => 'To facilitate the delivery process',
 
     'Days' => 'Days',
     'Day' => 'Day',

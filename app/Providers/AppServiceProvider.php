@@ -31,11 +31,41 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
+//         Carbon::setWeekStartsAt(Carbon::SUNDAY);
+//         Carbon::setWeekEndsAt(Carbon::SATURDAY);
+
+//        Carbon::setWeekendDays([
+//            Carbon::FRIDAY,
+//            Carbon::SATURDAY,
+//        ]);
+
         Schema::defaultStringLength(191);
         // $notifications = auth()->user()->notifications->where('type', '!=', 'App\Notifications\NewOrderNotification')->get();
         View::share('setting', Setting::all()->pluck('value', 'key'));
-        View::share('newSubscriptions', SubscriptionUser::
-        where('start_date', Carbon::today())
+
+        View::share('all_subscriptions', SubscriptionUser::
+            where('created_at' , Carbon::today())
+            ->where('updated_at' ,'>=' ,Carbon::today())
+            ->where('updated_at' ,'<' ,Carbon::tomorrow())
+            ->get());
+
+        View::share('active_subscriptions', SubscriptionUser::
+             where('end_date','>', Carbon::today())
+            ->where('updated_at' ,'>=' ,Carbon::today())
+            ->where('updated_at' ,'<' ,Carbon::tomorrow())
+            ->whereNull('stopped_at')
+            ->get());
+
+        View::share('stopped_subscriptions', SubscriptionUser::
+        where('updated_at' ,'>=' ,Carbon::today())
+            ->where('updated_at' ,'<' ,Carbon::tomorrow())
+            ->whereNotNull('stopped_at')
+            ->get());
+
+        View::share('finished_subscriptions', SubscriptionUser::
+        where('end_date' ,'<' ,Carbon::today())
+            ->where('updated_at' ,'>=' ,Carbon::today())
+            ->where('updated_at' ,'<' ,Carbon::tomorrow())
             ->whereNull('stopped_at')
             ->get());
         // View::share('notifications', $notifications);

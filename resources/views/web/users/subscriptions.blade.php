@@ -78,13 +78,11 @@
                                 </span>
                             <div class="list-ul">
                                 <ul class="list-unstyled">
-                                    @foreach($package->subscription->products as $product)
-                                        <li>
-                                            <span></span>
-                                            {{$product->name}}
-                                        </li>
-                                    @endforeach
 
+                                    <li>
+                                        <span></span>
+                                        {!! $package->subscription->translate(lang())->products !!}
+                                    </li>
                                 </ul>
                             </div>
                             <p class="price">
@@ -123,13 +121,18 @@
                             </p>
 
                             <p class="shiping">
+                                {{ __('dashboard.number_of_pauses') }}
+                                : {{  $package->stopped_count }}
+                            </p>
+
+                            <p class="shiping">
                                 @if($package->note)
                                     {{ __('site.Note') }}
                                     : {{$package->note}}
                                 @endif
                             </p>
 
-                            <p class="text">
+                            <p class="shiping">
                                 {!! $package->subscription->description!!}
                             </p>
 

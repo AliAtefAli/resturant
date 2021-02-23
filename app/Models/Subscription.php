@@ -11,9 +11,9 @@ class Subscription extends Model
 {
     use Translatable;
 
-    public $translatedAttributes = ['name', 'description'];
+    public $translatedAttributes = ['name', 'description','products'];
 
-    protected $fillable = ['duration_in_day', 'price', 'image'];
+    protected $fillable = ['duration_in_day', 'price', 'image', 'delivery_price', 'count'];
 
     public function products()
     {

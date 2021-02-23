@@ -12,10 +12,10 @@
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a
-                                    href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
+                                        href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
                             </li>
                             <li class="breadcrumb-item"><a
-                                    href="{{ route('dashboard.subscriptions.index') }}">{{trans('dashboard.subscriptions.Subscriptions')}}
+                                        href="{{ route('dashboard.subscriptions.index') }}">{{trans('dashboard.subscriptions.Subscriptions')}}
                                 </a></li>
                             <li class="breadcrumb-item active">{{trans('dashboard.subscriptions.show')}}</li>
                         </ol>
@@ -60,7 +60,7 @@
                                             <div class="row">
                                                 @foreach(config('app.languages') as $key => $language)
                                                     <div class="col-md-3">
-{{--                                                        <a href="{{ route('dashboard.products.show', $product) }}">{{ $product->name }}</a>--}}
+                                                        {{--                                                        <a href="{{ route('dashboard.products.show', $product) }}">{{ $product->name }}</a>--}}
                                                         {!!  $subscription->translate($key)->products  !!}
                                                     </div>
                                                 @endforeach

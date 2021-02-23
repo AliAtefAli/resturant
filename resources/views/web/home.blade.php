@@ -108,62 +108,62 @@
     </div>
     <!--End Line-->
     <!--Start Section1-->
-    <div class="section1">
-        <div class="container">
-            <h2 class="header-section wow zoomIn">
-                {{ __('site.Categories') }}
-            </h2>
-        </div>
-        @foreach($categories as $category)
-            <div class="section1-container margin-responsive">
-                <h2 class="header-section1 wow zoomIn">
-                    <a href="{{route('category.index' , $category->id)}}" class="">{{ $category->name }}</a>
-                </h2>
-                <div class="owl-carousel owl-theme section1-product-slider loop">
-                    @foreach($category->products as $product)
-                        <a href="{{ route('products.show', $product) }}" id="#{{$category->id}}"
-                               class="item wow fadeInDown">
-                                <div class="img">
-                                    <img lazy="loading"
-                                         src="@if($product->images->count() > 0){{ asset('assets/uploads/products/' . $product->images->first()->path ) }} @endif">
-                                </div>
-                                <div class="info-pro">
-                                    <span class="name-product">{{ $product->name }}</span>
-                                    <span class="price">{{ $product->price }} @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }} @endif</span>
-                                </div>
-                            </a>
-                    @endforeach
-                </div>
-                <div class="owl-carousel pt-5 owl-theme section1-name-slider">
-                    @foreach($category->categories as $sub_category)
-                        <a href="{{route('category.index' , $sub_category->id)}}"
-                        class="item wow fadeInDown {{ $loop->first ? 'active' : '' }}">
-                        <h3>{{$sub_category->name}}</h3>
-                    </a>
-                    @endforeach
-                </div>
-                <div class="owl-carousel owl-theme section2-product-slider @if($category->categories->count() > 4) loop @endif">
-                    @foreach($category->categories as $sub_category)
+{{--    <div class="section1">--}}
+{{--        <div class="container">--}}
+{{--            <h2 class="header-section wow zoomIn">--}}
+{{--                {{ __('site.Categories') }}--}}
+{{--            </h2>--}}
+{{--        </div>--}}
+{{--        @foreach($categories as $category)--}}
+{{--            <div class="section1-container margin-responsive">--}}
+{{--                <h2 class="header-section1 wow zoomIn">--}}
+{{--                    <a href="{{route('category.index' , $category->id)}}" class="">{{ $category->name }}</a>--}}
+{{--                </h2>--}}
+{{--                <div class="owl-carousel owl-theme section1-product-slider loop">--}}
+{{--                    @foreach($category->products as $product)--}}
+{{--                        <a href="{{ route('products.show', $product) }}" id="#{{$category->id}}"--}}
+{{--                               class="item wow fadeInDown">--}}
+{{--                                <div class="img">--}}
+{{--                                    <img lazy="loading"--}}
+{{--                                         src="@if($product->images->count() > 0){{ asset('assets/uploads/products/' . $product->images->first()->path ) }} @endif">--}}
+{{--                                </div>--}}
+{{--                                <div class="info-pro">--}}
+{{--                                    <span class="name-product">{{ $product->name }}</span>--}}
+{{--                                    <span class="price">{{ $product->price }} @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }} @endif</span>--}}
+{{--                                </div>--}}
+{{--                            </a>--}}
+{{--                    @endforeach--}}
+{{--                </div>--}}
+{{--                <div class="owl-carousel pt-5 owl-theme section1-name-slider">--}}
+{{--                    @foreach($category->categories as $sub_category)--}}
+{{--                        <a href="{{route('category.index' , $sub_category->id)}}"--}}
+{{--                        class="item wow fadeInDown {{ $loop->first ? 'active' : '' }}">--}}
+{{--                        <h3>{{$sub_category->name}}</h3>--}}
+{{--                    </a>--}}
+{{--                    @endforeach--}}
+{{--                </div>--}}
+{{--                <div class="owl-carousel owl-theme section2-product-slider @if($category->categories->count() > 4) loop @endif">--}}
+{{--                    @foreach($category->categories as $sub_category)--}}
 
-                        @foreach($sub_category->products as $product)
-                            <a href="{{ route('products.show', $product) }}" id="#{{$sub_category->id}}"
-                               class="item wow fadeInDown">
-                                <div class="img">
-                                    <img lazy="loading"
-                                        src="@if($product->images->count() > 0){{ asset('assets/uploads/products/' . $product->images->first()->path ) }} @endif">
-                                </div>
-                                <div class="info-pro">
-                                    <span class="name-product">{{ $product->name }}</span>
-                                    <span class="price">{{ $product->price }} @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }} @endif</span>
-                                </div>
+{{--                        @foreach($sub_category->products as $product)--}}
+{{--                            <a href="{{ route('products.show', $product) }}" id="#{{$sub_category->id}}"--}}
+{{--                               class="item wow fadeInDown">--}}
+{{--                                <div class="img">--}}
+{{--                                    <img lazy="loading"--}}
+{{--                                        src="@if($product->images->count() > 0){{ asset('assets/uploads/products/' . $product->images->first()->path ) }} @endif">--}}
+{{--                                </div>--}}
+{{--                                <div class="info-pro">--}}
+{{--                                    <span class="name-product">{{ $product->name }}</span>--}}
+{{--                                    <span class="price">{{ $product->price }} @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }} @endif</span>--}}
+{{--                                </div>--}}
 
-                            </a>
-                        @endforeach
-                    @endforeach
-                </div>
-            </div>
-        @endforeach
-    </div>
+{{--                            </a>--}}
+{{--                        @endforeach--}}
+{{--                    @endforeach--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        @endforeach--}}
+{{--    </div>--}}
     <!--End Section1-->
     <!--Start Thay Say Us-->
     <div class="thay-say-us">

@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Models\SubscriptionUser;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +15,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\FinishedSubs::class,
     ];
 
     /**
@@ -24,7 +26,18 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $subscriptions = SubscriptionUser::with('subscription', 'subscription.products')
+            ->where('end_date', '<', Carbon::today())
+            ->whereNull('stopped_at')
+            ->get();
+
+        foreach ($subscriptions as $finished) {
+            if ($finished->end_date < Carbon::today()) {
+                $schedule->command('word:day')
+                    ->daily();
+            }
+        }
+
     }
 
     /**

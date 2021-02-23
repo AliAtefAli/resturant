@@ -2,6 +2,40 @@
 @section('title', trans('dashboard.News Letter.News Letter'))
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.0/trix.min.css">
+    <style>
+        .selectAll{
+            width: 100%;
+            display: flex;
+            justify-content: end;
+        }
+        .selectAll p{
+            width: 80px;
+            height: 30px;
+            background-color: #1E9FF2;
+            border-radius: 5px ;
+            box-shadow: 1px 1px 3px #ddd;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+            color: #fff;
+            transition: .5s all ease;
+            position:relative;
+        }
+        .selectAll p:hover{
+            background-color: #f1f1f1;
+            color: #1E9FF2;
+            border: 1px solid #f1f1f1;
+            transition: .5s all ease;
+        }
+        #checkall{
+            position:absolute;
+            width: 100%;
+            height: 100%;
+            opacity:0;
+            z-index: 99;
+            right: 0;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -57,7 +91,7 @@
                                             <div class="position-relative">
                                                 <div class="row">
                                                     @foreach($news_letter as $letter)
-                                                        <div class="col col-md-3">
+                                                        <div style="margin: 5px 0 5px 0" class="col-4">
                                                             <input class="form-check-input" type="checkbox"
                                                                    name="emails[]"
                                                                    value="{{ $letter->email }}" id="{{ $letter->id }}">
@@ -65,7 +99,14 @@
                                                                 {{ $letter->email }}
                                                             </label>
                                                         </div>
+
                                                     @endforeach
+                                                        <div class="selectAll">
+                                                            <p class="m-0 btnSelect">
+                                                                تحديد الكل
+                                                                <input type="checkbox" name="all" id="checkall" />
+                                                            </p>
+                                                        </div>
                                                         @include('dashboard.partials._errors', ['input' => 'emails_id'])
                                                 </div>
                                             </div>
@@ -89,6 +130,20 @@
 @endsection
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.0/trix.min.js"></script>
+    <script>
+        $('#checkall').change(function () {
+            $('.form-check-input').prop('checked',this.checked);
+        });
+
+        $('.form-check-input').change(function () {
+            if ($('.form-check-input:checked').length == $('.form-check-input').length){
+                $('#checkall').prop('checked',true);
+            }
+            else {
+                $('#checkall').prop('checked',false);
+            }
+        });
+    </script>
     <script src="{{ asset('dashboard_files/app-assets/js/scripts/forms/select/form-selectize.min.js') }}"></script>
     @if(lang() === 'ar')
         <script>

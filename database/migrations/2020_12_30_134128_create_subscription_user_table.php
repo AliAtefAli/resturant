@@ -24,10 +24,17 @@ class CreateSubscriptionUserTable extends Migration
             $table->enum('payment_status', ['failed', 'done'])->default('done');
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();
+            $table->date('validation_start_date')->nullable();
+            $table->date('validation_end_date')->nullable();
             $table->integer('people_count')->default(1);
             $table->enum('payment_type', ['credit_card', 'on_delivery']);
             $table->text('note')->nullable();
+            $table->text('admin_notes')->nullable();
+            $table->string('coupon_amount')->nullable();
+            $table->string('coupon_type')->nullable();
+            $table->string('stopped_count')->nullable();
             $table->timestamp('stopped_at')->nullable();
+            $table->enum('status', ['delivered', 'processing', 'accepted', 'cancelled'])->default('processing');
             $table->foreignId('subscription_id')->constrained('subscriptions')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();

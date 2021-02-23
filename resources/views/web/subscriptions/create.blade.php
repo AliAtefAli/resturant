@@ -14,10 +14,12 @@
             </div>
         </div>
     </div>
+
     <div class="over-to-shep">
         <img src="{{asset('web_files/images/flower.png')}}" class="line-shep"/>
         <form class="form-pic-select" method="post" action="{{ route('subscriptions.checkPayment', $subscription) }}">
             @csrf
+
 
             <div class="container">
                 <div class="pic-select">
@@ -33,15 +35,52 @@
 
                     <div class="row my-3">
                         <p class="name-input col col-md-2">
-                            {{__('site.People count')}} :
+                            {{__('site.People count')}}
                         </p>
                         <label class="input-style">
-                            <input type="number" id="count" name="people_count" min="1" value="1">
+                            <input type="number" id="count" name="people_count" min="1" value="1" >
                         </label>
 
                         @if ($errors->has('count'))
                             <div class="alert alert-danger">{{ $errors->first('count') }}</div>
                         @endif
+                    </div>
+
+                    <div class="row my-3">
+                        <div class="pic-select pic-select-auth pic-select-auth-any row">
+                            <div class="col-md-9" style="max-width: 75%">
+                                <p class="name-input">
+                                    {{ __('site.Do you have Coupon') }}
+                                </p>
+
+                                <label class="input-style">
+                                    <input type="text" name="coupon" id="coupon"
+                                           placeholder="{{ __('dashboard.discounts.Code') }}">
+                                </label>
+                                @if ($errors->has('coupon'))
+                                     <div class="alert alert-danger">{{ $errors->first('coupon') }}</div>
+                                @endif
+                            </div>
+                            <div class="col-md-3">
+                                <a class="btn btn-sm custom-button" id="coupon-submit" style="width:200px;height: 46px;">
+                                    {{ __('site.Confirm Coupon') }}
+                                </a>
+                            </div>
+                            <div class="discount-preview" style="display: none">
+                                <div class="ml-3">
+                                    <span>{{ __('site.Discount amount') }} : </span>
+                                    <span id="discount_amount" class="text-danger"></span>
+                                </div>
+                                <div class="ml-3">
+                                    <span>{{ __('site.Total before discount') }} : </span>
+                                    <span id="before_discount" class="text-danger"></span>
+                                </div>
+                                <div class="ml-3">
+                                    <span>{{ __('site.Total after discount') }} : </span>
+                                    <span id="after_discount" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row my-3">
@@ -57,7 +96,9 @@
                         </p>
                     </div>
 
-                    <div class="row my-3">
+                    <input type="hidden" value="{{$subscription->id}}" name="subs_id" id="subs_id">
+                    <input type="hidden" value="" name="total_billing" id="total_billing">
+                    <div class="row my-3" id="all_total">
                         <p class="name-input col col-md-3">
                             {{__('site.Total')}} :
 
@@ -70,13 +111,14 @@
                         <label>
                             <input class="local-global" id="local" type="radio" name="shipping_type" value="local" checked>
                             <span></span>
-                            {{__('site.Locale')}}
+                            {{__('site.receipt_from_our_place_in_alNaeem_neighborhood')}}
                         </label>
                         <label>
                             <input class="local-global" id="global" type="radio" name="shipping_type" value="delivery">
                             <span></span>
                             {{ __('site.Delivery') }}
-                            : @if(isset($setting[ 'delivery_price'])) {{ $setting['delivery_price'] * $subscription->duration_in_day }} @endif @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
+                            : {{ $subscription->delivery_price }} @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
+{{--                            @if(isset($setting[ 'delivery_price'])) {{ $setting['delivery_price'] * $subscription->duration_in_day }} @endif @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif--}}
                         </label>
                         @if ($errors->has('type'))
                             <div class="alert alert-danger">{{ $errors->first('type') }}</div>
@@ -92,8 +134,8 @@
                         <div class="map" id="map" style="width: 100%; height: 300px;"></div>
                         <input type="hidden" id="lat" name="lat" value="{{ (auth()->user()->lat) ?? '' }}">
                         <input type="hidden" id="lng" name="lng" value="{{ (auth()->user()->lng) ?? '' }}">
-                        <p class="name-input">
-                            {{__('site.Phone')}}  {{__('site.Optional')}}
+                        <p class="name-input" style="padding-top: 20px">
+                            {{__('site.Phone')}}  {{__('site.Optional')}} ({{__('site.to_facilitate_the_delivery_process')}})
                         </p>
                         <label class="input-style">
                             <input type="text" name="billing_phone" value="{{ old('billing_phone') }}">
@@ -154,9 +196,66 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
+
+
         flatpickr("#startDate", {
-            minDate: "today",
-            defaultDate: "today"
+            minDate: new Date().fp_incr(1),
+            defaultDate: new Date().fp_incr(1),
+            // locale: {
+            //     'firstDayOfWeek': 0 // start week on Monday
+            // },
+
+            disable: [
+                function(date) {
+                    // return true to disable
+                    return (date.getDay() === 5 || date.getDay() === 6);
+                }
+            ]
+            // daysOfWeekDisabled: [0, 6]
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#coupon-submit').click(function (e) {
+                e.preventDefault();
+                var coupon = $('#coupon').val(),
+                    discountElement = $('.discount-preview'),
+                    totalBefore = document.getElementById('before_discount'),
+                    totalAfter = document.getElementById('after_discount'),
+                    discountAmount = document.getElementById('discount_amount'),
+                    totalBilling = document.getElementById('total_billing'),
+                    countVal = $('#count').val();
+                    subsId = $('#subs_id').val();
+                    countInput = $('#count');
+
+                $.ajax({
+                    url: "{{ route('subscriptions.checkCoupon') }}",
+                    type: "POST",
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        coupon: coupon,
+                        subscription: subsId,
+                        people_count: countVal
+                    },
+                    dataType: "json",
+                    success: function (response) {
+                        if (response.status === false) {
+                            toastr.error(response.msg, {timeOut: "50000",})
+                        } else {
+                            countInput.attr("disabled" ,true);
+                            totalBefore.innerText = response.data.totalBefore;
+                            totalAfter.innerText = response.data.billing_total;
+                            totalBilling.value = response.data.billing_total;
+                            discountAmount.innerText = (response.data.coupon.discount_type === 'percent') ? response.data.coupon.amount + ' %' : response.data.coupon.amount;
+                            discountElement.removeAttr('style');
+                            toastr.success(response.msg, {timeOut: "50000",});
+
+
+                        }
+
+                    }
+                });
+            });
         });
     </script>
 @endsection

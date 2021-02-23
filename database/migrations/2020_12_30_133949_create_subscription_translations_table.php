@@ -17,6 +17,7 @@ class CreateSubscriptionTranslationsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->text('products')->nullable();
             $table->string('locale')->index();
             $table->foreignId('subscription_id')->constrained('subscriptions')->onDelete('cascade');
             $table->timestamps();

@@ -16,13 +16,17 @@
                         class="menu-title"
                         data-i18n="">{{trans('dashboard.main.Users')}}</span></a>
             </li>
-            <li class=" nav-item"><a href="{{ route('dashboard.categories.index') }}"><i class="la la-book"></i><span
-                        class="menu-title"
-                        data-i18n="">{{trans('dashboard.category.Categories')}}</span></a>
+            <li class=" nav-item"><a href="{{ route('dashboard.meals.index') }}"><i class="la la-users"></i><span
+                            class="menu-title"
+                            data-i18n="">{{trans('dashboard.our_meals')}}</span></a>
             </li>
-            <li class=" nav-item"><a href="{{ route('dashboard.products.index') }}"><i class="la la-code-fork"></i><span
-                        class="menu-title"
-                        data-i18n="">{{trans('dashboard.main.products')}}</span></a>
+{{--            <li class=" nav-item"><a href="{{ route('dashboard.categories.index') }}"><i class="la la-book"></i><span--}}
+{{--                        class="menu-title"--}}
+{{--                        data-i18n="">{{trans('dashboard.category.Categories')}}</span></a>--}}
+{{--            </li>--}}
+{{--            <li class=" nav-item"><a href="{{ route('dashboard.products.index') }}"><i class="la la-code-fork"></i><span--}}
+{{--                        class="menu-title"--}}
+{{--                        data-i18n="">{{trans('dashboard.main.products')}}</span></a>--}}
 
             <li class=" nav-item"><a href="{{ route('dashboard.discounts.index') }}"><i class="la la-gift"></i><span
                         class="menu-title"
@@ -31,33 +35,33 @@
             <li class=" nav-item"><a href="{{ route('dashboard.news.letter') }}"><i class="la la-newspaper-o"></i><span
                         class="menu-title"
                         data-i18n="">{{trans('dashboard.News Letter.News Letter')}}</span></a>
-            <li class=" nav-item">
-                <a href="#">
-                    <i class="la la-tags"></i>
-                    <span class="menu-title" data-i18n="">{{trans('dashboard.main.orders')}}</span>
-                    <ul class="menu-content">
-                        <li>
-                            <a class="menu-item" href="{{ route('dashboard.ordersOfToday') }}" data-i18n="nav.page_layouts.1_column">
-                                {{ trans('dashboard.order.Today Orders') }}
-                            </a>
-                        </li>
+{{--            <li class=" nav-item">--}}
+{{--                <a href="#">--}}
+{{--                    <i class="la la-tags"></i>--}}
+{{--                    <span class="menu-title" data-i18n="">{{trans('dashboard.main.orders')}}</span>--}}
+{{--                    <ul class="menu-content">--}}
+{{--                        <li>--}}
+{{--                            <a class="menu-item" href="{{ route('dashboard.ordersOfToday') }}" data-i18n="nav.page_layouts.1_column">--}}
+{{--                                {{ trans('dashboard.order.Today Orders') }}--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
 
-                        <li>
-                            <a class="menu-item" href="{{ route('dashboard.orders.index') }}"
-                               data-i18n="nav.page_layouts.2_columns">
-                                {{ trans('dashboard.order.All orders') }}
-                            </a>
-                        </li>
-                    </ul>
+{{--                        <li>--}}
+{{--                            <a class="menu-item" href="{{ route('dashboard.orders.index') }}"--}}
+{{--                               data-i18n="nav.page_layouts.2_columns">--}}
+{{--                                {{ trans('dashboard.order.All orders') }}--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
 
-                </a>
-            </li>
+{{--                </a>--}}
+{{--            </li>--}}
 
             <li class=" nav-item">
                 <a href="#">
                     <i class="la la-ticket"></i>
                     <span class="menu-title" data-i18n="">{{trans('dashboard.subscriptions.Subscriptions')}}</span>
-                    <span class="badge badge badge-danger badge-pill float-right mr-2">{{$newSubscriptions->count()}}</span>
+
                     <ul class="menu-content">
                         <li>
                             <a class="menu-item" href="{{ route('dashboard.subscriptions.index') }}" data-i18n="nav.page_layouts.1_column">
@@ -66,29 +70,33 @@
                         </li>
 
                         <li>
-                            <a class="menu-item" href="{{ route('dashboard.subscriptions.todaySubscriptions') }}" data-i18n="nav.page_layouts.1_column">
-                                {{ trans('dashboard.subscriptions.active_subscriptions') }}
+                            <a class="menu-item" href="{{ route('dashboard.subscriptions.tomorrowSubscription') }}" data-i18n="nav.page_layouts.1_column">
+                                {{ trans('dashboard.subscriptions.tomorrow_subscriptions') }}
+{{--                                <span class="badge badge badge-danger badge-pill float-right ">{{$active_subscriptions->count()}}</span>--}}
                             </a>
                         </li>
 
-                        <li>
-                            <a class="menu-item" href="{{ route('dashboard.subscriptions.stoppedSubscriptions') }}" data-i18n="nav.page_layouts.1_column">
-                                {{ trans('dashboard.subscriptions.stopped_subscriptions') }}
-                            </a>
-                        </li>
+{{--                        <li>--}}
+{{--                            <a class="menu-item" href="{{ route('dashboard.subscriptions.stoppedSubscriptions') }}" data-i18n="nav.page_layouts.1_column">--}}
+{{--                                {{ trans('dashboard.subscriptions.stopped_subscriptions') }}--}}
+{{--                                <span class="badge badge badge-danger badge-pill float-right">{{$stopped_subscriptions->count()}}</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
 
-                        <li>
-                            <a class="menu-item" href="{{ route('dashboard.subscriptions.allSubscriptions') }}"
-                               data-i18n="nav.page_layouts.2_columns">
-                                {{ trans('dashboard.subscriptions.All Subscriptions') }}
-                            </a>
-                        </li>
+{{--                        <li>--}}
+{{--                            <a class="menu-item" href="{{ route('dashboard.subscriptions.allSubscriptions') }}"--}}
+{{--                               data-i18n="nav.page_layouts.2_columns">--}}
+{{--                                {{ trans('dashboard.subscriptions.All Subscriptions') }}--}}
+{{--                                <span class="badge badge badge-danger badge-pill float-right">{{$all_subscriptions->count()}}</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
 
-                        <li>
-                            <a class="menu-item" href="{{ route('dashboard.subscriptions.finishedSubscriptions') }}" data-i18n="nav.page_layouts.1_column">
-                                {{ trans('dashboard.subscriptions.Finished Subscriptions') }}
-                            </a>
-                        </li>
+{{--                        <li>--}}
+{{--                            <a class="menu-item" href="{{ route('dashboard.subscriptions.finishedSubscriptions') }}" data-i18n="nav.page_layouts.1_column">--}}
+{{--                                {{ trans('dashboard.subscriptions.Finished Subscriptions') }}--}}
+{{--                                <span class="badge badge badge-danger badge-pill float-right ">{{$finished_subscriptions->count()}}</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
 
                     </ul>
 

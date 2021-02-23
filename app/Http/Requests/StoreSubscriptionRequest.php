@@ -16,7 +16,11 @@ class StoreSubscriptionRequest extends FormRequest
             'duration_in_day' => 'required',
             'price' => 'required',
             'image' => 'required',
-            'products' => 'required:array'
+            'delivery_price' => 'required',
+            'ar.products' => 'required',
+            'en.products' => 'required',
+            'count' => 'required',
+//            'products' => 'required:array'
         ];
     }
 
@@ -30,7 +34,11 @@ class StoreSubscriptionRequest extends FormRequest
             'duration_in_day.required' => (trans('validation.field_required_duration_in_day')),
             'price.required' => (trans('validation.field_required_price')),
             'image.required' => (trans('validation.field_required_image')),
-            'products.required' => (trans('validation.field_required_product')),
+            'delivery_price.required' => (trans('validation.field_delivery_price')),
+            'ar.products.required' => (trans('validation.field_required_ar_product')),
+            'en.products.required' => (trans('validation.field_required_en_product')),
+            'count.required' => (trans('validation.field_required')),
+//            'products.required' => (trans('validation.field_required_product')),
         ];
     }
 

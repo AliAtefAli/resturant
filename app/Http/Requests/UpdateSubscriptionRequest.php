@@ -15,7 +15,10 @@ class UpdateSubscriptionRequest extends FormRequest
             "en.description" => "required" ,
             'duration_in_day' => 'required',
             'price' => 'required',
-            'products' => 'array'
+            'ar.products' => 'required',
+            'en.products' => 'required',
+            'count' => 'required',
+//            'products' => 'array'
         ];
     }
 
@@ -28,6 +31,9 @@ class UpdateSubscriptionRequest extends FormRequest
             'en.description.required' => (trans('validation.field_required_en_description')),
             'duration_in_day.required' => (trans('validation.field_required_duration_in_day')),
             'price.required' => (trans('validation.field_required_price')),
+            'ar.products.required' => (trans('validation.field_required_ar_product')),
+            'en.products.required' => (trans('validation.field_required_en_product')),
+            'count.required' => (trans('validation.field_required')),
         ];
     }
 

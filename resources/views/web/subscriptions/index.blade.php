@@ -35,13 +35,10 @@
         <img src="{{asset('web_files/images/flower.png')}}" class="line-shep"/>
         <div class="container">
             <div class="meails">
-                @foreach($subscription->products as $product)
-                    <div class="meal">
-                        <span></span>
-                        {{$product->name}}
-                    </div>
-                @endforeach
-
+                <div class="meal">
+                    <span></span>
+                    {!! $subscription->translate(lang())->products !!}
+                </div>
             </div>
             <p id="price" class="price">
                 {{ __('site.Price') }}
@@ -58,7 +55,7 @@
             </p>
             <p class="sheping">
                 {{ __('site.Delivery') }}
-                : @if(isset($setting[ 'delivery_price'])) {{ $setting['delivery_price'] * $subscription->duration_in_day }} @endif @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
+                : {{$subscription->delivery_price}} @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
             </p>
             <p class="text-product">
                 {!! $subscription->description !!}
@@ -66,7 +63,7 @@
             <div class="number-of-product-section">
 
 
-                <a href="{{ route('subscriptions.create', $subscription) }}" class="custom-button" type="submit">
+                <a href="{{ route('subscriptions.create', $subscription) }}" style="padding-top: 24px" class="custom-button" type="submit">
                     {{__('site.Submit Now')}}
                 </a>
             </div>

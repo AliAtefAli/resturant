@@ -22,15 +22,20 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('categories.index')}}">
-                    {{ __('site.Categories') }}
+                <a href="{{route('who_are_we')}}">
+                    {{__('site.Subscriptions')}}
                 </a>
             </li>
-            <li>
-                <a href="{{route('products.index')}}">
-                    {{ __('site.Products') }}
-                </a>
-            </li>
+{{--            <li>--}}
+{{--                <a href="{{route('categories.index')}}">--}}
+{{--                    {{ __('site.Categories') }}--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--            <li>--}}
+{{--                <a href="{{route('products.index')}}">--}}
+{{--                    {{ __('site.Products') }}--}}
+{{--                </a>--}}
+{{--            </li>--}}
             <li>
                 <a href="{{route('who_are_we')}}">
                     {{ __('site.Who are we') }}
@@ -59,14 +64,14 @@
             <i class="fas fa-utensils"></i>
         </a>
 
-        <a href="{{ route('carts') }}">
-            <i class="fas fa-shopping-cart"></i>
-            <span id="cart-count-mobile" class="badgeIcon">{{ Cart::instance('cart')->count() }}</span>
-        </a>
-        <a href="{{ route('users.fav') }}">
-            <i class="fas fa-heart"></i>
-            <span class="badgeIcon">{{auth()->user() ? auth()->user()->favorites->count() : '' }}</span>
-        </a>
+{{--        <a href="{{ route('carts') }}">--}}
+{{--            <i class="fas fa-shopping-cart"></i>--}}
+{{--            <span id="cart-count-mobile" class="badgeIcon">{{ Cart::instance('cart')->count() }}</span>--}}
+{{--        </a>--}}
+{{--        <a href="{{ route('users.fav') }}">--}}
+{{--            <i class="fas fa-heart"></i>--}}
+{{--            <span class="badgeIcon">{{auth()->user() ? auth()->user()->favorites->count() : '' }}</span>--}}
+{{--        </a>--}}
 
             <a href="{{ route('user.notification')  }}" title="{{__('site.Notification')}}">
                 <i class="fas fa-bell"></i>
@@ -144,15 +149,20 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('categories.index')}}">
-                                {{ __('site.Categories') }}
+                            <a href="{{route('who_are_we')}}">
+                                {{__('site.Subscriptions')}}
                             </a>
                         </li>
-                        <li>
-                            <a href="{{route('products.index')}}">
-                                {{ __('site.Products') }}
-                            </a>
-                        </li>
+{{--                        <li>--}}
+{{--                            <a href="{{route('categories.index')}}">--}}
+{{--                                {{ __('site.Categories') }}--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <a href="{{route('products.index')}}">--}}
+{{--                                {{ __('site.Products') }}--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                         <li>
                             <a href="{{route('who_are_we')}}">
                                 {{__('site.Who are we')}}
@@ -173,14 +183,14 @@
                             <a href="{{route('users')}}" title="{{ __('site.Profile') }}">
                                 <i class="fas fa-user"></i>
                             </a>
-                            <a href="{{route('carts')}}" title="{{ __('site.Cart') }}">
-                                <i class="fas fa-shopping-cart"></i>
-                                <span id="cart-count-web" class="badgeIcon">{{ Cart::instance('cart')->count() }}</span>
-                            </a>
-                            <a href="{{route('users.fav')}}" title="{{ __('site.Favorites') }}">
-                                <i class="fas fa-heart"></i>
-                                <span class="badgeIcon">{{auth()->user() ? auth()->user()->favorites->count() : '' }}</span>
-                            </a>
+{{--                            <a href="{{route('carts')}}" title="{{ __('site.Cart') }}">--}}
+{{--                                <i class="fas fa-shopping-cart"></i>--}}
+{{--                                <span id="cart-count-web" class="badgeIcon">{{ Cart::instance('cart')->count() }}</span>--}}
+{{--                            </a>--}}
+{{--                            <a href="{{route('users.fav')}}" title="{{ __('site.Favorites') }}">--}}
+{{--                                <i class="fas fa-heart"></i>--}}
+{{--                                <span class="badgeIcon">{{auth()->user() ? auth()->user()->favorites->count() : '' }}</span>--}}
+{{--                            </a>--}}
                             <a href="{{ route('user.notification')  }}" title="{{__('site.Notification')}}">
                                 <i class="fas fa-bell"></i>
                                 <span class="badgeIcon">{{ (auth()->user()) ? (auth()->user()->unreadNotifications()->where('type', '!=', 'App\Notifications\NewOrderNotification')->count()) : 0 }}</span>

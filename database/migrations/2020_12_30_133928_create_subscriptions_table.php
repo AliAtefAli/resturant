@@ -17,7 +17,9 @@ class CreateSubscriptionsTable extends Migration
             $table->id();
             $table->integer('duration_in_day');
             $table->float('price', 10, 2);
+            $table->string('delivery_price');
             $table->string('image');
+            $table->string('count')->nullable();
             $table->timestamps();
         });
     }

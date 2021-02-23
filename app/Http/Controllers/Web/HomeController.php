@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\NewsLetter;
+use App\Models\OurMeals;
 use App\Models\Product;
 use App\Models\Rate;
 use App\Models\Slider;
@@ -26,10 +27,8 @@ class HomeController extends Controller
         $rates = Rate::with('user')->where('status' , 'on')->limit(10)->get();
         $products = Product::with('images', 'translations')
             ->where('quantity', '>', 0)->limit(10)->get();
-        $featured_products = Product::with('images')
-            ->where('quantity', '>', 0)
-            ->whereFeatured(1)->limit(10)->get();
-        return view('web.home', compact('sliders', 'subscriptions', 'categories', 'rates', 'featured_products', 'products'));
+        $our_meals = OurMeals::limit(10)->latest()->get();
+        return view('web.home', compact('sliders', 'subscriptions', 'categories', 'rates', 'our_meals', 'products'));
     }
 
     public function change_language()

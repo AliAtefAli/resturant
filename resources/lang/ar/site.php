@@ -14,6 +14,8 @@ return [
     'Show' => 'عرض',
     'Loading' => 'جاري التحميل',
     'Print' => 'طبع',
+    'receipt_from_our_place_in_alNaeem_neighborhood' => 'استلام من موقعنا في حي النعيم',
+    'to_facilitate_the_delivery_process' => 'لتسهيل عمليه التوصيل',
 
     'Days' => 'أيام',
     'Day' => 'يوم',
@@ -140,7 +142,7 @@ return [
     'On delivery' => 'عند الاستلام',
     'credit_card' => 'بطاقة الائتمان',
     'on_delivery' => 'عند الاستلام',
-    'Note' => 'ملاحاظات',
+    'Note' => 'ملاحظات',
     'Order' => [
         'Today Orders' => 'طلبات اليوم',
         'Order ID' => 'رقم الطلب',

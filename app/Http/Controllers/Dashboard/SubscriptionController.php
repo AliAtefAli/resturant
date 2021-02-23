@@ -6,10 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSubscriptionRequest;
 use App\Http\Requests\UpdateSubscriptionRequest;
 use App\Models\Product;
+use App\Models\Setting;
 use App\Models\Subscription;
 use App\Models\SubscriptionUser;
+use App\Notifications\AcceptOrder;
+use App\Notifications\DeliveredOrder;
+use App\Notifications\RejectOrder;
 use App\Traits\Uploadable;
 use Carbon\Carbon;
+use DateTime;
 
 class SubscriptionController extends Controller
 {
@@ -18,6 +23,13 @@ class SubscriptionController extends Controller
     public function index()
     {
         $subscriptions = Subscription::latest()->paginate(25);
+
+
+//        $date = "2021-02-12";
+//        $day = Carbon::parse($date)->format('l');
+//        dd($day);
+
+
         return view('dashboard.subscriptions.index', compact('subscriptions'));
     }
 
@@ -90,20 +102,20 @@ class SubscriptionController extends Controller
 
     public function users(Subscription $subscription)
     {
+
         $users = $subscription->users;
 
         return view('dashboard.subscriptions.users', compact('users', 'subscription'));
     }
 
-    public function todaySubscription()
+    public function tomorrowSubscription()
     {
         $subscriptions = SubscriptionUser::with('subscription', 'subscription.products')
-            ->where('start_date', '<=', Carbon::today())
-            ->where('end_date', '>=',  Carbon::today())
+            ->where('start_date',  Carbon::tomorrow())
             ->whereNull('stopped_at')
             ->get();
 
-        return view('dashboard.subscriptions.today', compact('subscriptions'));
+        return view('dashboard.subscriptions.tomorrow', compact('subscriptions'));
     }
 
     public function stoppedSubscription()
@@ -132,4 +144,41 @@ class SubscriptionController extends Controller
 
         return view('dashboard.subscriptions.all', compact('subscriptions'));
     }
+
+
+    public function accepted(SubscriptionUser $subscription)
+    {
+        $subscription->update(['status' => 'accepted']);
+        $user = $subscription->user;
+        $from = Setting::where('key', 'email')->get('value')->first()->value;
+        $message = 'Order Is Successfully Accepted And We are preparing it';
+
+        $user->notify(new AcceptOrder($message, $from));
+        return back()->with('success', trans('dashboard.It was done successfully!'));
+
+    }
+
+    public function delivered(SubscriptionUser $subscription)
+    {
+        $subscription->update(['status' => 'delivered']);
+        $user = $subscription->user;
+        $from = Setting::where('key', 'email')->get('value')->first()->value;
+        $message = 'Order Is Successfully Processed And Your Order Is On The Way';
+
+        $user->notify(new DeliveredOrder($message, $from));
+        return back()->with('success', trans('dashboard.It was done successfully!'));
+
+    }
+    public function rejected(SubscriptionUser $subscription)
+    {
+        $subscription->update(['status' => 'cancelled']);
+        $user = $subscription->user;
+        $from = Setting::where('key', 'email')->get('value')->first()->value;
+        $message = 'Sorry Order Is unSuccessfully Processed';
+
+        $user->notify(new RejectOrder($message, $from));
+        return back()->with('success', trans('dashboard.It was done successfully!'));
+
+    }
+
 }

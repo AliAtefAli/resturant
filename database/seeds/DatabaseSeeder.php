@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'aait@info.com',
             'phone' => '555999666',
             'type' => 'admin',
+            'status' => 'active',
             'address' => 'new address',
             'password' => bcrypt('123456789'),
         ]);

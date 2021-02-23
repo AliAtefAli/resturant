@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCheckoutRequest;
 use App\Models\Discount;
 use App\Models\Order;
+use App\Models\OurMeals;
 use App\Models\Product;
 use App\Models\Setting;
 use App\Models\Transaction;
@@ -19,11 +20,9 @@ class OrderController extends Controller
     {
         $orders = auth()->user()->orders->load('products', 'products.translations');
 
-        $featured_products = Product::with('images')
-            ->where('quantity', '>', 0)
-            ->whereFeatured(1)->get();
+        $our_meals = OurMeals::limit(10)->latest()->get();
 
-        return view('web.orders.index', compact('orders', 'featured_products'));
+        return view('web.orders.index', compact('orders', 'our_meals'));
     }
 
     public function checkPayment(StoreCheckoutRequest $request)

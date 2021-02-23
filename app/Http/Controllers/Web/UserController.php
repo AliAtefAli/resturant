@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\Favorite;
+use App\Models\OurMeals;
 use App\Models\Product;
 use App\Models\Subscription;
 use App\Models\SubscriptionUser;
@@ -20,11 +21,9 @@ class UserController extends Controller
 
     public function index()
     {
-        $featured_products = Product::with('images')
-            ->where('quantity', '>', 0)
-            ->whereFeatured(1)->get();
+        $our_meals = OurMeals::limit(10)->latest()->get();
 
-        return view('web.users.index', compact('featured_products'));
+        return view('web.users.index', compact('our_meals'));
     }
 
     public function update(Request $request, User $user)
@@ -90,15 +89,13 @@ class UserController extends Controller
             ->where('end_date', '<', Carbon::today())
             ->where('user_id', auth()->user()->id)
             ->get();
-        $featured_products = Product::with('images')
-            ->where('quantity', '>', 0)
-            ->whereFeatured(1)->get();
+        $our_meals = OurMeals::limit(10)->latest()->get();
 
 //        $s = SubscriptionUser::where('start_date', '<=', Carbon::today())
 //            ->where('user_id', auth()->user()->id)
 //            ->get();
         // dd($subscribed_packages, $finished_subscribed_packages);
-        return view('web.users.subscriptions', compact('subscribed_packages', 'finished_subscribed_packages', 'featured_products'));
+        return view('web.users.subscriptions', compact('subscribed_packages', 'finished_subscribed_packages', 'our_meals'));
     }
 
     public function notifications()

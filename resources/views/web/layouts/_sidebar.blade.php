@@ -30,11 +30,11 @@
                     {{ __('site.Menu of the week') }}
                 </a>
             </li>
-            <li class="{{ activeSidebar('web/orders') }}">
-                <a href="{{route('orders')}}">
-                    <i class="fas fa-box"></i>
-                    {{ __('site.Orders') }}
-                </a>
-            </li>
+{{--            <li class="{{ activeSidebar('web/orders') }}">--}}
+{{--                <a href="{{route('orders')}}">--}}
+{{--                    <i class="fas fa-box"></i>--}}
+{{--                    {{ __('site.Orders') }}--}}
+{{--                </a>--}}
+{{--            </li>--}}
         </ul>
     </div>

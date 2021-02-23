@@ -7,6 +7,7 @@ use App\Http\Requests\SaveRateRequest;
 use App\Http\Requests\SendComplaintRequest;
 use App\Models\Complaint;
 use App\Models\Message;
+use App\Models\OurMeals;
 use App\Models\Product;
 use App\Models\Question;
 use App\Models\Rate;
@@ -27,11 +28,9 @@ class SettingController extends Controller
 
     public function complaint()
     {
-        $featured_products = Product::whereFeatured(1)
-            ->where('quantity', '>', 0)
-            ->get();
+        $our_meals = OurMeals::limit(10)->latest()->get();
 
-        return view('web.settings.complaints',compact('featured_products'));
+        return view('web.settings.complaints',compact('our_meals'));
     }
 
     public function sendComplaint(SendComplaintRequest $request)

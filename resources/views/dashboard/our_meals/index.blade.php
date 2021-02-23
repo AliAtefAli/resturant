@@ -1,18 +1,19 @@
 @extends('dashboard.layouts.app')
-@section('title', trans('dashboard.main.messages'))
+@section('title', trans('dashboard.our_meals'))
 @section('content')
+    <!--content wrapper -->
     <div class="content-wrapper">
-        <!--content wrapper -->
+        <!--content header -->
         <div class="content-header row">
             <div class="content-header-left col-md-6 col-12 mb-2">
-                <h1 class="content-header-title">{{trans('dashboard.main.messages')}}</h1>
+                <h1 class="content-header-title">{{trans('dashboard.our_meals')}}</h1>
                 <div class="row breadcrumbs-top">
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a
-                                    href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
+                                        href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
                             </li>
-                            <li class="breadcrumb-item active">{{trans('dashboard.main.messages')}}
+                            <li class="breadcrumb-item active">{{trans('dashboard.our_meals')}}
                             </li>
                         </ol>
                     </div>
@@ -20,10 +21,7 @@
             </div>
         </div>
 
-        <!-- end of content header -->
-
         @include('dashboard.partials._alert')
-        <!--content body -->
         <div class="content-body">
             <!-- Description -->
             <section id="description" class="card">
@@ -36,12 +34,17 @@
                                     <div class="card">
                                         <div class="card-header">
                                             <a class="heading-elements-toggle"><i
-                                                    class="la la-ellipsis-v font-medium-3"></i></a>
+                                                        class="la la-ellipsis-v font-medium-3"></i></a>
                                             <div class="heading-elements">
                                                 <ul class="list-inline mb-0">
+                                                    <li><a href="{{ route('dashboard.meals.create') }}"
+                                                           class="btn btn-success btn-sm mr-1"><i
+                                                                    class="ft-plus-circle"></i> {{trans('dashboard.main.Create')}}
+                                                        </a>
+                                                    </li>
                                                     <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
                                                     <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-
                                                 </ul>
 
                                             </div>
@@ -52,41 +55,72 @@
                                                     <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>{{trans('dashboard.messages.owner')}}</th>
-                                                        <th>{{trans('dashboard.messages.content')}}</th>
-                                                        <th>{{trans('dashboard.messages.The Answer')}}</th>
-                                                        <th>{{trans('dashboard.main.Actions')}}</th>
+                                                        <th>{{trans('dashboard.meals.name')}}</th>
+                                                        <th>{{ trans('dashboard.main.Actions') }}</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @foreach($messages as $index => $message)
+                                                    @foreach($our_meals as $meals)
                                                         <tr>
-                                                            <td>{{ $index + 1 }}</td>
-                                                            <td>{{ ($message->user->name) ?? '' }}</td>
+                                                            <td>{{$loop->iteration}}</td>
                                                             <td>
-                                                                <span style="font-size:12px;font-family:monospace;width:200px;word-break:break-all;word-wrap:break-word;">{{ $message->message }}</span>
+                                                                {{ $meals->name }}
                                                             </td>
                                                             <td>
-                                                                <span style="font-size:12px;font-family:monospace;width:200px;word-break:break-all;word-wrap:break-word;">{{ ($message->answer) ?? '' }}</span>
-                                                            </td>
-                                                            <td>
-                                                                <div class="dropdown">
-                                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                        {{ __('dashboard.main.Actions') }}
-                                                                    </button>
-                                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                        <a href="#" class="btn btn-success btn-sm dropdown-item" style="padding: 10px 0px;" data-toggle="modal" data-target="#replySMS-{{$message->id}}">{{ trans('dashboard.complaints.SMS Reply') }}</a>
-                                                                        <a href="#" class="btn btn-primary btn-sm dropdown-item message-item" style="padding: 10px 0px;" data-toggle="modal" data-target="#reply-email-{{$message->id}}">{{ trans('dashboard.complaints.email Reply') }}</a>
-                                                                        <a href="#" class="btn btn-secondary btn-sm dropdown-item message-item" style="padding: 10px 0px;" data-toggle="modal" data-target="#reply-notification-{{$message->id}}">{{ trans('dashboard.complaints.Notification Reply') }}</a>
-                                                                        <a href="{{ route('dashboard.message.show', $message) }}" class="btn btn-danger btn-sm dropdown-item" style="padding: 10px 0px;" title=""><i class="ft ft-eye"></i> {{ trans('dashboard.messages.show') }}
-                                                                        </a>
+
+                                                                <a href="{{ route('dashboard.meals.edit', $meals) }}"
+                                                                   class="btn btn-info btn-sm"
+                                                                   title="{{ trans('dashboard.meals.edit') }}">
+                                                                    <i class="ft-edit"></i>
+                                                                </a>
+                                                                <a href="{{ route('dashboard.meals.show', $meals) }}"
+                                                                   class="btn btn-warning btn-sm"
+                                                                   title="{{ trans('dashboard.meals.show') }}">
+                                                                    <i class="ft-eye"></i>
+                                                                </a>
+                                                                <a href="#" data-toggle="modal"
+                                                                   data-target="#delete-question-{{$meals->id}}"
+                                                                   class="btn btn-danger btn-sm" title="">
+                                                                    <i class="ft-trash-2"></i>
+                                                                </a>
+                                                                <div class="modal fade  custom-imodal"
+                                                                     id="delete-question-{{$meals->id}}"
+                                                                     tabindex="-1" role="dialog"
+                                                                     aria-labelledby="exampleModalLabel"
+                                                                     aria-hidden="true">
+                                                                    <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title"
+                                                                                    id="exampleModalLabel">{{ trans('dashboard.meals.delete') }}</h5>
+                                                                                <button type="button" class="close"
+                                                                                        data-dismiss="modal"
+                                                                                        aria-label="Close">
+                                                                                    <span
+                                                                                            aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body custom-addpro">
+                                                                                <div class="contact-page">
+                                                                                    <form action="{{ route('dashboard.meals.destroy', $meals) }}"
+                                                                                          method="post">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+                                                                                        <h2>  {{ trans('dashboard.meals.do_you_want_to_delete_this_meal') }} </h2>
+
+                                                                                        <div class="form-actions right">
+                                                                                            <button type="submit" class="btn btn-danger">
+                                                                                                {{trans('dashboard.meals.delete')}}
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
-                                                        @include('dashboard.messages.modal_reply_email')
-                                                        @include('dashboard.messages.modal_reply_notification')
-                                                        @include('dashboard.messages.modal_reply_SMS')
                                                     @endforeach
                                                     </tbody>
                                                 </table>
@@ -96,15 +130,11 @@
                                 </div>
                             </div>
                         </section>
-                        <!--/ HTML5 export buttons table -->
                     </div>
                 </div>
             </section>
-            <!--/ Description -->
         </div>
-        <!--end of content body -->
     </div>
-    <!--end of content wrapper -->
 
 @endsection
 @section('scripts')
@@ -159,11 +189,6 @@
                 });
             });
 
-        </script>
-        <script>
-            $('.modal').on('shown.bs.modal', function () {
-                $('.answer').focus();
-            })
         </script>
     @else
         <script>
@@ -317,11 +342,6 @@
                     }
                 },
             });
-        </script>
-        <script>
-            $('.modal').on('shown.bs.modal', function () {
-                $('.answer').focus();
-            })
         </script>
     @endif
 @endsection

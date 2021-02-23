@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-@section('title', trans('dashboard.subscriptions.Today Subscriptions'))
+@section('title', trans('dashboard.subscriptions.stopped_subscriptions'))
 @section('styles')
     @if(app()->getLocale() == 'ar')
         <style>

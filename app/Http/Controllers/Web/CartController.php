@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\OurMeals;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -12,12 +13,9 @@ class CartController extends Controller
     public function index()
     {
 
-        $featured_products = Product::with('images')
-            ->whereFeatured(1)
-            ->where('quantity', '>', 0)
-            ->get();
+        $our_meals = OurMeals::limit(10)->latest()->get();
 
-        return view('web.carts.index', compact('featured_products'));
+        return view('web.carts.index', compact('our_meals'));
     }
 
     public function redirect()
