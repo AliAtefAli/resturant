@@ -132,45 +132,89 @@ class SubscriptionController extends Controller
         if ($request->ajax()) {
             $coupon = Discount::where('code', $request->coupon)->first();
             $subscription = Subscription::find($request->subscription);
-            $total = ($subscription->price * $request->people_count) + $subscription->delivery_price;
-            if (!$coupon) {
-                return response()->json([
-                        'status' => false,
-                        'msg' => trans('site.Order.Coupon not found')
-                    ]
-                );
-            }
-            $request['coupon'] = $coupon;
-            if ($coupon->status == 'available') {
-                if ($coupon->end_date < today() || $coupon->start_date > today()) {
+//            $total = ($subscription->price * $request->people_count) + $subscription->delivery_price;
+            if ($request->shipping_type == 'delivery'){
+                $total = ($subscription->price * $request->people_count) + $subscription->delivery_price;
+                if (!$coupon) {
                     return response()->json([
                             'status' => false,
-                            'msg' => trans('site.Discount period expired'),
+                            'msg' => trans('site.Order.Coupon not found')
                         ]
                     );
                 }
-                if ($coupon->start_date > today()) {
-                    return response()->json([
-                            'status' => false,
-                            'msg' => trans('site.Discount period expired'),
-                        ]
-                    );
-                }
-                if ($coupon->discount_type == 'fixed') {
+                $request['coupon'] = $coupon;
+                if ($coupon->status == 'available') {
+                    if ($coupon->end_date < today() || $coupon->start_date > today()) {
+                        return response()->json([
+                                'status' => false,
+                                'msg' => trans('site.Discount period expired'),
+                            ]
+                        );
+                    }
+                    if ($coupon->start_date > today()) {
+                        return response()->json([
+                                'status' => false,
+                                'msg' => trans('site.Discount period expired'),
+                            ]
+                        );
+                    }
+                    if ($coupon->discount_type == 'fixed') {
 
-                    $request['totalBefore'] = $total;
-                    $request['billing_total'] = $total - $coupon->amount;
+                        $request['totalBefore'] = $total;
+                        $request['billing_total'] = $total - $coupon->amount;
+                    } else {
+                        $request['totalBefore'] = $total;
+                        $request['billing_total'] = $total - $total * ($coupon->amount / 100);
+                    }
                 } else {
-                    $request['totalBefore'] = $total;
-                    $request['billing_total'] = $total - $total * ($coupon->amount / 100);
+                    return response()->json([
+                            'status' => false,
+                            'msg' => trans('site.Order.Coupon not Available')
+                        ]
+                    );
                 }
-            } else {
-                return response()->json([
-                        'status' => false,
-                        'msg' => trans('site.Order.Coupon not Available')
-                    ]
-                );
+            }else{
+                $total = ($subscription->price * $request->people_count);
+                if (!$coupon) {
+                    return response()->json([
+                            'status' => false,
+                            'msg' => trans('site.Order.Coupon not found')
+                        ]
+                    );
+                }
+                $request['coupon'] = $coupon;
+                if ($coupon->status == 'available') {
+                    if ($coupon->end_date < today() || $coupon->start_date > today()) {
+                        return response()->json([
+                                'status' => false,
+                                'msg' => trans('site.Discount period expired'),
+                            ]
+                        );
+                    }
+                    if ($coupon->start_date > today()) {
+                        return response()->json([
+                                'status' => false,
+                                'msg' => trans('site.Discount period expired'),
+                            ]
+                        );
+                    }
+                    if ($coupon->discount_type == 'fixed') {
+
+                        $request['totalBefore'] = $total;
+                        $request['billing_total'] = $total - $coupon->amount;
+                    } else {
+                        $request['totalBefore'] = $total;
+                        $request['billing_total'] = $total - $total * ($coupon->amount / 100);
+                    }
+                } else {
+                    return response()->json([
+                            'status' => false,
+                            'msg' => trans('site.Order.Coupon not Available')
+                        ]
+                    );
+                }
             }
+
         } else {
             return response()->json([
                     'status' => false,
@@ -184,6 +228,7 @@ class SubscriptionController extends Controller
                 'data' => $request->all()
             ]
         );
+
     }
 
     public function offSubscription($id)

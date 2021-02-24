@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-@section('title', trans('dashboard.subscriptions.All Subscriptions'))
+@section('title', trans('dashboard.subscriptions.Finished Subscriptions'))
 @section('styles')
     @if(app()->getLocale() == 'ar')
         <style>
@@ -48,17 +48,19 @@
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a
-                                    href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
+                                        href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
                             </li>
                             <li class="breadcrumb-item"><a
-                                    href="{{ route('dashboard.subscriptions.index') }}">{{trans('dashboard.subscriptions.Subscriptions')}}
+                                        href="{{ route('dashboard.subscriptions.index') }}">{{trans('dashboard.subscriptions.Subscriptions')}}
                                 </a></li>
-                            <li class="breadcrumb-item active">{{trans('dashboard.subscriptions.All Subscriptions')}}</li>
+                            <li class="breadcrumb-item active">{{trans('dashboard.subscriptions.Finished Subscriptions')}}</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div>
+
+
 
         <div class="content-body">
             <!-- Description -->
@@ -72,34 +74,49 @@
                                     <div class="card">
                                         <div class="card-header">
                                             <a class="heading-elements-toggle"><i
-                                                    class="la la-ellipsis-v font-medium-3"></i></a>
+                                                        class="la la-ellipsis-v font-medium-3"></i></a>
                                             <div class="heading-elements">
                                                 <ul class="list-inline mb-0">
                                                     <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                                                     <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
                                                     <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-
                                                 </ul>
-
                                             </div>
                                         </div>
+                                        {{--                                        <form action="" method="get">--}}
+                                        {{--                                            <div class="row index-widget" style="direction: {{lang() == 'ar' ? 'rtl' : 'ltr'}};">--}}
+                                        {{--                                                <div class="col-md-3">--}}
+                                        {{--                                                    <div class="form-group">--}}
+                                        {{--                                                        <select class="form-control select" name="status">--}}
+                                        {{--                                                            <option value="all" selected>{{__('all_status')}}</option>--}}
+                                        {{--                                                            <option value="active" >{{__('active')}}</option>--}}
+                                        {{--                                                            <option value="suspended" >{{__('suspended')}}</option>--}}
+                                        {{--                                                        </select>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                            <div class="row index-widget mt-2">--}}
+                                        {{--                                                <div class="form-group" style="direction: {{lang() == 'ar' ? 'rtl' : 'ltr'}}">--}}
+                                        {{--                                                    <a><button type="submit" class="btn btn-info">{{__('filter')}}</button></a>--}}
+                                        {{--                                                    <a href="?" class="btn btn-danger">{{__('clear')}}</a>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                        </form>--}}
                                         <div class="card-content collapse show">
                                             <div class="card-body card-dashboard">
                                                 <table class="table table-striped table-bordered text-cente"
                                                        style="font-size: xx-small;">
                                                     <thead>
                                                     <tr>
-                                                        <th>{{trans('dashboard.user.Name')}}</th>
-                                                        <th>{{trans('dashboard.subscriptions.Start Date')}}</th>
-                                                        <th>{{trans('dashboard.subscriptions.End Date')}}</th>
-                                                        <th>{{trans('dashboard.subscriptions.Shipping type')}}</th>
-                                                        <th>{{trans('dashboard.subscriptions.Total Price')}}</th>
+                                                        <th style="width: 50px;!important;">{{trans('dashboard.user.Name')}}</th>
+                                                        <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.Start Date')}}</th>
+                                                        <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.End Date')}}</th>
+                                                        <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.Shipping type')}}</th>
+                                                        <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.Total Price')}}</th>
                                                         <th style="width: 80px;!important;">{{trans('dashboard.subscriptions.Address')}}</th>
-                                                        <th>{{trans('dashboard.subscriptions.phone')}}</th>
-                                                        <th>{{trans('dashboard.subscriptions.People count')}}</th>
-                                                        <th>{{trans('dashboard.subscriptions.payment method')}}</th>
-                                                        <th>{{trans('dashboard.main.status')}}</th>
-                                                        <th style="width: 80px;!important;">{{trans('dashboard.subscriptions.Note')}}</th>
+                                                        <th style="width: 50px;!important;">{{trans('dashboard.additional_phone')}}</th>
+                                                        <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.People count')}}</th>
+                                                        <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.show')}}</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -113,15 +130,11 @@
                                                             <td style="width: 80px;!important;">{{ $subscription->billing_address }}</td>
                                                             <td>{{ $subscription->billing_phone }}</td>
                                                             <td>{{ $subscription->people_count }}</td>
-                                                            <td>{{ trans("dashboard.subscriptions." . $subscription->payment_type) }}</td>
-                                                            @if($subscription->stopped_at != null )
-                                                                <td><span class="text-warning">{{ trans('dashboard.subscriptions.stopped') }}</span></td>
-                                                            @elseif($subscription->stopped_at == null && $subscription->end_date > Carbon\Carbon::today())
-                                                                <td><span class="text-success">{{ trans('dashboard.subscriptions.active') }}</span></td>
-                                                            @elseif($subscription->end_date < Carbon\Carbon::today())
-                                                                <td><span class="text-danger">{{ trans('dashboard.subscriptions.finished') }}</span></td>
-                                                            @endif
-                                                            <td style="width: 80px;!important;">{{ $subscription->note }}</td>
+                                                            <td>
+                                                                <a href="{{ route('dashboard.subscriptions.showSubscription', $subscription) }}" class="btn btn-warning btn-sm" style="padding: 5px 8px;" title="{{ trans('dashboard.subscriptions.Show Subscriptions') }}">
+                                                                    <i class="ft-eye"></i>
+                                                                </a>
+                                                            </td>
                                                         </tr>
                                                     @endforeach
                                                     </tbody>
@@ -140,6 +153,7 @@
         </div>
     </div>
 @endsection
+
 @section('scripts')
     @include('dashboard.subscriptions.datatable')
 @endsection

@@ -9,12 +9,17 @@ use App\Models\Product;
 use App\Models\Setting;
 use App\Models\Subscription;
 use App\Models\SubscriptionUser;
+use App\Models\User;
 use App\Notifications\AcceptOrder;
+use App\Notifications\ActiveSubscriptions;
 use App\Notifications\DeliveredOrder;
 use App\Notifications\RejectOrder;
+use App\Notifications\StoppedSubscriptions;
 use App\Traits\Uploadable;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use DateTime;
+
 
 class SubscriptionController extends Controller
 {
@@ -110,12 +115,46 @@ class SubscriptionController extends Controller
 
     public function tomorrowSubscription()
     {
-        $subscriptions = SubscriptionUser::with('subscription', 'subscription.products')
+        $subscriptions = SubscriptionUser::with('subscription')
             ->where('start_date',  Carbon::tomorrow())
             ->whereNull('stopped_at')
             ->get();
 
         return view('dashboard.subscriptions.tomorrow', compact('subscriptions'));
+    }
+
+    public function todaySubscription()
+    {
+        $subscriptions = SubscriptionUser::with('subscription')
+            ->where('start_date',  Carbon::today())
+            ->whereNull('stopped_at')
+            ->get();
+
+        return view('dashboard.subscriptions.today', compact('subscriptions'));
+    }
+
+    public function allSubscription()
+    {
+        $subscriptions = SubscriptionUser::with('subscription')
+            ->where('start_date','<', Carbon::today())
+            ->whereNull('stopped_at')
+            ->get();
+
+        return view('dashboard.subscriptions.all', compact('subscriptions'));
+    }
+
+    public function showSubscription(SubscriptionUser $subscriptionUser)
+    {
+        return view('dashboard.subscriptions.show_subscription', compact('subscriptionUser'));
+    }
+
+    public function SubscriptionNote(Request $request, $id)
+    {
+        $subscriptionUser = SubscriptionUser::find($id);
+        $subscriptionUser->update([
+            'note' => $request->note
+        ]);
+        return back()->with('success', trans('site.Updated successfully'));
     }
 
     public function stoppedSubscription()
@@ -137,13 +176,6 @@ class SubscriptionController extends Controller
         return view('dashboard.subscriptions.finished', compact('subscriptions'));
     }
 
-    public function allSubscription()
-    {
-        $subscriptions = SubscriptionUser::with('subscription', 'subscription.products')
-            ->latest()->get();
-
-        return view('dashboard.subscriptions.all', compact('subscriptions'));
-    }
 
 
     public function accepted(SubscriptionUser $subscription)
@@ -179,6 +211,86 @@ class SubscriptionController extends Controller
         $user->notify(new RejectOrder($message, $from));
         return back()->with('success', trans('dashboard.It was done successfully!'));
 
+    }
+
+
+    public function offSubscription($id)
+    {
+        $subscription = SubscriptionUser::findOrFail($id);
+
+        if(Carbon::parse($subscription->end_date) == Carbon::today()) {
+            return back()->with('error', trans('site.Sorry, the subscription cannot be suspended because this subscription will expire today'));
+        }
+
+
+        if ($subscription->stopped_count == null || $subscription->stopped_count == 0)
+        {
+            return back()->with('error', trans('site.Sorry, the subscription cannot be suspended because this subscription will expire today'));
+        }
+
+        if ($subscription->end_date > Carbon::today()) {
+
+            $subscription->update(
+                [
+                    'stopped_at' => Carbon::tomorrow(),
+                    'stopped_count' => $subscription->stopped_count - 1,
+                    'updated_at' => Carbon::today()->toDateString()
+                ]
+            );
+
+            $admins = User::where('type', 'admin')->get();
+            foreach ($admins as $admin) {
+                $admin->notify(new StoppedSubscriptions('Stop Subscription'));
+            }
+            return back()->with('success', trans('site.The subscription has been successfully suspended'));
+        }
+
+    }
+
+
+    public function onSubscription($id)
+    {
+        $subscription = SubscriptionUser::findOrFail($id);
+        $startDate = Carbon::tomorrow();
+        $end = Carbon::parse($subscription->end_date);
+        $stoppedDate = Carbon::parse($subscription->start_date);
+        $diffDays = $stoppedDate->diffInDays($end);
+        $EndDate = $startDate->addDays($diffDays)->toDateString();
+
+        if ($EndDate > $subscription->validation_end_date) {
+
+            $newEndDate = $subscription->validation_end_date;
+
+            $subscription->update([
+                'start_date' => Carbon::tomorrow(),
+                'end_date' => $newEndDate,
+                'stopped_at' => null,
+            ]);
+
+            $admins = User::where('type', 'admin')->get();
+            foreach ($admins as $admin) {
+                $admin->notify(new ActiveSubscriptions('Active Subscription'));
+            }
+
+            return back()->with('success', trans('site.The subscription has been successfully restarted'));
+
+        }else
+        {
+
+            $subscription->update([
+                'start_date' => Carbon::tomorrow(),
+                'end_date' => $EndDate,
+                'stopped_at' => null,
+            ]);
+
+            $admins = User::where('type', 'admin')->get();
+            foreach ($admins as $admin) {
+                $admin->notify(new ActiveSubscriptions('Active Subscription'));
+            }
+
+            return back()->with('success', trans('site.The subscription has been successfully restarted'));
+
+        }
     }
 
 }

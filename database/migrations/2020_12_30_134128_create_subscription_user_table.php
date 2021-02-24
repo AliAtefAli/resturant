@@ -29,7 +29,6 @@ class CreateSubscriptionUserTable extends Migration
             $table->integer('people_count')->default(1);
             $table->enum('payment_type', ['credit_card', 'on_delivery']);
             $table->text('note')->nullable();
-            $table->text('admin_notes')->nullable();
             $table->string('coupon_amount')->nullable();
             $table->string('coupon_type')->nullable();
             $table->string('stopped_count')->nullable();

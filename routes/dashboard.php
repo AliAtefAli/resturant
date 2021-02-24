@@ -32,13 +32,23 @@ Route::get('rates/on/{rate}', 'RateController@on')->name('rates.on');
 Route::get('discounts/makeAsUnavailable/{discount}', 'DiscountController@makeAsUnavailable')->name('discounts.makeAsUnavailable');
 Route::get('discounts/makeAsAvailable/{discount}', 'DiscountController@makeAsAvailable')->name('discounts.makeAsAvailable');
 
+
 Route::get('subscriptions/users/{subscription}', 'SubscriptionController@users')->name('subscriptionUsers');
 Route::get('subscriptions/tomorrowSubscription', 'SubscriptionController@tomorrowSubscription')->name('subscriptions.tomorrowSubscription');
-Route::get('subscriptions/stoppedSubscriptions', 'SubscriptionController@stoppedSubscription')->name('subscriptions.stoppedSubscriptions');
-Route::get('subscriptions/finishedSubscriptions', 'SubscriptionController@finishedSubscription')->name('subscriptions.finishedSubscriptions');
+Route::get('subscriptions/todaySubscription', 'SubscriptionController@todaySubscription')->name('subscriptions.todaySubscription');
 Route::get('subscriptions/allSubscriptions', 'SubscriptionController@allSubscription')->name('subscriptions.allSubscriptions');
+Route::get('subscriptions/finishedSubscriptions', 'SubscriptionController@finishedSubscription')->name('subscriptions.finishedSubscriptions');
+
+Route::get('subscriptions/subscription_show/{subscriptionUser}', 'SubscriptionController@showSubscription')->name('subscriptions.showSubscription');
+Route::put('subscriptions/subscription_note/{id}', 'SubscriptionController@SubscriptionNote')->name('subscriptions.note');
+Route::get('subscriptions/subscription_off/{id}', 'SubscriptionController@offSubscription')->name('subscriptions.subscriptions_off');
+Route::get('subscriptions/subscription_on/{id}', 'SubscriptionController@onSubscription')->name('subscriptions.subscriptions_on');
+
+Route::get('subscriptions/stoppedSubscriptions', 'SubscriptionController@stoppedSubscription')->name('subscriptions.stoppedSubscriptions');
+
 
 Route::resource('subscriptions', 'SubscriptionController');
+
 
 Route::get('subscriptions/accepted/{subscription}', 'SubscriptionController@accepted')->name('subscriptions.accepted');
 Route::get('subscriptions/reject/{subscription}', 'SubscriptionController@rejected')->name('subscriptions.rejected');

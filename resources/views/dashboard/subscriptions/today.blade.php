@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-@section('title', trans('dashboard.subscriptions.tomorrow_subscriptions'))
+@section('title', trans('dashboard.subscriptions.today_subscriptions'))
 @section('styles')
     @if(app()->getLocale() == 'ar')
         <style>
@@ -48,12 +48,12 @@
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a
-                                    href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
+                                        href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
                             </li>
                             <li class="breadcrumb-item"><a
-                                    href="{{ route('dashboard.subscriptions.index') }}">{{trans('dashboard.subscriptions.Subscriptions')}}
+                                        href="{{ route('dashboard.subscriptions.index') }}">{{trans('dashboard.subscriptions.Subscriptions')}}
                                 </a></li>
-                            <li class="breadcrumb-item active">{{trans('dashboard.subscriptions.tomorrow_subscriptions')}}</li>
+                            <li class="breadcrumb-item active">{{trans('dashboard.subscriptions.today_subscriptions')}}</li>
                         </ol>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                                     <div class="card">
                                         <div class="card-header">
                                             <a class="heading-elements-toggle"><i
-                                                    class="la la-ellipsis-v font-medium-3"></i></a>
+                                                        class="la la-ellipsis-v font-medium-3"></i></a>
                                             <div class="heading-elements">
                                                 <ul class="list-inline mb-0">
                                                     <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
@@ -83,25 +83,25 @@
                                                 </ul>
                                             </div>
                                         </div>
-{{--                                        <form action="" method="get">--}}
-{{--                                            <div class="row index-widget" style="direction: {{lang() == 'ar' ? 'rtl' : 'ltr'}};">--}}
-{{--                                                <div class="col-md-3">--}}
-{{--                                                    <div class="form-group">--}}
-{{--                                                        <select class="form-control select" name="status">--}}
-{{--                                                            <option value="all" selected>{{__('all_status')}}</option>--}}
-{{--                                                            <option value="active" >{{__('active')}}</option>--}}
-{{--                                                            <option value="suspended" >{{__('suspended')}}</option>--}}
-{{--                                                        </select>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="row index-widget mt-2">--}}
-{{--                                                <div class="form-group" style="direction: {{lang() == 'ar' ? 'rtl' : 'ltr'}}">--}}
-{{--                                                    <a><button type="submit" class="btn btn-info">{{__('filter')}}</button></a>--}}
-{{--                                                    <a href="?" class="btn btn-danger">{{__('clear')}}</a>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </form>--}}
+                                        {{--                                        <form action="" method="get">--}}
+                                        {{--                                            <div class="row index-widget" style="direction: {{lang() == 'ar' ? 'rtl' : 'ltr'}};">--}}
+                                        {{--                                                <div class="col-md-3">--}}
+                                        {{--                                                    <div class="form-group">--}}
+                                        {{--                                                        <select class="form-control select" name="status">--}}
+                                        {{--                                                            <option value="all" selected>{{__('all_status')}}</option>--}}
+                                        {{--                                                            <option value="active" >{{__('active')}}</option>--}}
+                                        {{--                                                            <option value="suspended" >{{__('suspended')}}</option>--}}
+                                        {{--                                                        </select>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                            <div class="row index-widget mt-2">--}}
+                                        {{--                                                <div class="form-group" style="direction: {{lang() == 'ar' ? 'rtl' : 'ltr'}}">--}}
+                                        {{--                                                    <a><button type="submit" class="btn btn-info">{{__('filter')}}</button></a>--}}
+                                        {{--                                                    <a href="?" class="btn btn-danger">{{__('clear')}}</a>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                        </form>--}}
                                         <div class="card-content collapse show">
                                             <div class="card-body card-dashboard">
                                                 <table class="table table-striped table-bordered text-cente"
@@ -148,34 +148,34 @@
                                                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                         </button>
                                                                         <div class="dropdown-menu arrow">
-                                                                                @if($subscription->status ==  'accepted')
-                                                                                    <a href="{{ route('dashboard.orders.delivered', $subscription) }}">
-                                                                                        <button
-                                                                                                class="btn btn-primary  dropdown-item"
-                                                                                                title="{{ trans('dashboard.order.Make as shipped') }}">
-                                                                                            {{ trans('dashboard.order.Make as shipped') }}</button>
-                                                                                    </a>
-                                                                                @elseif($subscription->status ==  'processing')
-                                                                                    <a href="{{ route('dashboard.orders.accepted', $subscription) }}">
-                                                                                        <button
-                                                                                                class="btn btn-info  dropdown-item"
-                                                                                                title="{{ trans('dashboard.order.Make as In Progress') }}">
-                                                                                            {{ trans('dashboard.order.Make as In Progress') }}</button>
-                                                                                    </a>
-                                                                                    <a href="{{ route('dashboard.orders.rejected', $subscription) }}">
-                                                                                        <button
-                                                                                                class="btn btn-danger  dropdown-item"
-                                                                                                title="{{ trans('dashboard.order.Make as Rejected') }}">
-                                                                                            {{ trans('dashboard.order.Make as Rejected') }}</button>
-                                                                                    </a>
-                                                                                @else
-                                                                                    <a href="{{ route('dashboard.orders.delivered', $subscription) }}">
-                                                                                        <button
-                                                                                                class="btn btn-primary  dropdown-item"
-                                                                                                title="{{ trans('dashboard.order.Make as shipped') }}">
-                                                                                            {{ trans('dashboard.order.Make as shipped') }}</button>
-                                                                                    </a>
-                                                                                @endif
+                                                                            @if($subscription->status ==  'accepted')
+                                                                                <a href="{{ route('dashboard.orders.delivered', $subscription) }}">
+                                                                                    <button
+                                                                                            class="btn btn-primary  dropdown-item"
+                                                                                            title="{{ trans('dashboard.order.Make as shipped') }}">
+                                                                                        {{ trans('dashboard.order.Make as shipped') }}</button>
+                                                                                </a>
+                                                                            @elseif($subscription->status ==  'processing')
+                                                                                <a href="{{ route('dashboard.orders.accepted', $subscription) }}">
+                                                                                    <button
+                                                                                            class="btn btn-info  dropdown-item"
+                                                                                            title="{{ trans('dashboard.order.Make as In Progress') }}">
+                                                                                        {{ trans('dashboard.order.Make as In Progress') }}</button>
+                                                                                </a>
+                                                                                <a href="{{ route('dashboard.orders.rejected', $subscription) }}">
+                                                                                    <button
+                                                                                            class="btn btn-danger  dropdown-item"
+                                                                                            title="{{ trans('dashboard.order.Make as Rejected') }}">
+                                                                                        {{ trans('dashboard.order.Make as Rejected') }}</button>
+                                                                                </a>
+                                                                            @else
+                                                                                <a href="{{ route('dashboard.orders.delivered', $subscription) }}">
+                                                                                    <button
+                                                                                            class="btn btn-primary  dropdown-item"
+                                                                                            title="{{ trans('dashboard.order.Make as shipped') }}">
+                                                                                        {{ trans('dashboard.order.Make as shipped') }}</button>
+                                                                                </a>
+                                                                            @endif
                                                                         </div>
                                                                     </div>
                                                                 @endif

@@ -224,9 +224,11 @@
                     totalAfter = document.getElementById('after_discount'),
                     discountAmount = document.getElementById('discount_amount'),
                     totalBilling = document.getElementById('total_billing'),
+                    shippingType = document.querySelector('.local-global:checked').value,
                     countVal = $('#count').val();
                     subsId = $('#subs_id').val();
                     countInput = $('#count');
+
 
                 $.ajax({
                     url: "{{ route('subscriptions.checkCoupon') }}",
@@ -235,7 +237,8 @@
                         _token: '{{ csrf_token() }}',
                         coupon: coupon,
                         subscription: subsId,
-                        people_count: countVal
+                        people_count: countVal,
+                        shipping_type: shippingType,
                     },
                     dataType: "json",
                     success: function (response) {

@@ -75,6 +75,27 @@
 {{--                                <span class="badge badge badge-danger badge-pill float-right ">{{$active_subscriptions->count()}}</span>--}}
                             </a>
                         </li>
+                        <li>
+                            <a class="menu-item" href="{{ route('dashboard.subscriptions.todaySubscription') }}" data-i18n="nav.page_layouts.1_column">
+                                {{ trans('dashboard.subscriptions.today_subscriptions') }}
+                                {{--                                <span class="badge badge badge-danger badge-pill float-right ">{{$active_subscriptions->count()}}</span>--}}
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="menu-item" href="{{ route('dashboard.subscriptions.allSubscriptions') }}"
+                               data-i18n="nav.page_layouts.2_columns">
+                                {{ trans('dashboard.subscriptions.All Subscriptions') }}
+{{--                                <span class="badge badge badge-danger badge-pill float-right">{{$all_subscriptions->count()}}</span>--}}
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="menu-item" href="{{ route('dashboard.subscriptions.finishedSubscriptions') }}" data-i18n="nav.page_layouts.1_column">
+                                {{ trans('dashboard.subscriptions.Finished Subscriptions') }}
+{{--                                <span class="badge badge badge-danger badge-pill float-right ">{{$finished_subscriptions->count()}}</span>--}}
+                            </a>
+                        </li>
 
 {{--                        <li>--}}
 {{--                            <a class="menu-item" href="{{ route('dashboard.subscriptions.stoppedSubscriptions') }}" data-i18n="nav.page_layouts.1_column">--}}
@@ -83,20 +104,9 @@
 {{--                            </a>--}}
 {{--                        </li>--}}
 
-{{--                        <li>--}}
-{{--                            <a class="menu-item" href="{{ route('dashboard.subscriptions.allSubscriptions') }}"--}}
-{{--                               data-i18n="nav.page_layouts.2_columns">--}}
-{{--                                {{ trans('dashboard.subscriptions.All Subscriptions') }}--}}
-{{--                                <span class="badge badge badge-danger badge-pill float-right">{{$all_subscriptions->count()}}</span>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
 
-{{--                        <li>--}}
-{{--                            <a class="menu-item" href="{{ route('dashboard.subscriptions.finishedSubscriptions') }}" data-i18n="nav.page_layouts.1_column">--}}
-{{--                                {{ trans('dashboard.subscriptions.Finished Subscriptions') }}--}}
-{{--                                <span class="badge badge badge-danger badge-pill float-right ">{{$finished_subscriptions->count()}}</span>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+
+
 
                     </ul>
 
