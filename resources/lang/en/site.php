@@ -219,4 +219,7 @@ return [
     'The subscription has been successfully suspended' => 'The subscription has been successfully suspended, It will be suspended from tomorrow',
     'The subscription has been successfully restarted' => 'The subscription has been successfully restarted',
     'Sorry, the subscription cannot be suspended because this subscription will expire today' => 'Sorry, the subscription cannot be suspended because this subscription will expire today',
+    'Subscription Is Successfully Accepted And We are preparing it' => 'Subscription Is Successfully Accepted And We are preparing it',
+    'Subscription Is Successfully Processed And Your Order Is On The Way' => 'Subscription Is Successfully Processed And The meal Is On The Way',
+    'Sorry Subscription Is unSuccessfully Processed' => 'Sorry Subscription Is unSuccessfully Processed',
 ];

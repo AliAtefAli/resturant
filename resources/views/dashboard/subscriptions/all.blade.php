@@ -149,31 +149,31 @@
                                                                         </button>
                                                                         <div class="dropdown-menu arrow">
                                                                             @if($subscription->status ==  'accepted')
-                                                                                <a href="{{ route('dashboard.orders.delivered', $subscription) }}">
+                                                                                <a href="{{ route('dashboard.subscriptions.delivered', $subscription) }}">
                                                                                     <button
                                                                                             class="btn btn-primary  dropdown-item"
-                                                                                            title="{{ trans('dashboard.order.Make as shipped') }}">
-                                                                                        {{ trans('dashboard.order.Make as shipped') }}</button>
+                                                                                            title="{{ trans('dashboard.subscriptions.Make as shipped') }}">
+                                                                                        {{ trans('dashboard.subscriptions.Make as shipped') }}</button>
                                                                                 </a>
                                                                             @elseif($subscription->status ==  'processing')
-                                                                                <a href="{{ route('dashboard.orders.accepted', $subscription) }}">
+                                                                                <a href="{{ route('dashboard.subscriptions.accepted', $subscription) }}">
                                                                                     <button
                                                                                             class="btn btn-info  dropdown-item"
-                                                                                            title="{{ trans('dashboard.order.Make as In Progress') }}">
-                                                                                        {{ trans('dashboard.order.Make as In Progress') }}</button>
+                                                                                            title="{{ trans('dashboard.subscriptions.Make as In Progress') }}">
+                                                                                        {{ trans('dashboard.subscriptions.Make as In Progress') }}</button>
                                                                                 </a>
-                                                                                <a href="{{ route('dashboard.orders.rejected', $subscription) }}">
+                                                                                <a href="{{ route('dashboard.subscriptions.rejected', $subscription) }}">
                                                                                     <button
                                                                                             class="btn btn-danger  dropdown-item"
-                                                                                            title="{{ trans('dashboard.order.Make as Rejected') }}">
-                                                                                        {{ trans('dashboard.order.Make as Rejected') }}</button>
+                                                                                            title="{{ trans('dashboard.subscriptions.Make as Rejected') }}">
+                                                                                        {{ trans('dashboard.subscriptions.Make as Rejected') }}</button>
                                                                                 </a>
                                                                             @else
-                                                                                <a href="{{ route('dashboard.orders.delivered', $subscription) }}">
+                                                                                <a href="{{ route('dashboard.subscriptions.delivered', $subscription) }}">
                                                                                     <button
                                                                                             class="btn btn-primary  dropdown-item"
-                                                                                            title="{{ trans('dashboard.order.Make as shipped') }}">
-                                                                                        {{ trans('dashboard.order.Make as shipped') }}</button>
+                                                                                            title="{{ trans('dashboard.subscriptions.Make as shipped') }}">
+                                                                                        {{ trans('dashboard.subscriptions.Make as shipped') }}</button>
                                                                                 </a>
                                                                             @endif
                                                                         </div>
