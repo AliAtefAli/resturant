@@ -132,22 +132,25 @@
                                 @endif
                             </p>
 
-                            <p class="shiping">
+                            <p class="person-number">
                                 {!! $package->subscription->description!!}
                             </p>
 
-                            @if($package->stopped_at == null)
-                                <button type="button" class="btn  custom-button" data-toggle="modal"
-                                        data-target="#stop-{{$package->id}}">
-                                    {{ trans('site.Stop subscription') }}
-                                    {{--                                {{ ($package->stopped_at) ?? 'no' }}--}}
-                                </button>
-                            @else
-                                <button type="button" class="btn  custom-button" data-toggle="modal"
-                                        data-target="#run-{{$package->id}}">
-                                    {{ trans('site.Run subscription') }}
-                                    {{--                                    {{ ($package->stopped_at) ?? 'no' }}--}}
-                                </button>
+                            @if($package->stopped_count == 0 || $package->stopped_count == null)
+                                @else
+                                @if($package->stopped_at == null)
+                                    <button type="button" class="btn  custom-button" data-toggle="modal"
+                                            data-target="#stop-{{$package->id}}">
+                                        {{ trans('site.Stop subscription') }}
+                                        {{--                                {{ ($package->stopped_at) ?? 'no' }}--}}
+                                    </button>
+                                @else
+                                    <button type="button" class="btn  custom-button" data-toggle="modal"
+                                            data-target="#run-{{$package->id}}">
+                                        {{ trans('site.Run subscription') }}
+                                        {{--                                    {{ ($package->stopped_at) ?? 'no' }}--}}
+                                    </button>
+                                @endif
                             @endif
                         </div>
                     @endforeach
@@ -172,12 +175,7 @@
                                 </span>
                             <div class="list-ul">
                                 <ul class="list-unstyled">
-                                    @foreach($package->subscription->products as $product)
-                                        <li>
-                                            <span></span>
-                                            {{$product->name}}
-                                        </li>
-                                    @endforeach
+                                    {!! $package->subscription->translate(lang())->products !!}
                                 </ul>
                             </div>
                             <p class="price">
@@ -199,7 +197,7 @@
                                 {{ __('dashboard.subscriptions.End Date') }} : {{ \Carbon\Carbon::parse($package->end_date)->toDateString() }}
                             </p>
 
-                            <p class="text">
+                            <p class="person-number">
                                 {!! $package->subscription->description!!}
                             </p>
 {{--                            @if($package->stopped_at != null)--}}

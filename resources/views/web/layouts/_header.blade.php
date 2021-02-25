@@ -21,11 +21,11 @@
                     {{ trans('site.Home') }}
                 </a>
             </li>
-            <li>
-                <a href="{{route('who_are_we')}}">
-                    {{__('site.Subscriptions')}}
-                </a>
-            </li>
+{{--            <li>--}}
+{{--                <a href="{{route('who_are_we')}}">--}}
+{{--                    {{__('site.Subscriptions')}}--}}
+{{--                </a>--}}
+{{--            </li>--}}
 {{--            <li>--}}
 {{--                <a href="{{route('categories.index')}}">--}}
 {{--                    {{ __('site.Categories') }}--}}
@@ -60,9 +60,9 @@
                 <i class="fas fa-user"></i>
             </a>
         @endif
-        <a href="{{ route('products.index') }}">
-            <i class="fas fa-utensils"></i>
-        </a>
+{{--        <a href="{{ route('products.index') }}">--}}
+{{--            <i class="fas fa-utensils"></i>--}}
+{{--        </a>--}}
 
 {{--        <a href="{{ route('carts') }}">--}}
 {{--            <i class="fas fa-shopping-cart"></i>--}}
@@ -75,7 +75,13 @@
 
             <a href="{{ route('user.notification')  }}" title="{{__('site.Notification')}}">
                 <i class="fas fa-bell"></i>
-                <span class="badgeIcon">{{ (auth()->user()) ? (auth()->user()->unreadNotifications()->where('type', '!=', 'App\Notifications\NewOrderNotification')->count()) : 0 }}</span>
+                <span class="badgeIcon">
+                    {{ (auth()->user()) ? (auth()->user()->unreadNotifications()->where('type', 'App\Notifications\NewSubscriptions')
+                    ->where('type', 'App\Notifications\AcceptSubscription')
+                    ->where('type', 'App\Notifications\DeliveredSubscription')
+                    ->where('type', 'App\Notifications\RejectSubscription')
+                    ->count()) : 0 }}
+                </span>
             </a>
 
     </div>
@@ -148,11 +154,11 @@
                                 {{ __('site.Home') }}
                             </a>
                         </li>
-                        <li>
-                            <a href="{{route('who_are_we')}}">
-                                {{__('site.Subscriptions')}}
-                            </a>
-                        </li>
+{{--                        <li>--}}
+{{--                            <a href="{{route('who_are_we')}}">--}}
+{{--                                {{__('site.Subscriptions')}}--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
 {{--                        <li>--}}
 {{--                            <a href="{{route('categories.index')}}">--}}
 {{--                                {{ __('site.Categories') }}--}}
@@ -195,9 +201,9 @@
                                 <i class="fas fa-bell"></i>
                                 <span class="badgeIcon">{{ (auth()->user()) ? (auth()->user()->unreadNotifications()->where('type', '!=', 'App\Notifications\NewOrderNotification')->count()) : 0 }}</span>
                             </a>
-                            <a href="{{route('products.index')}}" title="{{ __('site.Products') }}">
-                                <i class="fas fa-utensils"></i>
-                            </a>
+{{--                            <a href="{{route('products.index')}}" title="{{ __('site.Products') }}">--}}
+{{--                                <i class="fas fa-utensils"></i>--}}
+{{--                            </a>--}}
                     </div>
                 </div>
             </div>

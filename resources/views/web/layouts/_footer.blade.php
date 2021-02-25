@@ -31,11 +31,11 @@
                                 </a>
                             </li>
                         @endif
-                        <li>
-                            <a href="{{route('products.index')}}">
-                                {{__('site.Products')}}
-                            </a>
-                        </li>
+{{--                        <li>--}}
+{{--                            <a href="{{route('products.index')}}">--}}
+{{--                                {{__('site.Products')}}--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                         <li>
                             <a href="{{route('who_are_we')}}">
                                 {{__('site.Who are we')}}

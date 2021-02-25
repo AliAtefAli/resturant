@@ -38,13 +38,14 @@ Route::get('subscriptions/tomorrowSubscription', 'SubscriptionController@tomorro
 Route::get('subscriptions/todaySubscription', 'SubscriptionController@todaySubscription')->name('subscriptions.todaySubscription');
 Route::get('subscriptions/allSubscriptions', 'SubscriptionController@allSubscription')->name('subscriptions.allSubscriptions');
 Route::get('subscriptions/finishedSubscriptions', 'SubscriptionController@finishedSubscription')->name('subscriptions.finishedSubscriptions');
+Route::get('subscriptions/stoppedSubscriptions', 'SubscriptionController@stoppedSubscription')->name('subscriptions.stoppedSubscriptions');
 
 Route::get('subscriptions/subscription_show/{subscriptionUser}', 'SubscriptionController@showSubscription')->name('subscriptions.showSubscription');
 Route::put('subscriptions/subscription_note/{id}', 'SubscriptionController@SubscriptionNote')->name('subscriptions.note');
 Route::get('subscriptions/subscription_off/{id}', 'SubscriptionController@offSubscription')->name('subscriptions.subscriptions_off');
 Route::get('subscriptions/subscription_on/{id}', 'SubscriptionController@onSubscription')->name('subscriptions.subscriptions_on');
 
-Route::get('subscriptions/stoppedSubscriptions', 'SubscriptionController@stoppedSubscription')->name('subscriptions.stoppedSubscriptions');
+
 
 
 Route::resource('subscriptions', 'SubscriptionController');

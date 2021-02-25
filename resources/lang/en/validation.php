@@ -219,6 +219,7 @@ return [
     'attributes' => [
         'start_date' => 'Start date',
         'end_date' => 'End date',
+        'permissions' => 'Permissions',
     ]
 
 ];

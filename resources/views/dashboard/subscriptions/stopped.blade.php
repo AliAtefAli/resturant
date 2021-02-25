@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-@section('title', trans('dashboard.subscriptions.All Subscriptions'))
+@section('title', trans('dashboard.subscriptions.stopped_subscriptions'))
 @section('styles')
     @if(app()->getLocale() == 'ar')
         <style>
@@ -21,6 +21,13 @@
                 /*right: 865px;*/
                 /*bottom: 15px;*/
             }
+            .card-body
+            {
+                padding: 0; !important;
+            }
+        </style>
+        @else
+        <style>
             .card-body
             {
                 padding: 0; !important;
@@ -53,7 +60,7 @@
                             <li class="breadcrumb-item"><a
                                         href="{{ route('dashboard.subscriptions.index') }}">{{trans('dashboard.subscriptions.Subscriptions')}}
                                 </a></li>
-                            <li class="breadcrumb-item active">{{trans('dashboard.subscriptions.All Subscriptions')}}</li>
+                            <li class="breadcrumb-item active">{{trans('dashboard.subscriptions.stopped_subscriptions')}}</li>
                         </ol>
                     </div>
                 </div>
@@ -130,31 +137,31 @@
                                                                         </button>
                                                                         <div class="dropdown-menu arrow">
                                                                             @if($subscription->status ==  'accepted')
-                                                                                <a href="{{ route('dashboard.subscriptions.delivered', $subscription) }}">
+                                                                                <a href="{{ route('dashboard.orders.delivered', $subscription) }}">
                                                                                     <button
                                                                                             class="btn btn-primary  dropdown-item"
-                                                                                            title="{{ trans('dashboard.subscriptions.Make as shipped') }}">
-                                                                                        {{ trans('dashboard.subscriptions.Make as shipped') }}</button>
+                                                                                            title="{{ trans('dashboard.order.Make as shipped') }}">
+                                                                                        {{ trans('dashboard.order.Make as shipped') }}</button>
                                                                                 </a>
                                                                             @elseif($subscription->status ==  'processing')
-                                                                                <a href="{{ route('dashboard.subscriptions.accepted', $subscription) }}">
+                                                                                <a href="{{ route('dashboard.orders.accepted', $subscription) }}">
                                                                                     <button
                                                                                             class="btn btn-info  dropdown-item"
-                                                                                            title="{{ trans('dashboard.subscriptions.Make as In Progress') }}">
-                                                                                        {{ trans('dashboard.subscriptions.Make as In Progress') }}</button>
+                                                                                            title="{{ trans('dashboard.order.Make as In Progress') }}">
+                                                                                        {{ trans('dashboard.order.Make as In Progress') }}</button>
                                                                                 </a>
-                                                                                <a href="{{ route('dashboard.subscriptions.rejected', $subscription) }}">
+                                                                                <a href="{{ route('dashboard.orders.rejected', $subscription) }}">
                                                                                     <button
                                                                                             class="btn btn-danger  dropdown-item"
-                                                                                            title="{{ trans('dashboard.subscriptions.Make as Rejected') }}">
-                                                                                        {{ trans('dashboard.subscriptions.Make as Rejected') }}</button>
+                                                                                            title="{{ trans('dashboard.order.Make as Rejected') }}">
+                                                                                        {{ trans('dashboard.order.Make as Rejected') }}</button>
                                                                                 </a>
                                                                             @else
-                                                                                <a href="{{ route('dashboard.subscriptions.delivered', $subscription) }}">
+                                                                                <a href="{{ route('dashboard.orders.delivered', $subscription) }}">
                                                                                     <button
                                                                                             class="btn btn-primary  dropdown-item"
-                                                                                            title="{{ trans('dashboard.subscriptions.Make as shipped') }}">
-                                                                                        {{ trans('dashboard.subscriptions.Make as shipped') }}</button>
+                                                                                            title="{{ trans('dashboard.order.Make as shipped') }}">
+                                                                                        {{ trans('dashboard.order.Make as shipped') }}</button>
                                                                                 </a>
                                                                             @endif
                                                                         </div>
@@ -162,23 +169,16 @@
                                                                 @endif
                                                             </td>
                                                             <td>
-                                                                @if($subscription->stopped_count == 0 || $subscription->stopped_count == null)
+                                                                @if($subscription->stopped == null)
+                                                                    <a href="{{ route('dashboard.subscriptions.subscriptions_on', $subscription->id) }}"
+                                                                       class="btn btn-outline-success btn-sm" title="{{ trans('dashboard.subscriptions.activate_subscription') }}">
+                                                                        <i class="ft-unlock"  aria-hidden="true"></i>
+                                                                    </a>
                                                                 @else
-                                                                    @if($subscription->stopped_at == null)
-                                                                        <a href="{{ route('dashboard.subscriptions.subscriptions_off', $subscription->id) }}"
-                                                                           class="btn btn-outline-danger btn-sm"
-                                                                           title="{{ trans('dashboard.subscriptions.stop_subscription') }}">
-                                                                            <i class="ft-lock"
-                                                                               aria-hidden="true"></i>
-                                                                        </a>
-                                                                    @else
-                                                                        <a href="{{ route('dashboard.subscriptions.subscriptions_on', $subscription->id) }}"
-                                                                           class="btn btn-outline-success btn-sm"
-                                                                           title="{{ trans('dashboard.subscriptions.activate_subscription') }}">
-                                                                            <i class="ft-unlock"
-                                                                               aria-hidden="true"></i>
-                                                                        </a>
-                                                                    @endif
+                                                                    <a href="{{ route('dashboard.subscriptions.subscriptions_off', $subscription->id) }}"
+                                                                       class="btn btn-outline-danger btn-sm" title="{{ trans('dashboard.subscriptions.stop_subscription') }}">
+                                                                        <i class="ft-lock"  aria-hidden="true"></i>
+                                                                    </a>
                                                                 @endif
                                                             </td>
                                                         </tr>
@@ -200,7 +200,6 @@
         </div>
     </div>
 @endsection
-
 @section('scripts')
     @include('dashboard.subscriptions.datatable')
 @endsection

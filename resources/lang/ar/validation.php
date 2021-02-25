@@ -243,6 +243,7 @@ return [
     'attributes' => [
     'start_date' => 'تاريخ البداية',
     'end_date' => 'تاريخ الانتهاء',
+    'permissions' => 'الصلاحيات',
 ]
 
 ];

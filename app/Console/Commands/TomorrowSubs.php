@@ -4,25 +4,26 @@ namespace App\Console\Commands;
 
 use App\Models\SubscriptionUser;
 use App\Models\User;
-use App\Notifications\FinishedSubscriptions;
+use App\Notifications\TodaySubscriptions;
+use App\Notifications\TomorrowSubscriptions;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 
-class FinishedSubs extends Command
+class TomorrowSubs extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'notify:send';
+    protected $signature = 'tomorrowSubs:send';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'send notification when the subscription deadline comes';
+    protected $description = 'notification for tomorrow subscriptions';
 
     /**
      * Create a new command instance.
@@ -41,22 +42,20 @@ class FinishedSubs extends Command
      */
     public function handle()
     {
-        $subscriptions = SubscriptionUser::with('subscription', 'subscription.products')
-            ->where('end_date', '<', Carbon::today())
+        $subscriptions = SubscriptionUser::with('subscription')
+            ->where('start_date', Carbon::tomorrow())
             ->whereNull('stopped_at')
             ->get();
 
-        foreach ($subscriptions as $finished) {
-            if ($finished->end_date < Carbon::today()) {
+        foreach ($subscriptions as $today) {
+            if ($today->start_date == Carbon::tomorrow()) {
 
                 $admins = User::where('type', 'admin')->get();
                 foreach ($admins as $admin) {
-                    $admin->notify(new FinishedSubscriptions('Finished Subscription'));
+                    $admin->notify(new TomorrowSubscriptions('Tomorrow Subscription'));
                 }
 
             }
         }
-
-        return true;
     }
 }

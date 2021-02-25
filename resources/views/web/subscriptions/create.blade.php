@@ -3,6 +3,12 @@
 @section('style')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 @endsection
+<style>
+    #search-input
+    {
+        width: 71%;
+    }
+</style>
 @section('content')
 
     <div class="header-pic">
@@ -120,6 +126,7 @@
                             : {{ $subscription->delivery_price }} @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
 {{--                            @if(isset($setting[ 'delivery_price'])) {{ $setting['delivery_price'] * $subscription->duration_in_day }} @endif @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif--}}
                         </label>
+                        <input type="hidden" id="deliveryPrice" value="{{ $subscription->delivery_price }}">
                         @if ($errors->has('type'))
                             <div class="alert alert-danger">{{ $errors->first('type') }}</div>
                         @endif
@@ -181,15 +188,16 @@
         $( "#count" ).change(function() {
             var price = parseFloat($('.sub-price').attr('data-value'));
             var count = $('#count').val();
+            // var delivery = $('#deliveryPrice').val();
             total = price * count;
             document.getElementById('total').innerHTML = total +' '+ currency;
         });
         $('.local-global').change(function () {
             if($(this).attr('id') === 'global'){
-                total += ({{ $setting['delivery_price'] * $subscription->duration_in_day }} ) ?? 0 ;
+                total += ({{ $subscription->delivery_price }} ) ?? 0 ;
                 document.getElementById('total').innerHTML = total +' '+ currency;
             } else {
-                total -= ( {{ $setting['delivery_price'] * $subscription->duration_in_day }} ) ?? 0 ;
+                total -= ( {{ $subscription->delivery_price }} ) ?? 0 ;
                 document.getElementById('total').innerHTML = total +' '+ currency;
             }
         });

@@ -9,6 +9,7 @@ return [
     "made_asPending" => "Made as Pending successfully",
     "made_asActive" => "Made as Active Successfully",
     "additional_phone" => "Additional Phone",
+    "sorry_the_available_times_to_activate_the_subscription_have_expired" => "Sorry, the available times to activate the subscription have expired",
     "count" => "number of times that the package can be stopped",
     "number_of_pauses" => "Number of pauses",
     "our_meals" => "Our meals",
@@ -25,6 +26,7 @@ return [
     "there_is_no_note" => "There is no Note",
     'active' => 'Active',
     'block' => 'Block',
+    'optional' => 'Optional',
     "meals" =>
         [
             'create' => 'Create',
@@ -224,6 +226,7 @@ return [
         'Order Is Successfully Processed And Your Order Is On The Way,' => 'Order Is Successfully Processed And Your Order Is On The Way',
         'Your order is in progress' => 'Your order in progress',
         'Sorry Order Is unSuccessfully Processed ' => 'Sorry, Your Order Is not shipped',
+        'the_request_has_been_sent_successfully_waiting_for_a_response' => 'The request has been sent successfully, waiting for a response',
         'Locale' => 'Locale',
         'Credit Card' => 'Credit Card',
         'On delivery' => 'On delivery',
@@ -280,6 +283,8 @@ return [
         'finished' => 'Finished',
         'stopped' => 'Stopped',
         'active' => 'Active',
+        'stop_subscription' => 'Stop Subscription',
+        'activate_subscription' => 'Activate Subscription',
         'Show Subscriptions' => 'Show Subscriptions',
         'Subscription' => 'Subscription',
         'tomorrow_subscriptions' => 'Tomorrow subscriptions',
@@ -303,6 +308,10 @@ return [
         "Do you want to delete this Subscription" => "Do you want to delete this Subscription ?",
         "Sorry you can not delete this Subscription" => "Sorry you can not delete this Subscription, It has Subscribed",
 
+        'In progress' => 'In progress',
+        'Make as shipped' => 'Make as Shipped',
+        'Make as In Progress' => 'Make as In Progress',
+        'Make as Rejected' => 'Make as Rejected',
         'Start Date' => 'Start Date',
         'End Date' => 'End Date',
         'stopped_date' => 'Stopped date',
@@ -325,6 +334,11 @@ return [
         'delivery' => 'Delivery',
         'local' => 'Local',
         'global' => 'Global',
+        'order_status' => 'Order Status',
+        'processing' => 'Processing',
+        'cancelled' => 'Cancelled',
+        'accepted' => 'Accepted',
+        'delivered' => 'Delivered',
 
     ],
     'settings' => [
@@ -423,6 +437,9 @@ return [
         'Last Active' => 'Last Active',
         'users' => 'Users',
         "Do you want to delete this user" => "Do you want to delete this user ?",
+        "permissions" => "Permissions",
+        "chef" => "Chef",
+        "delivery" => "Delivery",
     ],
     'notification' => [
         'New' => 'New',

@@ -17,7 +17,7 @@ class UpdateSubscriptionRequest extends FormRequest
             'price' => 'required',
             'ar.products' => 'required',
             'en.products' => 'required',
-            'count' => 'required',
+            'count' => 'sometimes',
 //            'products' => 'array'
         ];
     }
@@ -33,7 +33,6 @@ class UpdateSubscriptionRequest extends FormRequest
             'price.required' => (trans('validation.field_required_price')),
             'ar.products.required' => (trans('validation.field_required_ar_product')),
             'en.products.required' => (trans('validation.field_required_en_product')),
-            'count.required' => (trans('validation.field_required')),
         ];
     }
 

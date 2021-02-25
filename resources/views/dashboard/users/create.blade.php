@@ -2,6 +2,12 @@
 @section('title', trans('dashboard.main.Create'))
 @section('content')
 
+    <style>
+        #search-input
+        {
+            width: 71%;
+        }
+    </style>
     <!--content wrapper -->
     <div class="content-wrapper">
         <!--content header -->
@@ -146,6 +152,21 @@
                                                     <option value="admin">{{ trans('dashboard.user.admin') }}</option>
                                                 </select>
                                                 @include('dashboard.partials._errors', ['input' => 'type'])
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row {{ $errors->has('permissions') ? ' has-error' : '' }}">
+                                        <label class="col-md-2"
+                                               for="type">{{trans('dashboard.user.permissions')}}</label>
+                                        <div class="col-md-10">
+                                            <div class="position-relative has-icon-left">
+                                                <select class="custom-select" name="permissions">
+                                                    <option value="admin">{{ trans('dashboard.user.admin') }}</option>
+                                                    <option value="chef">{{ trans('dashboard.user.chef') }}</option>
+                                                    <option value="delivery">{{ trans('dashboard.user.delivery') }}</option>
+                                                </select>
+                                                @include('dashboard.partials._errors', ['input' => 'permissions'])
                                             </div>
                                         </div>
                                     </div>

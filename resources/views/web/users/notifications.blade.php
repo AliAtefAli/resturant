@@ -11,8 +11,8 @@
                         <img src="{{ asset('web_files/images/notices.png') }}" >
                         <div class="text-n">
                             <p>
-                                @if($notification->type == 'App\Notifications\RejectOrder' ||$notification->type == 'App\Notifications\DeliveredOrder' ||$notification->type == 'App\Notifications\AcceptOrder')
-                                    {{ trans("site." . $notification->data['data']) }}
+                                @if($notification->type == 'App\Notifications\AcceptSubscription' ||$notification->type == 'App\Notifications\DeliveredSubscription' ||$notification->type == 'App\Notifications\RejectSubscription'||$notification->type == 'App\Notifications\NewSubscriptions')
+                                    {{ trans("dashboard.order." . $notification->data['data']) }}
                                 @else
                                     {{ $notification->data['data'] }}
                                 @endif

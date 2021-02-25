@@ -51,7 +51,8 @@ class UsersController extends Controller
             'password' => 'required|confirmed|min:8',
             'password_confirmation'=>'sometimes|required_with:password',
             'image' => 'image|mimes:jpg,jpeg,svg,png',
-            'address' => 'required'
+            'address' => 'required',
+            'permissions' => 'required|in:chef,delivery,admin'
         ],
             [
                 'phone.required' => (trans('validation.field_required_phone')),
@@ -68,6 +69,7 @@ class UsersController extends Controller
                 'password.confirmed' => (trans('validation.password_confirmed')),
                 'image.image' => (trans('validation.field_image')),
                 'address.required' => (trans('validation.field_required_address')),
+//                'permissions.required' => (trans('validation.field_required_address')),
             ]
         );
 
@@ -110,7 +112,8 @@ class UsersController extends Controller
             'type'=>'required',
             'status'=>'required',
             'image' => 'image|mimes:jpg,jpeg,svg,png',
-            'address' => 'required'
+            'address' => 'required',
+            'permissions' => 'required|in:chef,delivery,admin'
         ],
             [
                 'name.required' => (trans('validation.field_required_name')),

@@ -132,7 +132,15 @@
                 <tr>
                     <td>
                         <p style="font-size: 14px;"><b>{{trans('dashboard.hi')}}, {{ $subscriptionUser->user->name }}</b></p>
-                        <p style="font-size: 14px;">{{ trans('dashboard.order.Order Is Successfully Processed And Your Order Is On The Way,') }}</p>
+                        @if($subscriptionUser->status == 'processing')
+                            <p style="font-size: 14px;">{{ trans('dashboard.order.the_request_has_been_sent_successfully_waiting_for_a_response') }}</p>
+                        @elseif($subscriptionUser->status == 'accepted')
+                            <p style="font-size: 14px;">{{ trans('dashboard.order.Order Is Successfully Accepted And We are preparing it') }}</p>
+                        @elseif($subscriptionUser->status == 'delivered')
+                            <p style="font-size: 14px;">{{ trans('dashboard.order.Order Is Successfully Processed And Your Order Is On The Way,') }}</p>
+                        @elseif($subscriptionUser->status == 'cancelled')
+                            <p style="font-size: 14px;">{{ trans('dashboard.order.Sorry Order Is unSuccessfully Processed') }}</p>
+                        @endif
                         <p style="font-size: 14px;">{{ trans('dashboard.Transactions.Transaction id') }} : {{ $subscriptionUser->id }}</p>
                     </td>
                 </tr>
@@ -237,7 +245,7 @@
                         <p style="font-size: 14px;">{{trans('dashboard.main.status')}} :</p>
                     </td>
                     <td class="m-b-5" colspan="2" align="right">
-                        <b>{{ __("dashboard.order.$subscriptionUser->status") }}</b>
+                        <b>{{ __("dashboard.subscriptions.$subscriptionUser->status") }}</b>
                     </td>
                 </tr>
                 @if($subscriptionUser->coupon_amount == null|| $subscriptionUser->coupon_type ==null)

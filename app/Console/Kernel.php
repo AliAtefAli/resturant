@@ -15,7 +15,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\FinishedSubs::class,
+        Commands\NotifySend::class,
+        Commands\TodaySubs::class,
+        Commands\TomorrowSubs::class,
     ];
 
     /**
@@ -26,18 +28,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $subscriptions = SubscriptionUser::with('subscription', 'subscription.products')
-            ->where('end_date', '<', Carbon::today())
-            ->whereNull('stopped_at')
-            ->get();
-
-        foreach ($subscriptions as $finished) {
-            if ($finished->end_date < Carbon::today()) {
-                $schedule->command('word:day')
-                    ->daily();
-            }
-        }
-
+        $schedule->command('notify:send')->daily();
+        $schedule->command('todaySubs:send')->daily();
+        $schedule->command('tomorrowSubs:send')->daily();
     }
 
     /**

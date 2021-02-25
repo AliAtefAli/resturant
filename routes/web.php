@@ -16,12 +16,12 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
     Route::post('send/complaints', 'SettingController@sendComplaint')->name('sendComplaint');
     Route::get('/terms', 'SettingController@terms')->name('terms');
 
-    Route::resource('products', 'ProductController');
-    Route::post('products/addToCart/{product}', 'CartController@addToCart')->name('products.addToCart');
-    Route::get('cart/remove/{row}', 'CartController@removeFromCart')->name('cart.remove');
+//    Route::resource('products', 'ProductController');
+//    Route::post('products/addToCart/{product}', 'CartController@addToCart')->name('products.addToCart');
+//    Route::get('cart/remove/{row}', 'CartController@removeFromCart')->name('cart.remove');
 
-    Route::get('/categories', 'CategoryController@categories')->name('categories.index');
-    Route::get('/category/index/{id}', 'CategoryController@categoryIndex')->name('category.index');
+//    Route::get('/categories', 'CategoryController@categories')->name('categories.index');
+//    Route::get('/category/index/{id}', 'CategoryController@categoryIndex')->name('category.index');
     Route::get('/subscriptions/{subscription}/show', 'SubscriptionController@show')->name('subscriptions.show');
 
     Route::get('/contact_us', 'SettingController@message')->name('contact_us');
@@ -38,11 +38,11 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
         Route::post('/rate', 'SettingController@saveRate')->name('save.rate');
         Route::get('/who_are_we', 'SettingController@whoAreWe')->name('who_are_we');
         Route::get('/notification', 'UserController@notifications')->name('user.notification');
-        Route::get('/orders', 'OrderController@index')->name('orders');
-        Route::post('/order/checkPayment', 'OrderController@checkPayment')->name('order.checkPayment');
-        Route::post('/order/checkCoupon', 'OrderController@checkCoupon')->name('product.checkCoupon');
-        Route::post('/order/store', 'OrderController@store')->name('order.store');
-        Route::get('/carts', 'CartController@index')->name('carts');
+//        Route::get('/orders', 'OrderController@index')->name('orders');
+//        Route::post('/order/checkPayment', 'OrderController@checkPayment')->name('order.checkPayment');
+//        Route::post('/order/checkCoupon', 'OrderController@checkCoupon')->name('product.checkCoupon');
+//        Route::post('/order/store', 'OrderController@store')->name('order.store');
+//        Route::get('/carts', 'CartController@index')->name('carts');
         Route::get('/redirect', 'CartController@redirect')->name('payment.redirect');
         Route::get('/subscriptions/{id}/off', 'SubscriptionController@offSubscription')->name('subscriptions.offSubscription');
         Route::get('/subscriptions/{id}/on', 'SubscriptionController@onSubscription')->name('subscriptions.onSubscription');
@@ -63,7 +63,7 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
         Route::get('/users/change-password', 'AuthController@getChangePassword')->name('users.getChangePassword');
         Route::post('/users/change-password/{user}', 'AuthController@changePassword')->name('users.changePassword');
         // Route::get('payment', 'PaymentController@check')->name('payment.check');
-        Route::get('product/makeFav/{id}', 'UserController@makeFav')->name('products.makeFav');
-        Route::get('product/makeUnFav/{id}', 'UserController@makeUnFav')->name('products.makeUnFav');
+//        Route::get('product/makeFav/{id}', 'UserController@makeFav')->name('products.makeFav');
+//        Route::get('product/makeUnFav/{id}', 'UserController@makeUnFav')->name('products.makeUnFav');
     });
 });
