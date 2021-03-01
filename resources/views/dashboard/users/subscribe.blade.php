@@ -1,6 +1,7 @@
 @extends('dashboard.layouts.app')
 @section('title', trans('site.Create Subscription'))
 @section('content')
+    @if(lang() == 'ar')
     <style>
         .pric span{
             color: #FF394F;
@@ -21,6 +22,28 @@
             border-radius: 5px;
         }
     </style>
+    @else
+        <style>
+            .pric span{
+                color: #FF394F;
+            }
+            .select-hh label{
+                width: 250px;
+                text-align: left;
+                border-radius: 5px;
+                padding: 5px;
+                background-color: #1E9FF2 !important;
+                color: #fff;
+            }
+            .noting{
+                width: 100%;
+                border: 1px solid #ddd;
+                height: 160px;
+                padding: 15px;
+                border-radius: 5px;
+            }
+        </style>
+    @endif
 
     <!--content wrapper -->
     <div class="content-wrapper">
@@ -191,7 +214,7 @@
                                         <p class="name-input">
                                             {{__('site.Note')}}
                                         </p>
-                                        <textarea class="noting" name="note" placeholder="اكتب نص"></textarea>
+                                        <textarea class="noting" name="note"></textarea>
 
                                     </div>
                                 <div class="form-actions right">

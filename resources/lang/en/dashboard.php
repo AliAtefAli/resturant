@@ -275,6 +275,7 @@ return [
         'Add Subscription' => 'Add Subscription',
         'Edit Subscription' => 'Edit Subscription',
         'Delete Subscription' => 'Delete Subscription',
+        'active_subscriptions' => 'Active Subscriptions',
         'All Subscriptions' => 'All Subscriptions',
         'Subscriptions' => 'Subscriptions',
         'today_subscriptions' => 'Today Subscriptions',

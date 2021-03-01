@@ -7,19 +7,21 @@
             {
                 padding: 0; !important;
             }
-            .dropToggle{
-                width: auto;
-                height: 30px;
-                background-color: #28d094;
-                border: 1px solid #28d094;
-                color: #fff;
-                border-radius: 5px;
-            }
-            .dropMenu{
-                font-size: 12px;
-            }
         </style>
     @endif
+    <style>
+        .dropToggle{
+            width: auto;
+            height: 30px;
+            background-color: #28d094;
+            border: 1px solid #28d094;
+            color: #fff;
+            border-radius: 5px;
+        }
+        .dropMenu{
+            font-size: 12px;
+        }
+    </style>
     <!--content wrapper -->
     <div class="content-wrapper">
         <!--content header -->
