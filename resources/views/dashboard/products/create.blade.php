@@ -107,10 +107,10 @@
                                     <label class="col-md-2" for="image"></label>
                                     <div class="col-md-10">
                                         <div class="position-relative multi-img-result d-flex align-items-center flex-wrap">
-                                                    <div class="img-uploaded uploaded-image m-1">
+                                            <div class="img-uploaded uploaded-image m-1">
 
-                                                    </div>
-                                           </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 

@@ -1,7 +1,25 @@
 @extends('dashboard.layouts.app')
 @section('title', trans('dashboard.main.Users'))
 @section('content')
-
+    @if(app()->getLocale() == 'ar')
+        <style>
+            .card-body
+            {
+                padding: 0; !important;
+            }
+            .dropToggle{
+                width: auto;
+                height: 30px;
+                background-color: #28d094;
+                border: 1px solid #28d094;
+                color: #fff;
+                border-radius: 5px;
+            }
+            .dropMenu{
+                font-size: 12px;
+            }
+        </style>
+    @endif
     <!--content wrapper -->
     <div class="content-wrapper">
         <!--content header -->
@@ -36,7 +54,7 @@
                                                     class="la la-ellipsis-v font-medium-3"></i></a>
                                             <div class="heading-elements">
                                                 <ul class="list-inline mb-0">
-                                                    <li><a href="{{ route('dashboard.users.create') }}" class="btn btn-success btn-sm mr-1"><i
+                                                    <li><a href="{{ route('dashboard.users.create') }}" style="margin-top: 5px" class="btn btn-success btn-sm mr-1"><i
                                                                 class="ft-plus-circle"></i> {{trans('dashboard.main.Create')}} </a>
                                                     </li>
                                                     <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
@@ -49,7 +67,7 @@
                                         </div>
                                         <div class="card-content collapse show">
                                             <div class="card-body card-dashboard">
-                                                <table class="table table-striped table-bordered">
+                                                <table class="table table-striped table-bordered" style="font-size: xx-small;">
                                                     <thead>
                                                     <tr>
                                                         <th>{{trans('dashboard.user.Name')}}</th>
@@ -58,6 +76,8 @@
                                                         <th>{{trans('dashboard.user.Status')}}</th>
                                                         <th>{{trans('dashboard.user.Last Active')}}</th>
                                                         <th>{{trans('dashboard.main.Actions')}}</th>
+                                                        <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.Add Subscription')}}</th>
+                                                        <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.All Subscriptions')}}</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -126,7 +146,29 @@
                                                                     </div>
                                                                 </div>
                                                             </td>
-                                                        </tr>
+                                                            <td>
+                                                                <a href="{{ route('dashboard.users.select_subscribe', $user) }}">
+                                                                    <button class="btn btn-warning btn-sm" title=""><i
+                                                                                class="ft-book"></i></button>
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                <div class="dropdown">
+                                                                    <button class="dropdown-toggle dropToggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        {{trans('dashboard.subscriptions.All Subscriptions')}}
+                                                                    </button>
+
+                                                                    <div class="dropdown-menu dropMenu" aria-labelledby="dropdownMenuLink">
+                                                                        <a class="dropdown-item" href="{{ route('dashboard.users.activeSubs', $user) }}">{{trans('dashboard.subscriptions.active_subscriptions')}}</a>
+                                                                        <a class="dropdown-item" href="{{ route('dashboard.users.stoppedSubs', $user) }}">{{trans('dashboard.subscriptions.stopped_subscriptions')}}</a>
+                                                                        <a class="dropdown-item" href="{{ route('dashboard.users.finishedSubs', $user) }}">{{trans('dashboard.subscriptions.Finished Subscriptions')}}</a>
+                                                                    </div>
+                                                                </div>
+{{--                                                                <a href="{{ route('dashboard.users.activeSubs', $user) }}">--}}
+{{--                                                                    <button class="btn btn-info btn-sm" title=""><i--}}
+{{--                                                                                class="ft-edit"></i></button>--}}
+{{--                                                                </a>--}}
+                                                            </td>
                                                     @endforeach
                                                 </table>
                                             </div>

@@ -140,6 +140,7 @@
 <script src="{{ asset('dashboard_files/app-assets/js/scripts/tables/datatables-extensions/datatable-button/datatable-html5.min.js') }}"></script>
 <!-- End of Datatable js -->
 
+
 <!-- SweetAlert js -->
 {{--<script src="{{asset('dashboard_files/app-assets/js/scripts/extensions/sweet-alerts.js')}}" type="text/javascript"></script>--}}
 <!-- End of SweetAlert js -->

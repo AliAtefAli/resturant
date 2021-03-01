@@ -3,12 +3,7 @@
 @section('style')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 @endsection
-<style>
-    #search-input
-    {
-        width: 71%;
-    }
-</style>
+
 @section('content')
 
     <div class="header-pic">

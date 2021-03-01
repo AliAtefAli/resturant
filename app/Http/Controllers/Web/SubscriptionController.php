@@ -67,6 +67,7 @@ class SubscriptionController extends Controller
 
     public function store(SaveSubscriptionRequest $request)
     {
+        dd($request->all());
         if ($request->coupon != null) {
             $request['billing_total'] = $request->total_billing;
         }

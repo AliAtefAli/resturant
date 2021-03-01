@@ -51,8 +51,9 @@
                                         href="{{route('dashboard.home')}}">{{trans('dashboard.main.home')}}</a>
                             </li>
                             <li class="breadcrumb-item"><a
-                                        href="{{ route('dashboard.subscriptions.index') }}">{{trans('dashboard.subscriptions.Subscriptions')}}
-                                </a></li>
+                                        href="{{route('dashboard.users.index')}}">{{ trans('dashboard.main.Users') }}</a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="{{ route('dashboard.users.show', $user->id) }}">{{ $user->name }}</a></li>
                             <li class="breadcrumb-item active">{{trans('dashboard.subscriptions.Finished Subscriptions')}}</li>
                         </ol>
                     </div>
@@ -89,37 +90,94 @@
                                                        style="font-size: xx-small;">
                                                     <thead>
                                                     <tr>
-                                                        <th style="width: 50px;!important;">{{trans('dashboard.user.Name')}}</th>
                                                         <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.Start Date')}}</th>
                                                         <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.End Date')}}</th>
                                                         <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.Shipping type')}}</th>
+                                                        <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.name')}}</th>
                                                         <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.Total Price')}}</th>
                                                         <th style="width: 80px;!important;">{{trans('dashboard.subscriptions.Address')}}</th>
-                                                        <th style="width: 50px;!important;">{{trans('dashboard.additional_phone')}}</th>
-                                                        <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.People count')}}</th>
-                                                        <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.show')}}</th>
+                                                        <th style="width: 90px;!important;">{{trans('dashboard.main.Actions')}}</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
                                                     @foreach($subscriptions as $subscription)
                                                         <tr>
-                                                            <th><a href="{{ route('dashboard.users.show', $subscription->user->id) }}">{{ $subscription->user->name }}</a></th>
                                                             <td>{{ \Carbon\Carbon::parse($subscription->start_date)->toDateString() }}</td>
                                                             <td>{{ \Carbon\Carbon::parse($subscription->end_date)->toDateString() }}</td>
                                                             <td>{{ trans("dashboard.subscriptions." . $subscription->shipping_type) }}</td>
+                                                            <td>{{ $subscription->subscription->name }}</td>
                                                             <td>{{ $subscription->billing_total }}</td>
+
                                                             <td style="width: 80px;!important;"><a href="{{ 'https://www.google.com/maps/place/' . $subscription->billing_address }}" target="_blank">
                                                                     {{ $subscription->billing_address }}
                                                                 </a>
                                                             </td>
-                                                            <td>{{ $subscription->billing_phone }}</td>
-                                                            <td>{{ $subscription->people_count }}</td>
                                                             <td>
                                                                 <a href="{{ route('dashboard.subscriptions.showSubscription', $subscription) }}" class="btn btn-warning btn-sm" style="padding: 5px 8px;" title="{{ trans('dashboard.subscriptions.Show Subscriptions') }}">
                                                                     <i class="ft-eye"></i>
                                                                 </a>
+                                                                @if($subscription->stopped_at == null)
+                                                                    <a href="{{ route('dashboard.subscriptions.subscriptions_off', $subscription->id) }}"
+                                                                       class="btn btn-outline-danger btn-sm"
+                                                                       title="{{ trans('dashboard.subscriptions.stop_subscription') }}">
+                                                                        <i class="ft-lock"
+                                                                           aria-hidden="true"></i>
+                                                                    </a>
+                                                                @else
+                                                                    <a href="{{ route('dashboard.subscriptions.subscriptions_on', $subscription->id) }}"
+                                                                       class="btn btn-outline-success btn-sm"
+                                                                       title="{{ trans('dashboard.subscriptions.activate_subscription') }}">
+                                                                        <i class="ft-unlock"
+                                                                           aria-hidden="true"></i>
+                                                                    </a>
+                                                                @endif
+                                                                <a href="#" class="btn btn-info btn-sm" title="{{ trans('dashboard.subscriptions.Edit Subscription') }}" style="padding: 5px 8px;" data-toggle="modal" data-target="#edit-{{$subscription->id}}">
+                                                                    <i class="ft-edit"></i>
+                                                                </a>
+                                                                <a href="#" data-toggle="modal"
+                                                                   data-target="#delete-question-{{$subscription->id}}"
+                                                                   class="btn btn-danger btn-sm" title="{{ trans('dashboard.subscriptions.Delete Subscription') }}">
+                                                                    <i class="ft-trash-2"></i>
+                                                                </a>
+                                                                <div class="modal fade  custom-imodal"
+                                                                     id="delete-question-{{$subscription->id}}"
+                                                                     tabindex="-1" role="dialog"
+                                                                     aria-labelledby="exampleModalLabel"
+                                                                     aria-hidden="true">
+                                                                    <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title"
+                                                                                    id="exampleModalLabel">{{ trans('dashboard.subscriptions.delete_Subscription') }}</h5>
+                                                                                <button type="button" class="close"
+                                                                                        data-dismiss="modal"
+                                                                                        aria-label="Close">
+                                                                                    <span
+                                                                                            aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body custom-addpro">
+                                                                                <div class="contact-page">
+                                                                                    <form action="{{ route('dashboard.subscriptions.deleteSubs', $subscription->id) }}"
+                                                                                          method="post">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+                                                                                        <h2>  {{ trans('dashboard.subscriptions.Do you want to delete this Subscription') }} </h2>
+
+                                                                                        <div class="form-actions right">
+                                                                                            <button type="submit" class="btn btn-danger">
+                                                                                                {{trans('dashboard.main.delete')}}
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </td>
                                                         </tr>
+                                                        @include('dashboard.users.edit_subs_modal')
                                                     @endforeach
                                                     </tbody>
                                                 </table>

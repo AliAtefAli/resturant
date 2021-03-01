@@ -14,6 +14,23 @@ Route::resource('users', 'UsersController');
 Route::get('/admins', 'UsersController@admins')->name('users.admins');
 Route::get('users/block/{user}', 'UsersController@block')->name('users.block');
 Route::get('users/unblock/{user}', 'UsersController@unBlock')->name('users.unblock');
+
+Route::get('users/select_subscribe/{user}', 'UsersController@selectSubscribe')->name('users.select_subscribe');
+Route::get('users/{user}/active_subscribe/', 'UsersController@activeSubs')->name('users.activeSubs');
+Route::get('users/{user}/stopped_subscribe/', 'UsersController@stoppedSubs')->name('users.stoppedSubs');
+Route::get('users/{user}/finished_subscribe/', 'UsersController@finishedSubs')->name('users.finishedSubs');
+
+//Route::post('users/subscribe/', 'UsersController@subscribe')->name('user.subscribe');
+Route::get('users/user_subscribe/{user}/{subscription}', 'UsersController@userSubscribe')->name('user.userSubscribe');
+Route::post('users/store_subscribe/', 'UsersController@storeSubscribe')->name('user.storeSubscribe');
+Route::post('/users/checkCoupon', 'UsersController@checkCoupon')->name('users.checkCoupon');
+
+//Route::get('users/user_subscribe/', 'UsersController@addSubscription')->name('user.userSubscribe');
+
+
+
+
+
 Route::resource('categories', 'CategoryController');
 Route::resource('products', 'ProductController');
 Route::get('products/featured/{product}', 'ProductController@featured')->name('products.featured');
@@ -44,6 +61,8 @@ Route::get('subscriptions/subscription_show/{subscriptionUser}', 'SubscriptionCo
 Route::put('subscriptions/subscription_note/{id}', 'SubscriptionController@SubscriptionNote')->name('subscriptions.note');
 Route::get('subscriptions/subscription_off/{id}', 'SubscriptionController@offSubscription')->name('subscriptions.subscriptions_off');
 Route::get('subscriptions/subscription_on/{id}', 'SubscriptionController@onSubscription')->name('subscriptions.subscriptions_on');
+Route::put('subscriptions/edit_subscription/{id}', 'SubscriptionController@editSubs')->name('subscriptions.editSubs');
+Route::match(['delete'],'subscriptions/delete_subscription/{id}', 'SubscriptionController@deleteSubs')->name('subscriptions.deleteSubs');
 
 
 

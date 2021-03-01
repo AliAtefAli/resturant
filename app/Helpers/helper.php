@@ -79,6 +79,22 @@ if (!function_exists('editPhone')){
         }
     }
 
+    if (!function_exists('lat')) {
+        function lat()
+        {
+            $latitude  =  "31.29289850688535";
+            return $latitude;
+        }
+    }
+
+    if (!function_exists('lng')) {
+        function lng()
+        {
+            $longitude  =  "37.409769557672135";
+            return $longitude;
+        }
+    }
+
 }
 
 

@@ -23,6 +23,7 @@ return [
     "there_is_no_note" => "لا يوجد ملاحظات",
     'Logout' => 'تسجيل الخروج',
     'active' => 'مفعل',
+    'pending' => 'قيد الانتظار',
     'block' => 'حظر',
     'optional' => 'اختياري',
 
@@ -278,9 +279,11 @@ return [
     ],
     'subscriptions' => [
         'Add Subscription' => 'إضافة اشتراك',
+        'delete_Subscription' => 'حذف الاشتراك',
         'Edit Subscription' => 'تعديل الاشتراك',
         'Delete Subscription' => 'مسح الاشتراك',
         'All Subscriptions' => 'كل الاشتراكات',
+        'active_subscriptions' => 'الاشتراكات المفعله',
         'Subscriptions' => 'الاشتراكات',
         'today_subscriptions' => 'اشتراكات اليوم',
         'Finished Subscriptions' => 'الاشتراكات المجمدة',
