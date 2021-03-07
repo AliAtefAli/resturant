@@ -286,6 +286,94 @@
 @endsection
 
 @section('scripts')
+    <script>
+        var total = parseFloat($('#total').attr('data-value'));
+        var currency = ($('#currency').attr('data-value'));
+        $( "#count" ).change(function() {
+            var price = parseFloat($('.sub-price').attr('data-value'));
+            var count = $('#count').val();
+            // var delivery = $('#deliveryPrice').val();
+            total = price * count;
+            document.getElementById('total').innerHTML = total +' '+ currency;
+        });
+        $('.local-global').change(function () {
+            if($(this).attr('id') === 'global'){
+                total += ({{ $subscription->delivery_price }} ) ?? 0 ;
+                document.getElementById('total').innerHTML = total +' '+ currency;
+            } else {
+                total -= ( {{ $subscription->delivery_price }} ) ?? 0 ;
+                document.getElementById('total').innerHTML = total +' '+ currency;
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+
+
+        flatpickr("#startDate", {
+            minDate: new Date().fp_incr(1),
+            defaultDate: new Date().fp_incr(1),
+            // locale: {
+            //     'firstDayOfWeek': 0 // start week on Monday
+            // },
+
+            disable: [
+                function(date) {
+                    // return true to disable
+                    return (date.getDay() === 5 || date.getDay() === 6);
+                }
+            ]
+            // daysOfWeekDisabled: [0, 6]
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#coupon-submit').click(function (e) {
+                e.preventDefault();
+                var coupon = $('#coupon').val(),
+                    discountElement = $('.discount-preview'),
+                    totalBefore = document.getElementById('before_discount'),
+                    totalAfter = document.getElementById('after_discount'),
+                    discountAmount = document.getElementById('discount_amount'),
+                    totalBilling = document.getElementById('total_billing'),
+                    shippingType = document.querySelector('.local-global:checked').value,
+                    countVal = $('#count').val();
+                    subsId = $('#subs_id').val();
+                    countInput = $('#count');
+
+
+                $.ajax({
+                    url: "{{ route('subscriptions.checkCoupon') }}",
+                    type: "POST",
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        coupon: coupon,
+                        subscription: subsId,
+                        people_count: countVal,
+                        shipping_type: shippingType,
+                    },
+                    dataType: "json",
+                    success: function (response) {
+                        if (response.status === false) {
+                            toastr.error(response.msg, {timeOut: "50000",})
+                        } else {
+                            countInput.attr("disabled" ,true);
+                            totalBefore.innerText = response.data.totalBefore;
+                            totalAfter.innerText = response.data.billing_total;
+                            totalBilling.value = response.data.billing_total;
+                            discountAmount.innerText = (response.data.coupon.discount_type === 'percent') ? response.data.coupon.amount + ' %' : response.data.coupon.amount;
+                            discountElement.removeAttr('style');
+                            toastr.success(response.msg, {timeOut: "50000",});
+
+
+                        }
+
+                    }
+                });
+            });
+        });
+    </script>
+
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ ($setting['google_key']) ?? 0 }}&libraries=places&language=ar"></script>
     <script type="text/javascript">
         function getLocation() {
@@ -404,93 +492,5 @@
         }
 
         google.maps.event.addDomListener(window, 'load',getLocation);
-    </script>
-
-    <script>
-        var total = parseFloat($('#total').attr('data-value'));
-        var currency = ($('#currency').attr('data-value'));
-        $( "#count" ).change(function() {
-            var price = parseFloat($('.sub-price').attr('data-value'));
-            var count = $('#count').val();
-            // var delivery = $('#deliveryPrice').val();
-            total = price * count;
-            document.getElementById('total').innerHTML = total +' '+ currency;
-        });
-        $('.local-global').change(function () {
-            if($(this).attr('id') === 'global'){
-                total += ({{ $subscription->delivery_price }} ) ?? 0 ;
-                document.getElementById('total').innerHTML = total +' '+ currency;
-            } else {
-                total -= ( {{ $subscription->delivery_price }} ) ?? 0 ;
-                document.getElementById('total').innerHTML = total +' '+ currency;
-            }
-        });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-
-
-        flatpickr("#startDate", {
-            minDate: new Date().fp_incr(1),
-            defaultDate: new Date().fp_incr(1),
-            // locale: {
-            //     'firstDayOfWeek': 0 // start week on Monday
-            // },
-
-            disable: [
-                function(date) {
-                    // return true to disable
-                    return (date.getDay() === 5 || date.getDay() === 6);
-                }
-            ]
-            // daysOfWeekDisabled: [0, 6]
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#coupon-submit').click(function (e) {
-                e.preventDefault();
-                var coupon = $('#coupon').val(),
-                    discountElement = $('.discount-preview'),
-                    totalBefore = document.getElementById('before_discount'),
-                    totalAfter = document.getElementById('after_discount'),
-                    discountAmount = document.getElementById('discount_amount'),
-                    totalBilling = document.getElementById('total_billing'),
-                    shippingType = document.querySelector('.local-global:checked').value,
-                    countVal = $('#count').val();
-                    subsId = $('#subs_id').val();
-                    countInput = $('#count');
-
-
-                $.ajax({
-                    url: "{{ route('subscriptions.checkCoupon') }}",
-                    type: "POST",
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        coupon: coupon,
-                        subscription: subsId,
-                        people_count: countVal,
-                        shipping_type: shippingType,
-                    },
-                    dataType: "json",
-                    success: function (response) {
-                        if (response.status === false) {
-                            toastr.error(response.msg, {timeOut: "50000",})
-                        } else {
-                            countInput.attr("disabled" ,true);
-                            totalBefore.innerText = response.data.totalBefore;
-                            totalAfter.innerText = response.data.billing_total;
-                            totalBilling.value = response.data.billing_total;
-                            discountAmount.innerText = (response.data.coupon.discount_type === 'percent') ? response.data.coupon.amount + ' %' : response.data.coupon.amount;
-                            discountElement.removeAttr('style');
-                            toastr.success(response.msg, {timeOut: "50000",});
-
-
-                        }
-
-                    }
-                });
-            });
-        });
     </script>
 @endsection

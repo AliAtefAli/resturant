@@ -9,6 +9,7 @@ return [
     "made_asPending" => "Made as Pending successfully",
     "made_asActive" => "Made as Active Successfully",
     "additional_phone" => "Additional Phone",
+    "remember_me" => "Remember Me",
     "sorry_the_available_times_to_activate_the_subscription_have_expired" => "Sorry, the available times to activate the subscription have expired",
     "count" => "number of times that the package can be stopped",
     "number_of_pauses" => "Number of pauses",

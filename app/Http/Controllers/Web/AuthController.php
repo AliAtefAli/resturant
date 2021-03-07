@@ -161,6 +161,8 @@ class AuthController extends Controller
                     'password.required' => (trans('validation.field_required_password')),
                 ]);
 
+            $remember_me = $request->has('remember') ? true : false;
+
             $user = User::where('email', $request->email)->first();
 
             if (!Hash::check($request->password, $user->password))
@@ -169,7 +171,7 @@ class AuthController extends Controller
             }
 
             if ($user) {
-                if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password],$remember_me)) {
                     if (auth()->user() && auth()->user()->type == 'admin') {
                         return redirect('/dashboard');
                     } else {
@@ -190,6 +192,9 @@ class AuthController extends Controller
                     'password.required' => (trans('validation.field_required_password')),
                 ]);
 
+
+            $remember_me = $request->has('remember') ? true : false;
+
             $user = User::where('phone', $request->email)->first();
 
         if (!Hash::check($request->password, $user->password))
@@ -198,7 +203,7 @@ class AuthController extends Controller
         }
 
             if ($user) {
-                if (Auth::guard('web')->attempt(['phone' => $request->email, 'password' => $request->password])) {
+                if (Auth::guard('web')->attempt(['phone' => $request->email, 'password' => $request->password],$remember_me)) {
                     if (auth()->user() && auth()->user()->type == 'admin') {
                         return redirect('/dashboard');
                     } else {
