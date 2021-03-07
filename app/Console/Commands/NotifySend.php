@@ -74,8 +74,7 @@ class NotifySend extends Command
                     'end_date' => Carbon::parse($finished->end_date)->toDateString()
                 ];
 
-                Mail::to($finished->user->mail)->
-                send(new RateUs());
+                Mail::to($finished->user->email)->send(new RateUs());
             }
         }
 
