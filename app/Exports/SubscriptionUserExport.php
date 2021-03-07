@@ -22,7 +22,7 @@ class SubscriptionUserExport implements FromCollection
         $subscriptions = $subscriptions->select("*", DB::raw("6371 * acos(cos(radians(" . lat() . "))
                                 * cos(radians(lat)) * cos(radians(lng) - radians(" . lng() . "))
                                 + sin(radians(" . lat() . ")) * sin(radians(lat))) AS distance"));
-        $subscriptions = $subscriptions->having('distance', '<', 500);
+        $subscriptions = $subscriptions->having('distance', '<', 1000000);
         $subscriptions = $subscriptions->orderBy('distance', 'asc');
         $subscriptions = $subscriptions->get();
 
