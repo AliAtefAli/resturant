@@ -5,6 +5,7 @@ namespace App\Http;
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\HtmlMinifier;
 use App\Http\Middleware\Localization;
+use App\Http\Middleware\SendMail;
 use App\Http\Middleware\TrackLastActiveAt;
 use App\Http\Middleware\UserStatus;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -73,5 +74,6 @@ class Kernel extends HttpKernel
 
         'admin' => Admin::class,
         'locale' => Localization::class,
+        'mail' => SendMail::class,
     ];
 }

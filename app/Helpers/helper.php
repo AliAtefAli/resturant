@@ -1,10 +1,13 @@
 <?php
 
 use App\Models\Setting;
+use App\Models\SmsSmtp;
 use App\Models\SubscriptionUser;
 use App\Models\User;
 use App\Notifications\FinishedSubscriptions;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
 
 if (!function_exists('lang')) {
     function lang()

@@ -176,6 +176,11 @@
                             {{ trans('dashboard.API.APIs') }}
                         </a>
                     </li>
+{{--                        <li><a class="menu-item" href="{{ route('dashboard.settings.smtp_page') }}"--}}
+{{--                               data-i18n="nav.page_layouts.2_columns">--}}
+{{--                                {{ trans('dashboard.smtp.smtp') }}--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                     @endif
                         @if(auth()->user()->permissions == 'admin' || auth()->user()->permissions == 'chef' || auth()->user()->permissions == 'delivery')
                             <li>

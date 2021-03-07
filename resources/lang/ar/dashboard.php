@@ -498,4 +498,15 @@ return [
         'Transaction id' => 'رقم الطلب',
         'Transaction type' => 'نوع الطلب',
     ],
+    'smtp' => [
+        'smtpMail' => 'Smtp',
+        'smtp' => 'اعدادت الايميل',
+        'username' => 'اسم المستخدم',
+        'password' => 'الرقم السرى',
+        'sender_email' => 'الايميل المرسل',
+        'sender_name' => 'الاسم المرسل',
+        'port' => 'البورت',
+        'host' => 'الهوست',
+        'encryption' => 'التشفير'
+    ]
 ];

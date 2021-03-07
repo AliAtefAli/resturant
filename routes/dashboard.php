@@ -1,6 +1,9 @@
 <?php
 
 // Test
+use App\Mail\TodaySubs;
+use Illuminate\Support\Facades\Mail;
+
 Route::get('/create', 'HomeController@create')->name('create');
 Route::get('/show', 'HomeController@show')->name('show');
 Route::get('/change_language', 'HomeController@change_language')->name('change.language');
@@ -100,6 +103,9 @@ Route::get('settings/social', 'SettingController@social')->name('settings.social
 Route::get('settings/api', 'SettingController@api')->name('settings.api');
 Route::put('settings/Site', 'SettingController@update')->name('settings.update');
 
+Route::get('settings/smtp/page', 'SettingController@smtpPage')->name('settings.smtp_page');
+Route::put('settings/smtp', 'SettingController@SMTP')->name('settings.smtp');
+
 Route::get('meals/index', 'OurMealController@index')->name('meals.index');
 Route::get('meals/create', 'OurMealController@create')->name('meals.create');
 Route::post('meals/store', 'OurMealController@store')->name('meals.store');
@@ -111,3 +117,8 @@ Route::match(['delete'],'meals/destroy/{meals}', 'OurMealController@destroy')->n
 
 Route::get('/news_letter', 'SettingController@newsLetter')->name('news.letter');
 Route::post('/send_news_letter', 'SettingController@sendNewsLetter')->name('send.news.letter');
+
+//Route::get('/send-mail','HomeController@MailView');
+Route::get('export', 'HomeController@export')->name('export');
+Route::get('subs_end', 'HomeController@subsEnd');
+

@@ -492,4 +492,15 @@ return [
         'Transaction id' => 'Transaction ID',
         'Transaction type' => 'Transaction type',
     ],
+    'smtp' => [
+        'smtpMail' => 'Smtp',
+        'smtp' => 'Email Configuration',
+        'username' => 'User name',
+        'password' => 'Password',
+        'sender_email' => 'Sender Email',
+        'sender_name' => 'Sender Name',
+        'port' => 'Port',
+        'host' => 'Host',
+        'encryption' => 'Encryption'
+    ]
 ];
