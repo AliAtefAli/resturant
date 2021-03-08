@@ -35,6 +35,8 @@ class SubscriptionController extends Controller
     public function checkPayment(SaveSubscriptionRequest $request)
     {
 
+
+
         $subscription = Subscription::findOrFail($request->subscription_id);
         if ($request->coupon != null) {
             $coupon = Discount::where('code', $request->coupon)->first();
@@ -76,6 +78,15 @@ class SubscriptionController extends Controller
 
     public function store(SaveSubscriptionRequest $request)
     {
+
+        if ($request['billing_address'] == null)
+        {
+//            dd($request->billing_address);
+            $request['billing_address'] = auth()->user()->address;
+            $request['lat'] = auth()->user()->lat;
+            $request['lng'] = auth()->user()->lng;
+        }
+
 
         if ($request->coupon != null) {
             if ($request->total_billing != null)
