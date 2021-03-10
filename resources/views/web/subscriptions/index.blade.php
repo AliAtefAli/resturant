@@ -45,9 +45,15 @@
                 : {{$subscription->price}}  @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
             </p>
             <p id="duration" class="price">
-                @if($subscription->duration_in_day <= 10)
+
+                @if($subscription->duration_in_day <= 2)
+                    {{ __('site.Subscriptions Duration') }}
+                    : {{$subscription->duration_in_day}} {{ __('site.Day') }}
+
+                @elseif($subscription->duration_in_day <= 10)
                     {{ __('site.Subscriptions Duration') }}
                     : {{$subscription->duration_in_day}} {{ __('site.Days') }}
+
                 @else
                     {{ __('site.Subscriptions Duration') }}
                     : {{$subscription->duration_in_day}} {{ __('site.Day') }}

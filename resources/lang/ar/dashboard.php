@@ -7,6 +7,8 @@ return [
     "made_asPending" => "تم جعلها كمعلقة",
     "made_asActive" => "تم جعلها كنشطة",
     "additional_phone" => "الجوال الاضافي",
+    "remember_me" => "تذكرني",
+    "sorry_the_available_times_to_activate_the_subscription_have_expired" => "عفوا لقد انتهت المحاولات المتاحه لتفعيل الباقه",
     "count" => "عدد المرات التي يمكن ايقاف الباقه",
     "number_of_pauses" => "عدد مرات الايقاف",
     "our_meals" => "من وجبتنا",
@@ -22,7 +24,9 @@ return [
     "there_is_no_note" => "لا يوجد ملاحظات",
     'Logout' => 'تسجيل الخروج',
     'active' => 'مفعل',
+    'pending' => 'قيد الانتظار',
     'block' => 'حظر',
+    'optional' => 'اختياري',
 
     "meals" =>
     [
@@ -204,6 +208,7 @@ return [
         'Order Is Successfully Processed And Your Order Is On The Way,' => 'تمت الانتهاء من الطلب بنجاح ,طلبك في الطريق الان',
         'Your order is in progress' => 'طلبكم قيد التنفيذ',
         'Sorry Order Is unSuccessfully Processed ' => 'عذرا ، لم يتم شحن طلبك',
+        'the_request_has_been_sent_successfully_waiting_for_a_response' => 'تم ارسال الطلب بنجاح في انتظار الرد',
         "All orders" => "جميع الطلبات",
         "Order date" => "تاريخ الطلب",
         "Price" => "السعر",
@@ -235,7 +240,7 @@ return [
         "delivered" => "تم التوصيل",
         "cancelled" => "ملغي",
         "accepted" => "تم الموافقة",
-        'processing' => 'جاري التحضير',
+        'processing' => 'تم الارسال',
         'Your Shipping Address' => 'عنوان ارسال الفواتير الخاص بك',
     ],
     "product" => [
@@ -275,9 +280,11 @@ return [
     ],
     'subscriptions' => [
         'Add Subscription' => 'إضافة اشتراك',
+        'delete_Subscription' => 'حذف الاشتراك',
         'Edit Subscription' => 'تعديل الاشتراك',
         'Delete Subscription' => 'مسح الاشتراك',
         'All Subscriptions' => 'كل الاشتراكات',
+        'active_subscriptions' => 'الاشتراكات المفعله',
         'Subscriptions' => 'الاشتراكات',
         'today_subscriptions' => 'اشتراكات اليوم',
         'Finished Subscriptions' => 'الاشتراكات المجمدة',
@@ -285,6 +292,8 @@ return [
         'finished' => 'المجمدة',
         'stopped' => 'متوقفه',
         'active' => 'مفعله',
+        'stop_subscription' => 'ايقاف الاشتراك',
+        'activate_subscription' => 'تفعيل الاشتراك',
         'Show Subscriptions' => 'عرض الاشتراكات',
         'Subscription' => 'الاشتراك',
         'tomorrow_subscriptions' => 'اشتراكات الغد',
@@ -308,6 +317,10 @@ return [
         "Do you want to delete this Subscription" => "هل تود فعلا مسح هذا الاشتراك ؟",
         "Sorry you can not delete this Subscription" => "عفوا هذا الاشتراك لا يمكن مسحه ؟ لان لديه مشتركين",
 
+        'In progress' => 'جاري التجهيز',
+        'Make as shipped' => 'جعله كمشحون',
+        'Make as In Progress' => 'جعله جاري التجهيز',
+        'Make as Rejected' => 'جعله كمرفوض',
         'Start Date' => 'بداية الاشتراك',
         'End Date' => 'نهاية الاشتراك',
         'stopped_date' => 'تاريخ ايقاف الاشتراك',
@@ -329,6 +342,11 @@ return [
         'delivery' => 'توصيل',
         'local' => 'محلي',
         'global' => 'بالتوصيل',
+        'order_status' => 'حاله الطلب',
+        'processing' => 'قيد الانتظار',
+        'cancelled' => 'تم الغاء الطلب',
+        'accepted' => 'تم قبول الطلب',
+        'delivered' => 'تم الانتهاء من الظلب و الان في الظريق',
     ],
     "settings" => [
         'Site Description Arabic' => 'وصف الموقع باللغة العربية',
@@ -428,6 +446,9 @@ return [
         "Last Active" => "اخر ظهور",
         "users" => "المستخدمين",
         "Do you want to delete this user" => "هل تود فعلا حذف هذا المستخدم ؟",
+        "permissions" => "الصلاحيات",
+        "chef" => "المطبخ",
+        "delivery" => "السائق",
     ],
     "notification" => [
         "New" => "جديد",
@@ -478,4 +499,15 @@ return [
         'Transaction id' => 'رقم الطلب',
         'Transaction type' => 'نوع الطلب',
     ],
+    'smtp' => [
+        'smtpMail' => 'Smtp',
+        'smtp' => 'اعدادت الايميل',
+        'username' => 'اسم المستخدم',
+        'password' => 'الرقم السرى',
+        'sender_email' => 'الايميل المرسل',
+        'sender_name' => 'الاسم المرسل',
+        'port' => 'البورت',
+        'host' => 'الهوست',
+        'encryption' => 'التشفير'
+    ]
 ];

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'Home' => 'الرئيسيه',
+    'Home' => 'الرئيسية',
     'Logout' => 'تسجيل الخروج',
 
     'Add' => 'اضف',
@@ -221,5 +221,4 @@ return [
     'Subscription Is Successfully Accepted And We are preparing it' => 'تم قبول الاشتراك بنجاح و نحن نقوم بتحضيره ',
     'Subscription Is Successfully Processed And Your Order Is On The Way' => 'تمت الانتهاء من الاشتراك بنجاح ,الوجبة في الطريق الان',
     'Sorry Subscription Is unSuccessfully Processed' => 'عذرا ، تم رفض اشتراكك',
-
 ];

@@ -132,7 +132,15 @@
                 <tr>
                     <td>
                         <p style="font-size: 14px;"><b>{{trans('dashboard.hi')}}, {{ $subscriptionUser->user->name }}</b></p>
-                        <p style="font-size: 14px;">{{ trans('dashboard.order.Order Is Successfully Processed And Your Order Is On The Way,') }}</p>
+                        @if($subscriptionUser->status == 'processing')
+                            <p style="font-size: 14px;">{{ trans('dashboard.order.the_request_has_been_sent_successfully_waiting_for_a_response') }}</p>
+                        @elseif($subscriptionUser->status == 'accepted')
+                            <p style="font-size: 14px;">{{ trans('dashboard.order.Order Is Successfully Accepted And We are preparing it') }}</p>
+                        @elseif($subscriptionUser->status == 'delivered')
+                            <p style="font-size: 14px;">{{ trans('dashboard.order.Order Is Successfully Processed And Your Order Is On The Way,') }}</p>
+                        @elseif($subscriptionUser->status == 'cancelled')
+                            <p style="font-size: 14px;">{{ trans('dashboard.order.Sorry Order Is unSuccessfully Processed') }}</p>
+                        @endif
                         <p style="font-size: 14px;">{{ trans('dashboard.Transactions.Transaction id') }} : {{ $subscriptionUser->id }}</p>
                     </td>
                 </tr>
@@ -165,7 +173,11 @@
                 <tr>
                     <td style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 50%;">
                         <h5 style="text-align: center; font-size: 16px; font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">{{ trans('dashboard.order.Your Shipping Address') }}</h5>
-                        <p style=" text-align: center;font-weight: normal; font-size: 14px; color: #000000;line-height: 21px;    margin-top: 0;">{{ $subscriptionUser->billing_address }}</p>
+                        <p style=" text-align: center;font-weight: normal; font-size: 14px; color: #000000;line-height: 21px;    margin-top: 0;">
+                            <a href="{{ 'https://www.google.com/maps/place/' .  $subscriptionUser->billing_address}} " target="_blank">
+                               {{ $subscriptionUser->billing_address }}
+                            </a>
+                        </p>
                     </td>
 
                 </tr>
@@ -190,10 +202,12 @@
                         <h5 style="text-align: center; font-size: 16px; font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">{{ trans('site.Order.Quantity') }}</h5>
                             <p style=" text-align: center;font-weight: normal; font-size: 14px; color: #000000; margin-top: 0;height: 81px;margin-bottom: 0;line-height: 81px">{{ $subscriptionUser->people_count }}</p>
                     </td>
-                    <td style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 25%;">
-                        <h5 style="text-align: center; font-size: 16px; font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">{{ trans('site.Order.Price') }}</h5>
+                    @if(auth()->user()->permissions == 'admin')
+                        <td style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 25%;">
+                            <h5 style="text-align: center; font-size: 16px; font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">{{ trans('site.Order.Price') }}</h5>
                             <p style=" text-align: center;font-weight: normal; font-size: 14px; color: #000000; margin-top: 0;height: 81px;margin-bottom: 0;line-height: 81px">{{ $subscriptionUser->subscription->price }}</p>
-                    </td>
+                        </td>
+                    @endif
 
                 </tr>
                 </tbody>
@@ -237,60 +251,62 @@
                         <p style="font-size: 14px;">{{trans('dashboard.main.status')}} :</p>
                     </td>
                     <td class="m-b-5" colspan="2" align="right">
-                        <b>{{ __("dashboard.order.$subscriptionUser->status") }}</b>
+                        <b>{{ __("dashboard.subscriptions.$subscriptionUser->status") }}</b>
                     </td>
                 </tr>
-                @if($subscriptionUser->coupon_amount == null|| $subscriptionUser->coupon_type ==null)
-                @else
-                    <tr class="pad-left-right-space ">
-                        <td class="m-b-5" colspan="2" align="left">
-                            <p style="font-size: 14px;">{{trans('dashboard.discounts.discount')}} :</p>
-                        </td>
-                        @if($subscriptionUser->coupon_type == 'percent')
-                            <td class="m-b-5" colspan="2" align="right">
-                                <b>% {{$subscriptionUser->coupon_amount}}</b>
+                @if(auth()->user()->permissions == 'admin')
+                    @if($subscriptionUser->coupon_amount == null|| $subscriptionUser->coupon_type ==null)
+                    @else
+                        <tr class="pad-left-right-space ">
+                            <td class="m-b-5" colspan="2" align="left">
+                                <p style="font-size: 14px;">{{trans('dashboard.discounts.discount')}} :</p>
                             </td>
-                        @else
-                            <td class="m-b-5" colspan="2" align="right">
+                            @if($subscriptionUser->coupon_type == 'percent')
+                                <td class="m-b-5" colspan="2" align="right">
+                                    <b>% {{$subscriptionUser->coupon_amount}}</b>
+                                </td>
+                            @else
+                                <td class="m-b-5" colspan="2" align="right">
+                                    <b>
+                                        {{$subscriptionUser->coupon_amount}}
+                                        @if(isset($setting[app()->getLocale() . '_currency']))
+                                            {{ $setting[app()->getLocale() . '_currency'] }}
+                                        @endif
+                                    </b>
+
+                                </td>
+                            @endif
+                        </tr>
+                    @endif
+                    @if($subscriptionUser->shipping_type == 'delivery')
+                        <tr class="pad-left-right-space">
+                            <td colspan="2" align="left">
+                                <p style="font-size: 14px;">{{ trans('dashboard.order.shipping charge') }} :</p>
+                            </td>
+                            <td colspan="2" align="right">
                                 <b>
-                                    {{$subscriptionUser->coupon_amount}}
+                                    {{ $subscriptionUser->subscription->delivery_price }}
                                     @if(isset($setting[app()->getLocale() . '_currency']))
                                         {{ $setting[app()->getLocale() . '_currency'] }}
                                     @endif
                                 </b>
-
                             </td>
-                        @endif
+                        </tr>
+                    @endif
+                    <tr class="pad-left-right-space ">
+                        <td class="m-t-5" colspan="2" align="left">
+                            <p style="font-size: 14px;">{{ trans('dashboard.order.Total Price') }} : </p>
+                        </td>
+                        <td class="m-t-5" colspan="2" align="right">
+                            <b style>
+                                {{ $subscriptionUser->billing_total }}
+                                @if(isset($setting[app()->getLocale() . '_currency']))
+                                    {{ $setting[app()->getLocale() . '_currency'] }}
+                                @endif
+                            </b>
+                        </td>
                     </tr>
                 @endif
-                @if($subscriptionUser->shipping_type == 'delivery')
-                <tr class="pad-left-right-space">
-                    <td colspan="2" align="left">
-                        <p style="font-size: 14px;">{{ trans('dashboard.order.shipping charge') }} :</p>
-                    </td>
-                    <td colspan="2" align="right">
-                        <b>
-                            {{ $subscriptionUser->subscription->delivery_price }}
-                            @if(isset($setting[app()->getLocale() . '_currency']))
-                                {{ $setting[app()->getLocale() . '_currency'] }}
-                            @endif
-                        </b>
-                    </td>
-                </tr>
-                @endif
-                <tr class="pad-left-right-space ">
-                    <td class="m-t-5" colspan="2" align="left">
-                        <p style="font-size: 14px;">{{ trans('dashboard.order.Total Price') }} : </p>
-                    </td>
-                    <td class="m-t-5" colspan="2" align="right">
-                        <b style>
-                            {{ $subscriptionUser->billing_total }}
-                            @if(isset($setting[app()->getLocale() . '_currency']))
-                                {{ $setting[app()->getLocale() . '_currency'] }}
-                            @endif
-                        </b>
-                    </td>
-                </tr>
             </table>
         </td>
     </tr>

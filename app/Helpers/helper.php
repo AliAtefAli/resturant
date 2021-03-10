@@ -1,10 +1,13 @@
 <?php
 
 use App\Models\Setting;
+use App\Models\SmsSmtp;
 use App\Models\SubscriptionUser;
 use App\Models\User;
 use App\Notifications\FinishedSubscriptions;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
 
 if (!function_exists('lang')) {
     function lang()
@@ -76,6 +79,22 @@ if (!function_exists('editPhone')){
             $string = str_replace(' ', '', $phone);
             $string = str_replace('-', '', $string);
             return $string;
+        }
+    }
+
+    if (!function_exists('lat')) {
+        function lat()
+        {
+            $latitude  =  "31.29289850688535";
+            return $latitude;
+        }
+    }
+
+    if (!function_exists('lng')) {
+        function lng()
+        {
+            $longitude  =  "37.409769557672135";
+            return $longitude;
         }
     }
 

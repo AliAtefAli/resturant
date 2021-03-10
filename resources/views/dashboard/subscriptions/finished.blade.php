@@ -39,7 +39,7 @@
 @section('content')
 
     <!--content wrapper -->
-    <div class="content-wrapper">
+    <div style="padding: 10px" class="content-wrapper">
         <!--content header -->
         <div class="content-header row">
             <div class="content-header-left col-md-6 col-12 mb-2">
@@ -83,25 +83,6 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        {{--                                        <form action="" method="get">--}}
-                                        {{--                                            <div class="row index-widget" style="direction: {{lang() == 'ar' ? 'rtl' : 'ltr'}};">--}}
-                                        {{--                                                <div class="col-md-3">--}}
-                                        {{--                                                    <div class="form-group">--}}
-                                        {{--                                                        <select class="form-control select" name="status">--}}
-                                        {{--                                                            <option value="all" selected>{{__('all_status')}}</option>--}}
-                                        {{--                                                            <option value="active" >{{__('active')}}</option>--}}
-                                        {{--                                                            <option value="suspended" >{{__('suspended')}}</option>--}}
-                                        {{--                                                        </select>--}}
-                                        {{--                                                    </div>--}}
-                                        {{--                                                </div>--}}
-                                        {{--                                            </div>--}}
-                                        {{--                                            <div class="row index-widget mt-2">--}}
-                                        {{--                                                <div class="form-group" style="direction: {{lang() == 'ar' ? 'rtl' : 'ltr'}}">--}}
-                                        {{--                                                    <a><button type="submit" class="btn btn-info">{{__('filter')}}</button></a>--}}
-                                        {{--                                                    <a href="?" class="btn btn-danger">{{__('clear')}}</a>--}}
-                                        {{--                                                </div>--}}
-                                        {{--                                            </div>--}}
-                                        {{--                                        </form>--}}
                                         <div class="card-content collapse show">
                                             <div class="card-body card-dashboard">
                                                 <table class="table table-striped table-bordered text-cente"
@@ -127,7 +108,10 @@
                                                             <td>{{ \Carbon\Carbon::parse($subscription->end_date)->toDateString() }}</td>
                                                             <td>{{ trans("dashboard.subscriptions." . $subscription->shipping_type) }}</td>
                                                             <td>{{ $subscription->billing_total }}</td>
-                                                            <td style="width: 80px;!important;">{{ $subscription->billing_address }}</td>
+                                                            <td style="width: 80px;!important;"><a href="{{ 'https://www.google.com/maps/place/' . $subscription->billing_address }}" target="_blank">
+                                                                    {{ $subscription->billing_address }}
+                                                                </a>
+                                                            </td>
                                                             <td>{{ $subscription->billing_phone }}</td>
                                                             <td>{{ $subscription->people_count }}</td>
                                                             <td>

@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('address');
             $table->string('lng')->nullable();
             $table->string('lat')->nullable();
-            $table->string('permissions')->nullable();
+            $table->enum('permissions',['chef','delivery','admin'])->nullable();
             $table->timestamp('last_active_at')->nullable();
             $table->softDeletes();
             $table->rememberToken();

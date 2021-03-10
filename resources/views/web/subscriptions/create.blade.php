@@ -3,6 +3,118 @@
 @section('style')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 @endsection
+
+<style>
+    #map #infowindow-content {
+        display: inline;
+    }
+
+    #edit_store_map #infowindow-content {
+        display: inline;
+    }
+
+    .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        font-family: Roboto;
+    }
+
+    #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+    }
+
+    .pac-container {
+        z-index: 9999999;
+    }
+
+    .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+    }
+
+    .pac-controls label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+    }
+
+    #searchTextField {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 250px;
+    }
+    #searchTextField:focus {
+        border-color: #4d90fe;
+    }
+
+    #edit_store-search {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 250px;
+        z-index: 9999999;
+    }
+
+    #edit_store-search:focus {
+        border-color: #4d90fe;
+    }
+    #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+    }
+    #target {
+        width: 250px;
+    }
+
+    .mapControls {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+    #searchTextField {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 50%;
+    }
+    #searchTextField:focus {
+        border-color: #4d90fe;
+    }
+    /*#search-input*/
+    /*{*/
+    /*    width: 70%;*/
+    /*    height: 13%;*/
+    /*    font-size: 20px;*/
+    /*}*/
+</style>
+
 @section('content')
 
     <div class="header-pic">
@@ -120,6 +232,7 @@
                             : {{ $subscription->delivery_price }} @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
 {{--                            @if(isset($setting[ 'delivery_price'])) {{ $setting['delivery_price'] * $subscription->duration_in_day }} @endif @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif--}}
                         </label>
+                        <input type="hidden" id="deliveryPrice" value="{{ $subscription->delivery_price }}">
                         @if ($errors->has('type'))
                             <div class="alert alert-danger">{{ $errors->first('type') }}</div>
                         @endif
@@ -129,11 +242,14 @@
                             {{__('site.Address')}}
                         </p>
                         <label class="input-style">
-                            <input type="text" name="billing_address" id="search-input" value="{{ auth()->user()->address }}">
+                            <input type="text" name="billing_address" id="search-input" value="{{ old('address') }}">
+                            @if ($errors->has('billing_address'))
+                                <div class="alert alert-danger">{{ $errors->first('billing_address') }}</div>
+                            @endif
                         </label>
                         <div class="map" id="map" style="width: 100%; height: 300px;"></div>
-                        <input type="hidden" id="lat" name="lat" value="{{ (auth()->user()->lat) ?? '' }}">
-                        <input type="hidden" id="lng" name="lng" value="{{ (auth()->user()->lng) ?? '' }}">
+                        <input type="hidden" id="lat" name="lat" value="{{ old('lat') }}">
+                        <input type="hidden" id="lng" name="lng" value="{{ old('lng') }}">
                         <p class="name-input" style="padding-top: 20px">
                             {{__('site.Phone')}}  {{__('site.Optional')}} ({{__('site.to_facilitate_the_delivery_process')}})
                         </p>
@@ -173,23 +289,22 @@
 @endsection
 
 @section('scripts')
-    @include('partials.google-map', ['lat' => auth()->user()->lat, 'lng' => auth()->user()->lng])
-
     <script>
         var total = parseFloat($('#total').attr('data-value'));
         var currency = ($('#currency').attr('data-value'));
         $( "#count" ).change(function() {
             var price = parseFloat($('.sub-price').attr('data-value'));
             var count = $('#count').val();
+            // var delivery = $('#deliveryPrice').val();
             total = price * count;
             document.getElementById('total').innerHTML = total +' '+ currency;
         });
         $('.local-global').change(function () {
             if($(this).attr('id') === 'global'){
-                total += ({{ $setting['delivery_price'] * $subscription->duration_in_day }} ) ?? 0 ;
+                total += ({{ $subscription->delivery_price }} ) ?? 0 ;
                 document.getElementById('total').innerHTML = total +' '+ currency;
             } else {
-                total -= ( {{ $setting['delivery_price'] * $subscription->duration_in_day }} ) ?? 0 ;
+                total -= ( {{ $subscription->delivery_price }} ) ?? 0 ;
                 document.getElementById('total').innerHTML = total +' '+ currency;
             }
         });
@@ -261,4 +376,7 @@
             });
         });
     </script>
+
+{{--    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ ($setting['google_key']) ?? 0 }}&libraries=places&language=ar"></script>--}}
+    @include('partials.allow_location_map')
 @endsection

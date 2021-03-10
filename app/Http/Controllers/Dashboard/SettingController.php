@@ -5,13 +5,16 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SendNewsLetterRequest;
 use App\Http\Requests\UpdateSiteRequest;
+use App\Mail\TodaySubs;
 use App\Models\NewsLetter;
 use App\Models\Setting;
 use App\Models\Site;
+use App\Models\SmsSmtp;
 use App\Notifications\SendNewsLetter;
 use App\Traits\Uploadable;
 use Illuminate\Http\Request;
 use function Composer\Autoload\includeFile;
+use Illuminate\Support\Facades\Mail;
 
 class SettingController extends Controller
 {
@@ -97,6 +100,50 @@ class SettingController extends Controller
             $new->notify(new SendNewsLetter($data['message'], $email));
         }
 
+        return back()->with('success', trans('dashboard.It was done successfully!'));
+    }
+
+    public function smtpPage()
+    {
+        $smtp = SmsSmtp::where('type','smtp')->first();
+
+        return view('dashboard.settings.smtp', compact('smtp'));
+    }
+
+
+    public function SMTP(Request $request)
+    {
+        $this->validate($request,[
+            'smtp_username'    =>'nullable|min:1|max:190',
+            'smtp_sender_email'=>'nullable|min:1|max:190',
+            'smtp_sender_name' =>'nullable|min:1|max:190',
+            'smtp_password'    =>'nullable|min:1|max:190',
+            'smtp_port'        =>'nullable|min:1|max:190',
+            'smtp_host'        =>'nullable|min:1|max:190',
+            'smtp_encryption'  =>'nullable|min:1|max:190',
+        ]);
+        if($smtp = SmsSmtp::where('type','=','smtp')->first()){
+            $smtp->type         = "smtp";
+            $smtp->username     = $request->smtp_username;
+            $smtp->sender_email = $request->smtp_sender_email;
+            $smtp->sender_name  = $request->smtp_sender_name;
+            $smtp->password     = $request->smtp_password;
+            $smtp->port         = $request->smtp_port;
+            $smtp->host         = $request->smtp_host;
+            $smtp->encryption   = $request->smtp_encryption;
+            $smtp->save();
+        }else{
+            $smtp = new SmsSmtp();
+            $smtp->type         = "smtp";
+            $smtp->username     = $request->smtp_username;
+            $smtp->sender_email = $request->smtp_sender_email;
+            $smtp->sender_name  = $request->smtp_sender_name;
+            $smtp->password     = $request->smtp_password;
+            $smtp->port         = $request->smtp_port;
+            $smtp->host         = $request->smtp_host;
+            $smtp->encryption   = $request->smtp_encryption;
+            $smtp->save();
+        }
         return back()->with('success', trans('dashboard.It was done successfully!'));
     }
 }

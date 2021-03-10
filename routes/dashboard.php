@@ -1,6 +1,9 @@
 <?php
 
 // Test
+use App\Mail\TodaySubs;
+use Illuminate\Support\Facades\Mail;
+
 Route::get('/create', 'HomeController@create')->name('create');
 Route::get('/show', 'HomeController@show')->name('show');
 Route::get('/change_language', 'HomeController@change_language')->name('change.language');
@@ -14,6 +17,23 @@ Route::resource('users', 'UsersController');
 Route::get('/admins', 'UsersController@admins')->name('users.admins');
 Route::get('users/block/{user}', 'UsersController@block')->name('users.block');
 Route::get('users/unblock/{user}', 'UsersController@unBlock')->name('users.unblock');
+
+Route::get('users/select_subscribe/{user}', 'UsersController@selectSubscribe')->name('users.select_subscribe');
+Route::get('users/{user}/active_subscribe/', 'UsersController@activeSubs')->name('users.activeSubs');
+Route::get('users/{user}/stopped_subscribe/', 'UsersController@stoppedSubs')->name('users.stoppedSubs');
+Route::get('users/{user}/finished_subscribe/', 'UsersController@finishedSubs')->name('users.finishedSubs');
+
+//Route::post('users/subscribe/', 'UsersController@subscribe')->name('user.subscribe');
+Route::get('users/user_subscribe/{user}/{subscription}', 'UsersController@userSubscribe')->name('user.userSubscribe');
+Route::post('users/store_subscribe/', 'UsersController@storeSubscribe')->name('user.storeSubscribe');
+Route::post('/users/checkCoupon', 'UsersController@checkCoupon')->name('users.checkCoupon');
+
+//Route::get('users/user_subscribe/', 'UsersController@addSubscription')->name('user.userSubscribe');
+
+
+
+
+
 Route::resource('categories', 'CategoryController');
 Route::resource('products', 'ProductController');
 Route::get('products/featured/{product}', 'ProductController@featured')->name('products.featured');
@@ -38,13 +58,16 @@ Route::get('subscriptions/tomorrowSubscription', 'SubscriptionController@tomorro
 Route::get('subscriptions/todaySubscription', 'SubscriptionController@todaySubscription')->name('subscriptions.todaySubscription');
 Route::get('subscriptions/allSubscriptions', 'SubscriptionController@allSubscription')->name('subscriptions.allSubscriptions');
 Route::get('subscriptions/finishedSubscriptions', 'SubscriptionController@finishedSubscription')->name('subscriptions.finishedSubscriptions');
+Route::get('subscriptions/stoppedSubscriptions', 'SubscriptionController@stoppedSubscription')->name('subscriptions.stoppedSubscriptions');
 
 Route::get('subscriptions/subscription_show/{subscriptionUser}', 'SubscriptionController@showSubscription')->name('subscriptions.showSubscription');
 Route::put('subscriptions/subscription_note/{id}', 'SubscriptionController@SubscriptionNote')->name('subscriptions.note');
 Route::get('subscriptions/subscription_off/{id}', 'SubscriptionController@offSubscription')->name('subscriptions.subscriptions_off');
 Route::get('subscriptions/subscription_on/{id}', 'SubscriptionController@onSubscription')->name('subscriptions.subscriptions_on');
+Route::put('subscriptions/edit_subscription/{id}', 'SubscriptionController@editSubs')->name('subscriptions.editSubs');
+Route::match(['delete'],'subscriptions/delete_subscription/{id}', 'SubscriptionController@deleteSubs')->name('subscriptions.deleteSubs');
 
-Route::get('subscriptions/stoppedSubscriptions', 'SubscriptionController@stoppedSubscription')->name('subscriptions.stoppedSubscriptions');
+
 
 
 Route::resource('subscriptions', 'SubscriptionController');
@@ -80,6 +103,9 @@ Route::get('settings/social', 'SettingController@social')->name('settings.social
 Route::get('settings/api', 'SettingController@api')->name('settings.api');
 Route::put('settings/Site', 'SettingController@update')->name('settings.update');
 
+Route::get('settings/smtp/page', 'SettingController@smtpPage')->name('settings.smtp_page');
+Route::put('settings/smtp', 'SettingController@SMTP')->name('settings.smtp');
+
 Route::get('meals/index', 'OurMealController@index')->name('meals.index');
 Route::get('meals/create', 'OurMealController@create')->name('meals.create');
 Route::post('meals/store', 'OurMealController@store')->name('meals.store');
@@ -91,3 +117,8 @@ Route::match(['delete'],'meals/destroy/{meals}', 'OurMealController@destroy')->n
 
 Route::get('/news_letter', 'SettingController@newsLetter')->name('news.letter');
 Route::post('/send_news_letter', 'SettingController@sendNewsLetter')->name('send.news.letter');
+
+//Route::get('/send-mail','HomeController@MailView');
+Route::get('export', 'HomeController@export')->name('export');
+Route::get('subs_end', 'HomeController@subsEnd');
+

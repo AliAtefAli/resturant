@@ -122,6 +122,22 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group row {{ $errors->has('permissions') ? ' has-error' : '' }}">
+                                        <label class="col-md-2"
+                                               for="type">{{trans('dashboard.user.permissions')}}</label>
+                                        <div class="col-md-10">
+                                            <div class="position-relative has-icon-left">
+                                                <select class="custom-select" name="permissions">
+                                                    <option value=""  @if($user->permissions == null) selected @endif></option>
+                                                    <option value="admin" @if($user->permissions == 'admin') selected @endif>{{ trans('dashboard.user.admin') }}</option>
+                                                    <option value="chef" @if($user->permissions == 'chef') selected @endif>{{ trans('dashboard.user.chef') }}</option>
+                                                    <option value="delivery" @if($user->permissions == 'delivery') selected @endif>{{ trans('dashboard.user.delivery') }}</option>
+                                                </select>
+                                                @include('dashboard.partials._errors', ['input' => 'permissions'])
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group row {{ $errors->has('status') ? ' has-error' : '' }}">
                                         <label class="col-md-2"
                                                for="status">{{trans('dashboard.user.Select User Status')}}</label>

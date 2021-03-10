@@ -105,10 +105,10 @@
         #searchTextField:focus {
             border-color: #4d90fe;
         }
-        #search-input
-        {
-            width: 71%;
-        }
+        /*#search-input*/
+        /*{*/
+        /*    width: 71%;*/
+        /*}*/
     </style>
 
 
@@ -228,9 +228,17 @@
 </div>
 
 
+{{--function initMap1() {--}}
+{{--map = new google.maps.Map(document.getElementById('map'), {--}}
+{{--center: {lat: 21.452190359158408, lng: 39.20488498374456},--}}
+{{--zoom: 11--}}
+{{--});--}}
+{{--}--}}
 
 @section('scripts')
-    @include('partials.google-map', ['lat' => ($setting['lat']) ?? 28.44249902816536, 'lng' => ( $setting['lng']) ?? 36.48057637720706])
+
+    @include('partials.allow_location_map')
+{{--    @include('partials.google-map', ['lat' => ($setting['lat']) ?? 28.44249902816536, 'lng' => ( $setting['lng']) ?? 36.48057637720706])--}}
 @endsection
 
 

@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ChangePasswordRequest;
+use App\Mail\PassCode;
 use App\Models\NewsLetter;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -47,9 +49,14 @@ class AuthController extends Controller
 
             $user = User::where('email', $request->get('email'))->first();
 
-//            $code = mt_rand(1111, 9999);
-            $code = 12345;
-            $user->update(['code' => $code]);
+            $code = mt_rand(1111, 9999);
+//            $code = 12345;
+            $update = $user->update(['code' => $code]);
+
+            if ($update) {
+                Mail::to($user->email)
+                    ->send(new PassCode($code));
+            }
 
             return redirect()->route('code_confirm', $user);
         }
@@ -64,9 +71,14 @@ class AuthController extends Controller
 
         $user = User::where('phone', $request->get('email'))->first();
 
-//        $code = mt_rand(1111, 9999);
-        $code = 12345;
-        $user->update(['code' => $code]);
+        $code = mt_rand(1111, 9999);
+//        $code = 12345;
+        $update = $user->update(['code' => $code]);
+
+        if ($update) {
+            Mail::to($user->email)
+                ->send(new PassCode($code));
+        }
 
         return redirect()->route('code_confirm', $user);
     }
@@ -149,6 +161,8 @@ class AuthController extends Controller
                     'password.required' => (trans('validation.field_required_password')),
                 ]);
 
+            $remember_me = $request->has('remember') ? true : false;
+
             $user = User::where('email', $request->email)->first();
 
             if (!Hash::check($request->password, $user->password))
@@ -157,7 +171,7 @@ class AuthController extends Controller
             }
 
             if ($user) {
-                if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password],$remember_me)) {
                     if (auth()->user() && auth()->user()->type == 'admin') {
                         return redirect('/dashboard');
                     } else {
@@ -178,6 +192,9 @@ class AuthController extends Controller
                     'password.required' => (trans('validation.field_required_password')),
                 ]);
 
+
+            $remember_me = $request->has('remember') ? true : false;
+
             $user = User::where('phone', $request->email)->first();
 
         if (!Hash::check($request->password, $user->password))
@@ -186,7 +203,7 @@ class AuthController extends Controller
         }
 
             if ($user) {
-                if (Auth::guard('web')->attempt(['phone' => $request->email, 'password' => $request->password])) {
+                if (Auth::guard('web')->attempt(['phone' => $request->email, 'password' => $request->password],$remember_me)) {
                     if (auth()->user() && auth()->user()->type == 'admin') {
                         return redirect('/dashboard');
                     } else {
