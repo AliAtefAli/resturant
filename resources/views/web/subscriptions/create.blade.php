@@ -230,7 +230,6 @@
                             <span></span>
                             {{ __('site.Delivery') }}
                             : {{ $subscription->delivery_price }} @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
-{{--                            @if(isset($setting[ 'delivery_price'])) {{ $setting['delivery_price'] * $subscription->duration_in_day }} @endif @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif--}}
                         </label>
                         <input type="hidden" id="deliveryPrice" value="{{ $subscription->delivery_price }}">
                         @if ($errors->has('type'))
@@ -242,14 +241,14 @@
                             {{__('site.Address')}}
                         </p>
                         <label class="input-style">
-                            <input type="text" name="billing_address" id="search-input" value="{{ old('address') }}">
+                            <input type="text" name="billing_address" id="search-input" value="{{ auth()->user()->address }}">
                             @if ($errors->has('billing_address'))
                                 <div class="alert alert-danger">{{ $errors->first('billing_address') }}</div>
                             @endif
                         </label>
                         <div class="map" id="map" style="width: 100%; height: 300px;"></div>
-                        <input type="hidden" id="lat" name="lat" value="{{ old('lat') }}">
-                        <input type="hidden" id="lng" name="lng" value="{{ old('lng') }}">
+                        <input type="hidden" id="lat" name="lat" value="{{ auth()->user()->lat }}">
+                        <input type="hidden" id="lng" name="lng" value="{{ auth()->user()->lng }}">
                         <p class="name-input" style="padding-top: 20px">
                             {{__('site.Phone')}}  {{__('site.Optional')}} ({{__('site.to_facilitate_the_delivery_process')}})
                         </p>
@@ -257,17 +256,17 @@
                             <input type="text" name="billing_phone" value="{{ old('billing_phone') }}">
                         </label>
                     </div>
-                    <p class="name-input">
+                    <p class="name-input" style="display: none;">
                         {{__('dashboard.order.payment method')}}
                     </p>
-                    <div class="select-hh">
+                    <div class="select-hh" style="display: none;">
                         <label>
-                            <input type="radio" name="payment_type" value="credit_card">
+                            <input type="radio" name="payment_type" value="credit_card" checked>
                             <span></span>
                             {{__('site.Credit Card')}}
                         </label>
                         <label>
-                            <input type="radio" name="payment_type" value="on_delivery" checked>
+                            <input type="radio" name="payment_type" value="on_delivery">
                             <span></span>
                             {{ __('site.On delivery') }}
                         </label>
@@ -311,7 +310,8 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
-
+        let startVacationDate = {{ $setting['start_vacation'] }},
+            endVacationDate = {{ $setting['end_vacation'] }};
 
         flatpickr("#startDate", {
             minDate: new Date().fp_incr(1),
@@ -321,7 +321,10 @@
             // },
 
             disable: [
-                function(date) {
+                {
+                    from: "{{ \Carbon\Carbon::parse($setting['start_vacation'])->subDays($subscription->duration_in_days) }}",
+                    to: "{{ $setting['end_vacation'] }}"
+                }, function(date) {
                     // return true to disable
                     return (date.getDay() === 5 || date.getDay() === 6);
                 }
@@ -376,7 +379,5 @@
             });
         });
     </script>
-
-{{--    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ ($setting['google_key']) ?? 0 }}&libraries=places&language=ar"></script>--}}
-    @include('partials.allow_location_map')
+    @include('partials.google-map', ['lat' => (auth()->user()->lat) ?? 28.44249902816536, 'lng' => ( auth()->user()->lng ) ?? 36.48057637720706])
 @endsection

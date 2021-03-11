@@ -82,7 +82,7 @@
                                     <div class="col-md-10">
                                         <div class="position-relative">
                                             <input type="date" id="startDate" class="pickadate-disable-weekday form-control"
-                                                   name="start_date" min="{{Carbon\Carbon::tomorrow()->toDateString()}}"/>
+                                                   name="start_date" {{--min="{{Carbon\Carbon::tomorrow()->toDateString()}}"--}}/>
                                             @include('dashboard.partials._errors', ['input' => 'start_date'])
                                         </div>
                                     </div>
@@ -188,12 +188,12 @@
                                                     {{__('site.Address')}}
                                                 </p>
                                                 <label style="width: 90%" class="input-style">
-                                                    <input style="width: 100%" class="form-control" type="text" name="billing_address" id="search-input" value="{{ auth()->user()->address }}">
+                                                    <input style="width: 100%" class="form-control" type="text" name="billing_address" id="search-input" value="{{ $user->address }}">
                                                 </label>
                                             </div>
                                             <div class="map" id="map" style="width: 100%; height: 300px;"></div>
-                                            <input type="hidden" id="lat" name="lat" value="{{ (auth()->user()->lat) ?? '' }}">
-                                            <input type="hidden" id="lng" name="lng" value="{{ (auth()->user()->lng) ?? '' }}">
+                                            <input type="hidden" id="lat" name="lat" value="{{ $user->lat }}">
+                                            <input type="hidden" id="lng" name="lng" value="{{ $user->lng }}">
                                             <label class="input-style d-flex justify-content-between align-items-center">
                                                 <p class="name-input" style="padding-top: 20px">
                                                     {{__('site.Phone')}}  {{__('site.Optional')}} ({{__('site.to_facilitate_the_delivery_process')}})
@@ -210,6 +210,11 @@
                                                 <span></span>
                                                 {{ __('site.On delivery') }}
                                             </label>
+{{--                                            <label>--}}
+{{--                                                <input type="radio" name="payment_type" value="credit_card">--}}
+{{--                                                <span></span>--}}
+{{--                                                {{__('site.Credit Card')}}--}}
+{{--                                            </label>--}}
                                         </div>
                                         <p class="name-input">
                                             {{__('site.Note')}}
@@ -321,5 +326,6 @@
             });
         });
     </script>
-    @include('partials.google-map', ['lat' => ($user->lat) ?? 28.44249902816536, 'lng' => ( $user->lat) ?? 36.48057637720706])
+{{--    @include('partials.google-map', ['lat' => ($user->lat) ?? 28.44249902816536, 'lng' => ( $user->lat) ?? 36.48057637720706])--}}
+    @include('partials.allow_location_map')
 @endsection

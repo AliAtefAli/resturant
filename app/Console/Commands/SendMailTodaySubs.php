@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 
+use App\Models\SmsSmtp;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
 
 class SendMailTodaySubs extends Command
@@ -39,11 +41,13 @@ class SendMailTodaySubs extends Command
      */
     public function handle()
     {
-
-        Mail::to("dinodelivero‪@‬gmail‪.‬com")->
-        send(new \App\Mail\TodaySubs());
-
-        $this->info('Mail has been send successfully');
+        $smtp = SmsSmtp::where('type', 'smtp')->first();
+        try {
+            Mail::to($smtp->delivery_email)->send(new \App\Mail\TodaySubs());
+            $this->info('Mail has been send successfully');
+        } catch (\Exception $e) {
+            $this->error('Sorry, Mail  does not sent Please check your mail data');
+        }
 
     }
 }

@@ -119,6 +119,32 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group row {{ $errors->has('delivery_email') ? ' has-error' : '' }}">
+                                    <label class="col-md-2"
+                                           for="delivery_email">{{trans('dashboard.smtp.Delivery Email')}}</label>
+                                    <div class="col-md-10">
+                                        <div class="position-relative">
+                                            <input type="text" id="delivery_email" class="form-control"
+                                                   name="delivery_email"
+                                                   value="{{isset($smtp->delivery_email)?$smtp->delivery_email:''}}"/>
+                                            @include('dashboard.partials._errors', ['input' => 'delivery_email'])
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row {{ $errors->has('admin_email') ? ' has-error' : '' }}">
+                                    <label class="col-md-2"
+                                           for="admin_email">{{trans('dashboard.smtp.Admin Email')}}</label>
+                                    <div class="col-md-10">
+                                        <div class="position-relative">
+                                            <input type="text" id="admin_email" class="form-control"
+                                                   name="admin_email"
+                                                   value="{{isset($smtp->admin_email)?$smtp->admin_email:''}}"/>
+                                            @include('dashboard.partials._errors', ['input' => 'admin_email'])
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-actions right">
                                     <button type="submit" class="btn btn-primary">
                                         {{trans('dashboard.main.Edit')}}

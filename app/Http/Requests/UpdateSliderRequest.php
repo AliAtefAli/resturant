@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateSliderRequest extends FormRequest
 {
@@ -12,7 +13,7 @@ class UpdateSliderRequest extends FormRequest
             'url' => 'sometimes|required',
             'image' => 'image|mimes:jpg,jpeg,svg,png,gif',
             'status' => 'sometimes|required',
-            'ordered' => 'sometimes|required|unique:sliders',
+            'ordered' => ['sometimes', 'required', Rule::unique('sliders')->ignore($this->slider->id, 'id')],
         ];
     }
 

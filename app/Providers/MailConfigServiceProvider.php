@@ -17,28 +17,6 @@ class MailConfigServiceProvider extends ServiceProvider
     public function register()
     {
 
-//        $smtp = SmsSmtp::where('type','smtp')->first();
-//////        $config = array(
-//////            'driver'     => 'smtp',
-//////            'host'       => $smtp->host,
-//////            'port'       => $smtp->port,
-//////            'from'       => array('address' => $smtp->sender_email, 'name' => $smtp->sender_name),
-//////            'encryption' => $smtp->encryption,
-//////            'username'   => $smtp->username,
-//////            'password'   => $smtp->password,
-////////            'sendmail'   => '/usr/sbin/sendmail -bs',
-//////            'pretend'    => false,
-//////        );
-////
-//        Config::set('mail.MAIL_DRIVER','smtp');
-//        Config::set('mail.MAIL_HOST',$smtp->host);
-//        Config::set('mail.MAIL_PORT',$smtp->port);
-//        Config::set('mail.MAIL_FROM_ADDRESS',$smtp->sender_email);
-//        Config::set('mail.MAIL_FROM_NAME',$smtp->sender_name);
-//        Config::set('mail.MAIL_ENCRYPTION',$smtp->encryption);
-//        Config::set('mail.MAIL_USERNAME',$smtp->username);
-//        Config::set('mail.MAIL_PASSWORD',$smtp->password);
-
     }
 
     /**
@@ -48,6 +26,15 @@ class MailConfigServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $smtp = SmsSmtp::where('type','smtp')->first();
+
+        Config::set('mail.driver','smtp');
+        Config::set('mail.host',$smtp->host);
+        Config::set('mail.port',$smtp->port);
+        Config::set('mail.from.address',$smtp->sender_email);
+        Config::set('mail.from.name',$smtp->sender_name);
+        Config::set('mail.encryption',$smtp->encryption);
+        Config::set('mail.username',$smtp->username);
+        Config::set('mail.password',$smtp->password);
     }
 }

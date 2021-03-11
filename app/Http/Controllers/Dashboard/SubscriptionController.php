@@ -30,10 +30,6 @@ class SubscriptionController extends Controller
     {
         $subscriptions = Subscription::latest()->paginate(25);
 
-//        $date = "2021-02-12";
-//        $day = Carbon::parse($date)->format('l');
-//        dd($day);
-
         return view('dashboard.subscriptions.index', compact('subscriptions'));
     }
 
@@ -72,11 +68,7 @@ class SubscriptionController extends Controller
 
     public function update(UpdateSubscriptionRequest $request, Subscription $subscription)
     {
-//        $subscription_products = $subscription->products->pluck('id')->toArray();
-//        Subscription::detachProducts($subscription, $request->input('products'), $subscription_products);
-//        $subscription->products()->attach($request->input('products'));
-
-        $data = $request->validated();
+        $data = $request->all();
 
         if ($request->has('image')) {
             if (public_path('assets/uploads/subscriptions/' . $subscription->image)) {
@@ -93,7 +85,6 @@ class SubscriptionController extends Controller
 
     public function destroy(Subscription $subscription)
     {
-        // check if no subscriptions
         if ($subscription->users->count() > 1) {
             return back()->with('error', trans('dashboard.subscriptions.Sorry you can not delete this Subscription'));
         }
@@ -104,7 +95,6 @@ class SubscriptionController extends Controller
 
     public function users(Subscription $subscription)
     {
-
         $users = $subscription->users;
 
         return view('dashboard.subscriptions.users', compact('users', 'subscription'));
@@ -112,16 +102,24 @@ class SubscriptionController extends Controller
 
     public function tomorrowSubscription()
     {
+        if (auth()->user()->permissions == 'delivery') {
+            $subscriptions = SubscriptionUser::with('subscription')
+                ->where('start_date', '<=', Carbon::tomorrow())
+                ->where('end_date', '>=', Carbon::today())
+                ->where('shipping_type', 'delivery')
+                ->whereNull('stopped_at');
 
-        $subscriptions = SubscriptionUser::with('subscription')
-            ->where('start_date', Carbon::tomorrow())
-            ->whereNull('stopped_at');
-
-        $subscriptions = $subscriptions->select("*", DB::raw("6371 * acos(cos(radians(" . lat() . "))
+            $subscriptions = $subscriptions->select("*", DB::raw("6371 * acos(cos(radians(" . lat() . "))
                                 * cos(radians(lat)) * cos(radians(lng) - radians(" . lng() . "))
                                 + sin(radians(" . lat() . ")) * sin(radians(lat))) AS distance"));
-        $subscriptions = $subscriptions->having('distance', '<', 1000000);
-        $subscriptions = $subscriptions->orderBy('distance', 'asc');
+            $subscriptions = $subscriptions->having('distance', '<', 1000000);
+            $subscriptions = $subscriptions->orderBy('distance', 'asc');
+        } else {
+            $subscriptions = SubscriptionUser::with('subscription')
+                ->where('start_date', '<=', Carbon::tomorrow())
+                ->where('end_date', '>=', Carbon::today())
+                ->whereNull('stopped_at');
+        }
         $subscriptions = $subscriptions->get();
 
         $notifications = auth()->user()->notifications->where('type', 'App\Notifications\TomorrowSubscriptions');
@@ -132,15 +130,25 @@ class SubscriptionController extends Controller
 
     public function todaySubscription()
     {
-        $subscriptions = SubscriptionUser::with('subscription')
-            ->where('start_date',  Carbon::today())
-            ->whereNull('stopped_at');
+        if (auth()->user()->permissions == 'delivery') {
+            $subscriptions = SubscriptionUser::with('subscription')
+                ->where('start_date', '<=', Carbon::today())
+                ->where('end_date', '>=', Carbon::today())
+                ->where('shipping_type', 'delivery')
+                ->whereNull('stopped_at');
 
-        $subscriptions = $subscriptions->select("*", DB::raw("6371 * acos(cos(radians(" . lat() . "))
+            $subscriptions = $subscriptions->select("*", DB::raw("6371 * acos(cos(radians(" . lat() . "))
                                 * cos(radians(lat)) * cos(radians(lng) - radians(" . lng() . "))
                                 + sin(radians(" . lat() . ")) * sin(radians(lat))) AS distance"));
-        $subscriptions = $subscriptions->having('distance', '<', 1000000);
-        $subscriptions = $subscriptions->orderBy('distance', 'asc');
+
+            $subscriptions = $subscriptions->having('distance', '<', 1000000);
+            $subscriptions = $subscriptions->orderBy('distance', 'asc');
+        } else {
+            $subscriptions = SubscriptionUser::with('subscription')
+                ->where('start_date', '<=', Carbon::today())
+                ->where('end_date', '>=', Carbon::today())
+                ->whereNull('stopped_at');
+        }
         $subscriptions = $subscriptions->get();
 
         $notifications = auth()->user()->notifications->where('type', 'App\Notifications\TodaySubscriptions');
@@ -152,14 +160,16 @@ class SubscriptionController extends Controller
     public function allSubscription()
     {
         $subscriptions = SubscriptionUser::with('subscription')
-            ->where('end_date','>', Carbon::today())
+            ->where('end_date', '>', Carbon::today())
             ->whereNull('stopped_at');
 
-        $subscriptions = $subscriptions->select("*", DB::raw("6371 * acos(cos(radians(" . lat() . "))
+        if (auth()->user()->permissions == 'chef') {
+            $subscriptions = $subscriptions->select("*", DB::raw("6371 * acos(cos(radians(" . lat() . "))
                                 * cos(radians(lat)) * cos(radians(lng) - radians(" . lng() . "))
                                 + sin(radians(" . lat() . ")) * sin(radians(lat))) AS distance"));
-        $subscriptions = $subscriptions->having('distance', '<', 1000000);
-        $subscriptions = $subscriptions->orderBy('distance', 'asc');
+            $subscriptions = $subscriptions->having('distance', '<', 1000000);
+            $subscriptions = $subscriptions->orderBy('distance', 'asc');
+        }
         $subscriptions = $subscriptions->get();
 
         $notifications = auth()->user()->notifications->where('type', 'App\Notifications\NewSubscriptions');
@@ -185,14 +195,15 @@ class SubscriptionController extends Controller
     public function stoppedSubscription()
     {
         $subscriptions = SubscriptionUser::with('subscription')
-            ->where('end_date','>', Carbon::today())
+            ->where('end_date', '>', Carbon::today())
             ->whereNotNull('stopped_at');
-
+        if (auth()->user()->permissions == 'chef') {
             $subscriptions = $subscriptions->select("*", DB::raw("6371 * acos(cos(radians(" . lat() . "))
                                 * cos(radians(lat)) * cos(radians(lng) - radians(" . lng() . "))
                                 + sin(radians(" . lat() . ")) * sin(radians(lat))) AS distance"));
-        $subscriptions = $subscriptions->having('distance', '<', 1000000);
-        $subscriptions = $subscriptions->orderBy('distance', 'asc');
+            $subscriptions = $subscriptions->having('distance', '<', 1000000);
+            $subscriptions = $subscriptions->orderBy('distance', 'asc');
+        }
         $subscriptions = $subscriptions->get();
 
         $notifications = auth()->user()->notifications->where('type', 'App\Notifications\StoppedSubscriptions');
@@ -204,14 +215,15 @@ class SubscriptionController extends Controller
     public function finishedSubscription()
     {
         $subscriptions = SubscriptionUser::with('subscription', 'subscription.products')
-            ->where('end_date', '<',  Carbon::today())
+            ->where('end_date', '<', Carbon::today())
             ->whereNull('stopped_at');
-
+        if (auth()->user()->permissions == 'chef') {
             $subscriptions = $subscriptions->select("*", DB::raw("6371 * acos(cos(radians(" . lat() . "))
                                 * cos(radians(lat)) * cos(radians(lng) - radians(" . lng() . "))
                                 + sin(radians(" . lat() . ")) * sin(radians(lat))) AS distance"));
-        $subscriptions = $subscriptions->having('distance', '<', 1000000);
-        $subscriptions = $subscriptions->orderBy('distance', 'asc');
+            $subscriptions = $subscriptions->having('distance', '<', 1000000);
+            $subscriptions = $subscriptions->orderBy('distance', 'asc');
+        }
         $subscriptions = $subscriptions->get();
 
         $notifications = auth()->user()->notifications->where('type', 'App\Notifications\FinishedSubscriptions');
@@ -219,7 +231,6 @@ class SubscriptionController extends Controller
 
         return view('dashboard.subscriptions.finished', compact('subscriptions'));
     }
-
 
 
     public function accepted(SubscriptionUser $subscription)
@@ -245,6 +256,7 @@ class SubscriptionController extends Controller
         return back()->with('success', trans('dashboard.It was done successfully!'));
 
     }
+
     public function rejected(SubscriptionUser $subscription)
     {
         $subscription->update(['status' => 'cancelled']);
@@ -262,7 +274,7 @@ class SubscriptionController extends Controller
     {
         $subscription = SubscriptionUser::findOrFail($id);
 
-        if(Carbon::parse($subscription->end_date) == Carbon::today()) {
+        if (Carbon::parse($subscription->end_date) == Carbon::today()) {
             return back()->with('error', trans('site.Sorry, the subscription cannot be suspended because this subscription will expire today'));
         }
 
@@ -311,8 +323,7 @@ class SubscriptionController extends Controller
 
             return back()->with('success', trans('site.The subscription has been successfully restarted'));
 
-        }else
-        {
+        } else {
 
             $subscription->update([
                 'start_date' => Carbon::tomorrow(),

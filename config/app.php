@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => app()->getLocale() ?? 'en',
+    'locale' => app()->getLocale() ?? 'ar',
 
     'languages' => [
         'en' => 'English',
@@ -180,6 +180,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        \App\Providers\MailConfigServiceProvider::class,
 
 
     ],

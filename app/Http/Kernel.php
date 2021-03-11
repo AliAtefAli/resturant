@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\Admin;
+use App\Http\Middleware\AdminPermission;
 use App\Http\Middleware\HtmlMinifier;
 use App\Http\Middleware\Localization;
 use App\Http\Middleware\SendMail;
@@ -75,5 +76,6 @@ class Kernel extends HttpKernel
         'admin' => Admin::class,
         'locale' => Localization::class,
         'mail' => SendMail::class,
+        'AdminPermission' => AdminPermission::class,
     ];
 }

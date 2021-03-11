@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Mail\RateUs;
 use App\Mail\SubsEnd;
+use App\Models\SmsSmtp;
 use App\Models\SubscriptionUser;
 use App\Models\User;
 use App\Notifications\FinishedSubscriptions;
@@ -78,11 +79,12 @@ class NotifySend extends Command
             }
         }
 
-
-
-        Mail::to("vegandinosaur1@gmail.com")->
-        send(new SubsEnd($data));
-
-        $this->info('Notification has been send successfully');
+        $smtp = SmsSmtp::where('type','smtp')->first();
+        try {
+            Mail::to($smtp->admin_email)->send(new SubsEnd($data));
+            $this->info('Notification has been send successfully');
+        } catch (\Exception $e) {
+            $this->error('Sorry, Mail  does not sent Please check your mail data');
+        }
     }
 }

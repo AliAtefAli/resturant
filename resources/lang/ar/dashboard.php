@@ -293,6 +293,7 @@ return [
         'stopped' => 'متوقفه',
         'active' => 'مفعله',
         'stop_subscription' => 'ايقاف الاشتراك',
+        'Add vacation' => 'اضافة اجازة',
         'activate_subscription' => 'تفعيل الاشتراك',
         'Show Subscriptions' => 'عرض الاشتراكات',
         'Subscription' => 'الاشتراك',
@@ -390,6 +391,8 @@ return [
         'Social Links' => 'روابط التواصل',
         'Update Settings' => 'تحديث الاعدادات',
         'Menu of the week' => 'منيو الاسبوع',
+        'Start of vacation' => 'بداية العطلة',
+        'End of vacation' => 'نهاية العطلة',
     ],
     "slider" => [
         'Url' => 'العنوان',
@@ -508,6 +511,8 @@ return [
         'sender_name' => 'الاسم المرسل',
         'port' => 'البورت',
         'host' => 'الهوست',
-        'encryption' => 'التشفير'
+        'encryption' => 'التشفير',
+        'Delivery Email' => 'ايميل السائق',
+        'Admin Email' => 'ايميل الادمن',
     ]
 ];

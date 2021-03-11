@@ -27,6 +27,13 @@ class SettingController extends Controller
         return view('dashboard.settings.general', compact('settings'));
     }
 
+    public function vacation()
+    {
+        $settings = Setting::all()->pluck('value', 'key');
+
+        return view('dashboard.settings.vacation', compact('settings'));
+    }
+
     public function social()
     {
         $settings = Setting::all()->pluck('value', 'key');
@@ -121,6 +128,8 @@ class SettingController extends Controller
             'smtp_port'        =>'nullable|min:1|max:190',
             'smtp_host'        =>'nullable|min:1|max:190',
             'smtp_encryption'  =>'nullable|min:1|max:190',
+            'delivery_email'  =>'nullable|min:1|max:190',
+            'admin_email'  =>'nullable|min:1|max:190',
         ]);
         if($smtp = SmsSmtp::where('type','=','smtp')->first()){
             $smtp->type         = "smtp";
@@ -131,6 +140,8 @@ class SettingController extends Controller
             $smtp->port         = $request->smtp_port;
             $smtp->host         = $request->smtp_host;
             $smtp->encryption   = $request->smtp_encryption;
+            $smtp->delivery_email   = $request->delivery_email;
+            $smtp->admin_email   = $request->admin_email;
             $smtp->save();
         }else{
             $smtp = new SmsSmtp();
@@ -142,6 +153,8 @@ class SettingController extends Controller
             $smtp->port         = $request->smtp_port;
             $smtp->host         = $request->smtp_host;
             $smtp->encryption   = $request->smtp_encryption;
+            $smtp->delivery_email   = $request->delivery_email;
+            $smtp->admin_email   = $request->admin_email;
             $smtp->save();
         }
         return back()->with('success', trans('dashboard.It was done successfully!'));

@@ -155,6 +155,12 @@
                             {{ trans('dashboard.settings.General Settings') }}
                         </a>
                     </li>
+                    <li>
+                        <a class="menu-item" href="{{ route('dashboard.settings.vacation') }}"
+                           data-i18n="nav.page_layouts.2_columns">
+                            {{ trans('dashboard.subscriptions.Add vacation') }}
+                        </a>
+                    </li>
                     <li><a class="menu-item" href="{{ route('dashboard.sliders.index') }}"
                            data-i18n="nav.page_layouts.2_columns">
                             {{ trans('dashboard.main.Sliders') }}
@@ -176,11 +182,11 @@
                             {{ trans('dashboard.API.APIs') }}
                         </a>
                     </li>
-{{--                        <li><a class="menu-item" href="{{ route('dashboard.settings.smtp_page') }}"--}}
-{{--                               data-i18n="nav.page_layouts.2_columns">--}}
-{{--                                {{ trans('dashboard.smtp.smtp') }}--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                        <li><a class="menu-item" href="{{ route('dashboard.settings.smtp_page') }}"
+                               data-i18n="nav.page_layouts.2_columns">
+                                {{ trans('dashboard.smtp.smtp') }}
+                            </a>
+                        </li>
                     @endif
                         @if(auth()->user()->permissions == 'admin' || auth()->user()->permissions == 'chef' || auth()->user()->permissions == 'delivery')
                             <li>

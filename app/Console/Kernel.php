@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
         Commands\NotifySend::class,
         Commands\TodaySubs::class,
         Commands\TomorrowSubs::class,
+        Commands\SendMailTodaySubs::class,
     ];
 
     /**
@@ -29,8 +30,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('notify:send')->daily();
+        $schedule->command('notify:send')->daily();
         $schedule->command('todaySubs:send')->daily();
-        $schedule->command('tomorrowSubs:send')->daily();
+        $schedule->command('sendSubs:tomorrow')->daily();
     }
 
     /**

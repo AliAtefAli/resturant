@@ -22,6 +22,8 @@ class CreateSmsSmtpsTable extends Migration
             $table->string('sender_name')->nullable();
             $table->integer('port')->nullable();
             $table->string('host')->nullable();
+            $table->string('delivery_email')->nullable();
+            $table->string('admin_email')->nullable();
             $table->string('encryption')->nullable();
             $table->timestamps();
         });

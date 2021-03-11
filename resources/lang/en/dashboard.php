@@ -286,6 +286,7 @@ return [
         'stopped' => 'Stopped',
         'active' => 'Active',
         'stop_subscription' => 'Stop Subscription',
+        'Add vacation' => 'Add vacation',
         'activate_subscription' => 'Activate Subscription',
         'Show Subscriptions' => 'Show Subscriptions',
         'Subscription' => 'Subscription',
@@ -382,7 +383,8 @@ return [
         'Social Links' => 'Social Links',
         'Update Settings' => 'Update Settings',
         'Menu of the week' => 'Menu of the week',
-
+        'Start of vacation' => 'Start of Vacation',
+        'End of vacation' => 'End of Vacation',
     ],
     'slider' => [
         'Add Slider' => 'Add Slider',
@@ -502,6 +504,8 @@ return [
         'sender_name' => 'Sender Name',
         'port' => 'Port',
         'host' => 'Host',
-        'encryption' => 'Encryption'
+        'encryption' => 'Encryption',
+        'Delivery Email' => 'Delivery Email',
+        'Admin Email' => 'Admin Email',
     ]
 ];
