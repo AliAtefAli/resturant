@@ -96,6 +96,8 @@
                                                         @if(old('discount_type') == 'percent') selected @endif>{{ trans('dashboard.discounts.percent') }}</option>
                                                 <option value="fixed"
                                                         @if(old('discount_type') == 'fixed') selected @endif>{{ trans('dashboard.discounts.fixed') }}</option>
+                                                <option value="free_delivery"
+                                                        @if(old('free_delivery') == 'free_delivery') selected @endif>{{ trans('dashboard.discounts.Free Delivery') }}</option>
                                             </select>
                                         </div>
                                     </div>

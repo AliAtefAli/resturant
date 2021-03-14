@@ -103,7 +103,7 @@ class SubscriptionController extends Controller
     public function tomorrowSubscription()
     {
         if (auth()->user()->permissions == 'delivery') {
-            $subscriptions = SubscriptionUser::with('subscription')
+            $subscriptions = SubscriptionUser::with('subscription', 'subscription.products', 'user')
                 ->where('start_date', '<=', Carbon::tomorrow())
                 ->where('end_date', '>=', Carbon::today())
                 ->where('shipping_type', 'delivery')
@@ -115,7 +115,7 @@ class SubscriptionController extends Controller
             $subscriptions = $subscriptions->having('distance', '<', 1000000);
             $subscriptions = $subscriptions->orderBy('distance', 'asc');
         } else {
-            $subscriptions = SubscriptionUser::with('subscription')
+            $subscriptions = SubscriptionUser::with('subscription', 'subscription.products', 'user')
                 ->where('start_date', '<=', Carbon::tomorrow())
                 ->where('end_date', '>=', Carbon::today())
                 ->whereNull('stopped_at');
@@ -131,7 +131,7 @@ class SubscriptionController extends Controller
     public function todaySubscription()
     {
         if (auth()->user()->permissions == 'delivery') {
-            $subscriptions = SubscriptionUser::with('subscription')
+            $subscriptions = SubscriptionUser::with('subscription', 'subscription.products', 'user')
                 ->where('start_date', '<=', Carbon::today())
                 ->where('end_date', '>=', Carbon::today())
                 ->where('shipping_type', 'delivery')
@@ -144,7 +144,7 @@ class SubscriptionController extends Controller
             $subscriptions = $subscriptions->having('distance', '<', 1000000);
             $subscriptions = $subscriptions->orderBy('distance', 'asc');
         } else {
-            $subscriptions = SubscriptionUser::with('subscription')
+            $subscriptions = SubscriptionUser::with('subscription', 'subscription.products', 'user')
                 ->where('start_date', '<=', Carbon::today())
                 ->where('end_date', '>=', Carbon::today())
                 ->whereNull('stopped_at');
@@ -159,7 +159,7 @@ class SubscriptionController extends Controller
 
     public function allSubscription()
     {
-        $subscriptions = SubscriptionUser::with('subscription')
+        $subscriptions = SubscriptionUser::with('subscription', 'subscription.products', 'user')
             ->where('end_date', '>', Carbon::today())
             ->whereNull('stopped_at');
 
@@ -194,7 +194,7 @@ class SubscriptionController extends Controller
 
     public function stoppedSubscription()
     {
-        $subscriptions = SubscriptionUser::with('subscription')
+        $subscriptions = SubscriptionUser::with('subscription', 'subscription.products', 'user')
             ->where('end_date', '>', Carbon::today())
             ->whereNotNull('stopped_at');
         if (auth()->user()->permissions == 'chef') {
@@ -214,7 +214,7 @@ class SubscriptionController extends Controller
 
     public function finishedSubscription()
     {
-        $subscriptions = SubscriptionUser::with('subscription', 'subscription.products')
+        $subscriptions = SubscriptionUser::with('subscription', 'subscription.products', 'user')
             ->where('end_date', '<', Carbon::today())
             ->whereNull('stopped_at');
         if (auth()->user()->permissions == 'chef') {

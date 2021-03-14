@@ -367,7 +367,13 @@
                             totalBefore.innerText = response.data.totalBefore;
                             totalAfter.innerText = response.data.billing_total;
                             totalBilling.value = response.data.billing_total;
-                            discountAmount.innerText = (response.data.coupon.discount_type === 'percent') ? response.data.coupon.amount + ' %' : response.data.coupon.amount;
+                            if (response.data.coupon.discount_type === 'percent') {
+                                discountAmount.innerText = response.data.coupon.amount + ' %';
+                            } else if(response.data.coupon.discount_type === 'free_delivery') {
+                                discountAmount.innerText =  "{{ trans('dashboard.discounts.Free Delivery') }}";
+                            } else {
+                                discountAmount.innerText = response.data.coupon.amount;
+                            }
                             discountElement.removeAttr('style');
                             toastr.success(response.msg, {timeOut: "50000",});
 

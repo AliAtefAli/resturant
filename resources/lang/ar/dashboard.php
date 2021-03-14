@@ -96,6 +96,8 @@ return [
         'available' => 'متاح',
         'unavailable' => 'غير متاح',
         'percent' => 'النسبه',
+        'Free Delivery' => 'شحن مجاني',
+        'free_delivery' => 'شحن مجاني',
         'fixed' => 'ثابت',
         'make as unavailable' => 'تعديل الي غير متوفر',
         'make as available' => 'تعديل الي متوفر',
@@ -393,6 +395,7 @@ return [
         'Menu of the week' => 'منيو الاسبوع',
         'Start of vacation' => 'بداية العطلة',
         'End of vacation' => 'نهاية العطلة',
+        'Cancel Vacation' => 'الغاء الاجازة',
     ],
     "slider" => [
         'Url' => 'العنوان',

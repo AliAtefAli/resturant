@@ -95,6 +95,8 @@ return [
         'available' => 'Available',
         'unavailable' => 'Unavailable',
         'percent' => 'Percent',
+        'Free Delivery' => 'Free Delivery',
+        'free_delivery' => 'Free Delivery',
         'fixed' => 'Fixed',
         'make as unavailable' => 'Make as Unavailable',
         'make as available' => 'Make as Available',
@@ -385,6 +387,7 @@ return [
         'Menu of the week' => 'Menu of the week',
         'Start of vacation' => 'Start of Vacation',
         'End of vacation' => 'End of Vacation',
+        'Cancel Vacation' => 'Cancel Vacation',
     ],
     'slider' => [
         'Add Slider' => 'Add Slider',

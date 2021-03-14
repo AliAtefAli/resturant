@@ -72,6 +72,7 @@ class OrderController extends Controller
 
     public function checkCoupon(Request $request)
     {
+        $setting = Setting::all()->pluck('value', 'key');
         $request['billing_total'] = $this->getBillingTotal();
         if ($request->coupon) {
             $coupon = Discount::where('code', $request->coupon)->first();
@@ -101,7 +102,11 @@ class OrderController extends Controller
                 if ($coupon->discount_type == 'fixed') {
                     $request['totalBefore'] = $request['billing_total'];
                     $request['billing_total'] -= $coupon->amount;
-                } else {
+                } elseif($coupon->discount_type == 'free_delivery') {
+                    $request['totalBefore'] = $request['billing_total'];
+                    $request['billing_total'] = $request['billing_total'] - (floatval($setting['delivery_price'])) ?? 0;
+                }
+                else {
                     $request['totalBefore'] = $request['billing_total'];
                     $request['billing_total'] = $request['billing_total'] - ($request['billing_total'] * ($coupon->amount / 100));
                 }

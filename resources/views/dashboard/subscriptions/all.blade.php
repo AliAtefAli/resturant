@@ -53,7 +53,9 @@
                             <li class="breadcrumb-item"><a
                                         href="{{ route('dashboard.subscriptions.index') }}">{{trans('dashboard.subscriptions.Subscriptions')}}
                                 </a></li>
-                            <li class="breadcrumb-item active">{{trans('dashboard.subscriptions.All Subscriptions')}}</li>
+                            <li class="breadcrumb-item active">{{trans('dashboard.subscriptions.All Subscriptions')}}
+                                <span class="badge badge badge-primary">{{ $subscriptions->count() }}</span>
+                            </li>
                         </ol>
                     </div>
                 </div>
@@ -89,6 +91,7 @@
                                                        style="font-size: xx-small;">
                                                     <thead>
                                                     <tr>
+                                                        <th>#</th>
                                                         <th style="width: 50px;!important;">{{trans('dashboard.user.Name')}}</th>
                                                         <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.Start Date')}}</th>
                                                         <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.End Date')}}</th>
@@ -109,8 +112,9 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @foreach($subscriptions as $subscription)
+                                                    @foreach($subscriptions as $index => $subscription)
                                                         <tr>
+                                                            <th>{{ $index + 1 }}</th>
                                                             <th>
                                                                 <a href="{{ route('dashboard.users.show', $subscription->user->id) }}">{{ $subscription->user->name }}</a>
                                                             </th>

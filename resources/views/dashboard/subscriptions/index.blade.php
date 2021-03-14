@@ -64,9 +64,9 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @foreach($subscriptions as $subscription)
+                                                    @foreach($subscriptions as $index => $subscription)
                                                         <tr>
-                                                            <td>#</td>
+                                                            <th>{{ $index + 1 }}</th>
                                                             <td>{{ $subscription->name }}</td>
                                                             <td>{{ $subscription->duration_in_day }}</td>
                                                             <td>{{ $subscription->price }}</td>

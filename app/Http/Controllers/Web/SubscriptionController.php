@@ -120,11 +120,9 @@ class SubscriptionController extends Controller
 
     public function checkCoupon(Request $request)
     {
-
         if ($request->ajax()) {
             $coupon = Discount::where('code', $request->coupon)->first();
             $subscription = Subscription::find($request->subscription);
-//            $total = ($subscription->price * $request->people_count) + $subscription->delivery_price;
             if ($request->shipping_type == 'delivery'){
                 $total = ($subscription->price * $request->people_count) + $subscription->delivery_price;
                 if (!$coupon) {
@@ -154,6 +152,9 @@ class SubscriptionController extends Controller
 
                         $request['totalBefore'] = $total;
                         $request['billing_total'] = $total - $coupon->amount;
+                    } elseif($coupon->discount_type == 'free_delivery') {
+                        $request['totalBefore'] = $total ;
+                        $request['billing_total'] = $total - $subscription->delivery_price ;
                     } else {
                         $request['totalBefore'] = $total;
                         $request['billing_total'] = $total - $total * ($coupon->amount / 100);
@@ -194,6 +195,9 @@ class SubscriptionController extends Controller
 
                         $request['totalBefore'] = $total;
                         $request['billing_total'] = $total - $coupon->amount;
+                    } elseif($coupon->discount_type == 'free_delivery') {
+                        $request['totalBefore'] = $total ;
+                        $request['billing_total'] = $total;
                     } else {
                         $request['totalBefore'] = $total;
                         $request['billing_total'] = $total - $total * ($coupon->amount / 100);

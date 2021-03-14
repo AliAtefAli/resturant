@@ -98,6 +98,7 @@
                                             <select class="custom-select" name="discount_type">
                                                 <option value="fixed"  @if($discount->discount_type == 'fixed') selected @endif>{{ trans('dashboard.discounts.fixed') }}</option>
                                                 <option value="percent" @if($discount->discount_type == 'percent') selected @endif>{{ trans('dashboard.discounts.percent') }}</option>
+                                                <option value="free_delivery" @if($discount->discount_type == 'free_delivery') selected @endif>{{ trans('dashboard.discounts.Free Delivery') }}</option>
                                             </select>
                                         </div>
                                     </div>

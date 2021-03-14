@@ -45,7 +45,7 @@
                                         <div class="position-relative">
                                             <input type="date" id="start_vacation" class="form-control"
                                                    name="settings[start_vacation]"
-                                                   value="@if(isset($settings['start_vacation'])){{\Carbon\Carbon::parse($settings['start_vacation'])->toDateString()}}@endif"/>
+                                                   value="{{($settings['start_vacation']) ? \Carbon\Carbon::parse($settings['start_vacation'])->toDateString() : "" }}"/>
                                             @include('dashboard.partials._errors', ['input' => 'start_vacation'])
                                         </div>
                                     </div>
@@ -57,13 +57,16 @@
                                         <div class="position-relative">
                                             <input type="date" id="end_vacation" class="form-control"
                                                    name="settings[end_vacation]"
-                                                   value="@if(isset($settings['end_vacation'])){{\Carbon\Carbon::parse($settings['end_vacation'])->toDateString()}}@endif"/>
+                                                   value="{{ ($settings['end_vacation'])?\Carbon\Carbon::parse($settings['end_vacation'])->toDateString() : ""}}"/>
                                             @include('dashboard.partials._errors', ['input' => 'end_vacation'])
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-actions right">
+                                    <button type="submit" id="cancel-vacation" class="btn btn-outline-success">
+                                        {{trans('dashboard.settings.Cancel Vacation')}}
+                                    </button>
                                     <button type="submit" class="btn btn-primary">
                                         {{trans('dashboard.settings.Update Settings')}}
                                     </button>
@@ -76,4 +79,14 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        $('#cancel-vacation').click(function (e) {
+            $('#start_vacation').val("");
+            $('#end_vacation').val("");
+            $('.form-horizontal').get(0).submit();
+
+        });
+    </script>
 @endsection
