@@ -257,14 +257,14 @@ class SubscriptionController extends Controller
 
     }
 
-    public function rejected(SubscriptionUser $subscription)
+    public function rejected($id)
     {
-        $subscription->update(['status' => 'cancelled']);
-        $user = $subscription->user;
+        $userSubscription = SubscriptionUser::findOrFail($id);
+        $user = $userSubscription->user;
         $from = Setting::where('key', 'email')->get('value')->first()->value;
         $message = 'Sorry Order Is unSuccessfully Processed';
-
         $user->notify(new RejectSubscription($message, $from));
+        $userSubscription->delete();
         return back()->with('success', trans('dashboard.It was done successfully!'));
 
     }

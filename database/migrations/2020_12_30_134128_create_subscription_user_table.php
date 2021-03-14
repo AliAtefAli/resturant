@@ -36,6 +36,7 @@ class CreateSubscriptionUserTable extends Migration
             $table->enum('status', ['delivered', 'processing', 'accepted', 'cancelled'])->default('processing');
             $table->foreignId('subscription_id')->constrained('subscriptions')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
