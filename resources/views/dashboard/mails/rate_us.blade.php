@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>قيمنا</h1>
-<a href="https://tajribiudinasur.aait-sa.com/rate">
+<a href="{{ url('rate') }}">
     قيم اشتراكك معانا
 </a>
 

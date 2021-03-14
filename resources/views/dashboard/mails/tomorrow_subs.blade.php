@@ -10,7 +10,7 @@
 <body>
     <h1>طلبات الغد</h1>
     <p>
-        <a class="btn btn-success btn-sm" href="{{route('dashboard.export')}}">
+        <a class="btn btn-success btn-sm" href="{{ url('dashboard/export') }}">
             <b>Download</b>
         </a>
     </p>
