@@ -15,6 +15,7 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
     Route::get('/complaints', 'SettingController@complaint')->name('complaints');
     Route::post('send/complaints', 'SettingController@sendComplaint')->name('sendComplaint');
     Route::view('/terms', 'web.settings.terms')->name('terms');
+    Route::get('subscriptions', 'SubscriptionController@index')->name('subscriptions.index');
 
 //    Route::resource('products', 'ProductController');
 //    Route::post('products/addToCart/{product}', 'CartController@addToCart')->name('products.addToCart');
