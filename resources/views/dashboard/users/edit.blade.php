@@ -84,28 +84,6 @@
                                         </div>
                                     </div>
 
-
-                                    <div class="form-group row {{ $errors->has('image') ? ' has-error' : '' }}">
-                                        <label class="col-md-2"
-                                               for="image">{{trans('dashboard.user.Image')}}</label>
-                                        <div class="col-md-10">
-                                            <div class="position-relative has-icon-left">
-                                                <input type="file" id="image" class="form-control image img-input"
-                                                       name="image"/>
-                                                @include('dashboard.partials._errors', ['input' => 'image'])
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group row">
-                                        <div class="col-md-2"></div>
-                                        <div class="col-md-10">
-                                            <img src="@if($user->image) {{ asset('assets/uploads/users/' . $user->image) }} @else {{ asset('web_files/images/person.png') }}@endif"
-                                                 alt="Image" class="img-preview" width="150">
-                                        </div>
-                                    </div>
-
                                     <div class="form-group row {{ $errors->has('type') ? ' has-error' : '' }}">
                                         <label class="col-md-2"
                                                for="type">{{trans('dashboard.user.Select User Role')}}</label>

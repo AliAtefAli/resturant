@@ -165,6 +165,9 @@
 {{--        @endforeach--}}
 {{--    </div>--}}
     <!--End Section1-->
+    <!--Start Our Meal-->
+    @include('web.layouts.our-meals')
+    <!--End Our Meal-->
     <!--Start Thay Say Us-->
     <div class="thay-say-us">
         <div class="container">
@@ -200,8 +203,5 @@
         </div>
     </div>
     <!--End Thay Say Us-->
-    <!--Start Our Meal-->
-    @include('web.layouts.our-meals')
-    <!--End Our Meal-->
 
 @endsection

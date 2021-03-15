@@ -21,11 +21,16 @@
                     {{ trans('site.Home') }}
                 </a>
             </li>
-{{--            <li>--}}
-{{--                <a href="{{route('who_are_we')}}">--}}
-{{--                    {{__('site.Subscriptions')}}--}}
-{{--                </a>--}}
-{{--            </li>--}}
+            <li>
+                <a href="{{route('subscriptions.index')}}">
+                    {{__('site.Subscriptions')}}
+                </a>
+            </li>
+            <li>
+                <a href="{{route('menus')}}">
+                    {{__('site.The Menu')}}
+                </a>
+            </li>
 {{--            <li>--}}
 {{--                <a href="{{route('categories.index')}}">--}}
 {{--                    {{ __('site.Categories') }}--}}
@@ -154,11 +159,16 @@
                                 {{ __('site.Home') }}
                             </a>
                         </li>
-{{--                        <li>--}}
-{{--                            <a href="{{route('who_are_we')}}">--}}
-{{--                                {{__('site.Subscriptions')}}--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                        <li>
+                            <a href="{{route('subscriptions.index')}}">
+                                {{__('site.Subscriptions')}}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('menus')}}">
+                                {{__('site.The Menu')}}
+                            </a>
+                        </li>
 {{--                        <li>--}}
 {{--                            <a href="{{route('categories.index')}}">--}}
 {{--                                {{ __('site.Categories') }}--}}

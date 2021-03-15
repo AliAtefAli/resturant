@@ -89,6 +89,7 @@ return [
     'Sub Categories' => 'الاقسام الفرعية',
     'Subscriptions' => 'الاشتراكات',
     'Menu of the week' => 'المنيو الاسبوعى',
+    'The Menu' => 'المنيو',
     'User Subscriptions' => 'الباقات المشترك بها',
     'User Finished Subscriptions' => 'الباقات المنتهيه',
     'Other Subscriptions' => 'اشتراكات اخري',
@@ -143,6 +144,7 @@ return [
     'credit_card' => 'بطاقة الائتمان',
     'on_delivery' => 'عند الاستلام',
     'Note' => 'ملاحظات',
+    'An accurate description of the location' => 'وصف دقيق للموقع (رقم العمارة، الدور، رقم الشقة، وأرجوا تزويدنا برقم جوال إضافي لتسهيل عملية التوصيل)',
     'Order' => [
         'Today Orders' => 'طلبات اليوم',
         'Order ID' => 'رقم الطلب',

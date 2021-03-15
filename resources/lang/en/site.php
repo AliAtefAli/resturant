@@ -87,6 +87,7 @@ return [
     'Sub Categories' => 'Sub Categories',
     'Subscriptions' => 'Subscriptions',
     'Menu of the week' => 'Menu of the week',
+    'The Menu' => 'The Menu',
     'User Subscriptions' => 'User Subscriptions',
     'User Finished Subscriptions' => 'User Finished Subscriptions',
     'Other Subscriptions' => 'Other Subscriptions',
@@ -142,6 +143,7 @@ return [
     'credit_card' => 'Credit Card',
     'on_delivery' => 'On delivery',
     'Note' => 'Note',
+    'An accurate description of the location' => 'An accurate description of the location (Building number, floor, apartment number, and please provide us with an additional mobile number to facilitate the delivery process)',
     'Order' => [
         'All orders' => 'All orders',
         'Today Orders' => 'Today Orders',

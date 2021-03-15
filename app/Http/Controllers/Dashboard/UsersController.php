@@ -62,6 +62,7 @@ class UsersController extends Controller
             [
                 'phone.required' => (trans('validation.field_required_phone')),
                 'phone.unique' => (trans('validation.field_exists_phone')),
+                'phone.phone' => (trans('validation.Please Enter Correct saudi arabia phone')),
                 'name.required' => (trans('validation.field_required_name')),
                 'name.min' => (trans('validation.field_min_3')),
                 'email.required' => (trans('validation.field_required_email')),

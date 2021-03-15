@@ -19723,9 +19723,9 @@ body {
 }
 
 .icons-action-section .open-icon {
-    height: 45px;
+    height: 75px;
     display: flex;
-    width: 18px;
+    width: 30px;
     position: absolute;
     background-color: #fff;
     justify-content: center;
@@ -19734,10 +19734,10 @@ body {
     color: #cc5641;
     top: 50%;
     transform: translateY(-50%);
-    right: -18px;
+    right: -30px;
     border-radius: 0 10px 10px 0;
     box-shadow: 2px 0 2px #0000002b;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .main-slider {
@@ -20811,7 +20811,7 @@ footer .info-form .info-form-aa .media-links a.whatsapp {
     height: 100%;
     width: 30%;
     right: 0;
-    top: 0;
+    top: 16px;
     background-color: #f0efe2;
     padding-top: 25px;
     transition: all .7s;
@@ -20831,10 +20831,10 @@ footer .info-form .info-form-aa .media-links a.whatsapp {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 15px;
-    height: 40px;
+    width: 25px;
+    height: 75px;
     border-radius: 5px 0 0 5px;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .user-section .nav-side-page .logo {

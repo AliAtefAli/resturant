@@ -33,10 +33,7 @@
                         @endif
 
                     </label>
-                    <div class="checkbox checkbox-primary" style="margin: 0;">
-                        <input id="checkbox-remember" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                        <label for="checkbox-remember">{{__('dashboard.remember_me')}}</label>
-                    </div>
+
                     <div class="text-center">
                         <a href="{{route('reset_pass')}}" class="link-forget">
                             {{__('site.Forget Password')}}
@@ -49,9 +46,11 @@
                 </div>
             </div>
         </form>
-        <a href="{{route('register')}}" class="btn-aaa" type="submit">
-            {{__('site.Register')}}
-        </a>
+        <button class="btn-aaa" type="submit">
+            <a style="color: #fff" href="{{route('register')}}">
+                {{__('site.Register')}}
+            </a>
+        </button>
     </div>
 @endsection
 

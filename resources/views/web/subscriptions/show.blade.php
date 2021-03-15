@@ -18,13 +18,8 @@
             border: 1px solid #cc5641;
             box-shadow: 2px 2px 4px #ddd;
         }
-        .customButton a{
-            color: #fff !important;
-        }
         .customButton:hover{
             background-color: #fff;
-        }
-        .customButton:hover.customButton a{
             color: #cc5641 !important;
         }
     </style>
@@ -74,20 +69,16 @@
                 : {{$subscription->price}}  @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
             </p>
 
-            <p class="sheping">
-                {{ __('site.Delivery') }}
-                : {{$subscription->delivery_price}} @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
-            </p>
             <p class="text-product">
                 {!! $subscription->description !!}
             </p>
             <div class="number-of-product-section">
 
-                <button class="customButton" type="submit">
-                    <a href="{{ route('subscriptions.create', $subscription) }}">
+                <a href="{{ route('subscriptions.create', $subscription) }}">
+                    <button class="customButton" type="submit">
                         {{__('site.Submit Now')}}
-                    </a>
-                </button>
+                    </button>
+                </a>
             </div>
         </div>
     </div>

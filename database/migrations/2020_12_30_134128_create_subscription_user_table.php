@@ -21,6 +21,7 @@ class CreateSubscriptionUserTable extends Migration
             $table->double('billing_total', 10, 2);
             $table->string('billing_phone')->nullable();
             $table->text('billing_address');
+            $table->text('detailed_address')->nullable();
             $table->enum('payment_status', ['failed', 'done'])->default('done');
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();

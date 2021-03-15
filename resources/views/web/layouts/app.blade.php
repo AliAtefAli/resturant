@@ -32,6 +32,10 @@
             color: #cc5641;
             border: 2px solid #969696;
         }
+        .over-to-shep .line-shep {
+            z-index: -1;
+        }
+
     </style>
     @yield('style')
 

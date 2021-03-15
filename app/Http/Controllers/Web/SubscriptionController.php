@@ -83,7 +83,6 @@ class SubscriptionController extends Controller
 
         if ($request['billing_address'] == null)
         {
-//            dd($request->billing_address);
             $request['billing_address'] = auth()->user()->address;
             $request['lat'] = auth()->user()->lat;
             $request['lng'] = auth()->user()->lng;

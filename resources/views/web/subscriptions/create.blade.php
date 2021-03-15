@@ -2,8 +2,6 @@
 @section('title', trans('site.Create Subscription'))
 @section('style')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-@endsection
-
 <style>
     #map #infowindow-content {
         display: inline;
@@ -114,6 +112,7 @@
     /*    font-size: 20px;*/
     /*}*/
 </style>
+@endsection
 
 @section('content')
 
@@ -158,6 +157,49 @@
                         @endif
                     </div>
 
+                    <div class="select-hh">
+                        <label>
+                            <input class="local-global" id="local" type="radio" name="shipping_type" value="local" checked>
+                            <span></span>
+                            {{__('site.receipt_from_our_place_in_alNaeem_neighborhood')}}
+                        </label>
+                        <label>
+                            <input class="local-global" id="global" type="radio" name="shipping_type" value="delivery">
+                            <span></span>
+                            {{ __('site.Delivery') }}
+                            : {{ $subscription->delivery_price }} @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
+                        </label>
+                        <input type="hidden" id="deliveryPrice" value="{{ $subscription->delivery_price }}">
+                        @if ($errors->has('type'))
+                            <div class="alert alert-danger">{{ $errors->first('type') }}</div>
+                        @endif
+                    </div>
+                    <div class="hide-section">
+                        <p class="name-input">
+                            {{__('site.Address')}}
+                        </p>
+                        <label class="input-style">
+                            <input type="text" name="billing_address" id="search-input" value="{{ auth()->user()->address }}">
+                            @if ($errors->has('billing_address'))
+                                <div class="alert alert-danger">{{ $errors->first('billing_address') }}</div>
+                            @endif
+                        </label>
+                        <div class="map" id="map" style="width: 100%; height: 300px;"></div>
+                        <input type="hidden" id="lat" name="lat" value="{{ auth()->user()->lat }}">
+                        <input type="hidden" id="lng" name="lng" value="{{ auth()->user()->lng }}">
+                        <p class="name-input" style="padding-top: 20px">
+                            {{__('site.An accurate description of the location')}}
+                        </p>
+                        <label class="input-style">
+                            <textarea name="detailed_address"></textarea>
+                        </label>
+                    </div>
+
+                    <p class="name-input">
+                        {{__('site.Note')}}
+                    </p>
+                    <textarea name="note"></textarea>
+
                     <div class="row my-3">
                         <div class="pic-select pic-select-auth pic-select-auth-any row">
                             <div class="col-md-9" style="max-width: 75%">
@@ -195,67 +237,6 @@
                         </div>
                     </div>
 
-                    <div class="row my-3">
-                        <p class="name-input col col-md-3">
-                            {{__('site.Price')}} : <span class="sub-price mr-1" data-value="{{ $subscription->price }}">{{ $subscription->price }}  </span>
-
-                            <span id="currency"
-                                  data-value="@if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }}
-                                  @endif">
-                             @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }}
-                                @endif
-                         </span>
-                        </p>
-                    </div>
-
-                    <input type="hidden" value="{{$subscription->id}}" name="subs_id" id="subs_id">
-                    <input type="hidden" value="" name="total_billing" id="total_billing">
-                    <div class="row my-3" id="all_total">
-                        <p class="name-input col col-md-3">
-                            {{__('site.Total')}} :
-
-                            <span id="total" class="sub-price mr-1"
-                                  data-value="{{ $subscription->price }}"> {{ $subscription->price }}  @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }}
-                                @endif </span>
-                        </p>
-                    </div>
-                    <div class="select-hh">
-                        <label>
-                            <input class="local-global" id="local" type="radio" name="shipping_type" value="local" checked>
-                            <span></span>
-                            {{__('site.receipt_from_our_place_in_alNaeem_neighborhood')}}
-                        </label>
-                        <label>
-                            <input class="local-global" id="global" type="radio" name="shipping_type" value="delivery">
-                            <span></span>
-                            {{ __('site.Delivery') }}
-                            : {{ $subscription->delivery_price }} @if(isset($setting[ app()->getLocale() . '_currency'])) {{ $setting[ app()->getLocale() . '_currency'] }} @endif
-                        </label>
-                        <input type="hidden" id="deliveryPrice" value="{{ $subscription->delivery_price }}">
-                        @if ($errors->has('type'))
-                            <div class="alert alert-danger">{{ $errors->first('type') }}</div>
-                        @endif
-                    </div>
-                    <div class="hide-section">
-                        <p class="name-input">
-                            {{__('site.Address')}}
-                        </p>
-                        <label class="input-style">
-                            <input type="text" name="billing_address" id="search-input" value="{{ auth()->user()->address }}">
-                            @if ($errors->has('billing_address'))
-                                <div class="alert alert-danger">{{ $errors->first('billing_address') }}</div>
-                            @endif
-                        </label>
-                        <div class="map" id="map" style="width: 100%; height: 300px;"></div>
-                        <input type="hidden" id="lat" name="lat" value="{{ auth()->user()->lat }}">
-                        <input type="hidden" id="lng" name="lng" value="{{ auth()->user()->lng }}">
-                        <p class="name-input" style="padding-top: 20px">
-                            {{__('site.Phone')}}  {{__('site.Optional')}} ({{__('site.to_facilitate_the_delivery_process')}})
-                        </p>
-                        <label class="input-style">
-                            <input type="text" name="billing_phone" value="{{ old('billing_phone') }}">
-                        </label>
-                    </div>
                     <p class="name-input" style="display: none;">
                         {{__('dashboard.order.payment method')}}
                     </p>
@@ -271,10 +252,43 @@
                             {{ __('site.On delivery') }}
                         </label>
                     </div>
-                    <p class="name-input">
-                        {{__('site.Note')}}
-                    </p>
-                    <textarea name="note"></textarea>
+
+                    <div class="row my-3">
+                        <p class="name-input col col-md-3">
+                            {{__('site.Price')}} : <span class="sub-price mr-1" data-value="{{ $subscription->price }}">{{ $subscription->price }}  </span>
+
+                            <span id="currency"
+                                  data-value="@if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }}
+                                  @endif">
+                             @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }}
+                                @endif
+                         </span>
+                        </p>
+                    </div>
+
+                    <input type="hidden" value="{{$subscription->id}}" name="subs_id" id="subs_id">
+                    <input type="hidden" value="" name="total_billing" id="total_billing">
+
+                    <div class="row my-3">
+                        <p class="name-input col col-md-3">
+                            {{__('site.Delivery')}} :
+                            <span id="total" class="sub-price mr-1"> {{ $subscription->delivery_price }}
+                                @if(isset($setting[app()->getLocale() . '_currency']))
+                                    {{ $setting[app()->getLocale() . '_currency'] }}
+                                @endif
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="row my-3" id="all_total">
+                        <p class="name-input col col-md-3">
+                            {{__('site.Total')}} :
+
+                            <span id="total" class="sub-price mr-1"
+                                  data-value="{{ $subscription->price }}"> {{ $subscription->price + $subscription->delivery_price}}  @if(isset($setting[app()->getLocale() . '_currency'])){{ $setting[app()->getLocale() . '_currency'] }}
+                                @endif </span>
+                        </p>
+                    </div>
 
                 </div>
                 <input type="hidden" name="subscription_id" value="{{$subscription->id}}">
