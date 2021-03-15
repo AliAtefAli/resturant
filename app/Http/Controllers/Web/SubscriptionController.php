@@ -19,12 +19,17 @@ use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
 {
+    public function index()
+    {
+        $subscriptions = Subscription::all();
 
+        return view('web.subscriptions.index', compact('subscriptions'));
+    }
     public function show(Subscription $subscription)
     {
         $other_subscriptions = Subscription::where('id', '!=', $subscription->id)->get();
 
-        return view('web.subscriptions.index', compact('subscription', 'other_subscriptions'));
+        return view('web.subscriptions.show', compact('subscription', 'other_subscriptions'));
     }
 
     public function create(Subscription $subscription)
