@@ -46,11 +46,13 @@
                 </div>
             </div>
         </form>
-        <button class="btn-aaa" type="submit">
-            <a style="color: #fff" href="{{route('register')}}">
-                {{__('site.Register')}}
-            </a>
-        </button>
+
+        <a style="color: #fff" href="{{route('register')}}">
+            <button class="btn-aaa" type="submit">
+            {{__('site.Register')}}
+            </button>
+        </a>
+
     </div>
 @endsection
 
