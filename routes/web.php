@@ -50,7 +50,7 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
         Route::get('/subscriptions/{subscription}', 'SubscriptionController@create')->name('subscriptions.create');
         Route::post('/subscriptions/store', 'SubscriptionController@store')->name('subscriptions.store');
         Route::post('/subscriptions/{subscription}/checkPayment', 'SubscriptionController@checkPayment')->name('subscriptions.checkPayment');
-        Route::get('/some/route', 'SubscriptionController@redirect')->name('subscriptions.redirect');
+        Route::view('/some/route', 'web.subscriptions.redirect')->name('subscriptions.redirect');
         Route::get('/menus', 'MenuController@index')->name('menus');
 
         Route::post('/subscriptions/checkCoupon', 'SubscriptionController@checkCoupon')->name('subscriptions.checkCoupon');

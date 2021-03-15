@@ -272,7 +272,7 @@
                     <div class="row my-3">
                         <p class="name-input col col-md-3">
                             {{__('site.Delivery')}} :
-                            <span id="total" class="sub-price mr-1"> {{ $subscription->delivery_price }}
+                            <span class="sub-price mr-1"> {{ $subscription->delivery_price }}
                                 @if(isset($setting[app()->getLocale() . '_currency']))
                                     {{ $setting[app()->getLocale() . '_currency'] }}
                                 @endif
