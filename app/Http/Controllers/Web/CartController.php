@@ -18,11 +18,6 @@ class CartController extends Controller
         return view('web.carts.index', compact('our_meals'));
     }
 
-    public function redirect()
-    {
-        return view('web.carts.redirect');
-    }
-
     public function changeLiked(Request $request)
     {
         $store = Stores::find($request['id']);

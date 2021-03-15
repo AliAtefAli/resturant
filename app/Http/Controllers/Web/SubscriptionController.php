@@ -34,9 +34,6 @@ class SubscriptionController extends Controller
 
     public function checkPayment(SaveSubscriptionRequest $request)
     {
-
-
-
         $subscription = Subscription::findOrFail($request->subscription_id);
         if ($request->coupon != null) {
             $coupon = Discount::where('code', $request->coupon)->first();
@@ -307,8 +304,4 @@ class SubscriptionController extends Controller
         }
     }
 
-    public function redirect()
-    {
-        return view('web.subscriptions.redirect');
-    }
 }

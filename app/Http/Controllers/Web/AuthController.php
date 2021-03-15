@@ -131,11 +131,6 @@ class AuthController extends Controller
         return back()->with('success', trans('site.Added successfully'));
     }
 
-    public function getChangePassword()
-    {
-        return view('web.users.change-password');
-    }
-
     public function changePassword(ChangePasswordRequest $request, User $user)
     {
         if (Hash::check($request->old_password, $user->password)) {

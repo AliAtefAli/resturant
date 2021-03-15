@@ -21,11 +21,6 @@ class SettingController extends Controller
         return view('web.settings.common_questions', compact('faqs'));
     }
 
-    public function aboutUs()
-    {
-        return view('web.settings.about_us');
-    }
-
     public function complaint()
     {
         $our_meals = OurMeals::limit(10)->latest()->get();
@@ -42,19 +37,9 @@ class SettingController extends Controller
         return back()->with('success', trans('site.Message Sent successfully'));
     }
 
-    public function terms()
-    {
-        return view('web.settings.terms');
-    }
-
     public function whoAreWe()
     {
         return view('web.settings.who_are_we');
-    }
-
-    public function message()
-    {
-        return view('web.settings.contact_us');
     }
 
     public function sendMessage(SendComplaintRequest $request)
