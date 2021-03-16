@@ -377,7 +377,7 @@
                         if (response.status === false) {
                             toastr.error(response.msg, {timeOut: "50000",})
                         } else {
-                            countInput.attr("disabled" ,true);
+                            countInput.attr("readonly", "");
                             totalBefore.innerText = response.data.totalBefore;
                             totalAfter.innerText = response.data.billing_total;
                             totalBilling.value = response.data.billing_total;
