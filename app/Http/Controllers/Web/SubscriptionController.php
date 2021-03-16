@@ -44,21 +44,23 @@ class SubscriptionController extends Controller
             $coupon = Discount::where('code', $request->coupon)->first();
             $request['coupon_amount'] = $coupon->amount;
             $request['coupon_type'] = $coupon->discount_type;
+            $coupon = $request['coupon_billing'];
+            $request['billing_total'] = $coupon;
+        }else
+        {
+            if ($request->shipping_type == 'delivery')
+            {
+                $request['billing_total'] = ($subscription->price * $request->people_count) + $subscription->delivery_price;
+            }else
+            {
+                $request['billing_total'] = ($subscription->price * $request->people_count);
+            }
         }
-
         $daysToAdd = $subscription->duration_in_day;
         $start_date = $request->start_date;
         $date = Carbon::parse($start_date)->addDays($daysToAdd - 1)->toDateString();
         $request['end_date'] = $date;
-        if ($request->shipping_type == 'delivery')
-        {
-            $request['billing_total'] = ($subscription->price * $request->people_count) + $subscription->delivery_price;
 
-        }else
-            {
-                $request['billing_total'] = ($subscription->price * $request->people_count);
-
-            }
         $request['user_id'] = auth()->user()->id;
 
         $validation_start_date = Carbon::parse($date)->addDays(1)->toDateString();
@@ -67,6 +69,7 @@ class SubscriptionController extends Controller
 
         $request['validation_start_date'] = $validation_start_date;
         $request['validation_end_date'] = $validation_end_date;
+
 
 
         if ($request->payment_type == 'credit_card') {
