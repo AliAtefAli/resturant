@@ -40,4 +40,98 @@ class Subscription extends Model
     {
         return $this->morphMany(Transaction::class, "transactionable");
     }
+
+    public static function checkCoupon($request)
+    {
+        dd($request->all());
+        $coupon = Discount::where('code', $request->coupon)->first();
+        $subscription = Subscription::find($request->subscription);
+        if (!$coupon) {
+            return response()->json([
+                    'status' => false,
+                    'msg' => trans('site.Order.Coupon not found')
+                ]
+            );
+        }
+        if ($request->shipping_type == 'delivery'){
+            $total = ($subscription->price * $request->people_count) + $subscription->delivery_price;
+            $request['coupon'] = $coupon;
+            if ($coupon->status == 'available') {
+                if ($coupon->end_date < today() || $coupon->start_date > today()) {
+                    return response()->json([
+                            'status' => false,
+                            'msg' => trans('site.Discount period expired'),
+                        ]
+                    );
+                }
+                if ($coupon->start_date > today()) {
+                    return response()->json([
+                            'status' => false,
+                            'msg' => trans('site.Discount period expired'),
+                        ]
+                    );
+                }
+                if ($coupon->discount_type == 'fixed') {
+
+                    $request['totalBefore'] = $total;
+                    $request['billing_total'] = $total - $coupon->amount;
+                } elseif($coupon->discount_type == 'free_delivery') {
+                    $request['totalBefore'] = $total ;
+                    $request['billing_total'] = $total - $subscription->delivery_price ;
+                } else {
+                    $request['totalBefore'] = $total;
+                    $request['billing_total'] = $total - $total * ($coupon->amount / 100);
+                }
+            } else {
+                return response()->json([
+                        'status' => false,
+                        'msg' => trans('site.Order.Coupon not Available')
+                    ]
+                );
+            }
+        }else{
+            $total = $subscription->price * $request->people_count;
+            if (!$coupon) {
+                return response()->json([
+                        'status' => false,
+                        'msg' => trans('site.Order.Coupon not found')
+                    ]
+                );
+            }
+            $request['coupon'] = $coupon;
+            if ($coupon->status == 'available') {
+                if ($coupon->end_date < today() || $coupon->start_date > today()) {
+                    return response()->json([
+                            'status' => false,
+                            'msg' => trans('site.Discount period expired'),
+                        ]
+                    );
+                }
+                if ($coupon->start_date > today()) {
+                    return response()->json([
+                            'status' => false,
+                            'msg' => trans('site.Discount period expired'),
+                        ]
+                    );
+                }
+                if ($coupon->discount_type == 'fixed') {
+
+                    $request['totalBefore'] = $total;
+                    $request['billing_total'] = $total - $coupon->amount;
+                } elseif($coupon->discount_type == 'free_delivery') {
+                    $request['totalBefore'] = $total ;
+                    $request['billing_total'] = $total;
+                } else {
+                    $request['totalBefore'] = $total;
+                    $request['billing_total'] = $total - $total * ($coupon->amount / 100);
+                }
+            } else {
+                return response()->json([
+                        'status' => false,
+                        'msg' => trans('site.Order.Coupon not Available')
+                    ]
+                );
+            }
+        }
+    }
 }

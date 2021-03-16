@@ -1,3 +1,4 @@
+
 $(function () {
     var dir = $('body').css('direction');
     var loops = $('.main-slider-slider').hasClass('loop');
@@ -131,35 +132,54 @@ $(function () {
             }
         }
     });
-    loops = $('.our-meal-slider').hasClass('loop');
     $('.our-meal-slider').owlCarousel({
-        loop:(loops == true)?true:false,
-        margin:15,
+        loop:true,
+        margin:10,
         nav:true,
-        dots: false,
-        rtl: (dir == 'rtl')?true:false,
-        autoplay: true,
+        autoplay:true,
         smartSpeed: 750,
+        dots:false,
         freeDrag: true,
+        rtl: (dir == 'rtl')?true:false,
         navText: (dir == 'rtl')?['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>']:['<i class="fas fa-arrow-right"></i>', '<i class="fas fa-arrow-left"></i>'],
         responsive:{
             0:{
-                items: 1
+                items:1
             },
-            576:{
-                items: 2
-            },
-            768:{
+            600:{
                 items:3
             },
-            992:{
-                items:3
-            },
-            1200:{
+            1000:{
                 items:4
             }
         }
-    });
+    })
+    // $('.our-meal-slider').owlCarousel({
+    //     items:4,
+    //     loop:true,
+    //     margin:10,
+    //     autoplay:true,
+    //     rtl: (dir == 'rtl')?true:false,
+    //     autoplayTimeout:1000,
+    //     autoplayHoverPause:true,
+    //     responsive:{
+    //         0:{
+    //             items: 1
+    //         },
+    //         576:{
+    //             items: 2
+    //         },
+    //         768:{
+    //             items:3
+    //         },
+    //         992:{
+    //             items:3
+    //         },
+    //         1200:{
+    //             items:4
+    //         }
+    //     }
+    // });
     loops = $('.pic-slider').hasClass('loop');
     $('.pic-slider').owlCarousel({
         loop:(loops == true)?true:false,

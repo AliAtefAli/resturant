@@ -267,7 +267,7 @@
                     </div>
 
                     <input type="hidden" value="{{$subscription->id}}" name="subs_id" id="subs_id">
-                    <input type="hidden" value="" name="total_billing" id="total_billing">
+                    <input type="hidden" value="" name="coupon_billing" id="total_billing">
 
                     <div class="row my-3">
                         <p class="name-input col col-md-3">

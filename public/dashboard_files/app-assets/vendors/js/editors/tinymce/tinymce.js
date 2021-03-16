@@ -82,7 +82,7 @@
 
 			target[fragments[fragments.length - 1]] = modules[id];
 		}
-		
+
 		// Expose private modules for unit tests
 		if (exports.AMDLC_TESTS) {
 			privateModules = exports.privateModules || {};
@@ -9268,7 +9268,7 @@ define("tinymce/dom/DOMUtils", [
 			}
 
 			// Restore sizzle document to window.document
-			// Since the current document might be removed producing "Permission denied" on IE see #6325
+			// Since the current document might be removed producing "AdminPermission denied" on IE see #6325
 			if (Sizzle.setDocument) {
 				Sizzle.setDocument();
 			}
