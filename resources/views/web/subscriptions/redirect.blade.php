@@ -31,7 +31,9 @@
     <div class="map" id="map" style="width: 100%; height: 300px;"></div>
     <input type="hidden" id="lat" name="lat" value="{{ session()->get('subscription.lat') }}">
     <input type="hidden" id="lng" name="lng" value="{{ session()->get('subscription.lng') }}">
-    <input type="text" name="billing_phone" value="{{ session()->get('subscription.billing_phone') }}">
+    <input type="text" name="detailed_address" value="{{ session()->get('subscription.detailed_address') }}">
+    <input type="text" name="validation_start_date" value="{{ session()->get('subscription.validation_start_date') }}">
+    <input type="text" name="validation_end_date" value="{{ session()->get('subscription.validation_end_date') }}">
     <input type="radio" name="payment_type" value="on_delivery" checked>
     <input type="radio" name="payment_type" value="credit_card"  @if(session()->get('subscription.payment_type') == 'credit_card' ) checked @endif>
 
@@ -59,7 +61,6 @@
                 document.getElementById('payment_method').value = response.callback.source.payment_method;
                 document.getElementById('payment-form').submit();
             } else {
-                alert('no captured');
                 {{ session()->flash('error', trans(  "site.Something went wrong, please try again")) }}
                     window.location.href = "{{ route('subscriptions.create', session()->get('subscription.subscription_id')) }}";
             }

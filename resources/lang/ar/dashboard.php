@@ -7,6 +7,7 @@ return [
     "made_asPending" => "تم جعلها كمعلقة",
     "made_asActive" => "تم جعلها كنشطة",
     "additional_phone" => "الجوال الاضافي",
+    "detailed_address" => "العنوان بالتفصيل",
     "remember_me" => "تذكرني",
     "sorry_the_available_times_to_activate_the_subscription_have_expired" => "عفوا لقد انتهت المحاولات المتاحه لتفعيل الباقه",
     "count" => "عدد المرات التي يمكن ايقاف الباقه",

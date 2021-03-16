@@ -98,7 +98,7 @@
                                                         <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.Shipping type')}}</th>
                                                         <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.Total Price')}}</th>
                                                         <th style="width: 80px;!important;">{{trans('dashboard.subscriptions.Address')}}</th>
-                                                        <th style="width: 50px;!important;">{{trans('dashboard.additional_phone')}}</th>
+                                                        <th style="width: 50px;!important;">{{trans('dashboard.detailed_address')}}</th>
                                                         <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.People count')}}</th>
                                                         <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.show')}}</th>
                                                     </tr>
@@ -116,7 +116,7 @@
                                                                     {{ $subscription->billing_address }}
                                                                 </a>
                                                             </td>
-                                                            <td>{{ $subscription->billing_phone }}</td>
+                                                            <td>{{ $subscription->detailed_address }}</td>
                                                             <td>{{ $subscription->people_count }}</td>
                                                             <td>
                                                                 <a href="{{ route('dashboard.subscriptions.showSubscription', $subscription) }}" class="btn btn-warning btn-sm" style="padding: 5px 8px;" title="{{ trans('dashboard.subscriptions.Show Subscriptions') }}">

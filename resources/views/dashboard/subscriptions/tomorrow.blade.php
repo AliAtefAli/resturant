@@ -100,7 +100,7 @@
                                                             <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.Total Price')}}</th>
                                                         @endif
                                                         <th style="width: 80px;!important;">{{trans('dashboard.subscriptions.Address')}}</th>
-                                                        <th style="width: 50px;!important;">{{trans('dashboard.additional_phone')}}</th>
+                                                        <th style="width: 50px;!important;">{{trans('dashboard.detailed_address')}}</th>
                                                         <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.People count')}}</th>
                                                         <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.name')}}</th>
                                                         <th style="width: 50px;!important;">{{trans('dashboard.subscriptions.Note')}}</th>
@@ -130,7 +130,7 @@
                                                                     {{ $subscription->billing_address }}
                                                                 </a>
                                                             </td>
-                                                            <td>{{ $subscription->billing_phone }}</td>
+                                                            <td>{{ $subscription->detailed_address }}</td>
                                                             <td>{{ $subscription->people_count }}</td>
                                                             <td>{{ $subscription->subscription->name }}</td>
                                                             <td>{{ $subscription->note }}</td>

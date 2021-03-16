@@ -13,6 +13,7 @@ class SaveSubscriptionRequest extends FormRequest
             'payment_type' => 'required',
             'subscription_id' => 'required',
             'start_date' => 'required',
+            'people_count' => 'required',
         ];
     }
 
