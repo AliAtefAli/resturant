@@ -12,7 +12,6 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
 
     Route::view('about-us', 'web.settings.about_us')->name('about_us');
     Route::get('/common_questions', 'SettingController@faq')->name('common_questions');
-    Route::get('/complaints', 'SettingController@complaint')->name('complaints');
     Route::post('send/complaints', 'SettingController@sendComplaint')->name('sendComplaint');
     Route::view('/terms', 'web.settings.terms')->name('terms');
     Route::get('subscriptions', 'SubscriptionController@index')->name('subscriptions.index');
@@ -25,7 +24,6 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
 //    Route::get('/category/index/{id}', 'CategoryController@categoryIndex')->name('category.index');
     Route::get('/subscriptions/{subscription}/show', 'SubscriptionController@show')->name('subscriptions.show');
 
-    Route::view('/contact_us', 'web.settings.contact_us')->name('contact_us');
     Route::post('send/message', 'SettingController@sendMessage')->name('sendMessage');
 
     Route::get('/reset_pass', 'AuthController@resetUserPassword')->name('reset_pass');
@@ -33,8 +31,11 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
     Route::get('/code_confirm/{user}', 'AuthController@codePage')->name('code_confirm');
     Route::post('/code_confirmation', 'AuthController@codeConfirm')->name('set_confirm');
     Route::post('join-us', 'AuthController@joinUs')->name('join-us');
+    Route::get('/menus', 'MenuController@index')->name('menus');
 
     Route::group(['middleware' => 'auth'], function () {
+        Route::view('/contact_us', 'web.settings.contact_us')->name('contact_us');
+        Route::get('/complaints', 'SettingController@complaint')->name('complaints');
         Route::get('/rate', 'SettingController@rate')->name('rate');
         Route::post('/rate', 'SettingController@saveRate')->name('save.rate');
         Route::view('/who_are_we', 'web.settings.who_are_we')->name('who_are_we');
@@ -51,7 +52,6 @@ Route::group(['name' => '', 'namespace' => 'Web'], function () {
         Route::post('/subscriptions/store', 'SubscriptionController@store')->name('subscriptions.store');
         Route::post('/subscriptions/{subscription}/checkPayment', 'SubscriptionController@checkPayment')->name('subscriptions.checkPayment');
         Route::view('/some/route', 'web.subscriptions.redirect')->name('subscriptions.redirect');
-        Route::get('/menus', 'MenuController@index')->name('menus');
 
         Route::post('/subscriptions/checkCoupon', 'SubscriptionController@checkCoupon')->name('subscriptions.checkCoupon');
 

@@ -149,6 +149,9 @@ class UsersController extends Controller
 
     public function destroy(User $user)
     {
+        if (file_exists(public_path('assets/uploads/users/' . $user->image))) {
+            unlink(public_path('assets/uploads/users/' . $user->path));
+        }
         $user->delete();
         return redirect()->route('dashboard.users.index')->with("success", trans('dashboard.deleted_successfully'));
 

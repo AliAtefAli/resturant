@@ -71,7 +71,7 @@ class SubscriptionController extends Controller
         $data = $request->all();
 
         if ($request->has('image')) {
-            if (public_path('assets/uploads/subscriptions/' . $subscription->image)) {
+            if (public_path('assets/uploads/subscriptions/' . $subscription->image) && is_file(public_path('assets/uploads/subscriptions/' . $subscription->image))) {
                 unlink(public_path('assets/uploads/subscriptions/' . $subscription->image));
             }
             $path = $this->uploadOne($request['image'], 'subscriptions', null, null);
@@ -87,6 +87,9 @@ class SubscriptionController extends Controller
     {
         if ($subscription->users->count() > 1) {
             return back()->with('error', trans('dashboard.subscriptions.Sorry you can not delete this Subscription'));
+        }
+        if (file_exists(public_path('assets/uploads/subscriptions/' . $subscription->image) && is_file(public_path('assets/uploads/subscriptions/' . $subscription->image))) ) {
+            unlink(public_path('assets/uploads/subscriptions/' . $subscription->image));
         }
         $subscription->delete();
 
