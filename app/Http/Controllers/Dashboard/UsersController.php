@@ -149,7 +149,7 @@ class UsersController extends Controller
 
     public function destroy(User $user)
     {
-        if (file_exists(public_path('assets/uploads/users/' . $user->image))) {
+        if (file_exists(public_path('assets/uploads/users/' . $user->image)) && is_file(public_path('assets/uploads/users/' . $user->path))) {
             unlink(public_path('assets/uploads/users/' . $user->path));
         }
         $user->delete();
