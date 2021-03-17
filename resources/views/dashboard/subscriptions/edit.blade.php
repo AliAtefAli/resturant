@@ -2,6 +2,11 @@
 @section('title', trans('dashboard.subscriptions.Edit Subscription'))
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.0/trix.min.css">
+    <style>
+        .img-uploaded img{
+            width: 100px;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -128,11 +133,25 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group row ">
+                                    <label class="col-md-2" for="image"></label>
+                                    <div class="col-md-10">
+                                        <div class="position-relative multi-img-result d-flex align-items-center flex-wrap">
+                                            <div class="img-uploaded uploaded-image m-1">
+                                                <div class="img-uploaded uploaded-image m-1">
+                                                    <img src="{{ asset('assets/uploads/subscriptions/' . $subscription->image) }}"
+                                                         alt="" width="100">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-group row {{ $errors->has('durations_in_day') ? ' has-error' : '' }}">
                                     <label class="col-md-2"
                                            for="durations_in_day">{{trans('dashboard.subscriptions.duration in days')}}</label>
                                     <div class="col-md-10">
-                                        <div class="position-relative has-icon-left">
+                                        <div class="position-relative ">
                                             <input type="text" id="durations_in_day" class="form-control"
                                                    name="duration_in_day" value="{{ $subscription->duration_in_day }}"/>
                                             @include('dashboard.partials._errors', ['input' => 'durations_in_day'])
@@ -181,4 +200,5 @@
 
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.0/trix.min.js"></script>
+    <script src="{{ asset('dashboard_files/assets/js/image-preview-2.js') }}"></script>
 @endsection

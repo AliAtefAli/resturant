@@ -2,6 +2,11 @@
 @section('title', trans('dashboard.subscriptions.Add Subscription'))
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.0/trix.min.css">
+    <style>
+        .img-uploaded img{
+            width: 100px;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -134,6 +139,17 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group row ">
+                                    <label class="col-md-2" for="image"></label>
+                                    <div class="col-md-10">
+                                        <div class="position-relative multi-img-result d-flex align-items-center flex-wrap">
+                                            <div class="img-uploaded uploaded-image m-1">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-group row {{ $errors->has('durations_in_day') ? ' has-error' : '' }}">
                                     <label class="col-md-2"
                                            for="durations_in_day">{{trans('dashboard.subscriptions.duration in days')}}</label>
@@ -188,4 +204,5 @@
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.0/trix.min.js"></script>
     <script src="{{ asset('dashboard_files/app-assets/js/scripts/forms/select/form-selectize.min.js') }}"></script>
+    <script src="{{ asset('dashboard_files/assets/js/image-preview-2.js')  }}"></script>
 @endsection

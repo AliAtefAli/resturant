@@ -55,6 +55,10 @@
                                         <td>{{ $subscription->delivery_price }}</td>
                                     </tr>
                                     <tr>
+                                        <th>{{ trans('dashboard.subscriptions.Image') }}</th>
+                                        <td><img src="{{ asset('assets/uploads/subscriptions/' . $subscription->image) }}" width="100" alt=""></td>
+                                    </tr>
+                                    <tr>
                                         <th>{{ trans('dashboard.subscriptions.products') }}</th>
                                         <td>
                                             <div class="row">
