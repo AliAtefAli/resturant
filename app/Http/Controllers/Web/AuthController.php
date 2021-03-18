@@ -188,7 +188,7 @@ class AuthController extends Controller
                 ]);
 
 
-            $remember_me = $request->has('remember') ? true : false;
+            // $remember_me = $request->has('remember') ? true : false;
 
             $user = User::where('phone', $request->email)->first();
 
@@ -198,7 +198,7 @@ class AuthController extends Controller
         }
 
             if ($user) {
-                if (Auth::guard('web')->attempt(['phone' => $request->email, 'password' => $request->password],$remember_me)) {
+                if (Auth::guard('web')->attempt(['phone' => $request->email, 'password' => $request->password],true)) {
                     if (auth()->user() && auth()->user()->type == 'admin') {
                         return redirect('/dashboard');
                     } else {
