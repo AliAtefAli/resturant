@@ -10,7 +10,6 @@ class SaveSubscriptionRequest extends FormRequest
     {
         return [
             'shipping_type' => 'required',
-            'payment_type' => 'required',
             'subscription_id' => 'required',
             'start_date' => 'required',
             'people_count' => 'required',

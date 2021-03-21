@@ -237,21 +237,7 @@
                         </div>
                     </div>
 
-                    <p class="name-input" style="display: none;">
-                        {{__('dashboard.order.payment method')}}
-                    </p>
-                    <div class="select-hh" style="display: none;">
-                        <label>
-                            <input type="radio" name="payment_type" value="credit_card" checked>
-                            <span></span>
-                            {{__('site.Credit Card')}}
-                        </label>
-                        <label>
-                            <input type="radio" name="payment_type" value="on_delivery">
-                            <span></span>
-                            {{ __('site.On delivery') }}
-                        </label>
-                    </div>
+                    <input type="hidden" name="payment_type" value="credit_card">
 
                     <div class="row my-3">
                         <p class="name-input col col-md-3">
