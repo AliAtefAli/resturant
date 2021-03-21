@@ -179,6 +179,11 @@
             <div class="owl-carousel owl-theme thay-say-us-slider loop @if($rates->count() > 4) loop @endif">
                 @foreach($rates as $rate)
                     <div class="item wow fadeInDown">
+                        <div class="img">
+                            <img lazy="loading"
+                                 src="@if(isset($rate->user->image)){{ asset('assets/uploads/users/' . $rate->user->image) }}@else {{ asset('web_files/images/users.png') }}@endif"
+                                width="90">
+                        </div>
                         <div class="text">
                             <div class="info-person"><span class="name-customer">{{$rate->user->name}}</span>
                                 <div class="stars">
